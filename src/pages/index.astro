@@ -1,12 +1,12 @@
 ---
 // Component Imports
-import MainHead from '../components/MainHead.astro';
-import Nav from '../components/Nav.astro';
-import Footer from '../components/Footer.astro';
-import PortfolioPreview from '../components/PortfolioPreview.astro';
+import MainHead from "../components/MainHead.astro";
+import Nav from "../components/Nav.astro";
+import Footer from "../components/Footer.astro";
+import PortfolioPreview from "../components/PortfolioPreview.astro";
 
 // Data Fetching: List all Markdown posts in the repo.
-const projects = await Astro.glob('./project/**/*.md');
+const projects = await Astro.glob("./project/**/*.md");
 const featuredProject = projects[0];
 
 // Full Astro Component Syntax:
@@ -14,236 +14,217 @@ const featuredProject = projects[0];
 ---
 
 <html lang="en">
-	<head>
-		<MainHead
-			title="José María Santos: Desarrollador Web"
-			description="El rincón de José María Santos"
-		/>
-		<style>
-			.wrapper {
-				margin-top: 2em;
-				margin-bottom: 2em;
-			}
+  <head>
+    <MainHead
+      title="José María Santos: Desarrollador Web"
+      description="El rincón de José María Santos"
+    />
+    <style>
+      .hero {
+        position: relative;
+        overflow: hidden;
+      }
 
-			.hero {
-				position: relative;
-				overflow: hidden;
-			}
+      img {
+        opacity: 0.25;
+      }
 
-			@media (min-width: 750px) {
-				.hero {
-					height: 45vw;
-				}
-			}
+      @media (min-width: 750px) {
+        .hero {
+          height: 45vw;
+        }
+      }
 
-			.img {
-				display: block;
-				width: 100%;
-				height: auto;
-			}
+      .img {
+        display: block;
+        width: 100%;
+        height: auto;
+      }
 
-			.gradient,
-			.gradient2 {
-				background-image: url('/assets/mesh-gradient.jpg');
-				background-size: cover;
-				pointer-events: none;
-				mix-blend-mode: screen;
-				width: 100%;
-				height: 100%;
-				position: absolute;
-				top: 0;
-				left: 0;
-				z-index: 2;
-			}
+      .overlay {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        z-index: 1;
+        display: flex;
+        flex-direction: column;
+        align-items: flex-start;
+        justify-content: center;
+      }
 
-			.gradient2 {
-				mix-blend-mode: multiply;
-				background-size: cover;
-			}
+      .title {
+        font-weight: 900;
+        font-size: var(--f-u6);
+        margin-bottom: 0.5rem;
+        margin-top: 0;
+      }
 
-			.overlay {
-				position: absolute;
-				top: 0;
-				left: 0;
-				width: 100%;
-				height: 100%;
-				z-index: 10;
-				display: flex;
-				flex-direction: column;
-				align-items: flex-start;
-				justify-content: center;
-				padding-left: 2rem;
-			}
+      @media (min-width: 750px) {
+        .title {
+          font-size: var(--f-u12);
+        }
+      }
 
-			@media (min-width: 750px) {
-				.overlay {
-					padding-left: 4rem;
-				}
-			}
+      .grid {
+        display: grid;
+        grid-gap: 2rem;
+      }
 
-			.title {
-				font-weight: 900;
-				font-size: var(--f-u6);
-				margin-bottom: 0.5rem;
-				margin-top: 0;
-			}
+      @media (min-width: 1200px) {
+        .grid {
+          grid-template-columns: 2fr 1fr;
+        }
+      }
 
-			@media (min-width: 750px) {
-				.title {
-					font-size: var(--f-u12);
-				}
-			}
+      .sectionTitle {
+        font-weight: 700;
+        font-size: var(--f-u8);
+        margin-top: 4rem;
+        margin-bottom: 2rem;
+      }
 
-			.grid {
-				display: grid;
-				grid-gap: 2rem;
-			}
+      .roles {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 0.5em;
+        font-size: var(--f-d1);
+      }
 
-			@media (min-width: 1200px) {
-				.grid {
-					grid-template-columns: 2fr 1fr;
-				}
-			}
+      .role {
+        position: relative;
+        display: inline-block;
+        white-space: nowrap;
+        font-weight: 900;
+        color: var(--t-bg);
+        background-color: var(--t-fg);
+        padding: 0.25em 0.5em;
+        z-index: 2;
+      }
 
-			.sectionTitle {
-				font-weight: 700;
-				font-size: var(--f-u8);
-				margin-top: 4rem;
-				margin-bottom: 2rem;
-			}
+      @media (min-width: 750px) {
+        .role {
+          font-size: var(--f-u3);
+        }
+      }
 
-			.roles {
-				display: flex;
-				flex-wrap: wrap;
-				gap: 0.5em;
-				font-size: var(--f-d1);
-			}
+      .role:nth-of-type(1) .invert {
+        background-color: var(--c-pink);
+      }
 
-			.role {
-				position: relative;
-				display: inline-block;
-				white-space: nowrap;
-				font-weight: 900;
-				color: var(--t-bg);
-				background-color: var(--t-fg);
-				padding: 0.25em 0.5em;
-				z-index: 2;
-			}
+      .role:nth-of-type(2) .invert {
+        background-color: var(--c-blue);
+      }
 
-			@media (min-width: 750px) {
-				.role {
-					font-size: var(--f-u3);
-				}
-			}
+      .role:nth-of-type(3) .invert {
+        background-color: var(--c-green);
+      }
 
-			.role:nth-of-type(1) .invert {
-				background-color: var(--c-pink);
-			}
+      .role:hover .invert {
+        clip-path: polygon(0% 0%, 100% 0%, 100% 100%, 0% 100%);
+      }
 
-			.role:nth-of-type(2) .invert {
-				background-color: var(--c-blue);
-			}
+      .invert {
+        position: absolute;
+        color: var(--t-fg);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        width: 100%;
+        height: 100%;
+        top: 0;
+        left: 0;
+        pointer-events: none;
+        clip-path: polygon(0% 100%, 100% 100%, 100% 200%, 0% 200%);
+        transition: clip-path cubic-bezier(0.4, 0, 0.5, 1) 150ms;
+      }
 
-			.role:nth-of-type(3) .invert {
-				background-color: var(--c-green);
-			}
+      .desc {
+        font-size: var(--f-u1);
+        margin-top: 1.5rem;
+        margin-bottom: 0;
+      }
 
-			.role:hover .invert {
-				clip-path: polygon(0% 0%, 100% 0%, 100% 100%, 0% 100%);
-			}
+      .subtitle {
+        display: block;
+        font-weight: 400;
+        font-size: var(--f-d6);
+        letter-spacing: -0.0625em;
+      }
 
-			.invert {
-				position: absolute;
-				color: var(--t-fg);
-				display: flex;
-				align-items: center;
-				justify-content: center;
-				width: 100%;
-				height: 100%;
-				top: 0;
-				left: 0;
-				pointer-events: none;
-				clip-path: polygon(0% 100%, 100% 100%, 100% 200%, 0% 200%);
-				transition: clip-path cubic-bezier(0.4, 0, 0.5, 1) 150ms;
-			}
+      .bio {
+        line-height: 2;
+        margin-bottom: 2rem;
+      }
 
-			.desc {
-				font-size: var(--f-u1);
-				margin-top: 1.5rem;
-				margin-bottom: 0;
-			}
+      .bio > span:first-of-type {
+        line-height: 1;
+        margin-bottom: 0.5em;
+        display: block;
+        font-weight: 700;
+        font-size: var(--f-u4);
+      }
 
-			.subtitle {
-				display: block;
-				font-weight: 400;
-				font-size: var(--f-d6);
-				letter-spacing: -0.0625em;
-			}
-
-			.bio {
-				line-height: 2;
-				margin-bottom: 2rem;
-			}
-
-			.bio > span:first-of-type {
-				line-height: 1;
-				margin-bottom: 0.5em;
-				display: block;
-				font-weight: 700;
-				font-size: var(--f-u4);
-			}
-
-			.buttonContainer {
-				text-align: center;
-				margin-top: 2em;
-			}
-		</style>
-	</head>
-	<body>
-		<Nav />
-		<header class="hero">
-			<img
-				width="1600"
-				height="1131"
-				class="img"
-				src="https://images.unsplash.com/photo-1570874839030-fdd385fbcd72?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1171&q=80"
-				srcset="https://images.unsplash.com/photo-1570874839030-fdd385fbcd72?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1171&q=80"
-				sizes="(max-width: 800px) 800px, (max-width: 1200px) 1200px, (max-width: 1600px) 1600px, (max-width: 2400px) 2400px, 1200px"
-			/>
-			<div class="gradient"></div>
-			<div class="gradient2"></div>
-			<div class="overlay">
-				<h1 class="title">
-					<small class="subtitle">El rincón de </small>José María Santos
-				</h1>
-				<div class="roles">
-					<span class="role">👩‍💻 Desarrollador <span class="invert">👩‍💻 Desarrollador</span></span>
-					<span class="role">🎤 Orador <span class="invert">🎤 Orador</span></span>
-					<span class="role">✏️ Escritor <span class="invert">✏️ Escritor</span></span>
-				</div>
-				<p class="desc">Familia, comida y buena cerveza es único que necesito.</p>
-			</div>
-		</header>
-		<main class="wrapper">
-			<div class="grid">
-				<div class="section">
-					<h3 class="sectionTitle">Portfolio</h3>
-					<PortfolioPreview project={featuredProject} />
-					<div class="buttonContainer">
-						<a href="/porfolio/" class="button">Ver todos</a>
-					</div>
-				</div>
-				<div class="section">
-					<h3 class="sectionTitle">Sobre mi</h3>
-					<p class="bio">
-						<span>Hola</span> Me llamo José y llevo programando desde el 2007 de forma profesional. En todo este tiempo he tocado mucho tipo de tenología.
-					</p>
-					<p>
-						<a href="/about">Saber más</a>
-					</p>
-				</div>
-			</div>
-		</main>
-		<Footer />
-	</body>
+      .buttonContainer {
+        text-align: center;
+        margin-top: 2em;
+      }
+    </style>
+  </head>
+  <body>
+    <Nav />
+    <header class="hero">
+      <img
+        width="1600"
+        height="1131"
+        src="https://images.unsplash.com/photo-1570874839030-fdd385fbcd72?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1171&q=80"
+        srcset="https://images.unsplash.com/photo-1570874839030-fdd385fbcd72?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1171&q=80"
+        sizes="(max-width: 800px) 800px, (max-width: 1200px) 1200px, (max-width: 1600px) 1600px, (max-width: 2400px) 2400px, 1200px"
+      />
+      <div class="gradient"></div>
+      <div class="gradient2"></div>
+      <div class="overlay pl-5">
+        <h1 class="title">
+          <small class="subtitle">El rincón de</small>José María Santos
+        </h1>
+        <div class="roles">
+          <span class="role"
+            >👩‍💻 Desarrollador <span class="invert">👩‍💻 Desarrollador</span>
+          </span>
+          <span class="role"
+            >🎤 Orador <span class="invert">🎤 Orador</span>
+          </span>
+          <span class="role"
+            >✏️ Escritor <span class="invert">✏️ Escritor</span>
+          </span>
+        </div>
+        <p class="w-80 font-bold">
+          Familia, comida y buena cerveza es único que necesito.
+        </p>
+      </div>
+    </header>
+    <main class="wrapper">
+      <div class="grid">
+        <div class="section">
+          <h3 class="sectionTitle">Portfolio</h3>
+          <PortfolioPreview project={featuredProject} />
+          <div class="buttonContainer">
+            <a href="/porfolio/" class="button">Ver todos</a>
+          </div>
+        </div>
+        <div class="section">
+          <h3 class="sectionTitle">Sobre mi</h3>
+          <p class="bio">
+            <span>Hola</span> Me llamo José y llevo programando desde el 2007 de
+            forma profesional. En todo este tiempo he tocado mucho tipo de tenología.
+          </p>
+          <p>
+            <a href="/about">Saber más</a>
+          </p>
+        </div>
+      </div>
+    </main>
+    <Footer />
+  </body>
 </html>
