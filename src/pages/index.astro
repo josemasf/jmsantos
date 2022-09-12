@@ -6,8 +6,8 @@ import Footer from "../components/Footer.astro";
 import PortfolioPreview from "../components/PortfolioPreview.astro";
 
 // Data Fetching: List all Markdown posts in the repo.
-const projects = await Astro.glob("./project/**/*.md");
-const featuredProject = projects[0];
+const presentations = await Astro.glob("./presentations/**/*.md");
+const featuredProject = presentations[0];
 
 // Full Astro Component Syntax:
 // https://docs.astro.build/core-concepts/astro-components/
@@ -34,7 +34,7 @@ const featuredProject = projects[0];
 
       @media (min-width: 750px) {
         .hero {
-          height: 45vw;
+          height: 35vw;
         }
       }
 
@@ -171,7 +171,7 @@ const featuredProject = projects[0];
   </head>
   <body>
     <Nav />
-    <header class="hero">
+    <header class="hero h-80">
       <img
         width="1600"
         height="1131"
@@ -197,14 +197,14 @@ const featuredProject = projects[0];
           </span>
         </div>
         <p class="w-80 font-bold">
-          Familia, comida y buena cerveza es único que necesito.
+          Familia, comida y buena cerveza es lo único que necesito.
         </p>
       </div>
     </header>
     <main class="wrapper">
       <div class="grid">
         <div class="section">
-          <h3 class="sectionTitle">Portfolio</h3>
+          <h3 class="sectionTitle">Ponencias</h3>
           <PortfolioPreview project={featuredProject} />
           <div class="buttonContainer">
             <a href="/porfolio/" class="button">Ver todos</a>
