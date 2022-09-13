@@ -34,7 +34,7 @@ const presentations = (await Astro.glob("./presentations/**/*.md"))
     <Nav />
     <div class="wrapper">
       <h1 class="font-bold text-4xl mb-4">Ponencias</h1>
-      <div class="grid grid-cols-2 gap-4">
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
         {
           presentations.map((presentation) => (
             <PortfolioPreview project={presentation} />
