@@ -2,6 +2,16 @@
 import MainHead from "../components/MainHead.astro";
 import Footer from "../components/Footer.astro";
 import Nav from "../components/Nav.astro";
+
+import JobPreview from "../components/JobPreview.astro";
+
+const jobs = (await Astro.glob("./jobs/**/*.md"))
+  .filter(({ frontmatter }) => !!frontmatter.from)
+  .sort(
+    (a, b) =>
+      new Date(b.frontmatter.from).valueOf() -
+      new Date(a.frontmatter.from).valueOf()
+  );
 ---
 
 <html lang="en">
@@ -37,7 +47,7 @@ import Nav from "../components/Nav.astro";
       }
     </style>
   </head>
-  <body>
+  <body class="dark:bg-gray-800 dark:text-white">
     <Nav />
     <div class="wrapper">
       <h1 class="text-bold">Sobre mi</h1>
@@ -75,7 +85,19 @@ import Nav from "../components/Nav.astro";
           Me gusta aprender y enseñar lo aprendido siempre que tengo ocasión
         </p>
       </div>
+
+      <h2 class="font-bold text-xl mb-3">Curriculum</h2>
+      <ol class="relative border-l border-gray-200 dark:border-gray-700">
+        {
+          jobs.map((job) => (
+            <li class="mb-10 ml-4">
+              <JobPreview job={job} />
+            </li>
+          ))
+        }
+      </ol>
     </div>
+
     <Footer />
   </body>
 </html>

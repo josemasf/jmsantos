@@ -30,17 +30,15 @@ const presentations = (await Astro.glob("./presentations/**/*.md"))
       }
     </style>
   </head>
-  <body>
+  <body class="dark:bg-gray-800 dark:text-white">
     <Nav />
     <div class="wrapper">
-      <h1 class="title">Todos los proyectos</h1>
+      <h1 class="title">Ponencias</h1>
       <div class="grid">
         {
-          (
-            /*presentations.map((presentation) => (
+          presentations.map((presentation) => (
             <PortfolioPreview project={presentation} />
-          ))*/ <PortfolioPreview project={presentations[0]} />
-          )
+          ))
         }
       </div>
     </div>

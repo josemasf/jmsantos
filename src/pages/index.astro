@@ -25,7 +25,7 @@ const featuredProject = presentations[0];
         overflow: hidden;
       }
 
-      img {
+      .hero img {
         opacity: 0.25;
         display: block;
         width: 100%;
@@ -169,7 +169,7 @@ const featuredProject = presentations[0];
       }
     </style>
   </head>
-  <body>
+  <body class="dark:bg-gray-800 dark:text-white">
     <Nav />
     <header class="hero h-80">
       <img
@@ -212,13 +212,33 @@ const featuredProject = presentations[0];
         </div>
         <div class="section">
           <h3 class="sectionTitle">Sobre mi</h3>
-          <p class="bio">
-            <span>Hola</span> Me llamo José y llevo programando desde el 2007 de
-            forma profesional. En todo este tiempo he tocado mucho tipo de tenología.
-          </p>
-          <p>
-            <a href="/about">Saber más</a>
-          </p>
+          <div
+            class="w-full max-w-sm bg-white rounded-lg border border-gray-200 shadow-md dark:bg-gray-800 dark:border-gray-700"
+          >
+            <div class="flex flex-col items-center pb-10">
+              <img
+                class="mt-5 mb-3 w-80 h-100 rounded-full shadow-lg"
+                src="/assets/yo.jpg"
+                alt="Foto José María Santos"
+              />
+              <h5
+                class="mb-1 text-xl font-medium text-gray-900 dark:text-white"
+              >
+                José María Santos
+              </h5>
+              <span class="text-sm text-gray-500 dark:text-gray-400">
+                Web Developer
+              </span>
+              <p class="p-5">
+                <span>Hola</span> Me llamo Jose y llevo programando desde el 2007
+                de forma profesional. En todo este tiempo he tocado mucho tipo de
+                tenologías.
+              </p>
+              <p>
+                <a href="/about">Saber más</a>
+              </p>
+            </div>
+          </div>
         </div>
       </div>
     </main>
