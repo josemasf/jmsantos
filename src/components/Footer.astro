@@ -2,10 +2,10 @@
 const currentYear = new Date().getFullYear();
 ---
 
-<footer>
+<footer class="dark:text-gray-300">
   &copy; {currentYear} José María Santos
-  <small class="byline"
-    >🚀 Built by <a
+  <small class="byline dark:text-gray-300"
+    >🚀 Built with <a
       href="https://github.com/withastro/astro"
       target="_blank"
       rel="nofollow"
@@ -50,7 +50,7 @@ const currentYear = new Date().getFullYear();
   .byline {
     display: block;
     margin-top: 1rem;
-    color: var(--t-subdue);
+
     font-size: var(--f-d2);
     text-transform: uppercase;
   }
