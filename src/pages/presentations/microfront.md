@@ -2,7 +2,7 @@
 layout: ../../layouts/presentation.astro
 duration: 1h 30m
 title: Microfrontend
-url: http://mf-presentation.vercel.app/
+urlPresentation: http://mf-presentation.vercel.app/
 github: https://github.com/josemasf/mf-presentation
 img: "/assets/microfront.png"
 description: Explicación de funcionamiento de arquitectura microfrontend. Incluye un caso de uso a modo de ejemplo descargable.
