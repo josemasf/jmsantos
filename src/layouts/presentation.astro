@@ -43,7 +43,6 @@ const { content } = Astro.props;
       }
 
       .title {
-        font-size: var(--f-u10);
         font-weight: 900;
         text-transform: uppercase;
         letter-spacing: 0.0625em;
@@ -86,7 +85,7 @@ const { content } = Astro.props;
       style={`background-image:url(${content.img})`}
       class="hero bg-sky-500/50"
     >
-      <h1 class="title">{content.title}</h1>
+      <h1 class="title text-xl md:text-4xl">{content.title}</h1>
     </header>
     <div class="leadIn">
       <div class="wrapper">
