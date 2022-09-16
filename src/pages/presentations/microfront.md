@@ -1,5 +1,5 @@
 ---
-layout: ../../layouts/project.astro
+layout: ../../layouts/presentation.astro
 duration: 1h 30m
 title: Microfrontend
 url: http://mf-presentation.vercel.app/

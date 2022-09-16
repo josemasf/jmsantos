@@ -1,5 +1,5 @@
 ---
-layout: ../../layouts/project.astro
+layout: ../../layouts/presentation.astro
 publishDate: 2020-03-02 00:00:00
 duration: "2h 00m"
 title: "Serverless"

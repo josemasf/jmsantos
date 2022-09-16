@@ -6,6 +6,12 @@ to: "today"
 sumary: "Consultora especializada en transformación digital. En la que he aportado mi conocimientos en distintas áreas de la empresa. Asignado a varios clientes he podido aportar mis conocimientos en B2B e integración de servicios, como la amplicación de arquitecturas modernas, para facitar el escalado de aplicaciones"
 ---
 
+**iPay**
+
+Hub de pagos para la empresa Iberostar Hoteles. Mi principal tarea es la definición y desarrollo de arquitectura front. Implementado microfront y dando soporte a los desarrolladores para la correcta implementación de este tipo de arquitectura.
+
+Por otro lado, desarrollo los elementos transversales que dan soporte a todos los microfronts y mantengo la galería de componentes base.
+
 **Equipo de desarrollo One-Suite**
 
 Reescritura de la toda la suite de aplicaciones de la empresa. Aplicando metodologías Agile SAFe. Destinado principalmente a tereas en el front, utilizando VUE + VUEX, Typescript, Jest, Sonar y SCSS entre otros.
