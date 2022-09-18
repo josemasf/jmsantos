@@ -14,3 +14,19 @@ tags:
 ---
 
 Taller sobre arquitectura Serverless con caso de uso y ejemplo de migración a este tipo de arquitectura
+
+## Contenido de la ponencia
+
+- Evolución de infraestructura en IT
+- Serverless vs Modelo tradicional
+- BaaS y FaaS
+- Ventajas y Desventajas
+
+### Casos de uso reales con código
+
+- Alexa Skill 🤖
+- App Svelte 'Taco' 🌮
+
+### Supabase
+
+- App Svelte Bulma Login 🔒
