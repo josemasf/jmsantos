@@ -1,8 +1,7 @@
 ---
-import MainHead from "../components/MainHead.astro";
-import Footer from "../components/Footer.astro";
-import Nav from "../components/Nav.astro";
 import PortfolioPreview from "../components/PortfolioPreview.astro";
+
+import MainLayout from "../layouts/MainLayout.astro";
 
 const presentations = (await Astro.glob("./presentations/**/*.md"))
   .filter(({ frontmatter }) => !!frontmatter.publishDate)
@@ -13,35 +12,29 @@ const presentations = (await Astro.glob("./presentations/**/*.md"))
   );
 ---
 
-<html lang="es">
-  <head>
-    <MainHead
-      title="Proyectos | José María Santos"
-      description="Porfolio de José María Santos"
-    />
-    <style>
-      .grid {
-        display: grid;
-        grid-gap: 3rem;
+<MainLayout
+  title="Sobre mi | José María Santos"
+  description="Porfolio de José María Santos"
+>
+  <div class="mt-5 wrapper">
+    <h1 class="font-bold text-4xl mb-4">Ponencias</h1>
+    <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+      {
+        presentations.map((presentation) => (
+          <PortfolioPreview project={presentation} />
+        ))
       }
-      .title {
-        margin-top: 2rem;
-        margin-bottom: 2rem;
-      }
-    </style>
-  </head>
-  <body class="dark:bg-gray-800 dark:text-white">
-    <Nav />
-    <div class="mt-5 wrapper">
-      <h1 class="font-bold text-4xl mb-4">Ponencias</h1>
-      <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
-        {
-          presentations.map((presentation) => (
-            <PortfolioPreview project={presentation} />
-          ))
-        }
-      </div>
     </div>
-    <Footer />
-  </body>
-</html>
+  </div>
+</MainLayout>
+
+<style>
+  .grid {
+    display: grid;
+    grid-gap: 3rem;
+  }
+  .title {
+    margin-top: 2rem;
+    margin-bottom: 2rem;
+  }
+</style>

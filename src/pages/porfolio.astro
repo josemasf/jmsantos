@@ -1,42 +1,36 @@
 ---
-import MainHead from '../components/MainHead.astro';
-import Footer from '../components/Footer.astro';
-import Nav from '../components/Nav.astro';
-import PortfolioPreview from '../components/PortfolioPreview.astro';
+import MainLayout from "../layouts/MainLayout.astro";
 
-const projects = (await Astro.glob('./project/**/*.md'))
-	.filter(({ frontmatter }) => !!frontmatter.publishDate)
-	.sort(
-		(a, b) =>
-			new Date(b.frontmatter.publishDate).valueOf() - new Date(a.frontmatter.publishDate).valueOf()
-	);
+import PortfolioPreview from "../components/PortfolioPreview.astro";
+
+const projects = (await Astro.glob("./project/**/*.md"))
+  .filter(({ frontmatter }) => !!frontmatter.publishDate)
+  .sort(
+    (a, b) =>
+      new Date(b.frontmatter.publishDate).valueOf() -
+      new Date(a.frontmatter.publishDate).valueOf()
+  );
 ---
 
-<html lang="en">
-	<head>
-		<MainHead
-			title="Proyectos | José María Santos"
-			description="Porfolio de José María Santos"
-		/>
-		<style>
-			.grid {
-				display: grid;
-				grid-gap: 3rem;
-			}
-			.title {
-				margin-top: 2rem;
-				margin-bottom: 2rem;
-			}
-		</style>
-	</head>
-	<body>
-		<Nav />
-		<div class="wrapper">
-			<h1 class="title">Todos los proyectos</h1>
-			<div class="grid">
-				{projects.map((project) => <PortfolioPreview project={project} />)}
-			</div>
-		</div>
-		<Footer />
-	</body>
-</html>
+<MainLayout
+  title="Sobre mi | José María Santos"
+  description="Porfolio de José María Santos"
+>
+  <div class="wrapper">
+    <h1 class="title">Todos los proyectos</h1>
+    <div class="grid">
+      {projects.map((project) => <PortfolioPreview project={project} />)}
+    </div>
+  </div>
+</MainLayout>
+
+<style>
+  .grid {
+    display: grid;
+    grid-gap: 3rem;
+  }
+  .title {
+    margin-top: 2rem;
+    margin-bottom: 2rem;
+  }
+</style>

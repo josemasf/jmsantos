@@ -1,0 +1,25 @@
+---
+// Component Imports
+import MainHead from "../components/MainHead.astro";
+import Nav from "../components/Nav.astro";
+import Footer from "../components/Footer.astro";
+
+export interface Props {
+  description?: string;
+  title?: string;
+}
+
+const { description } = Astro.props || "El rincón de José María Santos";
+const { title } = Astro.props || "José María Santos: Desarrollador Web";
+---
+
+<html lang="es">
+  <head>
+    <MainHead title={title} description={description} />
+  </head>
+  <body class="dark:bg-gray-800 dark:text-white">
+    <Nav />
+    <slot />
+    <Footer />
+  </body>
+</html>
