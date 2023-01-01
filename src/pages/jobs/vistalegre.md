@@ -1,5 +1,5 @@
 ---
-layout: ../../layouts/job.astro
+layout: ../../layouts/Job.astro
 company: "Vistalegre Solutions"
 from: "2007-03"
 to: "2017-03"

@@ -1,7 +1,5 @@
 ---
-import MainHead from "../components/MainHead.astro";
-import Footer from "../components/Footer.astro";
-import Nav from "../components/Nav.astro";
+import MainLayout from "../layouts/MainLayout.astro";
 
 import JobPreview from "../components/JobPreview.astro";
 
@@ -12,92 +10,83 @@ const jobs = (await Astro.glob("./jobs/**/*.md"))
       new Date(b.frontmatter.from).valueOf() -
       new Date(a.frontmatter.from).valueOf()
   );
+
+const description =
+  "Arquitecto orientado al Frontend, aunque mis primeros 13 años laborales estuve desarrollando aplicaciones web con C#, por lo que tengo un alto conocimiento sobre arquitectura backend.";
 ---
 
-<html lang="en">
-  <head>
-    <MainHead
-      title="Sobre mi | José María Santos"
-      description="Arquitecto orientado al Frontend, aunque mis primeros 13 años laborales estuve desarrollando aplicaciones web con C#, por lo que tengo un alto conocimiento sobre arquitectura backend."
-    />
-    <style>
-      .heroImg {
-        max-height: 24rem;
-        object-fit: cover;
-        overflow: hidden;
-      }
+<MainLayout title="Sobre mi | José María Santos" description={description}>
+  <div class="wrapper">
+    <h1 class="text-bold">Sobre mi</h1>
+    <div class="heroImg">
+      <img src="/assets/about.jpg" />
+    </div>
+    <div class="max-w-auto m-12">
+      <p>
+        Arquitecto orientado al Frontend, aunque mis primeros 13 años laborales
+        estuve desarrollando aplicaciones web con C#, por lo que tengo un alto
+        conocimiento sobre arquitectura backend.
+      </p>
 
-      .heroImg img {
-        max-width: 100%;
-        height: auto;
-        border-radius: 8px;
-      }
+      <p>
+        Durante mi vida laboral he tenido la oportunidad de desarrollar tanto
+        proyectos ecommerce como aplicaciones web para la gestión y
+        administración de empresas. Tengo experiencia en integración de
+        servicios de terceros para la obtención de datos o sincronizanción de
+        servicios.
+      </p>
 
-      .bio {
-        font-size: var(--f-u1);
-        line-height: 2;
-        margin-top: 4em;
-      }
+      <p>
+        Me considero una persona resolutiva e implicada en cada una de las
+        tareas que realizo en mi día a día. Implicándome activamente en resolver
+        problemas.
+      </p>
 
-      .wrapper.bio {
-        max-width: 50em;
-      }
-      .wrapper p {
-        @apply m-5;
-      }
-    </style>
-  </head>
-  <body class="dark:bg-gray-800 dark:text-white">
-    <Nav />
-    <div class="wrapper">
-      <h1 class="text-bold">Sobre mi</h1>
-      <div class="heroImg">
-        <img src="/assets/about.jpg" />
-      </div>
-      <div class="max-w-auto m-12">
-        <p>
-          Arquitecto orientado al Frontend, aunque mis primeros 13 años
-          laborales estuve desarrollando aplicaciones web con C#, por lo que
-          tengo un alto conocimiento sobre arquitectura backend.
-        </p>
+      <p>
+        Tengo mucha curiosidad en investigar nuevas arquitecturas y técnicas
+        modernas, intentando aplicarlas en mi día a día o haciendo pruebas de
+        concepto personales para poder profundizar en su estudio.
+      </p>
 
-        <p>
-          Durante mi vida laboral he tenido la oportunidad de desarrollar tanto
-          proyectos ecommerce como aplicaciones web para la gestión y
-          administración de empresas. Tengo experiencia en integración de
-          servicios de terceros para la obtención de datos o sincronizanción de
-          servicios.
-        </p>
-
-        <p>
-          Me considero una persona resolutiva e implicada en cada una de las
-          tareas que realizo en mi día a día. Implicándome activamente en
-          resolver problemas.
-        </p>
-
-        <p>
-          Tengo mucha curiosidad en investigar nuevas arquitecturas y técnicas
-          modernas, intentando aplicarlas en mi día a día o haciendo pruebas de
-          concepto personales para poder profundizar en su estudio.
-        </p>
-
-        <p>
-          Me gusta aprender y enseñar lo aprendido siempre que tengo ocasión
-        </p>
-      </div>
-
-      <h2 class="font-bold text-xl mb-3">Curriculum</h2>
-      <ol class="relative border-l border-gray-200 dark:border-gray-700">
-        {
-          jobs.map((job) => (
-            <li class="mb-10 ml-4">
-              <JobPreview job={job} />
-            </li>
-          ))
-        }
-      </ol>
+      <p>Me gusta aprender y enseñar lo aprendido siempre que tengo ocasión</p>
     </div>
 
-    <Footer />
-  </body>
-</html>
+    <h2 class="font-bold text-xl mb-3">Curriculum</h2>
+    <ol class="relative border-l border-gray-200 dark:border-gray-700">
+      {
+        jobs.map((job) => (
+          <li class="mb-10 ml-4">
+            <JobPreview job={job} />
+          </li>
+        ))
+      }
+    </ol>
+  </div>
+</MainLayout>
+
+<style>
+  .heroImg {
+    max-height: 24rem;
+    object-fit: cover;
+    overflow: hidden;
+  }
+
+  .heroImg img {
+    max-width: 100%;
+    height: auto;
+    border-radius: 8px;
+  }
+
+  .bio {
+    font-size: var(--f-u1);
+    line-height: 2;
+    margin-top: 4em;
+  }
+
+  .wrapper.bio {
+    max-width: 50em;
+  }
+  .wrapper p {
+    @apply m-5;
+  }
+</style>

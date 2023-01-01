@@ -1,5 +1,5 @@
 ---
-layout: ../../layouts/job.astro
+layout: ../../layouts/Job.astro
 company: "Innovation Strategies"
 from: "2018-03"
 to: "today"

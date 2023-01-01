@@ -3,14 +3,19 @@
 import MainHead from "../components/MainHead.astro";
 import Nav from "../components/Nav.astro";
 import Footer from "../components/Footer.astro";
+
+export interface Props {
+  description?: string;
+  title?: string;
+}
+
+const { description } = Astro.props || "El rincón de José María Santos";
+const { title } = Astro.props || "José María Santos: Desarrollador Web";
 ---
 
-<html lang="en">
+<html lang="es">
   <head>
-    <MainHead
-      title="José María Santos: Desarrollador Web"
-      description="El rincón de José María Santos"
-    />
+    <MainHead title={title} description={description} />
   </head>
   <body class="dark:bg-gray-800 dark:text-white">
     <Nav />

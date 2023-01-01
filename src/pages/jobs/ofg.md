@@ -1,5 +1,5 @@
 ---
-layout: ../../layouts/job.astro
+layout: ../../layouts/Job.astro
 company: "OFG"
 from: "2017-03"
 to: "2018-03"
