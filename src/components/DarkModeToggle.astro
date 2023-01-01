@@ -43,12 +43,12 @@
       window.matchMedia("(prefers-color-scheme: dark)").matches)
   ) {
     document.documentElement.classList.add("dark");
-    lightThemeIcon.classList.add("hidden");
-    darkThemeIcon.classList.remove("hidden");
+    lightThemeIcon?.classList.add("hidden");
+    darkThemeIcon?.classList.remove("hidden");
   } else {
     document.documentElement.classList.remove("dark");
-    lightThemeIcon.classList.remove("hidden");
-    darkThemeIcon.classList.add("hidden");
+    lightThemeIcon?.classList.remove("hidden");
+    darkThemeIcon?.classList.add("hidden");
   }
   buttons.forEach(function (themeButton) {
     themeButton.addEventListener("click", () => {
@@ -56,14 +56,14 @@
       if (document.documentElement.classList.contains("dark")) {
         document.documentElement.classList.remove("dark");
         document.documentElement.classList.add("light");
-        lightThemeIcon.classList.remove("hidden");
-        darkThemeIcon.classList.add("hidden");
+        lightThemeIcon?.classList.remove("hidden");
+        darkThemeIcon?.classList.add("hidden");
         localStorage.theme = "light";
       } else {
         document.documentElement.classList.remove("light");
         document.documentElement.classList.add("dark");
-        lightThemeIcon.classList.add("hidden");
-        darkThemeIcon.classList.remove("hidden");
+        lightThemeIcon?.classList.add("hidden");
+        darkThemeIcon?.classList.remove("hidden");
         localStorage.theme = "dark";
       }
     });
