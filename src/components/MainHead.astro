@@ -1,8 +1,8 @@
 ---
-import '../styles/global.css';
+import "../styles/global.css";
 const {
-	title = 'José María Santos: Desarrollador Web',
-	description = 'El rincón de José María Santos',
+  title = "José María Santos: Desarrollador Web",
+  description = "El rincón de José María Santos",
 } = Astro.props;
 ---
 
@@ -16,6 +16,18 @@ const {
 <link rel="preconnect" href="https://fonts.googleapis.com" />
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
 <link
-	href="https://fonts.googleapis.com/css2?family=Inter:wght@200;400;700;900&display=swap"
-	rel="stylesheet"
+  href="https://fonts.googleapis.com/css2?family=Inter:wght@200;400;700;900&display=swap"
+  rel="stylesheet"
 />
+<script>
+  // It's best to inline this in `head` to avoid FOUC (flash of unstyled content) when changing pages or themes
+  if (
+    localStorage.getItem("color-theme") === "dark" ||
+    (!("color-theme" in localStorage) &&
+      window.matchMedia("(prefers-color-scheme: dark)").matches)
+  ) {
+    document.documentElement.classList.add("dark");
+  } else {
+    document.documentElement.classList.remove("dark");
+  }
+</script>
