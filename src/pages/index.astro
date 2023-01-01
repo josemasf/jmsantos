@@ -1,9 +1,7 @@
 ---
-// Component Imports
-import MainHead from "../components/MainHead.astro";
-import Nav from "../components/Nav.astro";
-import Footer from "../components/Footer.astro";
 import PortfolioPreview from "../components/PortfolioPreview.astro";
+
+import MainLayout from "../layouts/MainLayout.astro";
 
 // Data Fetching: List all Markdown posts in the repo.
 const presentations = await Astro.glob("./presentations/**/*.md");
@@ -12,249 +10,233 @@ const featuredProject = presentations.sort(
     new Date(b.frontmatter.publishDate).valueOf() -
     new Date(a.frontmatter.publishDate).valueOf()
 )[0];
-
-// Full Astro Component Syntax:
-// https://docs.astro.build/core-concepts/astro-components/
 ---
 
-<html lang="en">
-  <head>
-    <MainHead
-      title="José María Santos: Desarrollador Web"
-      description="El rincón de José María Santos"
+<MainLayout>
+  <header class="hero h-80">
+    <img
+      width="1600"
+      height="1131"
+      src="https://images.unsplash.com/photo-1570874839030-fdd385fbcd72?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1171&q=80"
+      srcset="https://images.unsplash.com/photo-1570874839030-fdd385fbcd72?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1171&q=80"
+      sizes="(max-width: 800px) 800px, (max-width: 1200px) 1200px, (max-width: 1600px) 1600px, (max-width: 2400px) 2400px, 1200px"
     />
-    <style>
-      .hero {
-        position: relative;
-        overflow: hidden;
-      }
-
-      .hero img {
-        opacity: 0.25;
-        display: block;
-        width: 100%;
-        height: auto;
-      }
-
-      @media (min-width: 750px) {
-        .hero {
-          height: 35vw;
-        }
-      }
-
-      .overlay {
-        position: absolute;
-        top: 0;
-        left: 0;
-        width: 100%;
-        height: 100%;
-        z-index: 1;
-        display: flex;
-        flex-direction: column;
-        align-items: flex-start;
-        justify-content: center;
-      }
-
-      .title {
-        font-weight: 900;
-        font-size: var(--f-u6);
-        margin-bottom: 0.5rem;
-        margin-top: 0;
-      }
-
-      @media (min-width: 750px) {
-        .title {
-          font-size: var(--f-u12);
-        }
-      }
-
-      .grid {
-        display: grid;
-        grid-gap: 2rem;
-      }
-
-      @media (min-width: 1200px) {
-        .grid {
-          grid-template-columns: 2fr 1fr;
-        }
-      }
-
-      .sectionTitle {
-        font-weight: 700;
-        font-size: var(--f-u8);
-        margin-top: 4rem;
-        margin-bottom: 2rem;
-      }
-
-      .roles {
-        display: flex;
-        flex-wrap: wrap;
-        gap: 0.5em;
-        font-size: var(--f-d1);
-      }
-
-      .role {
-        position: relative;
-        display: inline-block;
-        white-space: nowrap;
-        font-weight: 900;
-        color: var(--t-bg);
-        background-color: var(--t-fg);
-        padding: 0.25em 0.5em;
-        z-index: 2;
-      }
-
-      @media (min-width: 750px) {
-        .role {
-          font-size: var(--f-u3);
-        }
-      }
-
-      .role:nth-of-type(1) .invert {
-        background-color: var(--c-pink);
-      }
-
-      .role:nth-of-type(2) .invert {
-        background-color: var(--c-blue);
-      }
-
-      .role:nth-of-type(3) .invert {
-        background-color: var(--c-green);
-      }
-
-      .role:hover .invert {
-        clip-path: polygon(0% 0%, 100% 0%, 100% 100%, 0% 100%);
-      }
-
-      .invert {
-        position: absolute;
-        color: var(--t-fg);
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        width: 100%;
-        height: 100%;
-        top: 0;
-        left: 0;
-        pointer-events: none;
-        clip-path: polygon(0% 100%, 100% 100%, 100% 200%, 0% 200%);
-        transition: clip-path cubic-bezier(0.4, 0, 0.5, 1) 150ms;
-      }
-
-      .desc {
-        font-size: var(--f-u1);
-        margin-top: 1.5rem;
-        margin-bottom: 0;
-      }
-
-      .subtitle {
-        display: block;
-        font-weight: 400;
-        font-size: var(--f-d6);
-        letter-spacing: -0.0625em;
-      }
-
-      .bio {
-        line-height: 2;
-        margin-bottom: 2rem;
-      }
-
-      .bio > span:first-of-type {
-        line-height: 1;
-        margin-bottom: 0.5em;
-        display: block;
-        font-weight: 700;
-        font-size: var(--f-u4);
-      }
-
-      .buttonContainer {
-        text-align: center;
-        margin-top: 2em;
-      }
-    </style>
-  </head>
-  <body class="dark:bg-gray-800 dark:text-white">
-    <Nav />
-    <header class="hero h-80">
-      <img
-        width="1600"
-        height="1131"
-        src="https://images.unsplash.com/photo-1570874839030-fdd385fbcd72?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1171&q=80"
-        srcset="https://images.unsplash.com/photo-1570874839030-fdd385fbcd72?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1171&q=80"
-        sizes="(max-width: 800px) 800px, (max-width: 1200px) 1200px, (max-width: 1600px) 1600px, (max-width: 2400px) 2400px, 1200px"
-      />
-      <div class="gradient"></div>
-      <div class="gradient2"></div>
-      <div class="overlay pl-5">
-        <h1 class="title">
-          <small class="subtitle">El rincón de</small>José María Santos
-        </h1>
-        <div class="roles">
-          <span class="role"
-            >👩‍💻 Desarrollador <span class="invert">👩‍💻 Desarrollador</span>
-          </span>
-          <span class="role"
-            >🎤 Orador <span class="invert">🎤 Orador</span>
-          </span>
-          <span class="role"
-            >✏️ Escritor <span class="invert">✏️ Escritor</span>
-          </span>
+    <div class="gradient"></div>
+    <div class="gradient2"></div>
+    <div class="overlay pl-5">
+      <h1 class="title">
+        <small class="subtitle">El rincón de</small>José María Santos
+      </h1>
+      <div class="roles">
+        <span class="role"
+          >👩‍💻 Desarrollador <span class="invert">👩‍💻 Desarrollador</span>
+        </span>
+        <span class="role"
+          >🎤 Orador <span class="invert">🎤 Orador</span>
+        </span>
+        <span class="role"
+          >✏️ Escritor <span class="invert">✏️ Escritor</span>
+        </span>
+      </div>
+    </div>
+  </header>
+  <main class="wrapper">
+    <div class="grid">
+      <div class="section">
+        <h1 class="font-bold text-4xl pt-5 mb-4">Ponencias</h1>
+        <PortfolioPreview project={featuredProject} />
+        <div class="buttonContainer">
+          <a href="/presentations/" class="button text-indigo-500">Ver todas</a>
         </div>
       </div>
-    </header>
-    <main class="wrapper">
-      <div class="grid">
-        <div class="section">
-          <h1 class="font-bold text-4xl pt-5 mb-4">Ponencias</h1>
-          <PortfolioPreview project={featuredProject} />
-          <div class="buttonContainer">
-            <a href="/presentations/" class="button text-indigo-500"
-              >Ver todas</a
-            >
-          </div>
-        </div>
-        <div class="wrapper">
+      <div class="wrapper">
+        <div
+          class="w-full mt-5 max-w-sm bg-white rounded-lg border border-gray-200 shadow-md dark:bg-gray-800 dark:border-gray-700"
+        >
           <div
-            class="w-full mt-5 max-w-sm bg-white rounded-lg border border-gray-200 shadow-md dark:bg-gray-800 dark:border-gray-700"
+            class="bg-gradient-to-r from-cyan-500 to-indigo-500 font-bold dark:from-cyan-900 dark:to-indigo-900 text-white text-3xl p-3 rounded-t-lg"
           >
-            <div
-              class="bg-gradient-to-r from-cyan-500 to-indigo-500 font-bold dark:from-cyan-900 dark:to-indigo-900 text-white text-3xl p-3 rounded-t-lg"
-            >
-              Sobre mi
-            </div>
-            <div class="flex flex-col items-center pb-10">
-              <img
-                class="mt-5 mb-3 w-80 h-100 rounded-full shadow-lg"
-                src="/assets/yo.jpg"
-                alt="Foto José María Santos"
-              />
-              <h5
-                class="mb-1 text-xl font-medium text-gray-900 dark:text-white"
-              >
-                José María Santos
-              </h5>
-              <span class="text-sm text-gray-500 dark:text-gray-400">
-                Web Developer
-              </span>
-              <div class="p-5">
-                <p>
-                  <span>Hola</span> Me llamo Jose y llevo programando desde el 2007
-                  de forma profesional. En todo este tiempo he tocado mucho tipo
-                  de tenologías.
-                </p>
-                <p class="mt-3">
-                  C#, servicios SOAP, REST Apis, VUE, arquitecturas monorepo,
-                  microfront, MVC, ...
-                </p>
-              </div>
+            Sobre mi
+          </div>
+          <div class="flex flex-col items-center pb-10">
+            <img
+              class="mt-5 mb-3 w-80 h-100 rounded-full shadow-lg"
+              src="/assets/yo.jpg"
+              alt="Foto José María Santos"
+            />
+            <h5 class="mb-1 text-xl font-medium text-gray-900 dark:text-white">
+              José María Santos
+            </h5>
+            <span class="text-sm text-gray-500 dark:text-gray-400">
+              Web Developer
+            </span>
+            <div class="p-5">
               <p>
-                <a href="/about">Conocerme más</a>
+                <span>Hola</span> Me llamo Jose y llevo programando desde el 2007
+                de forma profesional. En todo este tiempo he tocado mucho tipo de
+                tenologías.
+              </p>
+              <p class="mt-3">
+                C#, servicios SOAP, REST Apis, VUE, arquitecturas monorepo,
+                microfront, MVC, ...
               </p>
             </div>
+            <p>
+              <a href="/about">Conocerme más</a>
+            </p>
           </div>
         </div>
       </div>
-    </main>
-    <Footer />
-  </body>
-</html>
+    </div>
+  </main>
+</MainLayout>
+
+<style>
+  .hero {
+    position: relative;
+    overflow: hidden;
+  }
+
+  .hero img {
+    opacity: 0.25;
+    display: block;
+    width: 100%;
+    height: auto;
+  }
+
+  @media (min-width: 750px) {
+    .hero {
+      height: 35vw;
+    }
+  }
+
+  .overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 1;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: center;
+  }
+
+  .title {
+    font-weight: 900;
+    font-size: var(--f-u6);
+    margin-bottom: 0.5rem;
+    margin-top: 0;
+  }
+
+  @media (min-width: 750px) {
+    .title {
+      font-size: var(--f-u12);
+    }
+  }
+
+  .grid {
+    display: grid;
+    grid-gap: 2rem;
+  }
+
+  @media (min-width: 1200px) {
+    .grid {
+      grid-template-columns: 2fr 1fr;
+    }
+  }
+
+  .sectionTitle {
+    font-weight: 700;
+    font-size: var(--f-u8);
+    margin-top: 4rem;
+    margin-bottom: 2rem;
+  }
+
+  .roles {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5em;
+    font-size: var(--f-d1);
+  }
+
+  .role {
+    position: relative;
+    display: inline-block;
+    white-space: nowrap;
+    font-weight: 900;
+    color: var(--t-bg);
+    background-color: var(--t-fg);
+    padding: 0.25em 0.5em;
+    z-index: 2;
+  }
+
+  @media (min-width: 750px) {
+    .role {
+      font-size: var(--f-u3);
+    }
+  }
+
+  .role:nth-of-type(1) .invert {
+    background-color: var(--c-pink);
+  }
+
+  .role:nth-of-type(2) .invert {
+    background-color: var(--c-blue);
+  }
+
+  .role:nth-of-type(3) .invert {
+    background-color: var(--c-green);
+  }
+
+  .role:hover .invert {
+    clip-path: polygon(0% 0%, 100% 0%, 100% 100%, 0% 100%);
+  }
+
+  .invert {
+    position: absolute;
+    color: var(--t-fg);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    height: 100%;
+    top: 0;
+    left: 0;
+    pointer-events: none;
+    clip-path: polygon(0% 100%, 100% 100%, 100% 200%, 0% 200%);
+    transition: clip-path cubic-bezier(0.4, 0, 0.5, 1) 150ms;
+  }
+
+  .desc {
+    font-size: var(--f-u1);
+    margin-top: 1.5rem;
+    margin-bottom: 0;
+  }
+
+  .subtitle {
+    display: block;
+    font-weight: 400;
+    font-size: var(--f-d6);
+    letter-spacing: -0.0625em;
+  }
+
+  .bio {
+    line-height: 2;
+    margin-bottom: 2rem;
+  }
+
+  .bio > span:first-of-type {
+    line-height: 1;
+    margin-bottom: 0.5em;
+    display: block;
+    font-weight: 700;
+    font-size: var(--f-u4);
+  }
+
+  .buttonContainer {
+    text-align: center;
+    margin-top: 2em;
+  }
+</style>
