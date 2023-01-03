@@ -5,7 +5,7 @@ import DarkModeToggle from "./DarkModeToggle.astro";
 <nav
   class="bg-gradient-to-r from-cyan-300 to-indigo-200 dark:text-white dark:from-cyan-900 dark:to-indigo-900"
 >
-  <a href="/">
+  <a href="/" aria-label="Ir a inicio">
     <svg
       class="h-24"
       viewBox="123.24 146.126 88.029 41.08"
@@ -71,15 +71,28 @@ import DarkModeToggle from "./DarkModeToggle.astro";
 
   <div class="flex gap-4 xs:text-xs font-bold text-gray-700">
     <!--<a class="link" href="/porfolio/"> Portfolio</a>-->
-    <a class="link text-gray-600 dark:text-gray-300" href="/presentations/">
+    <a
+      class="link text-gray-600 dark:text-gray-300"
+      href="/presentations/"
+      aria-label="Ir a ponencias"
+    >
       Ponencias
     </a>
-    <a class="link text-gray-600 dark:text-gray-300" href="/about/">
+    <a
+      class="link text-gray-600 dark:text-gray-300"
+      href="/about/"
+      aria-label="Conocerme mejor"
+    >
       Sobre mi
     </a>
   </div>
   <div class="socials md:flex md:visible hidden mr-5">
-    <a class="social" href="https://twitter.com/josemasf" target="_blank">
+    <a
+      class="social"
+      href="https://twitter.com/josemasf"
+      target="_blank"
+      aria-label="Ir a twitter"
+    >
       <svg
         class="fill-cyan-600 dark:fill-cyan-300 w-6 h-6"
         xmlns="http://www.w3.org/2000/svg"
@@ -90,7 +103,12 @@ import DarkModeToggle from "./DarkModeToggle.astro";
         ></path>
       </svg>
     </a>
-    <a class="social" href="https://github.com/josemasf" target="_blank">
+    <a
+      class="social"
+      href="https://github.com/josemasf"
+      target="_blank"
+      aria-label="Ir a github"
+    >
       <svg
         class="fill-black dark:fill-slate-300 w-6 h-6"
         xmlns="http://www.w3.org/2000/svg"
@@ -105,6 +123,7 @@ import DarkModeToggle from "./DarkModeToggle.astro";
       class="social"
       href="http://www.linkedin.com/in/🖥️josé-maría-santos-fernández-90a8a73a"
       target="_blank"
+      aria-label="Ir a linkedin"
     >
       <svg
         xmlns="http://www.w3.org/2000/svg"
