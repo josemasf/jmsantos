@@ -5,7 +5,13 @@ const { frontmatter, url } = Astro.props.project;
 <div
   class="w-full bg-white rounded-lg border border-gray-200 shadow-md dark:bg-gray-800 dark:border-gray-700"
 >
-  <img class="rounded-t-lg w-full" src={`${frontmatter.img}`} alt="" />
+  <img
+    class="rounded-t-lg w-full"
+    src={`${frontmatter.img}`}
+    alt=""
+    width="800"
+    height="500"
+  />
 
   <div class="p-5">
     <p
