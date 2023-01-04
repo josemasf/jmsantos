@@ -1,15 +1,13 @@
 ---
-import DarkModeToggle from "./DarkModeToggle.astro";
-
 import SocialLinks from "./SocialLinks.astro";
 ---
 
 <nav
-  class="bg-gradient-to-r from-cyan-300 to-indigo-200 dark:text-white dark:from-cyan-900 dark:to-indigo-900"
+  class="bg-gradient-to-r from-cyan-300 to-indigo-200 dark:text-white dark:from-cyan-900 dark:to-indigo-900 flex align-baseline content-center h-fit"
 >
   <a href="/" aria-label="Ir a inicio">
     <svg
-      class="md:h-24 h-14"
+      class="md:h-24 h-14 pt-1"
       viewBox="123.24 146.126 88.029 41.08"
       xmlns="http://www.w3.org/2000/svg"
       xmlns:xlink="http://www.w3.org/1999/xlink"
@@ -70,8 +68,9 @@ import SocialLinks from "./SocialLinks.astro";
     </svg>
   </a>
 
-  <div class="flex gap-4 text-xs md:text-base font-bold text-gray-700">
-    <!--<a class="link" href="/porfolio/"> Portfolio</a>-->
+  <div
+    class="flex md:justify-end gap-4 text-sm md:text-base font-bold text-gray-700 uppercase place-items-center w-full mr-4 md:mr-0"
+  >
     <a
       class="link text-gray-600 dark:text-gray-300"
       href="/presentations/"
@@ -86,72 +85,8 @@ import SocialLinks from "./SocialLinks.astro";
     >
       Sobre mi
     </a>
-  </div>
-  <div class="socials md:visible invisible justify-center mt-5">
-    <SocialLinks />
+    <div class="md:visible hidden md:block grow justify-end">
+      <SocialLinks />
+    </div>
   </div>
 </nav>
-
-<style>
-  @import url("https://fonts.googleapis.com/css2?family=Montserrat+Alternates:wght@600&display=swap");
-  nav {
-    display: flex;
-    gap: 1rem;
-    align-items: center;
-    padding: 1rem;
-  }
-
-  .logo {
-    width: 150px;
-    height: 90px;
-  }
-
-  .link {
-    display: block;
-    text-decoration: none;
-
-    text-transform: uppercase;
-    padding-top: 0.75em;
-    padding-bottom: 0.75em;
-  }
-
-  .link:hover,
-  .link:focus {
-    color: var(--t-active);
-  }
-
-  .monogram {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    width: 2em;
-    height: 2em;
-    margin-right: 0.5rem;
-    color: var(--c-black);
-    font-weight: 900;
-    letter-spacing: -0.125rem;
-    border: 3px solid currentColor;
-    border-radius: 50%;
-  }
-
-  .socials {
-    gap: 0.75em;
-    margin-left: auto;
-  }
-
-  .social {
-    display: block;
-  }
-
-  .socialIcon {
-    display: block;
-    width: 1.25rem;
-    height: 1.25rem;
-    fill: var(--t-subdue);
-    transition: fill linear 150ms;
-  }
-
-  .socialIcon:hover {
-    fill: var(--t-active);
-  }
-</style>
