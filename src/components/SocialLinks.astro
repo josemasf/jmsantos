@@ -2,7 +2,7 @@
 import DarkModeToggle from "./DarkModeToggle.astro";
 ---
 
-<div class="socials sm:visible md:invisible justify-center mt-5">
+<div class="socials flex gap-2">
   <a class="social" href="https://twitter.com/josemasf" target="_blank">
     <svg
       class="fill-cyan-600 dark:fill-cyan-300 w-6 h-6"
@@ -45,12 +45,6 @@ import DarkModeToggle from "./DarkModeToggle.astro";
 </div>
 
 <style>
-  .socials {
-    display: flex;
-    gap: 0.75em;
-    margin-left: auto;
-  }
-
   .social {
     display: block;
   }
