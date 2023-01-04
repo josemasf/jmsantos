@@ -1,5 +1,5 @@
 ---
-import PortfolioPreview from "../components/PortfolioPreview.astro";
+import PresentationPreview from "../components/PresentationPreview.astro";
 
 import MainLayout from "../layouts/MainLayout.astro";
 
@@ -45,7 +45,7 @@ const featuredProject = presentations.sort(
     <div class="grid">
       <div class="section">
         <h1 class="font-bold text-4xl pt-5 mb-4">Ponencias</h1>
-        <PortfolioPreview project={featuredProject} />
+        <PresentationPreview presentation={featuredProject} />
         <div class="buttonContainer">
           <a href="/presentations/" class="button text-indigo-700">Ver todas</a>
         </div>

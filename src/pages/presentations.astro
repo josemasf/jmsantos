@@ -1,5 +1,5 @@
 ---
-import PortfolioPreview from "../components/PortfolioPreview.astro";
+import PresentationPreview from "../components/PresentationPreview.astro";
 
 import MainLayout from "../layouts/MainLayout.astro";
 
@@ -21,7 +21,7 @@ const presentations = (await Astro.glob("./presentations/**/*.md"))
     <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
       {
         presentations.map((presentation) => (
-          <PortfolioPreview project={presentation} />
+          <PresentationPreview presentation={presentation} />
         ))
       }
     </div>
