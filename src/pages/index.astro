@@ -13,19 +13,13 @@ const featuredProject = presentations.sort(
 ---
 
 <MainLayout>
-  <header class="hero h-80">
-    <img
-      width="1600"
-      height="1131"
-      src="/assets/cordoba-spain.avif"
-      srcset="/assets/cordoba-spain.avif"
-      sizes="(max-width: 800px) 800px, (max-width: 1200px) 1200px, (max-width: 1600px) 1600px, (max-width: 2400px) 2400px, 1200px"
-      alt="Córdoba España, puente romano y mezquita"
-    />
-    <div class="gradient"></div>
-    <div class="gradient2"></div>
-    <div class="overlay pl-5">
-      <h1 class="title">
+  <header
+    class="h-80 overflow-hidden relative bg-[url('/assets/cordoba-spain.avif')] bg-no-repeat bg-center bg-fixed bg-cover"
+  >
+    <div
+      class="pl-5 opacity-100 bg-gray-50 h-full bg-opacity-70 flex flex-col justify-center"
+    >
+      <h1 class="font-extrabold text-md">
         <small class="subtitle">El rincón de</small>José María Santos
       </h1>
       <div class="roles">
@@ -103,37 +97,6 @@ const featuredProject = presentations.sort(
 </MainLayout>
 
 <style>
-  .hero {
-    position: relative;
-    overflow: hidden;
-  }
-
-  .hero img {
-    opacity: 0.25;
-    display: block;
-    width: 100%;
-    height: auto;
-  }
-
-  @media (min-width: 750px) {
-    .hero {
-      height: 35vw;
-    }
-  }
-
-  .overlay {
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    z-index: 1;
-    display: flex;
-    flex-direction: column;
-    align-items: flex-start;
-    justify-content: center;
-  }
-
   .title {
     font-weight: 900;
     font-size: var(--f-u6);
