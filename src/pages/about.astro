@@ -16,11 +16,16 @@ const description =
 ---
 
 <MainLayout title="Sobre mi | José María Santos" description={description}>
-  <div class="wrapper">
-    <h1 class="text-bold">Sobre mi</h1>
-    <div class="heroImg">
-      <img src="/assets/about.jpg" />
+  <header
+    class="h-40 md:h-60 overflow-hidden relative bg-[url('/assets/about.webp')] bg-no-repeat bg-bottom bg-fixed bg-cover"
+  >
+    <div
+      class="pl-5 opacity-100 bg-gray-50 dark:bg-gray-800 h-full bg-opacity-50 dark:bg-opacity-50 flex flex-col justify-center"
+    >
+      <h1 class="font-extrabold md:text-md text-[2em]">Sobre mi</h1>
     </div>
+  </header>
+  <div class="p-5">
     <div class="max-w-auto m-12">
       <p>
         Arquitecto orientado al Frontend, aunque mis primeros 13 años laborales
