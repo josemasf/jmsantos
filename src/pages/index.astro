@@ -1,5 +1,6 @@
 ---
 import PresentationPreview from "../components/PresentationPreview.astro";
+import RoleItem from "../components/RoleItem.astro";
 
 import MainLayout from "../layouts/MainLayout.astro";
 
@@ -14,33 +15,28 @@ const featuredProject = presentations.sort(
 
 <MainLayout>
   <header
-    class="h-80 overflow-hidden relative bg-[url('/assets/cordoba-spain.avif')] bg-no-repeat bg-center bg-fixed bg-cover"
+    class="h-40 md:h-60 overflow-hidden relative bg-[url('/assets/cordoba-spain.avif')] bg-no-repeat bg-center bg-fixed bg-cover"
   >
     <div
       class="pl-5 opacity-100 bg-gray-50 h-full bg-opacity-70 flex flex-col justify-center"
     >
-      <h1 class="font-extrabold text-md">
-        <small class="subtitle">El rincón de</small>José María Santos
+      <h1 class="font-extrabold md:text-md text-[2em]">
+        <small class="block font-normal text-[0.5em]">El rincón de</small>José
+        María Santos
       </h1>
-      <div class="roles">
-        <span class="role"
-          >👩‍💻 Desarrollador <span class="invert">👩‍💻 Desarrollador</span>
-        </span>
-        <span class="role"
-          >🎤 Orador <span class="invert">🎤 Orador</span>
-        </span>
-        <span class="role"
-          >✏️ Escritor <span class="invert">✏️ Escritor</span>
-        </span>
+      <div class="flex flex-wrap gap-3 md:text-base text-sm">
+        <RoleItem>👩‍💻 Desarrollador</RoleItem>
+        <RoleItem>🎤 Orador</RoleItem>
+        <RoleItem>✏️ Escritor</RoleItem>
       </div>
     </div>
   </header>
-  <main class="wrapper">
-    <div class="grid">
-      <div class="section">
+  <main class="m-5">
+    <div class="grid gap-4 grid-cols-3">
+      <div class="section col-span-3 md:col-span-2">
         <h1 class="font-bold text-4xl pt-5 mb-4">Ponencias</h1>
         <PresentationPreview presentation={featuredProject} />
-        <div class="buttonContainer">
+        <div class="text-center mt-4">
           <a
             href="/presentations/"
             class="bg-gray-300 hover:bg-gray-400 text-gray-800 font-bold py-2 px-4 rounded inline-flex items-center"
@@ -48,12 +44,12 @@ const featuredProject = presentations.sort(
           >
         </div>
       </div>
-      <div class="wrapper">
+      <div class="col-span-3 md:col-span-1 m-5">
         <div
           class="w-full mt-5 max-w-sm bg-white rounded-lg border border-gray-200 shadow-md dark:bg-gray-800 dark:border-gray-700"
         >
           <div
-            class="bg-gradient-to-r from-cyan-700 to-indigo-700 font-bold dark:from-cyan-900 dark:to-indigo-900 text-white text-3xl p-3 rounded-t-lg"
+            class="bg-gradient-to-r from-cyan-700 to-indigo-700 font-bold dark:from-cyan-900 dark:to-indigo-900 text-white text-xl p-3 rounded-t-lg"
           >
             Sobre mi
           </div>
@@ -65,13 +61,15 @@ const featuredProject = presentations.sort(
               height="100"
               width="80"
             />
-            <p class="mb-1 text-xl font-medium text-gray-900 dark:text-white">
+            <p
+              class="mb-1 text-xl font-medium text-gray-900 dark:text-white text-center"
+            >
               José María Santos
             </p>
             <span class="text-sm text-gray-500 dark:text-gray-400">
               Web Developer
             </span>
-            <div class="p-5">
+            <div class="p-2 text-base">
               <p>
                 <span>Hola</span> Me llamo Jose y llevo programando desde el 2007
                 de forma profesional. En todo este tiempo he tocado mucho tipo de
@@ -95,122 +93,3 @@ const featuredProject = presentations.sort(
     </div>
   </main>
 </MainLayout>
-
-<style>
-  .title {
-    font-weight: 900;
-    font-size: var(--f-u6);
-    margin-bottom: 0.5rem;
-    margin-top: 0;
-  }
-
-  @media (min-width: 750px) {
-    .title {
-      font-size: var(--f-u12);
-    }
-  }
-
-  .grid {
-    display: grid;
-    grid-gap: 2rem;
-  }
-
-  @media (min-width: 1200px) {
-    .grid {
-      grid-template-columns: 2fr 1fr;
-    }
-  }
-
-  .sectionTitle {
-    font-weight: 700;
-    font-size: var(--f-u8);
-    margin-top: 4rem;
-    margin-bottom: 2rem;
-  }
-
-  .roles {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 0.5em;
-    font-size: var(--f-d1);
-  }
-
-  .role {
-    position: relative;
-    display: inline-block;
-    white-space: nowrap;
-    font-weight: 900;
-    color: var(--t-bg);
-    background-color: var(--t-fg);
-    padding: 0.25em 0.5em;
-    z-index: 2;
-  }
-
-  @media (min-width: 750px) {
-    .role {
-      font-size: var(--f-u3);
-    }
-  }
-
-  .role:nth-of-type(1) .invert {
-    background-color: var(--c-pink);
-  }
-
-  .role:nth-of-type(2) .invert {
-    background-color: var(--c-blue);
-  }
-
-  .role:nth-of-type(3) .invert {
-    background-color: var(--c-green);
-  }
-
-  .role:hover .invert {
-    clip-path: polygon(0% 0%, 100% 0%, 100% 100%, 0% 100%);
-  }
-
-  .invert {
-    position: absolute;
-    color: var(--t-fg);
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    width: 100%;
-    height: 100%;
-    top: 0;
-    left: 0;
-    pointer-events: none;
-    clip-path: polygon(0% 100%, 100% 100%, 100% 200%, 0% 200%);
-    transition: clip-path cubic-bezier(0.4, 0, 0.5, 1) 150ms;
-  }
-
-  .desc {
-    font-size: var(--f-u1);
-    margin-top: 1.5rem;
-    margin-bottom: 0;
-  }
-
-  .subtitle {
-    display: block;
-    font-weight: 400;
-    font-size: var(--f-d6);
-    letter-spacing: -0.0625em;
-  }
-
-  .bio {
-    line-height: 2;
-    margin-bottom: 2rem;
-  }
-
-  .bio > span:first-of-type {
-    line-height: 1;
-    margin-bottom: 0.5em;
-    display: block;
-    font-weight: 700;
-    font-size: var(--f-u4);
-  }
-
-  .buttonContainer {
-    text-align: center;
-    margin-top: 2em;
-  }
-</style>
