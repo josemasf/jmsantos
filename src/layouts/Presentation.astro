@@ -5,9 +5,11 @@ const { content } = Astro.props;
 ---
 
 <MainLayout title={content.title} description={content.description}>
-  <section class="relative bg-slate-200 dark:bg-slate-900 flex">
+  <section
+    class="relative bg-slate-200 dark:bg-slate-900 flex md:flex-col-reverse"
+  >
     <div
-      class="relative px-4 py-32 mx-auto max-w-screen-md lg:items-center lg:flex"
+      class="relative px-4 py-32 mx-auto max-w-screen-md lg:items-center md:flex"
     >
       <div class="max-w-xl text-center sm:text-left">
         <h1 class="text-3xl font-extrabold sm:text-5xl">
@@ -48,11 +50,11 @@ const { content } = Astro.props;
         </div>
       </div>
     </div>
-    <img
-      class="w-full opacity-25 sm:opacity-100"
-      src={content.img}
-      alt={content.title}
-    />
+    <div
+      class=`bg-no-repeat bg-center bg-fixed bg-cover h-[400px]`
+      style=`background-image: url('${content.img}')`
+    >
+    </div>
   </section>
   <div
     class="container md:max-w-screen-md max-w-fit p-5 prose md:prose-lg lg:prose-xl"
