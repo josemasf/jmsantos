@@ -4,7 +4,7 @@ title: Card deck core
 github: https://github.com/josemasf/once-upon-a-time-vue
 img: "/assets/spanish-cards.png"
 description: Core para el manejo de una baraja de cartas.
-publishDate: 2023-02-06 00:00:00
+publishDate: 2022-08-06 00:00:00
 tags:
   - Typescript
   - Vitest
