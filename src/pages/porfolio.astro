@@ -3,7 +3,7 @@ import MainLayout from "../layouts/MainLayout.astro";
 
 import PresentationPreview from "../components/PresentationPreview.astro";
 
-const projects = (await Astro.glob("./project/**/*.md"))
+const porfolio = (await Astro.glob("./porfolio/**/*.md"))
   .filter(({ frontmatter }) => !!frontmatter.publishDate)
   .sort(
     (a, b) =>
@@ -16,11 +16,11 @@ const projects = (await Astro.glob("./project/**/*.md"))
   title="Sobre mi | José María Santos"
   description="Porfolio de José María Santos"
 >
-  <div class="wrapper">
-    <h1 class="title">Todos los proyectos</h1>
-    <div class="grid">
+  <div class="mt-5 container mx-auto px-5">
+    <h1 class="font-bold text-4xl mb-4">Proyectos</h1>
+    <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
       {
-        projects.map((project) => (
+        porfolio.map((project) => (
           <PresentationPreview presentation={project} />
         ))
       }

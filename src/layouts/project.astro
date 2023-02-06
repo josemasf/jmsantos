@@ -1,102 +1,79 @@
 ---
-import MainHead from "../components/MainHead.astro";
-import Footer from "../components/Footer.astro";
-import Nav from "../components/Nav.astro";
+import MainLayout from "../layouts/MainLayout.astro";
 
 const { content } = Astro.props;
 ---
 
-<html lang={content.lang || "en"}>
-  <head>
-    <MainHead title={content.title} description={content.description} />
-    <style>
-      .hero {
-        padding: 8rem;
-        display: flex;
-        background-color: var(--t-fg);
-        background-repeat: no-repeat;
-        background-size: cover;
-        min-height: 25vw;
-        color: white;
-        flex-direction: column;
-        align-items: center;
-        justify-content: center;
-      }
+<MainLayout title={content.title} description={content.description}>
+  <div class="bg-slate-200 dark:bg-slate-900">
+    <section class="bg-slate-200 dark:bg-slate-900 flex lg:container">
+      <picture class="hidden md:block">
+        <img class=`h-full ` src={content.img} />
+      </picture>
+      <div
+        class="relative px-4 py-32 mx-auto max-w-screen-md lg:items-center md:flex"
+      >
+        <div class="max-w-xl text-center sm:text-left">
+          <h1 class="text-3xl font-extrabold sm:text-5xl">
+            {content.title}
+          </h1>
 
-      .tag {
-        margin-left: 0.5em;
-        margin-right: 0.5em;
-        text-transform: uppercase;
-      }
+          <p class="max-w-lg mt-4 sm:leading-relaxed sm:text-xl">
+            {content.description}
+          </p>
 
-      .tag:nth-of-type(1n) {
-        color: var(--c-green);
-      }
-      .tag:nth-of-type(2n) {
-        color: var(--c-orange);
-      }
-      .tag:nth-of-type(3n) {
-        color: var(--c-blue);
-      }
-      .tag:nth-of-type(4n) {
-        color: var(--c-pink);
-      }
-
-      .title {
-        font-size: var(--f-u10);
-        font-weight: 900;
-        text-transform: uppercase;
-        letter-spacing: 0.0625em;
-      }
-
-      .leadIn {
-        padding-top: 4em;
-        color: var(--t-bg);
-        background-color: var(--t-fg);
-        text-align: center;
-      }
-
-      .tagline {
-        font-weight: 300;
-        font-size: var(--f-u3);
-        line-height: 1.5;
-      }
-
-      .content {
-        font-size: var(--f-u1);
-        line-height: 2.2;
-        max-width: 50em;
-        margin: auto;
-      }
-
-      .wrapper {
-        padding-bottom: 4em;
-        margin-bottom: 4em;
-      }
-
-      footer {
-        text-align: center;
-        margin-top: 3rem;
-      }
-    </style>
-  </head>
-  <body class="dark:bg-gray-800 dark:text-white">
-    <Nav />
-    <header style={`background-image:url(${content.img})`} class="hero">
-      <h1 class="title">{content.title}</h1>
-    </header>
-    <div class="leadIn">
-      <div class="wrapper">
-        {content.tags.map((t: string) => <span class="tag">{t}</span>)}
-        <h3 class="tagline">{content.description}</h3>
+          <div class="flex flex-wrap mt-8 text-center gap-4">
+            {
+              content.urlSite && (
+                <a
+                  class="block w-full px-12 py-3 text-sm font-medium text-white rounded shadow bg-indigo-600 sm:w-auto active:bg-indigo-500 hover:bg-indigo-700 focus:outline-none focus:ring"
+                  href={content.urlSite}
+                  target="_blank"
+                >
+                  Ver sitio
+                </a>
+              )
+            }
+            {
+              content.github && (
+                <a
+                  class="flex flex-wrap gap-4 flex-initial w-full px-12 py-3 text-sm font-medium bg-white rounded shadow text-indigo-600 sm:w-auto hover:text-indigo-700 active:text-indigo-500 focus:outline-none focus:ring"
+                  href={content.github}
+                  target="_blank"
+                >
+                  <div>
+                    <svg
+                      class="fill-black dark:fill-slate-300 w-6 h-6"
+                      xmlns="http://www.w3.org/2000/svg"
+                      viewBox="0 0 16 16"
+                    >
+                      <path d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.012 8.012 0 0 0 16 8c0-4.42-3.58-8-8-8z" />
+                    </svg>
+                  </div>
+                  <div>Repositorio</div>
+                </a>
+              )
+            }
+          </div>
+        </div>
       </div>
-    </div>
-    <div class="wrapper">
-      <div class="content"><slot /></div>
-    </div>
-    <footer>
-      <a href="/projects" class="button">View More</a>
-    </footer>
-    <Footer />
-  </body>
-</html>
+    </section>
+  </div>
+  <div
+    class="container md:max-w-screen-md max-w-fit p-5 prose md:prose-lg lg:prose-xl"
+  >
+    <article
+      class="space-y-4 text-gray-600 dark:text-slate-400 prose lg:prose-xl prose-h2:dark:text-slate-200 prose-h1:dark:text-slate-300 prose-a:dark:text-orange-400"
+    >
+      <slot />
+    </article>
+  </div>
+
+  <footer class="flex justify-center">
+    <a
+      href="/porfolio/"
+      class="bg-gray-300 hover:bg-gray-400 text-gray-800 font-bold py-2 px-4 rounded inline-flex items-center"
+      >Ver otros proyectos</a
+    >
+  </footer>
+</MainLayout>

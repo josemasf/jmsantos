@@ -16,7 +16,7 @@ const featuredProject = presentations.sort(
 
 <MainLayout>
   <header
-    class="h-40 md:h-60 overflow-hidden relative bg-[url('/assets/cordoba-spain.avif')] bg-no-repeat bg-center bg-fixed bg-cover"
+    class="h-40 md:h-60 overflow-hidden relative bg-[url('/assets/cordoba-spain.avif')] bg-no-repeat bg-center lg:bg-bottom bg-fixed bg-cover"
   >
     <div
       class="pl-5 opacity-100 bg-gray-50 dark:bg-gray-800 h-full bg-opacity-50 dark:bg-opacity-50 flex flex-col justify-center"
@@ -33,8 +33,8 @@ const featuredProject = presentations.sort(
     </div>
   </header>
 
-  <main class="m-5">
-    <div class="grid grid-cols-7">
+  <main class="container mx-auto m-5">
+    <div class="grid grid-cols-7 px-5">
       <div class="md:col-span-5 col-span-7">
         <h1 class="font-bold text-4xl pt-5 mb-4">Ponencias</h1>
         <PresentationPreview presentation={featuredProject} />

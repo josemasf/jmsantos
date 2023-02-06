@@ -10,12 +10,12 @@
     "astro": "astro"
   },
   "dependencies": {
-    "astro": "^1.9.0"
+    "astro": "2.0.6"
   },
   "devDependencies": {
-    "@astrojs/sitemap": "^1.0.0",
-    "@astrojs/tailwind": "^1.0.0",
-    "@tailwindcss/typography": "^0.5.7",
-    "astro-robots-txt": "^0.3.10"
+    "@astrojs/sitemap": "1.0.1",
+    "@astrojs/tailwind": "3.0.1",
+    "@tailwindcss/typography": "0.5.9",
+    "astro-robots-txt": "0.3.11"
   }
 }
