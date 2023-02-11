@@ -67,32 +67,42 @@ import SocialLinks from "./SocialLinks.astro";
       </text>
     </svg>
   </a>
-
+  <div class="flex items-center md:gap-12 w-fit">
+    <nav aria-label="Site Nav" class="">
+      <ul class="flex items-center gap-6 text-sm">
+        <li>
+          <a
+            class="link text-gray-600 dark:text-gray-300"
+            href="/porfolio/"
+            aria-label="Porfolio"
+          >
+            Porfolio
+          </a>
+        </li>
+        <li>
+          <a
+            class="link text-gray-600 dark:text-gray-300"
+            href="/presentations/"
+            aria-label="Ir a ponencias"
+          >
+            Ponencias
+          </a>
+        </li>
+        <li>
+          <a
+            class="block min-w-[60px] text-gray-600 dark:text-gray-300"
+            href="/about/"
+            aria-label="Conocerme mejor"
+          >
+            Sobre mi
+          </a>
+        </li>
+      </ul>
+    </nav>
+  </div>
   <div
     class="flex md:justify-end gap-4 text-sm md:text-base font-bold text-gray-700 uppercase place-items-center w-full mr-4 md:mr-0"
   >
-    <a
-      class="link text-gray-600 dark:text-gray-300"
-      href="/porfolio/"
-      aria-label="Porfolio"
-    >
-      Porfolio
-    </a>
-    <a
-      class="link text-gray-600 dark:text-gray-300"
-      href="/presentations/"
-      aria-label="Ir a ponencias"
-    >
-      Ponencias
-    </a>
-    <a
-      class="link text-gray-600 dark:text-gray-300"
-      href="/about/"
-      aria-label="Conocerme mejor"
-    >
-      Sobre mi
-    </a>
-
     <div class="md:visible hidden md:block grow justify-end">
       <SocialLinks />
     </div>
