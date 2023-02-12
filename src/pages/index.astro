@@ -6,11 +6,22 @@ import MainLayout from "../layouts/MainLayout.astro";
 
 // Data Fetching: List all Markdown posts in the repo.
 const presentations = await Astro.glob("./presentations/**/*.md");
-const featuredProject = presentations.sort(
-  (a, b) =>
-    new Date(b.frontmatter.publishDate).valueOf() -
-    new Date(a.frontmatter.publishDate).valueOf()
-)[0];
+const featuredProject = presentations
+  .sort(
+    (a, b) =>
+      new Date(b.frontmatter.publishDate).valueOf() -
+      new Date(a.frontmatter.publishDate).valueOf()
+  )
+  .slice(0, 2);
+
+const porfolios = await Astro.glob("./porfolio/**/*.md");
+const porfolioProject = porfolios
+  .sort(
+    (a, b) =>
+      new Date(b.frontmatter.publishDate).valueOf() -
+      new Date(a.frontmatter.publishDate).valueOf()
+  )
+  .slice(0, 4);
 ---
 
 <MainLayout>
@@ -35,8 +46,36 @@ const featuredProject = presentations.sort(
   <main class="container mx-auto m-5">
     <div class="grid grid-cols-7 px-5">
       <div class="md:col-span-5 col-span-7">
+        <h1 class="font-bold text-4xl pt-5 mb-4">Porfolio</h1>
+        <div class="grid grid-cols-2 gap-4">
+          {
+            porfolioProject.map((porfolio) => (
+              <div>
+                <PresentationPreview presentation={porfolio} />
+              </div>
+            ))
+          }
+        </div>
+
+        <div class="text-center mt-4">
+          <a
+            href="/porfolio/"
+            class="bg-gray-300 hover:bg-gray-400 text-gray-800 font-bold py-2 px-4 rounded inline-flex items-center"
+            >Ver todas</a
+          >
+        </div>
+
         <h1 class="font-bold text-4xl pt-5 mb-4">Ponencias</h1>
-        <PresentationPreview presentation={featuredProject} />
+        <div class="grid grid-cols-2 gap-4">
+          {
+            featuredProject.map((project) => (
+              <div>
+                <PresentationPreview presentation={project} />
+              </div>
+            ))
+          }
+        </div>
+
         <div class="text-center mt-4">
           <a
             href="/presentations/"
