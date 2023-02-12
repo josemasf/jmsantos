@@ -8,7 +8,7 @@ const { content } = Astro.props;
   <div class="bg-slate-200 dark:bg-slate-900">
     <section class="bg-slate-200 dark:bg-slate-900 flex lg:container">
       <picture class="hidden md:block">
-        <img class="h-full" src={content.img} />
+        <img class="h-full" src={content.img} loading="lazy" />
       </picture>
       <div
         class="relative px-4 py-32 mx-auto max-w-screen-md lg:items-center md:flex"
@@ -62,7 +62,8 @@ const { content } = Astro.props;
     >
       <img
         class="absolute -left-6 w-28 rounded-r-lg shadow-lg"
-        src="/assets/jose-maria-santos.jpg"
+        src="https://res.cloudinary.com/dzrgc7fqy/image/upload/f_auto,q_auto/v1676109246/jmsantos/yo_d9atyf.webp"
+        loading="lazy"
       />
       <div class="min-w-0 py-5 pl-28 pr-5">
         <div
