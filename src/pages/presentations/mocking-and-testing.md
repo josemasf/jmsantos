@@ -4,7 +4,7 @@ duration: 1h 30m
 title: Mocking and testing
 urlPresentation: https://mocking-and-testing.vercel.app/1
 github: https://github.com/josemasf/mocking-and-testing-example
-img: "https://res.cloudinary.com/dzrgc7fqy/image/upload/f_auto,q_auto/v1676107133/jmsantos/mockingandtesting_ygmpid.webp"
+img: "/assets/mockingandtesting.webp"
 description: Cómo hacer testing y como montar un sistema de mocks fiable y mantenible en el tiempo. Incluye un caso de uso a modo de ejemplo descargable.
 publishDate: 2022-11-14 00:00:00
 tags:

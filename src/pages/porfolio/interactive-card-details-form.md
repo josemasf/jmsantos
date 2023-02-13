@@ -1,6 +1,6 @@
 ---
 layout: ../../layouts/project.astro
-title: Interactive card details form
+title: Interactive card form
 github: https://github.com/josemasf/job-list-and-filter
 urlSite: https://jobfilter.netlify.app/
 img: "/assets/credit-card/screenshot-1.png"
