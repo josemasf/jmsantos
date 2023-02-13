@@ -1,4 +1,5 @@
 ---
+import { Cloudinary } from "@cloudinary/url-gen";
 const { frontmatter, url } = Astro.props.presentation;
 const date = frontmatter.publishDate.toString().split(" ")[0].split("T")[0];
 
@@ -20,6 +21,16 @@ const monthNames = [
   "Noviembre",
   "Diciembre",
 ];
+
+const cldImg = new Cloudinary({
+  cloud: {
+    cloudName: "dzrgc7fqy",
+  },
+});
+
+let cldSrc = cldImg.image(`jmsantos${frontmatter.img}`);
+
+//cldSrc.setDeliveryType("fecht");
 ---
 
 <article
@@ -39,7 +50,7 @@ const monthNames = [
   <div class="hidden sm:block sm:basis-56">
     <img
       alt={`${frontmatter.title} cover`}
-      src={`${frontmatter.img}`}
+      src={`${cldSrc.toURL()}`}
       class="aspect-square h-full w-full object-cover"
     />
   </div>
