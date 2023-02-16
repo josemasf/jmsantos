@@ -1,8 +1,8 @@
 ---
 layout: ../../layouts/project.astro
 title: Interactive card form
-github: https://github.com/josemasf/job-list-and-filter
-urlSite: https://jobfilter.netlify.app/
+github: https://github.com/josemasf/interactive-card-details-form
+urlSite: https://interactive-card-details-form-navy.vercel.app/
 img: "/assets/credit-card/screenshot-1.png"
 description: Pantalla de formulario para tarjeta de crédito interactiva
 publishDate: 2023-02-11 00:00:00
