@@ -1,27 +1,10 @@
 ---
 const { frontmatter, url } = Astro.props.post;
-const date =
-  frontmatter.publishDate?.toString().split(" ")[0].split("T")[0] ||
-  new Date().toISOString();
+const date = frontmatter.publishDate?.toString().split(" ");
 
-const year = date.split("-")[0];
-const month = date.split("-")[1] - 1;
-const day = date.split("-")[2];
-
-const monthNames = [
-  "Enero",
-  "Febrero",
-  "Marzo",
-  "Abril",
-  "Mayo",
-  "Junio",
-  "Julio",
-  "Agosto",
-  "Septiembre",
-  "Octubre",
-  "Noviembre",
-  "Diciembre",
-];
+const day = date[0];
+const month = date[1];
+const year = date[2];
 ---
 
 <article
@@ -29,12 +12,12 @@ const monthNames = [
 >
   <div class="rotate-180 p-2 [writing-mode:_vertical-lr]">
     <time
-      datetime={frontmatter.publishDate}
+      datetime={new Date(frontmatter.publishDate).toISOString()}
       class="flex items-center justify-between gap-4 text-xs font-bold uppercase text-gray-900 dark:text-gray-200"
     >
-      <span>{year}</span>
+      <span>{day} - {month}</span>
       <span class="w-px flex-1 bg-gray-900/10"></span>
-      <span>{day} - {monthNames[month]}</span>
+      <span>{year}</span>
     </time>
   </div>
 
@@ -67,7 +50,7 @@ const monthNames = [
         href={url}
         class="block bg-orange-400 px-5 py-3 text-center text-xs font-bold uppercase text-gray-900 transition hover:bg-orange-400"
       >
-        Ver presentación
+        Ver post
       </a>
     </div>
   </div>

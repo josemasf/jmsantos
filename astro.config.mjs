@@ -26,13 +26,16 @@ export default defineConfig({
       config: {
         backend: {
           name: "git-gateway",
-          branch: "main",
+          branch: "master",
         },
+        media_folder: "public/assets/blog",
+        public_folder: "/assets/blog",
+        previewStyles: ["/src/styles/global.css"],
         collections: [
           {
             name: "posts",
             label: "Blog Posts",
-            folder: "src/content/posts",
+            folder: "src/pages/blog/posts",
             create: true,
             delete: true,
             fields: [
@@ -51,12 +54,16 @@ export default defineConfig({
                 label: "Description",
                 required: false,
               },
+              { name: "img", widget: "image", label: "Image" },
               {
                 name: "layout",
                 widget: "select",
-                default: "../../layouts/BlogPost.astro",
+                default: "../../../layouts/BlogPost.astro",
                 options: [
-                  { label: "Blog Post", value: "../../layouts/BlogPost.astro" },
+                  {
+                    label: "Blog Post",
+                    value: "../../../layouts/BlogPost.astro",
+                  },
                 ],
               },
               { name: "body", widget: "markdown", label: "Post Body" },
