@@ -15,14 +15,15 @@
     "@astrojs/partytown": "^1.0.3",
     "@cloudinary/url-gen": "^1.9.0",
     "@tailwindcss/line-clamp": "^0.4.2",
-    "astro": "2.0.6"
+    "astro": "2.0.6",
+    "astro-netlify-cms": "^0.5.3"
   },
   "devDependencies": {
     "@astrojs/sitemap": "1.0.1",
     "@astrojs/tailwind": "3.0.1",
     "@tailwindcss/typography": "0.5.9",
     "astro-robots-txt": "0.3.11",
-    "dotenv": "10.0.0",
-    "cloudinary": "1.34.0"
+    "cloudinary": "1.34.0",
+    "dotenv": "10.0.0"
   }
 }
