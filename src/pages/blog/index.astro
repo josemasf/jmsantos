@@ -1,0 +1,36 @@
+---
+import MainLayout from "../../layouts/MainLayout.astro";
+
+import PostPreview from "@components/PostPreview.astro";
+
+const posts = await Astro.glob("../../content/posts/*.md");
+/*.filter(({ frontmatter }) => !!frontmatter.publishDate)
+  .sort(
+    (a, b) =>
+      new Date(b.frontmatter.publishDate).valueOf() -
+      new Date(a.frontmatter.publishDate).valueOf()
+  );*/
+---
+
+<MainLayout
+  title="Sobre mi | José María Santos"
+  description="Porfolio de José María Santos"
+>
+  <div class="mt-5 container mx-auto px-5">
+    <h1 class="font-bold text-4xl mb-4">Proyectos</h1>
+    <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+      {posts.map((post) => <PostPreview post={post} />)}
+    </div>
+  </div>
+</MainLayout>
+
+<style>
+  .grid {
+    display: grid;
+    grid-gap: 3rem;
+  }
+  .title {
+    margin-top: 2rem;
+    margin-bottom: 2rem;
+  }
+</style>

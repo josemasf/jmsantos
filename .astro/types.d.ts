@@ -89,6 +89,22 @@ declare module 'astro:content' {
   data: any
 },
 },
+"posts": {
+"asd.md": {
+  id: "asd.md",
+  slug: "asd",
+  body: string,
+  collection: "posts",
+  data: any
+},
+"primer-post.md": {
+  id: "primer-post.md",
+  slug: "primer-post",
+  body: string,
+  collection: "posts",
+  data: any
+},
+},
 "presentations": {
 "microfront.md": {
   id: "microfront.md",

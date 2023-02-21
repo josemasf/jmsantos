@@ -32,11 +32,33 @@ export default defineConfig({
           {
             name: "posts",
             label: "Blog Posts",
-            folder: "src/pages/posts",
+            folder: "src/content/posts",
             create: true,
             delete: true,
             fields: [
               { name: "title", widget: "string", label: "Post Title" },
+              {
+                name: "publishDate",
+                widget: "datetime",
+                format: "DD MMM YYYY",
+                date_format: "DD MMM YYYY",
+                time_format: false,
+                label: "Publish Date",
+              },
+              {
+                name: "description",
+                widget: "string",
+                label: "Description",
+                required: false,
+              },
+              {
+                name: "layout",
+                widget: "select",
+                default: "../../layouts/BlogPost.astro",
+                options: [
+                  { label: "Blog Post", value: "../../layouts/BlogPost.astro" },
+                ],
+              },
               { name: "body", widget: "markdown", label: "Post Body" },
             ],
           },
