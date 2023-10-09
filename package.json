@@ -9,7 +9,8 @@
     "build": "astro build",
     "preview": "astro preview",
     "astro": "astro",
-    "cld:upload": "node script/upload"
+    "cld:upload": "node script/upload",
+    "unlighthouse": "pnpm dlx unlighthouse --site https://josemariasantos.com/"
   },
   "dependencies": {
     "@astrojs/partytown": "^2.0.0",
