@@ -9,12 +9,15 @@ export interface Props {
   title?: string;
 }
 
+import { ViewTransitions } from 'astro:transitions';
+
 const { description } = Astro.props || "El rincón de José María Santos";
 const { title } = Astro.props || "José María Santos: Desarrollador Web";
 ---
 
 <html lang="es">
   <head>
+    <ViewTransitions />
     <MainHead title={title} description={description} />
     <!-- Pixel Code for https://overtracking.com/ -->
     <script defer src="https://overtracking.com/p/CElhnUuwll9eKe9c"></script>

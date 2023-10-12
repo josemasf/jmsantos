@@ -1,7 +1,7 @@
 ---
 layout: ../../layouts/project.astro
 title: Card deck core
-github: https://github.com/josemasf/once-upon-a-time-vue
+github: https://github.com/josemasf/deck-cards
 img: "/assets/spanish-cards.png"
 description: Core para el manejo de una baraja de cartas.
 publishDate: 2022-08-06 00:00:00

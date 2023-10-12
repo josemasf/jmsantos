@@ -34,55 +34,68 @@
 </button>
 
 <script>
-  const buttons = document.querySelectorAll(".theme-button");
-  const lightIco = document.querySelectorAll(".light-theme-icon");
-  const darkIco = document.querySelectorAll(".dark-theme-icon");
+  
+</script>
 
-  if (
-    localStorage.theme === "dark" ||
-    (!("theme" in localStorage) &&
-      window.matchMedia("(prefers-color-scheme: dark)").matches)
-  ) {
-    document.documentElement.classList.add("dark");
+<script is:inline>
+  const setMode = () => {
+    const buttons = document.querySelectorAll(".theme-button");
+    const lightIco = document.querySelectorAll(".light-theme-icon");
+    const darkIco = document.querySelectorAll(".dark-theme-icon");
 
-    lightIco.forEach((lightThemeIcon) =>
-      lightThemeIcon.classList.add("hidden")
-    );
-    darkIco.forEach((darkThemeIcon) =>
-      darkThemeIcon.classList.remove("hidden")
-    );
-  } else {
-    document.documentElement.classList.remove("dark");
+    if (
+      localStorage.theme === "dark" ||
+      (!("theme" in localStorage) &&
+        window.matchMedia("(prefers-color-scheme: dark)").matches)
+    ) {
+      document.documentElement.classList.add("dark");
 
-    lightIco.forEach((lightThemeIcon) =>
-      lightThemeIcon.classList.remove("hidden")
-    );
-    darkIco.forEach((darkThemeIcon) => darkThemeIcon.classList.add("hidden"));
+      lightIco.forEach((lightThemeIcon) =>
+        lightThemeIcon.classList.add("hidden")
+      );
+      darkIco.forEach((darkThemeIcon) =>
+        darkThemeIcon.classList.remove("hidden")
+      );
+    } else {
+      document.documentElement.classList.remove("dark");
+
+      lightIco.forEach((lightThemeIcon) =>
+        lightThemeIcon.classList.remove("hidden")
+      );
+      darkIco.forEach((darkThemeIcon) => darkThemeIcon.classList.add("hidden"));
+    }
+
+    buttons.forEach(function (themeButton) {
+      themeButton.addEventListener("click", () => {
+        if (document.documentElement.classList.contains("dark")) {
+          document.documentElement.classList.remove("dark");
+          document.documentElement.classList.add("light");
+          lightIco.forEach((lightThemeIcon) =>
+            lightThemeIcon.classList.remove("hidden")
+          );
+          darkIco.forEach((darkThemeIcon) =>
+            darkThemeIcon.classList.add("hidden")
+          );
+          localStorage.theme = "light";
+        } else {
+          document.documentElement.classList.remove("light");
+          document.documentElement.classList.add("dark");
+          lightIco.forEach((lightThemeIcon) =>
+            lightThemeIcon.classList.add("hidden")
+          );
+          darkIco.forEach((darkThemeIcon) =>
+            darkThemeIcon.classList.remove("hidden")
+          );
+          localStorage.theme = "dark";
+        }
+      });
+    });
+    
   }
 
-  buttons.forEach(function (themeButton) {
-    themeButton.addEventListener("click", () => {
-      if (document.documentElement.classList.contains("dark")) {
-        document.documentElement.classList.remove("dark");
-        document.documentElement.classList.add("light");
-        lightIco.forEach((lightThemeIcon) =>
-          lightThemeIcon.classList.remove("hidden")
-        );
-        darkIco.forEach((darkThemeIcon) =>
-          darkThemeIcon.classList.add("hidden")
-        );
-        localStorage.theme = "light";
-      } else {
-        document.documentElement.classList.remove("light");
-        document.documentElement.classList.add("dark");
-        lightIco.forEach((lightThemeIcon) =>
-          lightThemeIcon.classList.add("hidden")
-        );
-        darkIco.forEach((darkThemeIcon) =>
-          darkThemeIcon.classList.remove("hidden")
-        );
-        localStorage.theme = "dark";
-      }
-    });
-  });
+  // Runs on initial navigation
+  setMode()
+
+  // Runs on view transitions navigation
+  document.addEventListener('astro:after-swap', setMode)
 </script>
