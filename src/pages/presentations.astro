@@ -3,7 +3,7 @@ import PresentationPreview from "../components/PresentationPreview.astro";
 
 import MainLayout from "../layouts/MainLayout.astro";
 
-const presentations = (await Astro.glob("./presentations/**/*.md"))
+const presentations = Object.values(import.meta.glob("./presentations/**/*.md", { eager: true }))
   .filter(({ frontmatter }) => !!frontmatter.publishDate)
   .sort(
     (a, b) =>

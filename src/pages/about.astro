@@ -4,7 +4,7 @@ import MainLayout from "../layouts/MainLayout.astro";
 import JobPreview from "../components/JobPreview.astro";
 import Heading from "../components/Heading.astro";
 
-const jobs = (await Astro.glob("./jobs/**/*.md"))
+const jobs = Object.values(import.meta.glob("./jobs/**/*.md", { eager: true }))
   .filter(({ frontmatter }) => !!frontmatter.from)
   .sort(
     (a, b) =>

@@ -1,0 +1,41 @@
+{
+  "$ref": "#/definitions/presentations",
+  "definitions": {
+    "presentations": {
+      "type": "object",
+      "properties": {
+        "title": {
+          "type": "string"
+        },
+        "publishDate": {
+          "type": "string"
+        },
+        "description": {
+          "type": "string"
+        },
+        "img": {
+          "type": "string"
+        },
+        "video": {
+          "type": "string"
+        },
+        "url": {
+          "type": "string"
+        },
+        "slideUrl": {
+          "type": "string"
+        },
+        "$schema": {
+          "type": "string"
+        }
+      },
+      "required": [
+        "title",
+        "publishDate",
+        "description"
+      ],
+      "additionalProperties": false
+    }
+  },
+  "$schema": "http://json-schema.org/draft-07/schema#"
+}

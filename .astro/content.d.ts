@@ -149,17 +149,21 @@ declare module 'astro:content' {
 	type DataEntryMap = {
 		"jobs": Record<string, {
   id: string;
-  body?: string;
+  render(): Render[".md"];
+  slug: string;
+  body: string;
   collection: "jobs";
-  data: any;
+  data: InferEntrySchema<"jobs">;
   rendered?: RenderedContent;
   filePath?: string;
 }>;
 "presentations": Record<string, {
   id: string;
-  body?: string;
+  render(): Render[".md"];
+  slug: string;
+  body: string;
   collection: "presentations";
-  data: any;
+  data: InferEntrySchema<"presentations">;
   rendered?: RenderedContent;
   filePath?: string;
 }>;
@@ -168,5 +172,5 @@ declare module 'astro:content' {
 
 	type AnyEntryMap = ContentEntryMap & DataEntryMap;
 
-	export type ContentConfig = typeof import("./../src/content.config.mjs");
+	export type ContentConfig = typeof import("./../src/content/config.js");
 }

@@ -3,7 +3,7 @@ import MainLayout from "../layouts/MainLayout.astro";
 
 import PorfolioPreview from "@components/PorfolioPreview.astro";
 
-const porfolio = (await Astro.glob("./porfolio/**/*.md"))
+const porfolio = Object.values(import.meta.glob("./porfolio/**/*.md", { eager: true }))
   .filter(({ frontmatter }) => !!frontmatter.publishDate)
   .sort(
     (a, b) =>

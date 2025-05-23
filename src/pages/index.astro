@@ -6,7 +6,7 @@ import RoleItem from "@components/RoleItem.astro";
 import MainLayout from "@layouts/MainLayout.astro";
 
 // Data Fetching: List all Markdown posts in the repo.
-const presentations = await Astro.glob("./presentations/**/*.md");
+const presentations = Object.values(import.meta.glob("./presentations/**/*.md", { eager: true }));
 const featuredProject = presentations
   .sort(
     (a, b) =>
@@ -15,7 +15,7 @@ const featuredProject = presentations
   )
   .slice(0, 2);
 
-const porfolios = await Astro.glob("./porfolio/**/*.md");
+const porfolios = Object.values(import.meta.glob("./porfolio/**/*.md", { eager: true }));
 const porfolioProject = porfolios
   .sort(
     (a, b) =>
