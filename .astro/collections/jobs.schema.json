@@ -4,9 +4,6 @@
     "jobs": {
       "type": "object",
       "properties": {
-        "title": {
-          "type": "string"
-        },
         "from": {
           "type": "string"
         },
@@ -16,10 +13,7 @@
         "company": {
           "type": "string"
         },
-        "location": {
-          "type": "string"
-        },
-        "description": {
+        "summary": {
           "type": "string"
         },
         "$schema": {
@@ -27,11 +21,9 @@
         }
       },
       "required": [
-        "title",
         "from",
         "company",
-        "location",
-        "description"
+        "summary"
       ],
       "additionalProperties": false
     }

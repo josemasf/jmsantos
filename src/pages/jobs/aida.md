@@ -3,7 +3,7 @@ layout: ../../layouts/Job.astro
 company: "Aida"
 from: "2023-05"
 to: "today"
-sumary: "AIDA forma parte de un grupo empresarial dedicado a la automoción y la movilidad, que nació en Canarias hace más de 80 años y que gracias a su apuesta por la innovación y la tecnología está ya presente en más de 20 países."
+summary: "AIDA forma parte de un grupo empresarial dedicado a la automoción y la movilidad, que nació en Canarias hace más de 80 años y que gracias a su apuesta por la innovación y la tecnología está ya presente en más de 20 países."
 ---
 
 **Frontend Tech Lead**
