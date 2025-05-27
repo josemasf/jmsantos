@@ -4,12 +4,20 @@ import MainLayout from "../layouts/MainLayout.astro";
 import JobPreview from "../components/JobPreview.astro";
 import Heading from "../components/Heading.astro";
 
-const jobs = Object.values(import.meta.glob("./jobs/**/*.md", { eager: true }))
+type Job = {
+  frontmatter: {
+    from: string;
+    [key: string]: any;
+  };
+  [key: string]: any;
+};
+
+const jobs = Object.values(import.meta.glob("./jobs/**/*.md", { eager: true }) as Record<string, Job>)
   .filter(({ frontmatter }) => !!frontmatter.from)
   .sort(
     (a, b) =>
-      new Date(b.frontmatter.from).valueOf() -
-      new Date(a.frontmatter.from).valueOf()
+      new Date((b as Job).frontmatter.from).valueOf() -
+      new Date((a as Job).frontmatter.from).valueOf()
   );
 
 const description =
