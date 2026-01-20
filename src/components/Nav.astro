@@ -3,11 +3,11 @@ import SocialLinks from "./SocialLinks.astro";
 ---
 
 <nav
-  class="bg-gradient-to-r from-cyan-300 to-indigo-200 dark:text-white dark:from-cyan-900 dark:to-indigo-900 flex align-baseline content-center h-fit"
+  class="bg-gradient-to-r from-cyan-300 to-indigo-200 dark:text-white dark:from-cyan-900 dark:to-indigo-900 flex items-center h-fit py-2"
 >
-  <a href="/" aria-label="Ir a inicio" class="mx-2">
+  <a href="/" aria-label="Ir a inicio" class="mx-2 shrink-0">
     <svg
-      class="md:h-24 h-14 pt-1"
+      class="md:h-24 h-14"
       viewBox="123.24 146.126 88.029 41.08"
       xmlns="http://www.w3.org/2000/svg"
       xmlns:xlink="http://www.w3.org/1999/xlink"
@@ -69,10 +69,10 @@ import SocialLinks from "./SocialLinks.astro";
   </a>
   <div class="flex items-center md:gap-12 w-fit mx-2">
     <nav aria-label="Site Nav" class="">
-      <ul class="flex items-center gap-6 md:text-xl">
+      <ul class="flex items-center gap-4 md:gap-8 md:text-xl font-bold">
         <li>
           <a
-            class="block min-w-[70px] min-h-[48px] pt-3 text-gray-600 dark:text-gray-300"
+            class="block py-2 text-gray-700 dark:text-gray-300 hover:text-indigo-600 transition-colors"
             href="/porfolio/"
             aria-label="Porfolio"
           >
@@ -81,7 +81,7 @@ import SocialLinks from "./SocialLinks.astro";
         </li>
         <li>
           <a
-            class="block min-w-[70px] min-h-[48px] pt-3 text-gray-600 dark:text-gray-300"
+            class="block py-2 text-gray-700 dark:text-gray-300 hover:text-indigo-600 transition-colors"
             href="/presentations/"
             aria-label="Ir a ponencias"
           >
@@ -90,7 +90,7 @@ import SocialLinks from "./SocialLinks.astro";
         </li>
         <li>
           <a
-            class="block min-w-[70px] md:min-w-[90px] min-h-[48px] pt-3 text-gray-600 dark:text-gray-300"
+            class="block py-2 text-gray-700 dark:text-gray-300 hover:text-indigo-600 transition-colors"
             href="/about/"
             aria-label="Conocerme mejor"
           >
@@ -101,9 +101,9 @@ import SocialLinks from "./SocialLinks.astro";
     </nav>
   </div>
   <div
-    class="flex md:justify-end gap-4 text-sm md:text-base font-bold text-gray-700 uppercase place-items-center w-full mr-4 md:mr-0"
+    class="flex grow justify-end items-center pr-4 md:pr-8"
   >
-    <div class="md:visible hidden md:block grow justify-end">
+    <div class="hidden md:block">
       <SocialLinks />
     </div>
   </div>

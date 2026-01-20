@@ -1,8 +1,10 @@
 <button
-  class="theme-button dark:bg-slate-300 dark:rounded"
+  onclick="handleThemeToggle()"
+  class="theme-button p-2 rounded-lg hover:bg-gray-200 dark:hover:bg-gray-700 transition-colors"
   aria-label="botón modo oscuro"
 >
   <svg
+    id="dark-theme-icon"
     xmlns="http://www.w3.org/2000/svg"
     width="16"
     height="16"
@@ -12,7 +14,7 @@
     stroke-width="2"
     stroke-linecap="round"
     stroke-linejoin="round"
-    class="w-6 h-6 fill-yellow-400 dark-theme-icon"
+    class="w-6 h-6 fill-yellow-400"
   >
     <circle cx="12" cy="12" r="5"></circle>
     <line x1="12" y1="1" x2="12" y2="3"></line>
@@ -25,7 +27,8 @@
     <line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line>
   </svg>
   <svg
-    class="w-6 h-6 fill-current hidden light-theme-icon"
+    id="light-theme-icon"
+    class="w-6 h-6 fill-current hidden"
     viewBox="0 0 20 20"
     xmlns="http://www.w3.org/2000/svg"
     ><path d="M17.293 13.293A8 8 0 016.707 2.707a8.001 8.001 0 1010.586 10.586z"
@@ -33,69 +36,40 @@
   </svg>
 </button>
 
-<script>
-  
-</script>
-
 <script is:inline>
-  const setMode = () => {
-    const buttons = document.querySelectorAll(".theme-button");
-    const lightIco = document.querySelectorAll(".light-theme-icon");
-    const darkIco = document.querySelectorAll(".dark-theme-icon");
+  window.updateThemeIcons = function() {
+    const isDark = document.documentElement.classList.contains("dark");
+    const lightIco = document.getElementById("light-theme-icon");
+    const darkIco = document.getElementById("dark-theme-icon");
 
-    if (
-      localStorage.theme === "dark" ||
-      (!("theme" in localStorage) &&
-        window.matchMedia("(prefers-color-scheme: dark)").matches)
-    ) {
-      document.documentElement.classList.add("dark");
-
-      lightIco.forEach((lightThemeIcon) =>
-        lightThemeIcon.classList.add("hidden")
-      );
-      darkIco.forEach((darkThemeIcon) =>
-        darkThemeIcon.classList.remove("hidden")
-      );
-    } else {
-      document.documentElement.classList.remove("dark");
-
-      lightIco.forEach((lightThemeIcon) =>
-        lightThemeIcon.classList.remove("hidden")
-      );
-      darkIco.forEach((darkThemeIcon) => darkThemeIcon.classList.add("hidden"));
+    if (lightIco && darkIco) {
+      if (isDark) {
+        lightIco.classList.add("hidden");
+        darkIco.classList.remove("hidden");
+      } else {
+        lightIco.classList.remove("hidden");
+        darkIco.classList.add("hidden");
+      }
     }
-
-    buttons.forEach(function (themeButton) {
-      themeButton.addEventListener("click", () => {
-        if (document.documentElement.classList.contains("dark")) {
-          document.documentElement.classList.remove("dark");
-          document.documentElement.classList.add("light");
-          lightIco.forEach((lightThemeIcon) =>
-            lightThemeIcon.classList.remove("hidden")
-          );
-          darkIco.forEach((darkThemeIcon) =>
-            darkThemeIcon.classList.add("hidden")
-          );
-          localStorage.theme = "light";
-        } else {
-          document.documentElement.classList.remove("light");
-          document.documentElement.classList.add("dark");
-          lightIco.forEach((lightThemeIcon) =>
-            lightThemeIcon.classList.add("hidden")
-          );
-          darkIco.forEach((darkThemeIcon) =>
-            darkThemeIcon.classList.remove("hidden")
-          );
-          localStorage.theme = "dark";
-        }
-      });
-    });
-    
   }
 
-  // Runs on initial navigation
-  setMode()
+  window.handleThemeToggle = function() {
+    const isDark = document.documentElement.classList.toggle("dark");
+    localStorage.setItem("theme", isDark ? "dark" : "light");
+    updateThemeIcons();
+  }
 
-  // Runs on view transitions navigation
-  document.addEventListener('astro:after-swap', setMode)
+  window.initTheme = function() {
+    const theme = localStorage.getItem("theme") || 
+      (window.matchMedia("(prefers-color-scheme: dark)").matches ? "dark" : "light");
+    
+    document.documentElement.classList.toggle("dark", theme === "dark");
+    updateThemeIcons();
+  }
+
+  // Initial load
+  initTheme();
+
+  // After View Transitions swap
+  document.addEventListener("astro:after-swap", initTheme);
 </script>

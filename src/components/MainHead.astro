@@ -30,11 +30,11 @@ const {
   rel="stylesheet"
 />
 
-<script>
+<script is:inline>
   // It's best to inline this in `head` to avoid FOUC (flash of unstyled content) when changing pages or themes
   if (
-    localStorage.getItem("color-theme") === "dark" ||
-    (!("color-theme" in localStorage) &&
+    localStorage.getItem("theme") === "dark" ||
+    (!("theme" in localStorage) &&
       window.matchMedia("(prefers-color-scheme: dark)").matches)
   ) {
     document.documentElement.classList.add("dark");
