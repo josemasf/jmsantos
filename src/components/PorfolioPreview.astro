@@ -28,9 +28,12 @@ const cldImg = new Cloudinary({
   },
 });
 
-let cldSrc = cldImg.image(`jmsantos${frontmatter.img}`);
+const isCloudinary = frontmatter.img && !frontmatter.img.startsWith('http') && !frontmatter.img.startsWith('/assets');
+let imgSrc = frontmatter.img;
 
-//cldSrc.setDeliveryType("fecht");
+if (isCloudinary) {
+  imgSrc = cldImg.image(`jmsantos${frontmatter.img}`).toURL();
+}
 ---
 
 <article
@@ -50,7 +53,7 @@ let cldSrc = cldImg.image(`jmsantos${frontmatter.img}`);
   <div class="hidden sm:block sm:basis-56">
     <img
       alt={`${frontmatter.title} cover`}
-      src={`${cldSrc.toURL()}`}
+      src={imgSrc}
       class="aspect-square h-full w-full object-cover"
       loading="lazy"
     />
