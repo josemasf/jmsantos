@@ -5,75 +5,179 @@ const { content } = Astro.props;
 ---
 
 <MainLayout title={content.title} description={content.description}>
-  <div class="bg-slate-200 dark:bg-slate-900">
-    <section class="bg-slate-200 dark:bg-slate-900 flex lg:container">
-      <picture class="hidden md:block">
-        <img class="h-full" src={content.img} loading="lazy" />
-      </picture>
-      <div
-        class="relative px-4 py-32 mx-auto max-w-screen-md lg:items-center md:flex"
-      >
-        <div class="max-w-xl text-center sm:text-left">          
-          <h1 class="text-3xl font-extrabold sm:text-5xl truncate w-full leading-tight">
+  <!-- Hero Section -->
+  <header class="relative bg-slate-50 dark:bg-slate-900 border-b border-slate-200 dark:border-slate-800">
+    <div class="container mx-auto px-6 py-12 lg:py-24">
+      <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
+        <!-- Content -->
+        <div class="order-2 lg:order-1 space-y-6 text-center lg:text-left">
+          <div class="flex flex-wrap gap-2 justify-center lg:justify-start">
+            {content.tags && content.tags.map((tag) => (
+              <span class="px-3 py-1 text-xs font-bold uppercase tracking-wider bg-indigo-100 dark:bg-indigo-900/50 text-indigo-700 dark:text-indigo-300 rounded-full">
+                {tag}
+              </span>
+            ))}
+          </div>
+          
+          <h1 class="text-4xl md:text-6xl font-black text-slate-900 dark:text-white leading-tight">
             {content.title}
           </h1>
 
-          <p class="max-w-lg mt-4 sm:leading-relaxed sm:text-xl">
+          <p class="text-xl text-slate-600 dark:text-slate-400 max-w-2xl leading-relaxed">
             {content.description}
           </p>
 
-          <div class="flex flex-wrap mt-8 text-center gap-4">
-            {
-              content.urlSite && (
-                <a
-                  class="block w-full px-12 py-3 text-sm font-medium text-white rounded-sm shadow-sm bg-indigo-600 sm:w-auto active:bg-indigo-500 hover:bg-indigo-700 focus:outline-hidden focus:ring-3"
-                  href={content.urlSite}
-                  target="_blank"
-                >
-                  Ver sitio
-                </a>
-              )
-            }
-            {
-              content.github && (
-                <a
-                  class="flex flex-wrap gap-4 flex-initial w-full px-12 py-3 text-sm font-medium bg-white rounded-sm shadow-sm text-indigo-600 sm:w-auto hover:text-indigo-700 active:text-indigo-500 focus:outline-hidden focus:ring-3"
-                  href={content.github}
-                  target="_blank"
-                >
-                  <div>
-                    <svg
-                      class="fill-black dark:fill-slate-300 w-6 h-6"
-                      xmlns="http://www.w3.org/2000/svg"
-                      viewBox="0 0 16 16"
-                    >
-                      <path d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.012 8.012 0 0 0 16 8c0-4.42-3.58-8-8-8z" />
-                    </svg>
-                  </div>
-                  <div>Repositorio</div>
-                </a>
-              )
-            }
+          <div class="flex flex-wrap justify-center lg:justify-start gap-4 pt-4">
+            {content.urlSite && (
+              <a
+                href={content.urlSite}
+                target="_blank"
+                class="inline-flex items-center px-8 py-4 bg-indigo-600 hover:bg-indigo-700 text-white font-bold rounded-xl shadow-lg shadow-indigo-600/20 transition-all hover:-translate-y-1 active:scale-95"
+              >
+                Visitar sitio
+                <svg class="ml-2 w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14" />
+                </svg>
+              </a>
+            )}
+            {content.github && (
+              <a
+                href={content.github}
+                target="_blank"
+                class="inline-flex items-center px-8 py-4 bg-white dark:bg-slate-800 border-2 border-slate-200 dark:border-slate-700 text-slate-900 dark:text-white font-bold rounded-xl hover:bg-slate-50 dark:hover:bg-slate-700 transition-all hover:-translate-y-1 active:scale-95"
+              >
+                <svg class="mr-2 w-6 h-6 fill-current" viewBox="0 0 16 16">
+                  <path d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.012 8.012 0 0 0 16 8c0-4.42-3.58-8-8-8z" />
+                </svg>
+                Código fuente
+              </a>
+            )}
+          </div>
+        </div>
+
+        <!-- Image -->
+        <div class="order-1 lg:order-2">
+          <div class="relative group">
+            <div class="absolute -inset-1 bg-gradient-to-r from-indigo-500 to-cyan-500 rounded-2xl blur opacity-25 group-hover:opacity-50 transition duration-1000 group-hover:duration-200"></div>
+            <img
+              src={content.img}
+              alt={content.title}
+              class="relative rounded-2xl shadow-2xl w-full object-cover aspect-video lg:aspect-square transition-transform duration-500 hover:scale-[1.02]"
+              loading="eager"
+            />
           </div>
         </div>
       </div>
-    </section>
-  </div>
-  <div
-    class="container md:max-w-screen-md max-w-fit p-5 prose md:prose-lg lg:prose-xl"
-  >
-    <article
-      class="space-y-4 text-gray-600 dark:text-slate-400 prose lg:prose-xl prose-h2:dark:text-slate-200 prose-h1:dark:text-slate-300 prose-h3:dark:text-slate-200 prose-a:dark:text-orange-400"
-    >
-      <slot />
-    </article>
-  </div>
+    </div>
+  </header>
 
-  <footer class="flex justify-center">
-    <a
-      href="/porfolio/"
-      class="bg-gray-300 hover:bg-gray-400 text-gray-800 font-bold py-2 px-4 rounded-sm inline-flex items-center"
-      >Ver otros proyectos</a
-    >
-  </footer>
+  <!-- Main Content -->
+  <main class="container mx-auto px-6 py-16 relative">
+    <!-- Background Decoration -->
+    <div class="absolute top-0 left-1/2 -translate-x-1/2 w-full h-full -z-10 opacity-[0.03] dark:opacity-[0.05] pointer-events-none">
+      <svg width="100%" height="100%" xmlns="http://www.w3.org/2000/svg">
+        <defs>
+          <pattern id="grid" width="40" height="40" patternUnits="userSpaceOnUse">
+            <path d="M 40 0 L 0 0 0 40" fill="none" stroke="currentColor" stroke-width="1"/>
+          </pattern>
+        </defs>
+        <rect width="100%" height="100%" fill="url(#grid)" />
+      </svg>
+    </div>
+
+    <div class="grid grid-cols-1 lg:grid-cols-12 gap-12">
+      <!-- Sidebar: Meta Info -->
+      <aside class="lg:col-span-4 lg:sticky lg:top-8 h-fit space-y-8 order-2 lg:order-1">
+        <div class="relative group">
+          <div class="absolute -inset-0.5 bg-gradient-to-b from-indigo-500/20 to-transparent rounded-[2.5rem] blur opacity-75 group-hover:opacity-100 transition duration-1000"></div>
+          <div class="relative bg-white dark:bg-slate-900 p-8 md:p-10 rounded-[2.5rem] border border-slate-200/60 dark:border-slate-800/60 shadow-xl shadow-slate-200/40 dark:shadow-none">
+            <div class="flex items-center gap-3 mb-8">
+              <div class="w-8 h-1 bg-indigo-600 rounded-full"></div>
+              <h3 class="text-xs font-black uppercase tracking-[0.2em] text-slate-400">Specs</h3>
+            </div>
+            
+            <div class="space-y-8">
+              {content.client && (
+                <div class="group/item">
+                  <p class="text-[10px] font-black text-indigo-600 dark:text-indigo-400 uppercase tracking-widest mb-2 transition-colors">Cliente</p>
+                  <p class="text-xl font-black text-slate-900 dark:text-white group-hover/item:text-indigo-600 dark:group-hover/item:text-indigo-400 transition-colors">{content.client}</p>
+                </div>
+              )}
+              
+              {content.tags && (
+                <div>
+                  <p class="text-[10px] font-black text-indigo-600 dark:text-indigo-400 uppercase tracking-widest mb-4">Tech Heap</p>
+                  <div class="flex flex-wrap gap-2">
+                    {content.tags.map(tag => (
+                      <span class="px-3 py-1.5 bg-slate-50 dark:bg-slate-800/50 text-slate-600 dark:text-slate-400 rounded-xl text-xs font-bold border border-slate-100 dark:border-slate-800 hover:border-indigo-500/30 transition-colors cursor-default">
+                        {tag}
+                      </span>
+                    ))}
+                  </div>
+                </div>
+              )}
+
+              <div>
+                <p class="text-[10px] font-black text-indigo-600 dark:text-indigo-400 uppercase tracking-widest mb-2">Lanzamiento</p>
+                <div class="flex items-baseline gap-2">
+                  <span class="text-3xl font-black text-slate-900 dark:text-white">
+                    {new Date(content.publishDate).getFullYear()}
+                  </span>
+                  <span class="text-sm font-bold text-slate-400">
+                    {new Date(content.publishDate).toLocaleDateString('es-ES', { month: 'short' }).toUpperCase()}
+                  </span>
+                </div>
+              </div>
+            </div>
+
+            <div class="mt-12 pt-8 border-t border-slate-100 dark:border-slate-800 flex flex-col gap-4">
+              {content.urlSite && (
+                <a href={content.urlSite} target="_blank" class="flex items-center justify-between px-6 py-4 bg-indigo-600 text-white font-black rounded-2xl hover:bg-indigo-700 transition-all hover:scale-[1.02] active:scale-95 shadow-lg shadow-indigo-600/30">
+                  <span>Live Demo</span>
+                  <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M14 5l7 7m0 0l-7 7m7-7H3"/></svg>
+                </a>
+              )}
+              {content.github && (
+                <a href={content.github} target="_blank" class="flex items-center justify-between px-6 py-4 bg-slate-900 dark:bg-slate-800 text-white font-black rounded-2xl hover:bg-black dark:hover:bg-slate-700 transition-all hover:scale-[1.02] active:scale-95 shadow-xl">
+                  <span>Repository</span>
+                  <svg class="w-5 h-5 fill-current" viewBox="0 0 16 16"><path d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.012 8.012 0 0 0 16 8c0-4.42-3.58-8-8-8z" /></svg>
+                </a>
+              )}
+            </div>
+          </div>
+        </div>
+      </aside>
+
+      <!-- Content Area -->
+      <article class="lg:col-span-8 order-1 lg:order-2">
+        <div class="bg-white dark:bg-slate-900/80 backdrop-blur-xl p-8 md:p-16 rounded-[3rem] border border-slate-200/50 dark:border-slate-800/50 shadow-2xl shadow-slate-200/60 dark:shadow-none relative overflow-hidden">
+          <!-- Decorative faint gradient -->
+          <div class="absolute -top-24 -right-24 w-64 h-64 bg-indigo-500/5 blur-[100px] rounded-full"></div>
+          <div class="absolute -bottom-24 -left-24 w-64 h-64 bg-cyan-500/5 blur-[100px] rounded-full"></div>
+
+          <div class="prose prose-slate dark:prose-invert max-w-none 
+              prose-headings:font-black prose-headings:tracking-[-0.02em]
+              prose-h2:text-4xl prose-h2:mb-8 prose-h2:pb-6 prose-h2:border-b prose-h2:border-slate-100 dark:prose-h2:border-slate-800/60
+              prose-p:text-slate-600 dark:prose-p:text-slate-400 prose-p:leading-[1.8] prose-p:text-lg
+              prose-strong:text-slate-900 dark:prose-strong:text-white prose-strong:font-black
+              prose-ul:space-y-4 prose-li:marker:text-indigo-500 prose-li:pl-2
+              prose-img:rounded-3xl prose-img:shadow-2xl prose-img:border prose-img:border-slate-100 dark:prose-img:border-slate-800
+              prose-code:bg-slate-50 dark:prose-code:bg-slate-950 prose-code:text-indigo-600 dark:prose-code:text-indigo-400 prose-code:px-2 prose-code:py-0.5 prose-code:rounded-lg prose-code:before:content-none prose-code:after:content-none prose-code:font-bold
+              prose-blockquote:border-l-8 prose-blockquote:border-indigo-600 prose-blockquote:bg-slate-50 dark:prose-blockquote:bg-slate-800/30 prose-blockquote:px-8 prose-blockquote:py-4 prose-blockquote:rounded-r-3xl prose-blockquote:not-italic prose-blockquote:font-medium">
+              <slot />
+          </div>
+
+          <footer class="mt-24 pt-12 border-t border-slate-100 dark:border-slate-800/60">
+            <a href="/porfolio/" class="group flex items-center gap-4 text-slate-400 hover:text-indigo-600 transition-all">
+              <div class="w-12 h-12 flex items-center justify-center rounded-full border border-slate-200 dark:border-slate-800 group-hover:border-indigo-600 group-hover:bg-indigo-600 group-hover:text-white transition-all">
+                <svg class="w-5 h-5 transition-transform group-hover:-translate-x-1" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M10 19l-7-7m0 0l7-7m-7 7h18" /></svg>
+              </div>
+              <span class="text-lg font-black tracking-tight text-slate-800 dark:text-slate-200 group-hover:text-indigo-600">Explorar otros proyectos</span>
+            </a>
+          </footer>
+        </div>
+      </article>
+    </div>
+  </main>
+</MainLayout>
 </MainLayout>
