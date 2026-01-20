@@ -1,5 +1,5 @@
 import { defineConfig } from "astro/config";
-import tailwind from "@astrojs/tailwind";
+import tailwindcss from "@tailwindcss/vite";
 import sitemap from "@astrojs/sitemap";
 import robotsTxt from "astro-robots-txt";
 import partytown from "@astrojs/partytown";
@@ -7,16 +7,12 @@ import partytown from "@astrojs/partytown";
 // https://astro.build/config
 export default defineConfig({
   site: "https://josemariasantos.com/",
-  theme: {
-    container: {
-      center: true,
-    },
-  },
   build: {
     inlineStylesheets: "auto",
   },
   compressHTML: true,
   vite: {
+    plugins: [tailwindcss()],
     build: {
       cssCodeSplit: true,
       rollupOptions: {
@@ -34,9 +30,6 @@ export default defineConfig({
     },
   },
   integrations: [
-    tailwind({
-      applyBaseStyles: false,
-    }),
     robotsTxt(),
     sitemap({
       lastmod: new Date(),

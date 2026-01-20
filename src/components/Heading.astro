@@ -7,7 +7,7 @@ const { bgImage } = Astro.props;
   style=`background-image: url('${bgImage}')`
 >
   <div
-    class="pl-5 opacity-100 bg-gray-50 dark:bg-gray-800 h-full bg-opacity-50 dark:bg-opacity-50 flex flex-col justify-center"
+    class="pl-5 opacity-100 bg-gray-50/50 dark:bg-gray-800/50 h-full flex flex-col justify-center"
   >
     <h1 class="font-extrabold md:text-md text-[2em]"><slot name="title" /></h1>
   </div>
