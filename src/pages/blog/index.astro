@@ -1,0 +1,28 @@
+---
+import { getCollection } from "astro:content";
+import PostPreview from "@components/PostPreview.astro";
+import MainLayout from "@layouts/MainLayout.astro";
+
+const posts = (await getCollection("posts")).sort(
+  (a, b) => b.data.date.valueOf() - a.data.date.valueOf(),
+);
+---
+
+<MainLayout title="Blog | José María Santos" description="Artículos de José María Santos sobre frontend, arquitectura, calidad y producto.">
+  <main id="main-content">
+    <section class="relative isolate overflow-hidden border-b border-slate-200 bg-slate-950 py-20 text-white dark:border-slate-800 md:py-28">
+      <div class="absolute -left-24 top-0 -z-10 h-72 w-72 rounded-full bg-cyan-400/20 blur-3xl"></div>
+      <div class="absolute -right-20 bottom-0 -z-10 h-80 w-80 rounded-full bg-indigo-500/30 blur-3xl"></div>
+      <div class="container mx-auto px-6 md:px-10">
+        <p class="section-kicker text-cyan-200">Ideas y aprendizajes</p>
+        <h1 class="mt-4 max-w-3xl font-display text-5xl font-bold leading-[.95] tracking-tight md:text-7xl">Blog</h1>
+        <p class="mt-6 max-w-2xl text-lg leading-relaxed text-slate-200 md:text-xl">Notas prácticas sobre frontend, arquitectura, calidad y las decisiones que hacen avanzar a los equipos.</p>
+      </div>
+    </section>
+    <section class="container mx-auto px-6 py-16 md:px-10 md:py-24">
+      <div class="grid gap-6 md:grid-cols-2 xl:grid-cols-3">
+        {posts.map((post) => <PostPreview post={post} />)}
+      </div>
+    </section>
+  </main>
+</MainLayout>

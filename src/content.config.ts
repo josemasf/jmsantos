@@ -25,7 +25,23 @@ const presentationsCollection = defineCollection({
   }),
 });
 
+const postsCollection = defineCollection({
+  loader: glob({
+    base: "./src/content/posts",
+    pattern: "**/*.md",
+    generateId: ({ entry }) => entry.replace(/\.md$/, "").replace(/^\d+-/, ""),
+  }),
+  schema: z.object({
+    title: z.string(),
+    description: z.string(),
+    date: z.coerce.date(),
+    tags: z.array(z.string()),
+    category: z.string(),
+  }),
+});
+
 export const collections = {
   jobs: jobsCollection,
   presentations: presentationsCollection,
+  posts: postsCollection,
 };
