@@ -15,24 +15,15 @@ const porfolio = Object.values(
 ---
 
 <MainLayout
-  title="Sobre mi | José María Santos"
-  description="Porfolio de José María Santos"
+  title="Portfolio | José María Santos"
+  description="Proyectos de frontend, arquitectura y producto de José María Santos"
 >
-  <div class="mt-5 container mx-auto px-5">
-    <h1 class="font-bold text-4xl mb-4">Proyectos</h1>
-    <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+  <main id="main-content" class="container mx-auto px-6 py-16 md:px-10 md:py-24">
+    <p class="section-kicker">Trabajo seleccionado</p>
+    <h1 class="mt-3 font-display text-5xl font-bold text-slate-900 dark:text-white">Portfolio</h1>
+    <p class="mt-5 max-w-2xl text-lg leading-relaxed text-slate-600 dark:text-slate-300">Productos y experimentos donde exploro interfaces, arquitectura y experiencias digitales.</p>
+    <div class="mt-12 grid grid-cols-1 gap-6 md:grid-cols-2 xl:grid-cols-3">
       {porfolio.map((project) => <PorfolioPreview presentation={project} />)}
     </div>
-  </div>
+  </main>
 </MainLayout>
-
-<style>
-  .grid {
-    display: grid;
-    grid-gap: 3rem;
-  }
-  .title {
-    margin-top: 2rem;
-    margin-bottom: 2rem;
-  }
-</style>

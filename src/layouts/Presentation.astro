@@ -5,10 +5,11 @@ const { content } = Astro.props;
 ---
 
 <MainLayout title={content.title} description={content.description}>
+  <main id="main-content">
   <div class="bg-slate-200 dark:bg-slate-900">
     <section class="bg-slate-200 dark:bg-slate-900 flex lg:container">
       <picture class="hidden md:block">
-        <img class="h-full" src={content.img} loading="lazy" />
+        <img class="h-full" src={content.img} alt={`Portada de la ponencia ${content.title}`} loading="lazy" />
       </picture>
       <div
         class="relative px-4 py-32 mx-auto max-w-screen-md lg:items-center md:flex"
@@ -27,6 +28,7 @@ const { content } = Astro.props;
               class="block w-full px-12 py-3 text-sm font-medium text-white rounded-sm shadow-sm bg-indigo-600 sm:w-auto active:bg-indigo-500 hover:bg-indigo-700 focus:outline-hidden focus:ring-3"
               href={content.urlPresentation}
               target="_blank"
+              rel="noopener noreferrer"
             >
               Ver presentación
             </a>
@@ -35,6 +37,7 @@ const { content } = Astro.props;
               class="flex flex-wrap gap-4 flex-initial w-full px-12 py-3 text-sm font-medium bg-white rounded-sm shadow-sm text-indigo-600 sm:w-auto hover:text-indigo-700 active:text-indigo-500 focus:outline-hidden focus:ring-3"
               href={content.github}
               target="_blank"
+              rel="noopener noreferrer"
             >
               <div>
                 <svg
@@ -63,6 +66,7 @@ const { content } = Astro.props;
       <img
         class="absolute -left-6 w-28 rounded-r-lg shadow-lg"
         src="https://res.cloudinary.com/dzrgc7fqy/image/upload/f_auto,q_auto/v1676109246/jmsantos/yo_d9atyf.webp"
+        alt="José María Santos"
         loading="lazy"
       />
       <div class="min-w-0 py-5 pl-28 pr-5">
@@ -97,4 +101,5 @@ const { content } = Astro.props;
       >Ver ponencias</a
     >
   </footer>
+  </main>
 </MainLayout>

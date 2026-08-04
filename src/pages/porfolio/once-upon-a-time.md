@@ -14,7 +14,7 @@ tags:
 
 Proyecto presentado en la hackathon de Midudev cuyo objetivo principal era el uso de una API de IA de Cohere.
 
-# One upon a time
+## One upon a time
 
 ![-----------------------------------------------------](https://raw.githubusercontent.com/andreasbm/readme/master/assets/lines/rainbow.png)
 

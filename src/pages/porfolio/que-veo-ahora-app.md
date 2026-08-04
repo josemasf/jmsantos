@@ -14,7 +14,7 @@ tags:
   - OneSignal
 ---
 
-# 🍿 Qué Veo Ahora (La Aplicación)
+## 🍿 Qué Veo Ahora (La Aplicación)
 
 Si el proyecto anterior era el "cerebro" que escribía críticas, **Qué Veo Ahora** es la cara visible: una aplicación web diseñada para resolver el eterno dilema de *"¿qué vemos hoy?"*. 
 

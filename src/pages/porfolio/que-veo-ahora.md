@@ -13,7 +13,7 @@ tags:
   - Monorepo
 ---
 
-# 🎬 Qué Veo Ahora
+## 🎬 Qué Veo Ahora
 
 **Qué Veo Ahora** es un proyecto personal que explora la intersección entre el cine y la inteligencia artificial. Se trata de un **monorepo** que gestiona tanto un blog de críticas cinematográficas de alto rendimiento como un motor de generación de contenido inteligente.
 

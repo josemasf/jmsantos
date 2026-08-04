@@ -15,28 +15,19 @@ const presentations = Object.values(
 ---
 
 <MainLayout
-  title="Sobre mi | José María Santos"
-  description="Porfolio de José María Santos"
+  title="Ponencias | José María Santos"
+  description="Ponencias de José María Santos sobre frontend, testing y arquitectura"
 >
-  <div class="mt-5 container mx-auto px-5">
-    <h1 class="font-bold text-4xl mb-4">Ponencias</h1>
-    <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+  <main id="main-content" class="container mx-auto px-6 py-16 md:px-10 md:py-24">
+    <p class="section-kicker">Compartir conocimiento</p>
+    <h1 class="mt-3 font-display text-5xl font-bold text-slate-900 dark:text-white">Ponencias</h1>
+    <p class="mt-5 max-w-2xl text-lg leading-relaxed text-slate-600 dark:text-slate-300">Charlas sobre las prácticas y tecnologías que uso para construir software mantenible.</p>
+    <div class="mt-12 grid grid-cols-1 gap-6 md:grid-cols-2 xl:grid-cols-3">
       {
         presentations.map((presentation) => (
           <PresentationPreview presentation={presentation} />
         ))
       }
     </div>
-  </div>
+  </main>
 </MainLayout>
-
-<style>
-  .grid {
-    display: grid;
-    grid-gap: 3rem;
-  }
-  .title {
-    margin-top: 2rem;
-    margin-bottom: 2rem;
-  }
-</style>

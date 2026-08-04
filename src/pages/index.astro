@@ -1,141 +1,67 @@
 ---
 import PorfolioPreview from "@components/PorfolioPreview.astro";
 import PresentationPreview from "@components/PresentationPreview.astro";
-import RoleItem from "@components/RoleItem.astro";
-
 import MainLayout from "@layouts/MainLayout.astro";
 
-// Data Fetching: List all Markdown posts in the repo.
-const presentations = Object.values(
-  import.meta.glob<{ frontmatter: { publishDate: string } }>("./presentations/**/*.md", { eager: true })
-);
-const featuredProject = presentations
-  .sort(
-    (a, b) =>
-      new Date(b.frontmatter.publishDate).valueOf() -
-      new Date(a.frontmatter.publishDate).valueOf()
-  )
-  .slice(0, 2);
-
-const porfolios = Object.values(
-  import.meta.glob<{ frontmatter: { publishDate: string } }>("./porfolio/**/*.md", { eager: true })
-);
-const porfolioProject = porfolios
-  .sort(
-    (a, b) =>
-      new Date(b.frontmatter.publishDate).valueOf() -
-      new Date(a.frontmatter.publishDate).valueOf()
-  )
-  .slice(0, 4);
+const byNewest = (a: any, b: any) => new Date(b.frontmatter.publishDate).valueOf() - new Date(a.frontmatter.publishDate).valueOf();
+const projects = Object.values(import.meta.glob<{ frontmatter: { publishDate: string } }>("./porfolio/**/*.md", { eager: true })).sort(byNewest);
+const presentations = Object.values(import.meta.glob<{ frontmatter: { publishDate: string } }>("./presentations/**/*.md", { eager: true })).sort(byNewest);
+const featuredProjects = projects.slice(0, 3);
+const featuredPresentations = presentations.slice(0, 2);
 ---
 
-<MainLayout>
-  <header
-    class="h-40 md:h-60 overflow-hidden relative bg-[url('https://res.cloudinary.com/dzrgc7fqy/image/upload/w_1000,ar_16:9,c_fill,g_auto,e_sharpen/v1676315962/jmsantos/assets/cordoba-spain.avif')] bg-no-repeat bg-center lg:bg-bottom bg-fixed bg-cover"
-  >
-    <div
-      class="pl-5 opacity-100 bg-gray-50/50 dark:bg-gray-800/50 h-full flex flex-col justify-center"
-    >
-      <h1 class="font-extrabold md:text-md text-[2em]">
-        <small class="block text-[0.5em] tracking-tight">El rincón de</small
-        >José María Santos
-      </h1>
-      <div class="flex flex-wrap gap-3 md:text-base text-sm">
-        <RoleItem>👩‍💻 Desarrollador</RoleItem>
-        <RoleItem>🎤 Orador</RoleItem>
-        <RoleItem>✏️ Escritor</RoleItem>
-      </div>
-    </div>
-  </header>
-
-  <main class="container mx-auto m-5">
-    <div class="grid grid-cols-7 px-5">
-      <div class="md:col-span-5 col-span-7">
-        <h1 class="font-bold text-4xl pt-5 mb-4">Porfolio</h1>
-        <div class="grid grid-cols-1 xl:grid-cols-2 gap-4">
-          {
-            porfolioProject.map((porfolio) => (
-              <div>
-                <PorfolioPreview presentation={porfolio} />
-              </div>
-            ))
-          }
-        </div>
-
-        <div class="text-center mt-4">
-          <a
-            href="/porfolio/"
-            class="bg-gray-300 hover:bg-gray-400 text-gray-800 font-bold py-2 px-4 rounded-sm inline-flex items-center"
-            >Ver todos</a
-          >
-        </div>
-
-        <h1 class="font-bold text-4xl pt-5 mb-4">Ponencias</h1>
-        <div class="grid grid-cols-1 xl:grid-cols-2 gap-4">
-          {
-            featuredProject.map((project) => (
-              <div>
-                <PresentationPreview presentation={project} />
-              </div>
-            ))
-          }
-        </div>
-
-        <div class="text-center mt-4">
-          <a
-            href="/presentations/"
-            class="bg-gray-300 hover:bg-gray-400 text-gray-800 font-bold py-2 px-4 rounded-sm inline-flex items-center"
-            >Ver todas</a
-          >
+<MainLayout title="José María Santos | Frontend Tech Lead" description="Portfolio de José María Santos, Frontend Tech Lead especializado en Vue, arquitectura y productos web.">
+  <main id="main-content">
+    <section class="relative isolate overflow-hidden bg-slate-950 text-white">
+      <div class="absolute inset-0 -z-20 bg-[url('/assets/cordoba-spain.avif')] bg-cover bg-center opacity-25"></div>
+      <div class="absolute -left-32 top-0 -z-10 h-96 w-96 rounded-full bg-cyan-400/20 blur-3xl"></div>
+      <div class="absolute -right-24 bottom-0 -z-10 h-80 w-80 rounded-full bg-indigo-500/30 blur-3xl"></div>
+      <div class="container mx-auto px-6 py-24 md:px-10 md:py-32 lg:py-40">
+        <p class="section-kicker text-cyan-200">Portfolio · Córdoba, España</p>
+        <h1 class="mt-5 max-w-4xl font-display text-5xl font-bold leading-[.95] tracking-tight md:text-7xl">Construyo interfaces que hacen que los productos se sientan simples.</h1>
+        <p class="mt-7 max-w-2xl text-lg leading-relaxed text-slate-200 md:text-xl">Soy José María Santos, Frontend Tech Lead. Combino Vue, arquitectura y producto para convertir retos complejos en experiencias web claras y rápidas.</p>
+        <div class="mt-10 flex flex-wrap gap-4">
+          <a href="#proyectos" class="inline-flex min-h-12 items-center rounded-lg bg-cyan-300 px-6 py-3 font-extrabold text-slate-950 transition hover:bg-cyan-200">Ver proyectos <span class="ml-2" aria-hidden="true">↓</span></a>
+          <a href="https://www.linkedin.com/in/jos%C3%A9-mar%C3%ADa-santos-90a8a73a/" target="_blank" rel="noopener noreferrer" class="inline-flex min-h-12 items-center rounded-lg border border-white/40 px-6 py-3 font-bold text-white transition hover:border-white hover:bg-white/10">LinkedIn <span class="ml-2" aria-hidden="true">↗</span></a>
         </div>
       </div>
-      <div class="md:col-span-2 col-span-7 m-5">
-        <div
-          class="w-full mt-5 max-w-sm bg-white rounded-lg border border-gray-200 shadow-md dark:bg-gray-800 dark:border-gray-700"
-        >
-          <div
-            class="bg-gradient-to-r from-cyan-700 to-indigo-700 font-bold dark:from-cyan-900 dark:to-indigo-900 text-white text-xl p-3 rounded-t-lg"
-          >
-            Sobre mi
-          </div>
-          <div class="flex flex-col items-center pb-10">
-            <img
-              class="mt-5 mb-3 w-80 h-100 rounded-full shadow-lg"
-              src="https://res.cloudinary.com/dzrgc7fqy/image/upload/v1676315961/jmsantos/assets/yo.webp"
-              alt="Foto José María Santos"
-              height="100"
-              width="80"
-              loading="lazy"
-            />
-            <p
-              class="mb-1 text-xl font-medium text-gray-900 dark:text-white text-center"
-            >
-              José María Santos
-            </p>
-            <span class="text-sm text-gray-500 dark:text-gray-400">
-              Web Developer
-            </span>
-            <div class="p-2 text-base">
-              <p>
-                <span>Hola</span> Me llamo Jose y llevo programando desde el 2007
-                de forma profesional. En todo este tiempo he tocado mucho tipo de
-                tenologías.
-              </p>
-              <p class="mt-3">
-                C#, servicios SOAP, REST Apis, VUE, arquitecturas monorepo,
-                microfront, MVC, ...
-              </p>
-            </div>
-            <p>
-              <a
-                href="/about"
-                class="bg-gray-300 hover:bg-gray-400 text-gray-800 font-bold py-2 px-4 rounded-sm inline-flex items-center"
-                >Conocerme más</a
-              >
-            </p>
-          </div>
+    </section>
+
+    <section id="proyectos" class="container mx-auto px-6 py-20 md:px-10 md:py-28">
+      <div class="flex flex-col justify-between gap-6 sm:flex-row sm:items-end">
+        <div>
+          <p class="section-kicker">Trabajo seleccionado</p>
+          <h2 class="mt-3 font-display text-4xl font-bold text-slate-900 dark:text-white md:text-5xl">Proyectos recientes</h2>
+          <p class="mt-4 max-w-xl text-slate-600 dark:text-slate-300">Productos, experimentos y herramientas donde el diseño de interfaz y la ingeniería avanzan juntos.</p>
+        </div>
+        <a href="/porfolio/" class="hidden font-bold text-indigo-700 hover:text-indigo-900 sm:inline-flex dark:text-indigo-300 dark:hover:text-white">Explorar todos <span class="ml-2" aria-hidden="true">→</span></a>
+      </div>
+      <div class="mt-10 grid gap-6 md:grid-cols-2 xl:grid-cols-3">{featuredProjects.map((project) => <PorfolioPreview presentation={project} />)}</div>
+      <div class="mt-10 text-center sm:hidden"><a href="/porfolio/" class="inline-flex min-h-12 items-center rounded-lg border border-indigo-200 px-5 py-3 font-bold text-indigo-700 dark:border-indigo-800 dark:text-indigo-300">Explorar todos los proyectos</a></div>
+    </section>
+
+    <section class="border-y border-slate-200 bg-white dark:border-slate-800 dark:bg-slate-900/40">
+      <div class="container mx-auto grid gap-10 px-6 py-20 md:grid-cols-[1fr_2fr] md:px-10 md:py-24">
+        <div>
+          <p class="section-kicker">Compartir conocimiento</p>
+          <h2 class="mt-3 font-display text-4xl font-bold text-slate-900 dark:text-white">Ponencias</h2>
+          <p class="mt-4 text-slate-600 dark:text-slate-300">Ideas prácticas sobre testing, arquitectura y frontend.</p>
+          <a href="/presentations/" class="mt-7 inline-flex font-bold text-indigo-700 hover:text-indigo-900 dark:text-indigo-300 dark:hover:text-white">Ver todas <span class="ml-2" aria-hidden="true">→</span></a>
+        </div>
+        <div class="grid gap-6 sm:grid-cols-2">{featuredPresentations.map((presentation) => <PresentationPreview presentation={presentation} />)}</div>
+      </div>
+    </section>
+
+    <section class="container mx-auto px-6 py-20 md:px-10 md:py-28">
+      <div class="grid overflow-hidden rounded-3xl bg-gradient-to-br from-indigo-950 to-slate-950 text-white md:grid-cols-[.8fr_1.2fr]">
+        <img src="/assets/yo.webp" alt="José María Santos" class="h-72 w-full object-cover object-center md:h-full" loading="lazy" />
+        <div class="p-8 md:p-12">
+          <p class="section-kicker text-cyan-200">Sobre mí</p>
+          <h2 class="mt-3 font-display text-4xl font-bold">Arquitectura con los pies en el producto.</h2>
+          <p class="mt-5 max-w-xl leading-relaxed text-slate-200">Más de una década construyendo aplicaciones web, desde backend con C# hasta equipos y plataformas frontend modernas.</p>
+          <a href="/about/" class="mt-8 inline-flex min-h-12 items-center rounded-lg bg-white px-5 py-3 font-bold text-indigo-950 transition hover:bg-cyan-100">Conocer mi trayectoria <span class="ml-2" aria-hidden="true">→</span></a>
         </div>
       </div>
-    </div>
+    </section>
   </main>
 </MainLayout>

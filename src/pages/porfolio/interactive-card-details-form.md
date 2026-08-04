@@ -14,7 +14,7 @@ tags:
 
 Reto de Frontend Mentor en el que tenemos que construir un formulario que genera de forma visual una tarjeta de crédito
 
-# Frontend Mentor - Interactive card details form solution
+## Frontend Mentor - Interactive card details form solution
 
 This is a solution to the [Interactive card details form challenge on Frontend Mentor](https://www.frontendmentor.io/challenges/interactive-card-details-form-XpS8cKZDWw). Frontend Mentor challenges help you improve your coding skills by building realistic projects.
 

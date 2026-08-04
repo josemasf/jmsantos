@@ -1,110 +1,40 @@
 ---
 import SocialLinks from "./SocialLinks.astro";
+import DarkModeToggle from "./DarkModeToggle.astro";
+
+const pathname = Astro.url.pathname;
+const links = [
+  { href: "/porfolio/", label: "Portfolio" },
+  { href: "/presentations/", label: "Ponencias" },
+  { href: "/about/", label: "Sobre mí" },
+];
+const isActive = (href: string) => pathname === href || (href !== "/" && pathname.startsWith(href));
 ---
 
-<nav
-  class="bg-gradient-to-r from-cyan-300 to-indigo-200 dark:text-white dark:from-cyan-900 dark:to-indigo-900 flex items-center h-fit py-2"
->
-  <a href="/" aria-label="Ir a inicio" class="mx-2 shrink-0">
-    <svg
-      class="md:h-24 h-14"
-      viewBox="123.24 146.126 88.029 41.08"
-      xmlns="http://www.w3.org/2000/svg"
-      xmlns:xlink="http://www.w3.org/1999/xlink"
-    >
-      <defs>
-        <path
-          id="path-0"
-          d="M 53.404 62.207 C 69.433 83.579 81.005 93.329 91.549 103.873 C 101.632 113.956 101.117 113.85 110.329 113.85 C 127.435 105.003 140.712 97.325 149.648 83.92 C 154.379 75.839 156.061 68.16 159.624 61.033 C 167.299 51.575 176.658 52.23 184.272 52.23 C 196.819 57.33 205.278 62.697 214.202 69.836 C 226.63 80.013 239.282 89.479 244.131 99.178 C 252.565 108.199 252.299 109.631 259.977 103.873 C 272.963 97.02 281.874 89.403 291.667 84.507 C 300.435 81.389 306.953 80.194 315.141 77.465 C 331.675 72.558 340.124 70.616 348.592 68.662 C 350.41 68.242 356.569 68.314 357.981 66.901 C 362.757 66.901 366.631 66.315 370.892 66.315 C 382.695 66.315 392.116 69.405 401.995 73.357 C 413.505 78.818 420.039 82.843 427.817 88.028 C 435.804 93.548 440.689 96.812 446.596 99.765 C 454.778 100.352 462.574 102.733 469.484 104.46 L 470.07 104.46"
-          style="fill: none;"></path>
-        <path
-          id="path-1"
-          d="M 96.244 119.131 C 122.714 119.131 149.52 130.017 171.362 136.737 C 187.296 141.038 193.992 142.019 201.878 142.019 C 208.993 141.432 213.979 136.494 218.897 133.216 C 227.97 121.51 231.221 107.586 231.221 97.418 C 231.221 89.292 234.45 90.521 239.437 88.028 C 259.501 82.044 272.127 81.538 286.972 84.507 C 301.873 89.1 314.404 92.686 326.291 95.657 L 326.878 95.657 L 327.465 95.657"
-          style="fill: none;"></path>
-        <style>
-          @import url(https://fonts.googleapis.com/css2?family=Montserrat+Alternates:ital,wght@0,400;1,600&display=swap);
-        </style>
-        <radialGradient
-          gradientUnits="userSpaceOnUse"
-          cx="165.786"
-          cy="168.427"
-          r="57.218"
-          id="gradient-1"
-        >
-          <stop offset="0" style="stop-color: rgba(42, 219, 210, 1)"></stop>
-          <stop offset="1" style="stop-color: rgba(23, 136, 130, 1)"></stop>
-        </radialGradient>
-        <pattern
-          x="0"
-          y="0"
-          width="25"
-          height="25"
-          patternUnits="userSpaceOnUse"
-          viewBox="0 0 100 100"
-          id="pattern-0"
-        >
-          <rect x="0" y="0" width="50" height="100" style="fill: black;"></rect>
-        </pattern>
-        <pattern
-          id="pattern-0-0"
-          patternTransform="matrix(1, 0, 0, 1, 153.285992, 155.926998)"
-          xlink:href="#pattern-0"></pattern>
-      </defs>
-      <text
-        class="fill-slate-800 dark:fill-slate-400"
-        style="font-family: 'Montserrat Alternates';
-      font-size:
-      1em;
-      font-weight:
-      700;
-      white-space:
-      pre;"
-        x="129.805"
-        y="166.08"
-        dx="0 0 0 0 0 0 0 -59.272"
-        dy="0 0 0 0 0 0 0 11.737"
-        >JoséMa Santos
-      </text>
-    </svg>
-  </a>
-  <div class="flex items-center md:gap-12 w-fit mx-2">
-    <nav aria-label="Site Nav" class="">
-      <ul class="flex items-center gap-4 md:gap-8 md:text-xl font-bold">
-        <li>
-          <a
-            class="block py-2 text-gray-700 dark:text-gray-300 hover:text-indigo-600 transition-colors"
-            href="/porfolio/"
-            aria-label="Porfolio"
-          >
-            Porfolio
-          </a>
-        </li>
-        <li>
-          <a
-            class="block py-2 text-gray-700 dark:text-gray-300 hover:text-indigo-600 transition-colors"
-            href="/presentations/"
-            aria-label="Ir a ponencias"
-          >
-            Ponencias
-          </a>
-        </li>
-        <li>
-          <a
-            class="block py-2 text-gray-700 dark:text-gray-300 hover:text-indigo-600 transition-colors"
-            href="/about/"
-            aria-label="Conocerme mejor"
-          >
-            Sobre mi
-          </a>
-        </li>
+<nav aria-label="Navegación principal" class="border-b border-cyan-950/10 bg-gradient-to-r from-cyan-100 via-sky-50 to-indigo-100 dark:border-white/10 dark:from-cyan-950 dark:via-slate-950 dark:to-indigo-950">
+  <div class="container mx-auto flex min-h-18 items-center justify-between gap-4 px-4 py-3 md:px-6">
+    <a href="/" class="font-display shrink-0 text-lg font-bold tracking-tight text-slate-900 dark:text-white" aria-label="José María Santos, inicio">José María <span class="text-indigo-700 dark:text-cyan-300">Santos</span></a>
+
+    <div class="hidden items-center gap-7 md:flex">
+      <ul class="flex items-center gap-6 font-bold text-slate-700 dark:text-slate-200">
+        {links.map((link) => <li><a href={link.href} aria-current={isActive(link.href) ? "page" : undefined} class:list={["border-b-2 py-2 transition", isActive(link.href) ? "border-indigo-700 text-indigo-800 dark:border-cyan-300 dark:text-cyan-200" : "border-transparent hover:border-indigo-400 hover:text-indigo-800 dark:hover:text-cyan-200"]}>{link.label}</a></li>)}
       </ul>
-    </nav>
-  </div>
-  <div
-    class="flex grow justify-end items-center pr-4 md:pr-8"
-  >
-    <div class="hidden md:block">
       <SocialLinks />
     </div>
+
+    <DarkModeToggle />
+
+    <details class="relative md:hidden">
+      <summary class="flex h-11 min-w-11 cursor-pointer list-none items-center justify-center rounded-lg border border-slate-300 bg-white/70 text-sm font-bold text-slate-800 marker:content-none dark:border-slate-700 dark:bg-slate-900/80 dark:text-white">
+        <span class="sr-only">Abrir menú</span>
+        <svg aria-hidden="true" class="h-5 w-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 7h16M4 12h16M4 17h16" /></svg>
+      </summary>
+      <div class="absolute right-0 top-13 z-40 w-65 rounded-xl border border-slate-200 bg-white p-3 shadow-xl dark:border-slate-700 dark:bg-slate-900">
+        <ul class="space-y-1">
+          {links.map((link) => <li><a href={link.href} aria-current={isActive(link.href) ? "page" : undefined} class:list={["block rounded-lg px-3 py-3 font-bold", isActive(link.href) ? "bg-indigo-50 text-indigo-800 dark:bg-indigo-950 dark:text-cyan-200" : "text-slate-700 hover:bg-slate-100 dark:text-slate-200 dark:hover:bg-slate-800"]}>{link.label}</a></li>)}
+        </ul>
+        <div class="mt-3 border-t border-slate-200 pt-3 dark:border-slate-700"><SocialLinks /></div>
+      </div>
+    </details>
   </div>
 </nav>
