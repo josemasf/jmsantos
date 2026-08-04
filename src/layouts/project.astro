@@ -108,7 +108,7 @@ const { content } = Astro.props as Props;
           <div class="relative bg-white dark:bg-slate-900 p-8 md:p-10 rounded-[2.5rem] border border-slate-200/60 dark:border-slate-800/60 shadow-xl shadow-slate-200/40 dark:shadow-none">
             <div class="flex items-center gap-3 mb-8">
               <div class="w-8 h-1 bg-indigo-600 rounded-full"></div>
-              <h3 class="text-xs font-black uppercase tracking-[0.2em] text-slate-400">Specs</h3>
+              <h3 class="text-xs font-black uppercase tracking-[0.2em] text-slate-600 dark:text-slate-300">Specs</h3>
             </div>
             
             <div class="space-y-8">
@@ -124,7 +124,7 @@ const { content } = Astro.props as Props;
                   <p class="text-[10px] font-black text-indigo-600 dark:text-indigo-400 uppercase tracking-widest mb-4">Tech Heap</p>
                   <div class="flex flex-wrap gap-2">
                     {content.tags.map(tag => (
-                      <span class="px-3 py-1.5 bg-slate-50 dark:bg-slate-800/50 text-slate-600 dark:text-slate-400 rounded-xl text-xs font-bold border border-slate-100 dark:border-slate-800 hover:border-indigo-500/30 transition-colors cursor-default">
+                      <span class="px-3 py-1.5 bg-slate-50 dark:bg-slate-800/50 text-slate-700 dark:text-slate-300 rounded-xl text-xs font-bold border border-slate-100 dark:border-slate-800 hover:border-indigo-500/30 transition-colors cursor-default">
                         {tag}
                       </span>
                     ))}
@@ -138,7 +138,7 @@ const { content } = Astro.props as Props;
                   <span class="text-3xl font-black text-slate-900 dark:text-white">
                     {new Date(content.publishDate).getFullYear()}
                   </span>
-                  <span class="text-sm font-bold text-slate-400">
+                  <span class="text-sm font-bold text-slate-600 dark:text-slate-300">
                     {new Date(content.publishDate).toLocaleDateString('es-ES', { month: 'short' }).toUpperCase()}
                   </span>
                 </div>
@@ -187,7 +187,7 @@ const { content } = Astro.props as Props;
           </div>
 
           <footer class="mt-24 pt-12 border-t border-slate-100 dark:border-slate-800/60">
-            <a href="/porfolio/" class="group flex items-center gap-4 text-slate-400 hover:text-indigo-600 transition-all">
+            <a href="/porfolio/" class="group flex items-center gap-4 text-slate-600 dark:text-slate-300 hover:text-indigo-600 transition-all">
               <div class="w-12 h-12 flex items-center justify-center rounded-full border border-slate-200 dark:border-slate-800 group-hover:border-indigo-600 group-hover:bg-indigo-600 group-hover:text-white transition-all">
                 <svg class="w-5 h-5 transition-transform group-hover:-translate-x-1" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M10 19l-7-7m0 0l7-7m-7 7h18" /></svg>
               </div>

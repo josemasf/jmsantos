@@ -1,54 +1,36 @@
 {
-  "$ref": "#/definitions/presentations",
-  "definitions": {
-    "presentations": {
-      "type": "object",
-      "properties": {
-        "title": {
-          "type": "string"
-        },
-        "publishDate": {
-          "anyOf": [
-            {
-              "type": "string",
-              "format": "date-time"
-            },
-            {
-              "type": "string",
-              "format": "date"
-            },
-            {
-              "type": "integer",
-              "format": "unix-time"
-            }
-          ]
-        },
-        "description": {
-          "type": "string"
-        },
-        "img": {
-          "type": "string"
-        },
-        "video": {
-          "type": "string"
-        },
-        "url": {
-          "type": "string"
-        },
-        "slideUrl": {
-          "type": "string"
-        },
-        "$schema": {
-          "type": "string"
-        }
-      },
-      "required": [
-        "title",
-        "publishDate",
-        "description"
-      ],
-      "additionalProperties": false
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "type": "object",
+  "properties": {
+    "title": {
+      "type": "string"
+    },
+    "publishDate": {
+      "type": "string",
+      "format": "date-time"
+    },
+    "description": {
+      "type": "string"
+    },
+    "img": {
+      "type": "string"
+    },
+    "video": {
+      "type": "string"
+    },
+    "url": {
+      "type": "string"
+    },
+    "slideUrl": {
+      "type": "string"
+    },
+    "$schema": {
+      "type": "string"
     }
   },
-  "$schema": "http://json-schema.org/draft-07/schema#"
+  "required": [
+    "title",
+    "publishDate",
+    "description"
+  ]
 }

@@ -6,7 +6,7 @@
 
 @theme {
   --font-display: "Montserrat Alternates", Georgia, serif;
-  --font-sans: "Source Sans 3", ui-sans-serif, sans-serif;
+  --font-sans: "Inter", ui-sans-serif, sans-serif;
 }
 
 :root {
