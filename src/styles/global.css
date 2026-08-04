@@ -17,8 +17,28 @@
   --aqua: #0f766e;
 }
 
-html { scroll-behavior: smooth; }
-body { min-width: 320px; background: var(--surface); color: var(--ink); }
+html {
+  scroll-behavior: smooth;
+  background: var(--surface);
+  color-scheme: light;
+}
+
+html.dark {
+  --ink: #e2e8f0;
+  --surface: #020617;
+  --accent: #818cf8;
+  --accent-deep: #a5b4fc;
+  --aqua: #5eead4;
+  color-scheme: dark;
+}
+
+body {
+  min-width: 320px;
+  min-height: 100vh;
+  background-color: var(--surface);
+  color: var(--ink);
+  transition: background-color .2s ease, color .2s ease;
+}
 
 ::selection { background: #a5f3fc; color: #17213a; }
 
