@@ -5,3 +5,4 @@
 [build.environment]
   NPM_FLAGS = "--version"
   PNPM_VERSION = "10"
+  NODE_VERSION = "22.12.0"

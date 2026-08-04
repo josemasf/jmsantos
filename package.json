@@ -3,6 +3,7 @@
   "version": "0.3.0",
   "private": true,
   "module": "true",
+  "packageManager": "pnpm@10.0.0",
   "scripts": {
     "dev": "astro dev",
     "start": "astro dev",
@@ -13,18 +14,18 @@
     "unlighthouse": "pnpm dlx unlighthouse --site https://josemariasantos.com/"
   },
   "dependencies": {
-    "@astrojs/partytown": "2.1.4",
+    "@astrojs/partytown": "2.1.7",
     "@cloudinary/url-gen": "1.22.0",
-    "astro": "5.15.4",
-    "tailwindcss": "^4.1.18"
+    "astro": "7.1.6",
+    "tailwindcss": "4.3.3"
   },
   "devDependencies": {
-    "@astrojs/sitemap": "3.6.0",
-    "@astrojs/tailwind": "6.0.2",
-    "@tailwindcss/typography": "^0.5.19",
-    "@tailwindcss/vite": "^4.1.18",
-    "astro-robots-txt": "1.0.0",
-    "cloudinary": "2.8.0",
-    "dotenv": "17.2.3"
+    "@astrojs/check": "^0.9.10",
+    "@astrojs/sitemap": "3.7.3",
+    "@tailwindcss/typography": "0.5.20",
+    "@tailwindcss/vite": "4.3.3",
+    "cloudinary": "2.10.0",
+    "dotenv": "17.4.2",
+    "typescript": "^6.0.3"
   }
 }

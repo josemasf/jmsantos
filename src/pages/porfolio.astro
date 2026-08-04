@@ -3,7 +3,9 @@ import MainLayout from "../layouts/MainLayout.astro";
 
 import PorfolioPreview from "@components/PorfolioPreview.astro";
 
-const porfolio = Object.values(import.meta.glob("./porfolio/**/*.md", { eager: true }))
+const porfolio = Object.values(
+  import.meta.glob<{ frontmatter: { publishDate: string } }>("./porfolio/**/*.md", { eager: true })
+)
   .filter(({ frontmatter }) => !!frontmatter.publishDate)
   .sort(
     (a, b) =>

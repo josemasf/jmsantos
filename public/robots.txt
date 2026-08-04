@@ -1,0 +1,3 @@
+User-agent: *
+Allow: /
+Sitemap: https://josemariasantos.com/sitemap-index.xml

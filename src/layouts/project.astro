@@ -1,7 +1,20 @@
 ---
 import MainLayout from "../layouts/MainLayout.astro";
 
-const { content } = Astro.props;
+interface Props {
+  content: {
+    title: string;
+    description: string;
+    img: string;
+    publishDate: string;
+    tags?: string[];
+    urlSite?: string;
+    github?: string;
+    client?: string;
+  };
+}
+
+const { content } = Astro.props as Props;
 ---
 
 <MainLayout title={content.title} description={content.description}>
