@@ -3,17 +3,23 @@ layout: ../../layouts/Job.astro
 company: "AIDA"
 from: "2023-05"
 to: "today"
-summary: "AIDA forma parte de un grupo empresarial dedicado a la automoción y la movilidad, que nació en Canarias hace más de 80 años y que gracias a su apuesta por la innovación y la tecnología está ya presente en más de 20 países."
+summary: "Lidero la estrategia técnica frontend y el equipo transversal (Cross Cutting) de AIDA, responsable de definir la arquitectura, los estándares y las herramientas compartidas que utilizan los equipos de producto para desarrollar SIMA Suite, una plataforma de software para importadores y concesionarios de automoción en varios mercados internacionales."
 ---
 
 **Frontend Tech Lead**
 
-👉🏻 Ayudar a definir y aplicar la filosofía a seguir para nuestros tests en el frontend (unitarios / integración / E2E / regresión visual).
+Lidero la estrategia técnica frontend y el equipo transversal (Cross Cutting) de AIDA, responsable de definir la arquitectura, los estándares y las herramientas compartidas que utilizan los equipos de producto para desarrollar SIMA Suite, una plataforma de software para importadores y concesionarios de automoción en varios mercados internacionales.
 
-👉🏻 Participar en las sesiones de UI/UX, impactando en los temas a tratar y en las decisiones que se tomen en este ámbito.
+Mi trabajo combina liderazgo técnico, arquitectura, desarrollo de plataforma y acompañamiento a equipos. Defino la arquitectura frontend para aplicaciones Vue.js y Blazor, evalúo tecnologías mediante spikes técnicos y lidero la evolución del ecosistema de componentes hacia soluciones más estandarizadas y mantenibles.
 
-👉🏻 Liderar las sesiones de la guild de frontend, impactando en el objetivo y los temas a tratar en dichas sesiones.
+También creo y mantengo activos compartidos como templates de Blazor, configuraciones reutilizables de Vuetify, paquetes NuGet y herramientas internas de despliegue, con el objetivo de reducir duplicidades y acelerar el desarrollo entre productos.
 
-👉🏻 Liderar las sesiones de estándares de frontend, impactando en la toma de decisiones en este ámbito.
+Impulso iniciativas de rendimiento web, análisis de bundles y optimización de dependencias. Entre los resultados obtenidos, destaca la mejora de Lighthouse Performance de 38 a 96, junto con reducciones del 87 % en FCP/LCP y del 92 % en TBT.
 
-👉🏻 Impactar en la toma de decisiones en el momento de valorar utilizar nuevas tecnologías/librerías/herramientas en el frontend.
+Defino estándares transversales de UX, tablas, navegación, iconografía y design tokens, además de estrategias de testing E2E con Playwright, incluyendo validaciones visuales y de accesibilidad.
+
+Como responsable de la Guild de Front, facilito la colaboración entre desarrolladores, organizo sesiones de revisión de código y acompaño a los equipos en arquitectura, testing, uso de IA y resolución de bloqueos técnicos.
+
+Además, documento decisiones arquitectónicas, spikes, guías y release notes del framework compartido.
+
+**Stack:** Vue.js, TypeScript, Blazor, C#, .NET, Vuetify, Radzen, Playwright, AG Grid, pnpm, MSBuild, Dependency-Track, GitHub Copilot y Material Design.
