@@ -54,13 +54,13 @@ const dialogId = "visual-profile-dialog";
 <style>
   .about-visual { border-top: 1px solid rgb(14 116 144 / .18); }
   .about-section-intro { max-width: 43rem; }
-  .about-section-intro h2 { margin: .55rem 0 1rem; font-family: var(--font-display); color: #17213a; font-size: clamp(2.2rem, 4vw, 3.6rem); letter-spacing: -.065em; line-height: .98; }
-  .about-section-intro > p:last-child { color: #475569; font-size: 1.08rem; line-height: 1.7; }
-  .visual-profile-trigger { display: grid; width: 100%; gap: 1rem; margin-top: 2.5rem; border: 0; padding: 0; background: transparent; color: #17213a; cursor: zoom-in; text-align: left; }
+  .about-section-intro h2 { margin: .55rem 0 1rem; font-family: var(--font-display); color: var(--text-primary); font-size: clamp(2.2rem, 4vw, 3.6rem); letter-spacing: -.065em; line-height: .98; }
+  .about-section-intro > p:last-child { color: var(--text-secondary); font-size: 1.08rem; line-height: 1.7; }
+  .visual-profile-trigger { display: grid; width: 100%; gap: 1rem; margin-top: 2.5rem; border: 0; padding: 0; background: transparent; color: var(--text-primary); cursor: zoom-in; text-align: left; }
   .visual-profile-trigger picture { display: block; overflow: hidden; border: 1px solid rgb(14 116 144 / .28); background: #eaf8fb; box-shadow: 0 1.5rem 3rem rgb(15 23 42 / .12); }
   .visual-profile-trigger img { display: block; width: 100%; height: auto; transition: transform .3s ease; }
   .visual-profile-trigger:hover img { transform: scale(1.015); }
-  .visual-profile-trigger > span { display: inline-flex; width: fit-content; min-height: 2.75rem; align-items: center; gap: .5rem; border-bottom: 2px solid #0e7490; font-weight: 900; }
+  .visual-profile-trigger > span { display: inline-flex; width: fit-content; min-height: 2.75rem; align-items: center; gap: .5rem; border-bottom: 2px solid var(--text-accent); font-weight: 900; }
   .visual-profile-dialog { width: min(100% - 1.5rem, 96rem); max-width: none; max-height: calc(100dvh - 1.5rem); border: 0; padding: 0; background: #020617; color: white; box-shadow: 0 1.5rem 5rem rgb(2 6 23 / .55); }
   .visual-profile-dialog::backdrop { background: rgb(2 6 23 / .82); }
   .visual-profile-dialog__frame { display: grid; max-height: calc(100dvh - 1.5rem); grid-template-rows: auto minmax(0, 1fr); }
@@ -69,9 +69,6 @@ const dialogId = "visual-profile-dialog";
   .visual-profile-dialog__close { display: inline-grid; width: 2.75rem; height: 2.75rem; flex: 0 0 auto; place-items: center; border: 1px solid rgb(165 243 252 / .45); background: transparent; color: white; cursor: pointer; font-size: 2rem; line-height: 1; }
   .visual-profile-dialog__content { overflow: auto; padding: 1rem; overscroll-behavior: contain; }
   .visual-profile-dialog__content img { display: block; width: max(46rem, 100%); height: auto; margin-inline: auto; }
-  :global(.dark) .about-section-intro h2 { color: #f8fafc; }
-  :global(.dark) .about-section-intro > p:last-child { color: #cbd5e1; }
-  :global(.dark) .visual-profile-trigger { color: #f8fafc; }
   @media (max-width: 44.99rem) { .visual-profile-trigger picture { max-height: 13rem; } .visual-profile-trigger img { min-width: 29rem; max-width: none; transform: translateX(-.5rem); } .visual-profile-trigger:hover img { transform: translateX(-.5rem); } }
   @media (prefers-reduced-motion: reduce) { .visual-profile-trigger img { transition: none; } }
 </style>

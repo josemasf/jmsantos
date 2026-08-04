@@ -10,11 +10,19 @@
 }
 
 :root {
-  --ink: #17213a;
+  --text-primary: #17213a;
+  --text-secondary: #475569;
+  --text-muted: #475569;
+  --text-accent: #0f766e;
+  --text-on-action: #ffffff;
   --surface: #f8fafc;
+  --surface-subtle: #eaf8fb;
+  --surface-action: #0f766e;
+  --surface-inverse: #17213a;
+  --ink: var(--text-primary);
   --accent: #4338ca;
   --accent-deep: #312e81;
-  --aqua: #0f766e;
+  --aqua: var(--text-accent);
 }
 
 html {
@@ -24,8 +32,16 @@ html {
 }
 
 html.dark {
-  --ink: #e2e8f0;
+  --text-primary: #f8fafc;
+  --text-secondary: #cbd5e1;
+  --text-muted: #cbd5e1;
+  --text-accent: #67e8f9;
+  --text-on-action: #ffffff;
   --surface: #020617;
+  --surface-subtle: #071c2a;
+  --surface-action: #0f766e;
+  --surface-inverse: #020617;
+  --ink: var(--text-primary);
   --accent: #818cf8;
   --accent-deep: #a5b4fc;
   --aqua: #5eead4;
