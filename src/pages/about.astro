@@ -1,160 +1,143 @@
 ---
 import MainLayout from "../layouts/MainLayout.astro";
+import VisualProfile from "../components/about/VisualProfile.astro";
+import { collaborators, experience, principles, projects, publicWork, responsibilities, technologies } from "../data/about";
 
-import JobPreview from "../components/JobPreview.astro";
-import Heading from "../components/Heading.astro";
-
-type Job = {
-  frontmatter: {
-    from: string;
-    [key: string]: any;
-  };
-  [key: string]: any;
+const title = "Sobre mí | José María Santos — Frontend Tech Lead";
+const description = "Conoce la experiencia, forma de trabajo, valores y proyectos de José María Santos, Frontend Tech Lead especializado en Vue, arquitectura frontend, testing y liderazgo técnico.";
+const personSchema = {
+  "@context": "https://schema.org",
+  "@type": "Person",
+  name: "José María Santos",
+  jobTitle: "Frontend Tech Lead",
+  url: "https://josemariasantos.com",
+  sameAs: ["https://www.linkedin.com/in/jos%C3%A9-mar%C3%ADa-santos-90a8a73a/", "https://github.com/josemasf"],
+  knowsAbout: ["Vue.js", "TypeScript", "Frontend Architecture", "Software Testing", "Technical Leadership"],
 };
-
-const jobs = Object.values(import.meta.glob("./jobs/**/*.md", { eager: true }) as Record<string, Job>)
-  .filter(({ frontmatter }) => !!frontmatter.from)
-  .sort(
-    (a, b) =>
-      new Date((b as Job).frontmatter.from).valueOf() -
-      new Date((a as Job).frontmatter.from).valueOf()
-  );
-
-const description =
-  "Arquitecto orientado al Frontend, aunque mis primeros 13 años laborales estuve desarrollando aplicaciones web con C#, por lo que tengo un alto conocimiento sobre arquitectura backend.";
-
-const skills = [
-  "Vue", "Astro", "TypeScript", "JavaScript", "Inteligencia Artificial", "Vibe Coding", "Testing", "Tailwind CSS", "Architecture", "Microfrontends", "Serverless"
-];
 ---
-<MainLayout title="Sobre mi | José María Santos" description={description}>
-  <main id="main-content">
-  <Heading bgImage="/assets/about-me.jpeg">
-    <span slot="title">Sobre mí</span>
-  </Heading>
-  
-  <div class="container mx-auto px-8 md:px-12 lg:px-20">
-    <!-- Hero Section -->
-    <div class="relative -mt-20 flex flex-col items-center">
-      <img 
-        src="/assets/yo.webp" 
-        alt="José María Santos" 
-        class="w-40 h-40 rounded-full border-4 border-white dark:border-gray-800 shadow-xl object-cover"
-      />
-      <div class="text-center mt-4">
-        <h2 class="text-4xl font-bold dark:text-white">José María Santos</h2>
-        <p class="text-xl text-indigo-600 dark:text-indigo-400 font-medium">Frontend Tech Leader</p>
-        
-        <div class="flex items-center justify-center gap-4 mt-2 text-gray-600 dark:text-gray-400">
-          <span class="flex items-center gap-1">
-            <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" viewBox="0 0 20 20" fill="currentColor">
-              <path fill-rule="evenodd" d="M5.05 4.05a7 7 0 119.9 9.9L10 18.9l-4.95-4.95a7 7 0 010-9.9zM10 11a2 2 0 100-4 2 2 0 000 4z" clip-rule="evenodd" />
-            </svg>
-            Córdoba, España
-          </span>
-          <span class="flex items-center gap-1 text-sm md:text-base">
-            <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" viewBox="0 0 20 20" fill="currentColor">
-              <path fill-rule="evenodd" d="M6 6V5a3 3 0 013-3h2a3 3 0 013 3v1h2a2 2 0 012 2v3.57c0 .16-.013.319-.04.475a8.03 8.03 0 01-1.808 3.512 8.023 8.023 0 01-3.031 2.137 8.09 8.09 0 01-4.242 0 8.022 8.022 0 01-3.031-2.137 8.03 8.03 0 01-1.808-3.512A4.405 4.405 0 012 11.57V8a2 2 0 012-2h2zm2-1a1 1 0 011-1h2a1 1 0 011 1v1H8V5zm1 5a1 1 0 011-1h.01a1 1 0 110 2H10a1 1 0 01-1-1z" clip-rule="evenodd" />
-            </svg>
-            AIDA
-          </span>
+
+<MainLayout title={title} description={description} ogImage="/images/social/about-jose-maria-santos.jpg" ogType="profile">
+  <script is:inline type="application/ld+json" set:html={JSON.stringify(personSchema)} />
+  <main id="main-content" tabindex="-1">
+    <section class="about-hero">
+      <div class="about-shell about-hero__grid">
+        <div class="about-hero__copy">
+          <p class="section-kicker">José María Santos · Córdoba, España</p>
+          <h1>Frontend Tech Lead orientado a producto, equipos y calidad</h1>
+          <p class="about-hero__lead">Ayudo a convertir necesidades de negocio en productos digitales mantenibles, escalables y útiles para las personas. Combino arquitectura frontend, acompañamiento técnico y una visión práctica de producto.</p>
+          <div class="about-actions" aria-label="Enlaces profesionales">
+            <a class="about-button about-button--primary" href="#experiencia">Consultar experiencia <span aria-hidden="true">↓</span></a>
+            <a class="about-button about-button--secondary" href="/porfolio/">Ver proyectos <span aria-hidden="true">→</span></a>
+          </div>
+          <ul class="about-social-links" aria-label="Perfiles profesionales">
+            <li><a href="https://www.linkedin.com/in/jos%C3%A9-mar%C3%ADa-santos-90a8a73a/" target="_blank" rel="noopener noreferrer">LinkedIn <span aria-hidden="true">↗</span></a></li>
+            <li><a href="https://github.com/josemasf" target="_blank" rel="noopener noreferrer">GitHub <span aria-hidden="true">↗</span></a></li>
+          </ul>
+        </div>
+        <div class="about-hero__portrait">
+          <img src="/assets/yo.webp" alt="Retrato de José María Santos" width="480" height="480" fetchpriority="high" decoding="async" />
+          <p><strong>Frontend Tech Lead</strong><span>Arquitectura · equipos · producto</span></p>
         </div>
       </div>
-    </div>
+    </section>
 
-    <!-- Content Sections -->
-    <div class="grid grid-cols-1 md:grid-cols-3 gap-12 mt-16">
-      <!-- Left Column: Bio & Experience -->
-      <div class="md:col-span-2 space-y-12">
-        <section>
-          <h3 class="text-2xl font-bold mb-4 flex items-center gap-2">
-            <span class="w-8 h-1 bg-indigo-500 rounded-full inline-block"></span>
-            Biografía
-          </h3>
-          <div class="text-lg text-gray-700 dark:text-gray-300 space-y-4 leading-relaxed">
-            <p>
-              Arquitecto orientado al Frontend, aunque mis primeros 13 años laborales
-              estuve desarrollando aplicaciones web con C#, por lo que tengo un alto
-              conocimiento sobre arquitectura backend.
-            </p>
-
-            <p>
-              Durante mi vida laboral he tenido la oportunidad de desarrollar tanto
-              proyectos ecommerce como aplicaciones web para la gestión y
-              administración de empresas. Tengo experiencia en integración de
-              servicios de terceros para la obtención de datos o sincronizanción de
-              servicios.
-            </p>
-
-            <p>
-              Me considero una persona resolutiva e implicada en cada una de las
-              tareas que realizo en mi día a día, implicándome activamente en resolver
-              problemas complejos.
-            </p>
-
-            <p>
-              Tengo mucha curiosidad por investigar nuevas arquitecturas y técnicas
-              modernas, intentando aplicarlas en mi día a día o elaborando pruebas de
-              concepto personales para profundizar en su estudio. Me gusta aprender y enseñar lo aprendido siempre que tengo ocasión.
-            </p>
-          </div>
-        </section>
-
-        <section>
-          <h3 class="text-2xl font-bold mb-8 flex items-center gap-2">
-            <span class="w-8 h-1 bg-indigo-500 rounded-full inline-block"></span>
-            Experiencia
-          </h3>
-          <ol class="relative border-l-2 border-indigo-100 dark:border-indigo-900 ml-3">
-            {
-              jobs.map((job) => (
-                <li class="mb-10 ml-6">
-                  <JobPreview job={job} />
-                </li>
-              ))
-            }
-          </ol>
-        </section>
+    <section class="about-purpose about-shell" aria-labelledby="purpose-heading">
+      <p class="section-kicker">Propósito</p>
+      <div>
+        <h2 id="purpose-heading">Impulsar equipos y productos digitales de calidad que generen un impacto real.</h2>
+        <p>Mi trabajo no consiste solo en elegir tecnologías o revisar código. Consiste en ayudar a que los equipos tomen mejores decisiones, reduzcan complejidad y construyan productos que puedan evolucionar sin convertirse en una excavación arqueológica cada seis meses.</p>
       </div>
+    </section>
 
-      <!-- Right Column: Skills & Info -->
-      <div class="space-y-10">
-        <section class="bg-indigo-50 dark:bg-gray-700/30 p-8 rounded-2xl">
-          <h3 class="text-xl font-bold mb-6">Habilidades</h3>
-          <div class="flex flex-wrap gap-2">
-            {skills.map(skill => (
-              <span class="px-3 py-1 bg-white dark:bg-gray-800 text-indigo-700 dark:text-indigo-300 rounded-full text-sm font-medium shadow-sm border border-indigo-100 dark:border-indigo-900">
-                {skill}
-              </span>
-            ))}
-          </div>
-        </section>
+    <div class="about-shell"><VisualProfile /></div>
 
-        <section class="bg-gray-50 dark:bg-gray-700/30 p-8 rounded-2xl border border-gray-100 dark:border-gray-800">
-          <h3 class="text-xl font-bold mb-4">Intereses</h3>
-          <ul class="space-y-3 text-gray-600 dark:text-gray-400">
-            <li class="flex items-center gap-3">
-              <span class="w-2 h-2 bg-indigo-500 rounded-full"></span>
-              Web Performance
-            </li>
-            <li class="flex items-center gap-3">
-              <span class="w-2 h-2 bg-indigo-500 rounded-full"></span>
-              UI/UX Design
-            </li>
-            <li class="flex items-center gap-3">
-              <span class="w-2 h-2 bg-indigo-500 rounded-full"></span>
-              Cloud Computing
-            </li>
-            <li class="flex items-center gap-3">
-              <span class="w-2 h-2 bg-indigo-500 rounded-full"></span>
-              Open Source
-            </li>
-          </ul>
-        </section>
+    <section class="about-section about-shell" aria-labelledby="responsibilities-heading">
+      <div class="about-section-intro">
+        <p class="section-kicker">El trabajo</p>
+        <h2 id="responsibilities-heading">Qué hago como Frontend Tech Lead</h2>
+        <p>La dirección técnica tiene sentido cuando aclara el camino de los equipos y mejora lo que reciben las personas usuarias.</p>
       </div>
-    </div>
-  </div>
-  
-  <div class="mt-20"></div>
+      <div class="responsibility-grid">
+        {responsibilities.map((area, index) => <article class="responsibility-card">
+          <span class="responsibility-card__number" aria-hidden="true">0{index + 1}</span>
+          <h3>{area.title}</h3><p>{area.description}</p>
+          <ul>{area.items.map((item) => <li>{item}</li>)}</ul>
+        </article>)}
+      </div>
+    </section>
+
+    <section class="about-section about-shell" aria-labelledby="principles-heading">
+      <div class="about-section-intro about-section-intro--wide">
+        <p class="section-kicker">Criterio</p><h2 id="principles-heading">Cómo trabajo</h2>
+      </div>
+      <ol class="principles-list">
+        {principles.map(([title, text], index) => <li><span aria-hidden="true">{String(index + 1).padStart(2, "0")}</span><div><h3>{title}</h3><p>{text}</p></div></li>)}
+      </ol>
+    </section>
+
+    <section class="about-section about-shell collaboration" aria-labelledby="collaboration-heading">
+      <div class="about-section-intro"><p class="section-kicker">En común</p><h2 id="collaboration-heading">Con quién trabajo</h2><p>Facilito, alineo y elimino bloqueos para que cada especialidad pueda aportar valor sin trabajar en silos.</p></div>
+      <div class="collaboration__groups">
+        <section aria-labelledby="internal-heading"><h3 id="internal-heading">Equipos internos</h3><ul>{collaborators.internal.map((item) => <li>{item}</li>)}</ul></section>
+        <section aria-labelledby="external-heading"><h3 id="external-heading">Colaboradores externos</h3><ul>{collaborators.external.map((item) => <li>{item}</li>)}</ul></section>
+      </div>
+    </section>
+
+    <section class="about-section about-shell" id="experiencia" aria-labelledby="experience-heading">
+      <div class="about-section-intro"><p class="section-kicker">Trayectoria</p><h2 id="experience-heading">Experiencia profesional</h2><p>Una trayectoria construida entre desarrollo de producto, arquitectura y el acompañamiento a equipos.</p></div>
+      <ol class="experience-list">
+        {experience.map((job) => <li><article><div class="experience-list__meta"><p>{job.period}</p><span>{job.company}</span></div><div><h3>{job.role}</h3><p>{job.summary}</p><h4>Impacto</h4><ul>{job.impact.map((item) => <li>{item}</li>)}</ul><p class="experience-list__stack"><strong>Tecnologías principales:</strong> {job.stack}</p></div></article></li>)}
+      </ol>
+    </section>
+
+    <section class="about-section about-shell technology" aria-labelledby="technology-heading">
+      <div class="about-section-intro"><p class="section-kicker">Herramientas</p><h2 id="technology-heading">Tecnologías con propósito</h2><p>Las herramientas cambian. Mi criterio para elegirlas se basa en mantenibilidad, experiencia del equipo, coste operativo y necesidades reales del producto.</p></div>
+      <div class="technology-grid">{technologies.map(([title, items]) => <section><h3>{title}</h3><ul>{items.map((item) => <li>{item}</li>)}</ul></section>)}</div>
+    </section>
+
+    <section class="about-section about-shell public-work" aria-labelledby="public-work-heading">
+      <div class="about-section-intro"><p class="section-kicker">Conocimiento compartido</p><h2 id="public-work-heading">Ponencias y trabajo público</h2><p>Comparto aprendizajes sobre testing, arquitectura frontend y la práctica diaria de construir software mantenible.</p></div>
+      <ul>{publicWork.map((item) => <li><a href={item.href}><span>{item.year}</span><strong>{item.title}</strong><span aria-hidden="true">→</span></a></li>)}</ul>
+    </section>
+
+    <section class="about-section about-shell projects" aria-labelledby="projects-heading">
+      <div class="about-section-intro"><p class="section-kicker">Laboratorio propio</p><h2 id="projects-heading">Proyectos personales</h2><p>Espacios para probar ideas de producto y tomar decisiones técnicas de principio a fin.</p></div>
+      <div>{projects.map((project) => <article><h3>{project.title}</h3><p>{project.text}</p><p class="projects__stack">{project.stack}</p><a href={project.href}>Conocer el proyecto <span aria-hidden="true">→</span></a></article>)}</div>
+    </section>
+
+    <section class="about-personal about-shell" aria-labelledby="personal-heading"><p class="section-kicker">Fuera de pantalla</p><h2 id="personal-heading">Curiosidad también fuera del trabajo</h2><p>Me interesan la música, crear proyectos, viajar, aprender y pasar tiempo con mi familia. También dedico una cantidad perfectamente razonable de horas a videojuegos de gestión. La definición de «razonable» queda abierta a revisión.</p></section>
+
+    <section class="about-closing"><div class="about-shell"><p class="section-kicker">Hablemos de producto</p><h2>Construyamos productos útiles y equipos capaces de hacerlos crecer</h2><p>Me interesa colaborar en productos donde la tecnología, el negocio y la experiencia de usuario se entiendan como partes del mismo problema.</p><div class="about-actions"><a class="about-button about-button--primary" href="/porfolio/">Consultar proyectos <span aria-hidden="true">→</span></a><a class="about-button about-button--secondary" href="https://www.linkedin.com/in/jos%C3%A9-mar%C3%ADa-santos-90a8a73a/" target="_blank" rel="noopener noreferrer">Ver LinkedIn <span aria-hidden="true">↗</span></a></div></div></section>
   </main>
 </MainLayout>
+
+<style>
+  .about-shell { width: min(100% - 2.5rem, 72rem); margin-inline: auto; }
+  .about-hero { overflow: hidden; padding: clamp(4rem, 9vw, 7.5rem) 0 clamp(4rem, 8vw, 6.5rem); background: radial-gradient(circle at 84% 25%, rgb(103 232 249 / .36), transparent 25rem), linear-gradient(135deg, #e6f8f8, #eef2ff 55%, #f8fafc); }
+  :global(.dark) .about-hero { background: radial-gradient(circle at 84% 25%, rgb(8 145 178 / .24), transparent 25rem), linear-gradient(135deg, #071c2a, #11142d 55%, #020617); }
+  .about-hero__grid { display: grid; gap: 3rem; align-items: center; }
+  .about-hero h1, .about-section h2, .about-purpose h2, .about-personal h2, .about-closing h2 { font-family: var(--font-display); color: #17213a; letter-spacing: -.065em; line-height: .98; }
+  :global(.dark) .about-hero h1, :global(.dark) .about-section h2, :global(.dark) .about-purpose h2, :global(.dark) .about-personal h2, :global(.dark) .about-closing h2 { color: #f8fafc; }
+  .about-hero h1 { max-width: 42rem; margin: .7rem 0 1.5rem; font-size: clamp(3rem, 7vw, 5.75rem); }
+  .about-hero__lead { max-width: 42rem; color: #334155; font-size: clamp(1.1rem, 2vw, 1.32rem); line-height: 1.65; }
+  :global(.dark) .about-hero__lead { color: #cbd5e1; }
+  .about-actions { display: flex; flex-wrap: wrap; gap: .75rem; margin-top: 2rem; }
+  .about-button { display: inline-flex; min-height: 3rem; align-items: center; gap: .6rem; border: 1px solid #0f172a; padding: .75rem 1rem; color: #17213a; font-weight: 800; text-decoration: none; transition: transform .2s ease, background-color .2s ease; }
+  .about-button:hover { transform: translateY(-2px); }.about-button--primary { border-color: #0e7490; background: #0e7490; color: white; }.about-button--secondary { background: rgb(255 255 255 / .55); }
+  :global(.dark) .about-button { border-color: #cbd5e1; color: #f8fafc; }.about-button--primary { border-color: #0891b2; background: #0891b2; }.about-button--secondary { background: rgb(15 23 42 / .65); }
+  .about-social-links { display: flex; flex-wrap: wrap; gap: 1rem; margin-top: 1.25rem; padding: 0; list-style: none; }.about-social-links a { color: #334155; font-size: .9rem; font-weight: 800; }.about-social-links a:hover { color: #0e7490; }:global(.dark) .about-social-links a { color: #cbd5e1; }:global(.dark) .about-social-links a:hover { color: #67e8f9; }
+  .about-hero__portrait { position: relative; width: min(82vw, 26rem); margin-inline: auto; }.about-hero__portrait::before { position: absolute; z-index: 0; top: -1.25rem; right: -1.25rem; bottom: 1.6rem; left: -1.25rem; border: 1px solid #0e7490; content: ""; }.about-hero__portrait img { position: relative; z-index: 1; display: block; width: 100%; aspect-ratio: 1; object-fit: cover; filter: saturate(.88); }.about-hero__portrait p { position: relative; z-index: 2; width: fit-content; margin: -1.65rem 0 0 auto; padding: .9rem 1rem; background: #17213a; color: white; font-size: .76rem; line-height: 1.35; }.about-hero__portrait span { display: block; color: #a5f3fc; }
+  .about-purpose { display: grid; gap: 1.25rem; padding-block: clamp(4.5rem, 10vw, 8rem); }.about-purpose h2 { max-width: 52rem; margin: 0; font-size: clamp(2.25rem, 5vw, 4rem); }.about-purpose p:last-child { max-width: 47rem; margin-top: 1.5rem; color: #475569; font-size: 1.12rem; line-height: 1.75; }:global(.dark) .about-purpose p:last-child { color: #cbd5e1; }
+  .about-section, .about-visual { padding-block: clamp(4rem, 8vw, 6.5rem); border-top: 1px solid rgb(14 116 144 / .18); }.about-section-intro { max-width: 43rem; }.about-section-intro h2 { margin: .55rem 0 1rem; font-size: clamp(2.2rem, 4vw, 3.6rem); }.about-section-intro > p:last-child { color: #475569; font-size: 1.08rem; line-height: 1.7; }:global(.dark) .about-section-intro > p:last-child { color: #cbd5e1; }
+  .responsibility-grid { display: grid; gap: 1px; margin-top: 3rem; background: rgb(14 116 144 / .24); border: 1px solid rgb(14 116 144 / .24); }.responsibility-card { min-height: 19rem; padding: 1.75rem; background: #f8fafc; }:global(.dark) .responsibility-card { background: #020617; }.responsibility-card__number { color: #0e7490; font-family: var(--font-display); font-size: 1.4rem; }.responsibility-card h3 { margin: 2.25rem 0 .75rem; font-size: 1.25rem; }.responsibility-card p { color: #475569; line-height: 1.6; }:global(.dark) .responsibility-card p { color: #cbd5e1; }.responsibility-card ul { display: grid; gap: .5rem; margin: 1.25rem 0 0; padding: 0; list-style: none; }.responsibility-card li::before { margin-right: .6rem; color: #0e7490; content: "—"; }
+  .principles-list { display: grid; margin: 2.75rem 0 0; padding: 0; list-style: none; border-top: 1px solid rgb(14 116 144 / .2); }.principles-list li { display: grid; grid-template-columns: 3rem 1fr; gap: 1rem; padding: 1.35rem 0; border-bottom: 1px solid rgb(14 116 144 / .2); }.principles-list > li > span { color: #0e7490; font-weight: 900; }.principles-list h3 { margin: 0; font-size: 1.12rem; }.principles-list p { margin: .35rem 0 0; color: #475569; line-height: 1.6; }:global(.dark) .principles-list p { color: #cbd5e1; }
+  .collaboration { display: grid; gap: 2.5rem; }.collaboration__groups { display: grid; gap: 1px; background: rgb(14 116 144 / .24); border: 1px solid rgb(14 116 144 / .24); }.collaboration__groups section { padding: 1.8rem; background: #eaf8fb; }:global(.dark) .collaboration__groups section { background: #071c2a; }.collaboration__groups h3 { margin: 0; font-size: 1.25rem; }.collaboration__groups ul { display: flex; flex-wrap: wrap; gap: .55rem; margin: 1.25rem 0 0; padding: 0; list-style: none; }.collaboration__groups li { border: 1px solid rgb(14 116 144 / .3); padding: .45rem .65rem; font-size: .88rem; font-weight: 700; }
+  .experience-list { display: grid; gap: 2.5rem; margin: 3rem 0 0; padding: 0; list-style: none; }.experience-list > li { position: relative; padding-left: 1.4rem; border-left: 1px solid #0e7490; }.experience-list > li::before { position: absolute; top: .1rem; left: -.42rem; width: .78rem; height: .78rem; border-radius: 50%; background: #0e7490; content: ""; }.experience-list article { display: grid; gap: .8rem; }.experience-list__meta p { margin: 0; color: #0e7490; font-size: .8rem; font-weight: 900; letter-spacing: .08em; text-transform: uppercase; }.experience-list__meta span { display: block; margin-top: .3rem; font-weight: 800; }.experience-list h3 { margin: 0; font-size: 1.35rem; }.experience-list h3 + p { margin: .6rem 0 0; color: #475569; line-height: 1.65; }:global(.dark) .experience-list h3 + p { color: #cbd5e1; }.experience-list h4 { margin: 1.1rem 0 .35rem; font-size: .82rem; letter-spacing: .08em; text-transform: uppercase; }.experience-list ul { display: grid; gap: .4rem; margin: 0; padding-left: 1rem; }.experience-list__stack { margin: 1.2rem 0 0; color: #475569; font-size: .9rem; line-height: 1.55; }:global(.dark) .experience-list__stack { color: #cbd5e1; }
+  .technology { display: grid; gap: 3rem; }.technology-grid { display: grid; gap: 2rem; }.technology-grid h3 { margin: 0 0 .9rem; color: #0e7490; font-size: .82rem; letter-spacing: .1em; text-transform: uppercase; }.technology-grid ul { display: flex; flex-wrap: wrap; gap: .5rem; margin: 0; padding: 0; list-style: none; }.technology-grid li { border-bottom: 1px solid rgb(14 116 144 / .4); padding: .28rem 0; font-weight: 700; }
+  .public-work { display: grid; gap: 2.5rem; }.public-work ul { margin: 0; padding: 0; list-style: none; border-top: 1px solid rgb(14 116 144 / .22); }.public-work li { border-bottom: 1px solid rgb(14 116 144 / .22); }.public-work a { display: grid; grid-template-columns: 3.5rem 1fr auto; gap: .8rem; align-items: center; padding: 1rem 0; color: inherit; text-decoration: none; }.public-work a:hover strong { color: #0e7490; }.public-work a span:first-child { color: #0e7490; font-size: .82rem; font-weight: 800; }.public-work a strong { transition: color .2s ease; }
+  .projects > div { display: grid; gap: 1px; margin-top: 3rem; background: rgb(14 116 144 / .24); border: 1px solid rgb(14 116 144 / .24); }.projects article { padding: 2rem; background: #17213a; color: white; }.projects h3 { margin: 0; font-family: var(--font-display); font-size: 2rem; letter-spacing: -.05em; }.projects article > p { color: #dbeafe; line-height: 1.65; }.projects__stack { color: #a5f3fc !important; font-size: .84rem; font-weight: 800; }.projects a { color: white; font-weight: 900; }.projects a:hover { color: #a5f3fc; }
+  .about-personal { padding-block: clamp(4rem, 8vw, 6.5rem); }.about-personal h2 { max-width: 45rem; margin: .6rem 0 1rem; font-size: clamp(2.2rem, 5vw, 4.2rem); }.about-personal p:last-child { max-width: 44rem; color: #475569; font-size: 1.08rem; line-height: 1.7; }:global(.dark) .about-personal p:last-child { color: #cbd5e1; }
+  .about-closing { padding-block: clamp(4rem, 9vw, 7rem); background: #0e7490; color: white; }.about-closing .section-kicker { color: #a5f3fc; }.about-closing h2 { max-width: 55rem; margin: .6rem 0 1.2rem; color: white; font-size: clamp(2.3rem, 5vw, 4.5rem); }.about-closing p:not(.section-kicker) { max-width: 46rem; color: #e0f2fe; font-size: 1.1rem; line-height: 1.7; }.about-closing .about-button--primary { border-color: #17213a; background: #17213a; }.about-closing .about-button--secondary { border-color: white; background: transparent; color: white; }
+  @media (min-width: 45rem) { .about-shell { width: min(100% - 4rem, 72rem); }.about-hero__grid { grid-template-columns: minmax(0, 1.4fr) minmax(15rem, .75fr); }.about-purpose { grid-template-columns: 9rem 1fr; }.responsibility-grid, .technology-grid { grid-template-columns: repeat(2, 1fr); }.collaboration { grid-template-columns: minmax(0, .82fr) minmax(0, 1fr); }.experience-list article { grid-template-columns: 11rem 1fr; }.public-work { grid-template-columns: minmax(0, .75fr) minmax(0, 1fr); }.projects > div { grid-template-columns: repeat(2, 1fr); } }
+  @media (min-width: 68rem) { .responsibility-grid { grid-template-columns: repeat(4, 1fr); }.technology-grid { grid-template-columns: repeat(4, 1fr); }.collaboration__groups { grid-template-columns: 1fr 1fr; } }
+</style>

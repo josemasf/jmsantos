@@ -8,16 +8,22 @@ import { ClientRouter } from 'astro:transitions';
 export interface Props {
   description?: string;
   title?: string;
+  ogImage?: string;
+  ogType?: string;
 }
 
-const { description } = Astro.props || "El rincón de José María Santos";
-const { title } = Astro.props || "José María Santos: Desarrollador Web";
+const {
+  description = "El rincón de José María Santos",
+  title = "José María Santos: Desarrollador Web",
+  ogImage,
+  ogType,
+} = Astro.props;
 ---
 
 <html lang="es">
   <head>
     <ClientRouter />
-    <MainHead title={title} description={description} />
+    <MainHead title={title} description={description} ogImage={ogImage} ogType={ogType} />
     <!-- Pixel Code for https://overtracking.com/ -->
     <script is:inline defer src="https://cdn.overtracking.com/t/tCElhnUuwll9eKe9c/"></script>
     <!-- END Pixel Code -->

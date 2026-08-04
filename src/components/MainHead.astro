@@ -3,11 +3,18 @@ import "../styles/global.css";
 const {
   title = "José María Santos: Desarrollador Web",
   description = "El rincón de José María Santos",
+  ogImage,
+  ogType = "website",
 } = Astro.props;
 ---
 
 <meta charset="UTF-8" />
-<meta name="description" property="og:description" content={description} />
+<meta name="description" content={description} />
+<meta property="og:title" content={title} />
+<meta property="og:description" content={description} />
+<meta property="og:type" content={ogType} />
+{ogImage && <meta property="og:image" content={new URL(ogImage, Astro.site).toString()} />}
+{ogImage && <meta name="twitter:card" content="summary_large_image" />}
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <meta name="generator" content={Astro.generator} />
 <title>{title}</title>
