@@ -18,12 +18,129 @@ const porfolio = Object.values(
   title="Portfolio | José María Santos"
   description="Proyectos de frontend, arquitectura y producto de José María Santos"
 >
-  <main id="main-content" class="container mx-auto px-6 py-16 md:px-10 md:py-24">
-    <p class="section-kicker">Trabajo seleccionado</p>
-    <h1 class="mt-3 font-display text-5xl font-bold text-slate-900 dark:text-white">Portfolio</h1>
-    <p class="mt-5 max-w-2xl text-lg leading-relaxed text-slate-600 dark:text-slate-300">Productos y experimentos donde exploro interfaces, arquitectura y experiencias digitales.</p>
-    <div class="mt-12 grid grid-cols-1 gap-6 md:grid-cols-2 xl:grid-cols-3">
-      {porfolio.map((project) => <PorfolioPreview presentation={project} />)}
-    </div>
+  <main id="main-content">
+    <section class="portfolio-hero" aria-labelledby="portfolio-heading">
+      <div class="portfolio-shell portfolio-hero__grid">
+        <div class="portfolio-hero__copy">
+          <p class="section-kicker">Trabajo seleccionado</p>
+          <h1 id="portfolio-heading">Portfolio</h1>
+          <p>Productos y experimentos donde exploro interfaces, arquitectura y experiencias digitales.</p>
+        </div>
+        <figure class="portfolio-hero__visual">
+          <img
+            src="/assets/jose-maria-santos-08.png"
+            alt="José María Santos, Frontend Tech Lead"
+            width="1536"
+            height="1024"
+            loading="eager"
+            fetchpriority="high"
+            decoding="async"
+          />
+        </figure>
+      </div>
+    </section>
+
+    <section class="portfolio-projects portfolio-shell" aria-label="Proyectos de portfolio">
+      <div class="portfolio-projects__grid">
+        {porfolio.map((project) => <PorfolioPreview presentation={project} />)}
+      </div>
+    </section>
   </main>
 </MainLayout>
+
+<style>
+  .portfolio-shell {
+    width: min(100% - 3rem, 72rem);
+    margin-inline: auto;
+  }
+
+  .portfolio-hero {
+    overflow: hidden;
+    padding-block: clamp(3.5rem, 8vw, 6.5rem) clamp(2.75rem, 6vw, 5rem);
+    background:
+      radial-gradient(circle at 78% 40%, rgb(103 232 249 / 0.3), transparent 27rem),
+      linear-gradient(135deg, #e6f8f8, #eef2ff 58%, #f8fafc);
+  }
+
+  .portfolio-hero__grid {
+    display: grid;
+    gap: clamp(1.75rem, 5vw, 4rem);
+    align-items: center;
+  }
+
+  .portfolio-hero__copy {
+    position: relative;
+    z-index: 1;
+  }
+
+  .portfolio-hero h1 {
+    max-width: 42rem;
+    margin: 0.6rem 0 1.25rem;
+    color: var(--text-primary);
+    font-family: var(--font-display);
+    font-size: clamp(3.4rem, 7vw, 6.25rem);
+    font-weight: 700;
+    letter-spacing: -0.07em;
+    line-height: 0.92;
+  }
+
+  .portfolio-hero__copy > p:last-child {
+    max-width: 35rem;
+    margin: 0;
+    color: var(--text-secondary);
+    font-size: clamp(1.05rem, 2vw, 1.25rem);
+    line-height: 1.7;
+  }
+
+  .portfolio-hero__visual {
+    width: min(100%, 33rem);
+    margin: 0 auto;
+  }
+
+  .portfolio-hero__visual img {
+    display: block;
+    width: 100%;
+    height: auto;
+    object-fit: contain;
+  }
+
+  .portfolio-projects {
+    padding-block: clamp(2.75rem, 6vw, 5rem) clamp(4rem, 8vw, 7rem);
+  }
+
+  .portfolio-projects__grid {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 1.5rem;
+  }
+
+  :global(.dark) .portfolio-hero {
+    background:
+      radial-gradient(circle at 78% 40%, rgb(8 145 178 / 0.22), transparent 27rem),
+      linear-gradient(135deg, #071c2a, #11142d 58%, #020617);
+  }
+
+  @media (min-width: 42rem) {
+    .portfolio-shell {
+      width: min(100% - 4rem, 72rem);
+    }
+
+    .portfolio-hero__grid {
+      grid-template-columns: minmax(0, 1fr) minmax(18rem, 0.9fr);
+    }
+
+    .portfolio-hero__visual {
+      margin-right: 0;
+    }
+
+    .portfolio-projects__grid {
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+  }
+
+  @media (min-width: 80rem) {
+    .portfolio-projects__grid {
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+    }
+  }
+</style>
