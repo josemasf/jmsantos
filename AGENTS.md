@@ -1,0 +1,78 @@
+# AGENTS Registry
+
+Este repositorio mantiene agentes personalizados para tareas específicas.
+
+## Tabla de agentes disponibles
+
+| Agente                       | Objetivo                                                                              | Archivo                                                |
+| ---------------------------- | ------------------------------------------------------------------------------------- | ------------------------------------------------------ |
+| Astro Content Writer         | Planificar, redactar, revisar y optimizar artículos técnicos para el blog Astro.      | `.github/agents/astro-content-writer.agent.md`         |
+| Visual Asset Prompt Designer | Diseñar prompts de alta calidad para generar recursos visuales de artículos técnicos. | `.github/agents/visual-asset-prompt-designer.agent.md` |
+
+## Astro Content Writer
+
+- Nombre: `Astro Content Writer`
+- Archivo fuente: `.github/agents/astro-content-writer.agent.md`
+- Descripción: agente especializado en planificación, redacción, revisión y optimización SEO de artículos técnicos para el blog Astro.
+- Herramientas declaradas: `read`, `search`, `edit`, `execute`.
+- Idioma por defecto: español de España.
+
+### Cuándo usarlo
+
+Usar este agente cuando la tarea sea:
+
+- Proponer ideas editoriales para el blog.
+- Crear o mejorar artículos en `src/content/posts`.
+- Revisar calidad técnica/editorial de borradores.
+- Optimizar SEO on-page de contenidos existentes.
+
+### Cómo consumirlo desde Codex u otros LLM
+
+1. Cargar el contenido completo de `.github/agents/astro-content-writer.agent.md` como instrucción de sistema o rol especializado.
+2. Mantener sus restricciones editoriales y técnicas (no inventar datos, respetar frontmatter y convención del repositorio).
+3. Ejecutar las tareas de escritura sobre la colección de posts de Astro, validando formato y coherencia con `src/content.config.ts`.
+
+### Prompt sugerido
+
+```text
+Actúa como el agente "Astro Content Writer" definido en .github/agents/astro-content-writer.agent.md.
+Tarea: [describe tema, público, intención y tipo de entrega].
+Repositorio: respeta esquema de Content Collections y estilo editorial existente.
+```
+
+## Visual Asset Prompt Designer
+
+- Nombre: `Visual Asset Prompt Designer`
+- Archivo fuente: `.github/agents/visual-asset-prompt-designer.agent.md`
+- Descripción: agente especializado en diseño de prompts para portadas, miniaturas sociales, ilustraciones técnicas y recursos visuales de artículos.
+- Herramientas declaradas: `read`, `search`.
+- Idioma por defecto: español de España.
+
+### Cuándo usarlo
+
+Usar este agente cuando la tarea sea:
+
+- Generar prompts para portadas de posts.
+- Crear variantes por canal (blog, LinkedIn, X) y formato (16:9, 1:1, 4:5).
+- Diseñar prompts para recursos conceptuales o diagramas visuales.
+- Definir prompts negativos para evitar artefactos y resultados genéricos.
+- Obtener alt text sugerido para accesibilidad.
+
+### Cómo consumirlo desde Codex u otros LLM
+
+1. Cargar el contenido completo de `.github/agents/visual-asset-prompt-designer.agent.md` como instrucción de sistema o rol especializado.
+2. Proporcionar siempre contexto mínimo: tema, audiencia, canal, estilo, formato y objetivo visual.
+3. Solicitar salida estructurada con prompt principal, prompt negativo, variantes y alt text.
+
+### Prompt sugerido
+
+```text
+Actúa como el agente "Visual Asset Prompt Designer" definido en .github/agents/visual-asset-prompt-designer.agent.md.
+Tarea: genera 5 prompts para la portada de un artículo sobre [tema], para [canal], en formato [16:9/1:1/4:5], estilo [editorial/técnico/conceptual].
+Entrega: prompt principal, prompt negativo, 3 variantes y alt text.
+```
+
+## Notas
+
+- Este registro documenta la existencia del agente para herramientas que no descubren automáticamente archivos `.agent.md`.
+- Si se actualiza el agente, actualizar también este archivo para mantener compatibilidad entre asistentes.
