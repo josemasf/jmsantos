@@ -1,7 +1,7 @@
 ---
 layout: ../../layouts/project.astro
 title: Enchanted Map
-urlSite: https://enchanted-map.com/
+urlSite: https://enchanted-map.netlify.app/
 img: "/assets/enchanted-map.png"
 description: Enchanted Map es una aplicación web interactiva que da vida a la mágica historia y leyendas de Córdoba. Combinamos lugares históricos, patrimonio cultural y leyendas locales en una experiencia digital atractiva.
 publishDate: 2025-05-20 00:00:00
@@ -15,7 +15,7 @@ tags:
 
 ![-----------------------------------------------------](https://raw.githubusercontent.com/andreasbm/readme/master/assets/lines/rainbow.png)
 
-- Sitio web: [Enchanted Map](https://enchanted-map.com/)
+- Sitio web: [Enchanted Map](https://enchanted-map.netlify.app/)
 - Código fuente: [GitHub](https://github.com/josemasf/enchanted-map)
 
 ### :sparkles: ¿Qué es?

@@ -1,7 +1,8 @@
 ---
 import PresentationPreview from "../components/PresentationPreview.astro";
-
+import { Image } from "astro:assets";
 import MainLayout from "../layouts/MainLayout.astro";
+import presentationHeroImage from "../images/jose-maria-santos-02.png";
 
 const presentations = Object.values(
   import.meta.glob<{ frontmatter: { publishDate: string } }>("./presentations/**/*.md", { eager: true })
@@ -18,16 +19,110 @@ const presentations = Object.values(
   title="Ponencias | José María Santos"
   description="Ponencias de José María Santos sobre frontend, testing y arquitectura"
 >
-  <main id="main-content" class="container mx-auto px-6 py-16 md:px-10 md:py-24">
-    <p class="section-kicker">Compartir conocimiento</p>
-    <h1 class="mt-3 font-display text-5xl font-bold text-slate-900 dark:text-white">Ponencias</h1>
-    <p class="mt-5 max-w-2xl text-lg leading-relaxed text-slate-600 dark:text-slate-300">Charlas sobre las prácticas y tecnologías que uso para construir software mantenible.</p>
-    <div class="mt-12 grid grid-cols-1 gap-6 md:grid-cols-2 xl:grid-cols-3">
+  <main id="main-content">
+    <section class="presentations-hero" aria-labelledby="presentations-heading">
+      <div class="presentations-hero__inner">
+        <div class="presentations-hero__copy">
+          <p class="section-kicker">Compartir conocimiento</p>
+          <h1 id="presentations-heading">Ponencias</h1>
+          <p>Charlas sobre las prácticas y tecnologías que uso para construir software mantenible.</p>
+        </div>
+        <div class="presentations-hero__visual">
+          <Image
+            src={presentationHeroImage}
+            alt="José María Santos durante una ponencia sobre desarrollo frontend"
+            loading="eager"
+            fetchpriority="high"
+            decoding="async"
+          />
+        </div>
+      </div>
+    </section>
+
+    <section class="presentations-list container mx-auto px-6 py-16 md:px-10 md:py-24" aria-label="Listado de ponencias">
+      <div class="grid grid-cols-1 gap-6 md:grid-cols-2 xl:grid-cols-3">
       {
         presentations.map((presentation) => (
           <PresentationPreview presentation={presentation} />
         ))
       }
-    </div>
+      </div>
+    </section>
   </main>
 </MainLayout>
+
+<style>
+  .presentations-hero {
+    overflow: clip;
+    background: #17213a;
+    color: white;
+  }
+
+  .presentations-hero__inner {
+    display: grid;
+    width: min(100% - 3rem, 72rem);
+    margin-inline: auto;
+    padding-block: clamp(3.5rem, 7vw, 5.75rem);
+  }
+
+  .presentations-hero__copy {
+    align-self: center;
+  }
+
+  .presentations-hero .section-kicker {
+    color: #a5f3fc;
+  }
+
+  .presentations-hero h1 {
+    max-width: 10ch;
+    margin: .65rem 0 1.25rem;
+    font-family: var(--font-display);
+    font-size: clamp(3rem, 6vw, 5.5rem);
+    font-weight: 700;
+    letter-spacing: -.065em;
+    line-height: .95;
+  }
+
+  .presentations-hero__copy > p:last-child {
+    max-width: 38rem;
+    margin: 0;
+    color: #dbeafe;
+    font-size: clamp(1.05rem, 1.8vw, 1.2rem);
+    line-height: 1.7;
+  }
+
+  .presentations-hero__visual {
+    width: min(100%, 31rem);
+    margin: 2rem auto 0;
+  }
+
+  .presentations-hero__visual img {
+    display: block;
+    width: 100%;
+    height: auto;
+    object-fit: contain;
+  }
+
+  @media (min-width: 48rem) {
+    .presentations-hero__inner {
+      grid-template-columns: minmax(0, 3fr) minmax(16rem, 2fr);
+      gap: clamp(1.5rem, 4vw, 4rem);
+      align-items: center;
+    }
+
+    .presentations-hero__visual {
+      width: min(100%, 29rem);
+      margin: 0 0 0 auto;
+    }
+  }
+
+  @media (max-width: 29.999rem) {
+    .presentations-hero__inner {
+      width: min(100% - 2.5rem, 72rem);
+    }
+
+    .presentations-hero__visual {
+      width: min(100%, 22rem);
+    }
+  }
+</style>
