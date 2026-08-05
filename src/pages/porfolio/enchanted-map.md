@@ -18,16 +18,16 @@ tags:
 - Sitio web: [Enchanted Map](https://enchanted-map.netlify.app/)
 - Código fuente: [GitHub](https://github.com/josemasf/enchanted-map)
 
-### :sparkles: ¿Qué es?
+### ✨ ¿Qué es?
 
 Enchanted Map es una aplicación web interactiva que da vida a la mágica historia y leyendas de Córdoba. Combinamos lugares históricos, patrimonio cultural y leyendas locales en una experiencia digital atractiva.
 
-### :trophy: ¿Por qué es innovador?
+### 🏆 ¿Por qué es innovador?
 
 - **Experiencia Inmersiva:** Permite a los usuarios explorar lugares emblemáticos como la Mezquita-Catedral, el Alcázar y el Barrio Judío a través de un mapa interactivo.
 - **Enfoque Único:** Fusiona historia y cultura popular, ofreciendo una nueva forma de descubrir el patrimonio.
 
-### :identification_card: Uso de Clerk en el proyecto
+### 🪪 Uso de Clerk en el proyecto
 
 Clerk se está usando para gestionar la autenticación del proyecto. Las librerías de Clerk que se están utilizando son:
 
@@ -66,7 +66,7 @@ Un store de Pinia que maneja:
 - Protección de rutas
 - Personalización de la UI con Vuetify
 
-### :hammer_and_wrench: ¿Cómo funciona?
+### 🛠️ ¿Cómo funciona?
 
 1.  **Autenticación Requerida:** Los usuarios deben autenticarse para acceder al mapa y las ubicaciones.
 2.  **Mapa Interactivo:** Una vez autenticados, los usuarios navegan por un mapa de Córdoba, descubriendo ubicaciones mágicas.
@@ -81,7 +81,7 @@ Un store de Pinia que maneja:
 
 Para más detalle sobre la arquitectura puedes acceder al [README ](https://github.com/josemasf/enchanted-map/blob/main/README.md)del proyecto
 
-## :camera: Capturas de pantalla
+## 📷 Capturas de pantalla
 
 ![Home View](https://github.com/user-attachments/assets/3727ca52-a3aa-40ec-bea6-5b6266fc9602)
 
@@ -91,10 +91,10 @@ Para más detalle sobre la arquitectura puedes acceder al [README ](https://gith
 
 ![Versión móvil](https://github.com/user-attachments/assets/6e4b6024-7a3f-4e55-84a0-2ee28166f9d2)
 
-## :sparkles: Authors
+## ✨ Authors
 
 [José María Santos](https://josemariasantos.com/)
 
-## :trophy: Badges
+## 🏆 Badges
 
 [![Netlify Status](https://api.netlify.com/api/v1/badges/b26bf20d-7cea-4dd1-a80e-9879c9a6e72e/deploy-status)](https://app.netlify.com/projects/enchanted-map/deploys)
