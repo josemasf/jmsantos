@@ -32,6 +32,63 @@ Usar este agente cuando la tarea sea:
 2. Mantener sus restricciones editoriales y técnicas (no inventar datos, respetar frontmatter y convención del repositorio).
 3. Ejecutar las tareas de escritura sobre la colección de posts de Astro, validando formato y coherencia con `src/content.config.ts`.
 
+### Layouts de posts disponibles
+
+La ruta `src/pages/blog/[slug].astro` selecciona automáticamente el layout de cada artículo según el frontmatter del post. Los agentes no deben importar layouts desde el Markdown ni duplicar HTML de portada dentro del cuerpo del artículo.
+
+| Caso de uso                            | Layout generado                 | Cómo activarlo                                   |
+| -------------------------------------- | ------------------------------- | ------------------------------------------------ |
+| Artículo estándar sin imagen destacada | `src/layouts/Post.astro`        | Usar solo los campos obligatorios del post.      |
+| Artículo con imagen destacada          | `src/layouts/PostWithImage.astro` | Añadir el objeto `image` al frontmatter.         |
+| Artículo perteneciente a una serie     | `src/layouts/SeriesPost.astro`  | Añadir el objeto `series` al frontmatter.        |
+
+Campos obligatorios comunes para todos los posts:
+
+```yaml
+title: "Título del artículo"
+description: "Descripción SEO y resumen editorial."
+date: 2026-08-08
+tags: [Astro, Frontend]
+category: Frontend
+```
+
+Para un post con imagen destacada:
+
+```yaml
+image:
+  src: /images/blog/slug-del-post/nombre-descriptivo.png
+  alt: Descripción accesible de la imagen.
+  caption: Texto opcional de pie de imagen.
+  width: 1536
+  height: 1024
+```
+
+Convención de imágenes del blog:
+
+- Guardar imágenes editoriales en `public/images/blog/<slug-del-post>/`.
+- Usar nombres descriptivos en minúsculas y con guiones.
+- Referenciar desde frontmatter con ruta pública absoluta: `/images/blog/<slug-del-post>/<archivo>`.
+- Incluir siempre `alt`; añadir `width` y `height` cuando se conozcan para evitar saltos de layout.
+- No dejar imágenes definitivas de posts en `src/images` si se van a servir directamente desde Markdown/layout.
+
+Para un post de serie:
+
+```yaml
+series:
+  title: "Nombre de la serie"
+  slug: nombre-de-la-serie
+  order: 1
+  description: "Descripción opcional de la serie."
+```
+
+Reglas para series:
+
+- Usar el mismo `series.slug` en todos los posts relacionados.
+- Definir `series.order` con números consecutivos para ordenar el listado lateral.
+- Repetir `series.title` y, si aplica, `series.description` de forma coherente entre los posts de la misma serie.
+- Si un post tiene `series` e `image`, se renderiza con `SeriesPost.astro` y también muestra la imagen destacada.
+- No crear enlaces manuales de "posts relacionados" dentro del cuerpo salvo que aporten contexto adicional; el layout ya lista la serie.
+
 ### Prompt sugerido
 
 ```text
