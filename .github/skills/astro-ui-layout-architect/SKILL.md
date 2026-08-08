@@ -1,7 +1,7 @@
 ---
 name: astro-ui-layout-architect
-description: 'Diseña, revisa e implementa interfaces Astro modernas, responsive y accesibles usando layouts, pages y components con criterio de arquitectura visual. Use when piden mejorar UI, maquetacion, responsive, UX, accesibilidad, rendimiento o estructura de layout/componentes en Astro.'
-argument-hint: 'Objetivo visual, pagina/seccion a trabajar, restricciones y nivel de cambio (ajuste puntual o refactor de arquitectura).'
+description: "Diseña, revisa e implementa interfaces Astro modernas, responsive y accesibles usando layouts, pages y components con criterio de arquitectura visual. Use when piden mejorar UI, maquetacion, responsive, UX, accesibilidad, rendimiento o estructura de layout/componentes en Astro."
+argument-hint: "Objetivo visual, pagina/seccion a trabajar, restricciones y nivel de cambio (ajuste puntual o refactor de arquitectura)."
 user-invocable: true
 disable-model-invocation: false
 ---
