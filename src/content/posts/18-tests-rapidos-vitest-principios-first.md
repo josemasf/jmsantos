@@ -4,6 +4,11 @@ description: "Seis decisiones prácticas para acelerar tests de Vue con Vitest y
 date: 2026-08-05
 tags: [testing, vitest, vue, performance, CI/CD, clean-code]
 category: Testing
+series:
+  title: "Testing moderno en Vue: confianza sin fragilidad"
+  slug: testing-moderno-vue-confianza-sin-fragilidad
+  order: 1
+  description: "Una guía práctica para construir una suite de tests rápida, realista y mantenible en Vue 3."
 ---
 
 Una suite lenta no solo consume minutos de CI: reduce la frecuencia con la que el equipo la ejecuta y hace más difícil detectar una regresión cerca del cambio que la introdujo. La **F** de _Fast_ en los principios FIRST persigue precisamente un feedback rápido.

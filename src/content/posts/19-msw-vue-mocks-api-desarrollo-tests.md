@@ -4,6 +4,11 @@ description: "Cómo centralizar mocks HTTP con Mock Service Worker en una aplica
 date: 2026-08-06
 tags: [MSW, Vue, testing, Vitest, Storybook, mocks, API]
 category: Testing
+series:
+  title: "Testing moderno en Vue: confianza sin fragilidad"
+  slug: testing-moderno-vue-confianza-sin-fragilidad
+  order: 2
+  description: "Una guía práctica para construir una suite de tests rápida, realista y mantenible en Vue 3."
 ---
 
 Los mocks de API suelen empezar como una solución puntual: un `vi.mock` para desbloquear un test o un JSON estático para poder terminar una pantalla antes de que exista el backend. El problema aparece cuando cada contexto inventa su propia respuesta. La vista funciona con un dato, Storybook muestra otro y los tests dependen de un tercero. Cuando cambia el contrato, ninguno avisa de forma clara qué se ha quedado obsoleto.
