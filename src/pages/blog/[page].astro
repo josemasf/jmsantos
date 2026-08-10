@@ -1,0 +1,33 @@
+---
+import { getCollection, type CollectionEntry } from "astro:content";
+import BlogListing from "@components/BlogListing.astro";
+import MainLayout from "@layouts/MainLayout.astro";
+
+export async function getStaticPaths() {
+  const pageSize = 9;
+  const posts = (await getCollection("posts")).sort((a, b) => b.data.date.valueOf() - a.data.date.valueOf());
+  const totalPages = Math.ceil(posts.length / pageSize);
+
+  return Array.from({ length: Math.max(totalPages - 1, 0) }, (_, index) => {
+    const currentPage = index + 2;
+    const start = (currentPage - 1) * pageSize;
+
+    return {
+      params: { page: String(currentPage) },
+      props: { posts: posts.slice(start, start + pageSize), currentPage, totalPages },
+    };
+  });
+}
+
+interface Props {
+  posts: CollectionEntry<"posts">[];
+  currentPage: number;
+  totalPages: number;
+}
+
+const { posts, currentPage, totalPages } = Astro.props;
+---
+
+<MainLayout title={`Blog · Página ${currentPage} | José María Santos`} description="Artículos de José María Santos sobre frontend, arquitectura, calidad y producto." ogImage="/images/social/blog.png">
+  <BlogListing posts={posts} currentPage={currentPage} totalPages={totalPages} />
+</MainLayout>

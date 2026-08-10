@@ -1,0 +1,50 @@
+---
+import type { CollectionEntry } from "astro:content";
+import BlogPagination from "@components/BlogPagination.astro";
+import PostPreview from "@components/PostPreview.astro";
+
+interface Props {
+  posts: CollectionEntry<"posts">[];
+  currentPage: number;
+  totalPages: number;
+}
+
+const { posts, currentPage, totalPages } = Astro.props;
+---
+
+<main id="main-content">
+  <section class="blog-hero relative isolate overflow-hidden border-b border-slate-200 bg-slate-950 text-white dark:border-slate-800">
+    <div class="absolute -left-24 top-0 -z-10 h-72 w-72 rounded-full bg-cyan-400/20 blur-3xl"></div>
+    <div class="absolute -right-20 bottom-0 -z-10 h-80 w-80 rounded-full bg-indigo-500/30 blur-3xl"></div>
+    <div class="blog-hero__inner">
+      <div class="blog-hero__content">
+        <p class="blog-hero__eyebrow section-kicker text-cyan-200">Ideas y aprendizajes</p>
+        <h1 class="blog-hero__title font-display font-bold">Blog</h1>
+        <p class="blog-hero__description text-slate-200">Notas prácticas sobre frontend, arquitectura, calidad y las decisiones que hacen avanzar a los equipos.</p>
+      </div>
+      <div class="blog-hero__media">
+        <img class="blog-hero__image" src="/assets/jose-maria-santos-01.png" alt="Ilustración de José María Santos trabajando con un portátil" width="1536" height="1024" />
+      </div>
+    </div>
+  </section>
+  <section class="container mx-auto px-6 py-16 md:px-10 md:py-24" aria-label={`Artículos del blog, página ${currentPage}`}>
+    <div class="grid gap-6 md:grid-cols-2 xl:grid-cols-3">
+      {posts.map((post) => <PostPreview post={post} />)}
+    </div>
+    <BlogPagination currentPage={currentPage} totalPages={totalPages} />
+  </section>
+</main>
+
+<style>
+  .blog-hero__inner { display: grid; grid-template-columns: minmax(0, .9fr) minmax(420px, 1.1fr); align-items: center; gap: clamp(2rem, 5vw, 5rem); width: min(calc(100% - 3rem), 1440px); margin-inline: auto; padding-block: clamp(3rem, 5vw, 4.5rem); }
+  .blog-hero__content { max-width: 44rem; }
+  .blog-hero__eyebrow { margin-bottom: 1.25rem; }
+  .blog-hero__title { margin: 0; font-size: clamp(3.5rem, 7vw, 6rem); line-height: .95; letter-spacing: -.04em; }
+  .blog-hero__description { max-width: 43rem; margin-top: 2rem; font-size: clamp(1.125rem, 2vw, 1.5rem); line-height: 1.55; }
+  .blog-hero__media { position: relative; display: flex; align-items: flex-end; justify-content: center; min-width: 0; }
+  .blog-hero__media::before { position: absolute; inset: 15% 10% 5%; z-index: 0; border-radius: 50%; background: radial-gradient(circle, rgb(50 210 220 / 12%), transparent 68%); content: ""; pointer-events: none; }
+  .blog-hero__image { position: relative; z-index: 1; display: block; width: min(100%, 47.5rem); height: auto; max-height: 27.5rem; object-fit: contain; }
+  @media (max-width: 1100px) { .blog-hero__inner { grid-template-columns: minmax(0, 1fr) minmax(340px, .9fr); gap: 2rem; } .blog-hero__image { max-height: 26.875rem; } }
+  @media (max-width: 768px) { .blog-hero__inner { grid-template-columns: 1fr; gap: 2rem; width: min(calc(100% - 2rem), 42.5rem); padding-block: 3rem 2rem; } .blog-hero__content { max-width: none; } .blog-hero__media { justify-content: center; } .blog-hero__image { width: min(100%, 32.5rem); max-height: 22.5rem; } }
+  @media (max-width: 420px) { .blog-hero__title { font-size: clamp(3rem, 16vw, 3.5rem); } .blog-hero__image { max-height: 17.5rem; } }
+</style>
