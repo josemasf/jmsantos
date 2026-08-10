@@ -4,9 +4,27 @@
 
 @variant dark (&:where(.dark, .dark *));
 
+/* Inter and Montserrat Alternates are self-hosted under their SIL Open Font License. */
+@font-face {
+  font-family: "Inter";
+  font-style: normal;
+  font-weight: 400 900;
+  font-display: swap;
+  src: url("/fonts/inter-latin.woff2") format("woff2");
+}
+
+@font-face {
+  font-family: "Montserrat Alternates";
+  font-style: normal;
+  font-weight: 700;
+  font-display: swap;
+  src: url("/fonts/montserrat-alternates-latin.woff2") format("woff2");
+}
+
 @theme {
-  --font-display: "Montserrat Alternates", Georgia, serif;
-  --font-sans: "Inter", ui-sans-serif, sans-serif;
+  --font-display:
+    "Montserrat Alternates", Georgia, Cambria, "Times New Roman", serif;
+  --font-sans: "Inter", ui-sans-serif, system-ui, sans-serif;
 }
 
 :root {
@@ -53,38 +71,52 @@ body {
   min-height: 100vh;
   background-color: var(--surface);
   color: var(--ink);
-  transition: background-color .2s ease, color .2s ease;
+  transition:
+    background-color 0.2s ease,
+    color 0.2s ease;
 }
 
-::selection { background: #a5f3fc; color: #17213a; }
+::selection {
+  background: #a5f3fc;
+  color: #17213a;
+}
 
 :focus-visible {
   outline: 3px solid #0891b2;
   outline-offset: 3px;
-  border-radius: .25rem;
+  border-radius: 0.25rem;
 }
 
 .skip-link {
   position: fixed;
-  top: .75rem;
-  left: .75rem;
+  top: 0.75rem;
+  left: 0.75rem;
   z-index: 100;
   transform: translateY(-200%);
   background: #17213a;
   color: white;
-  padding: .75rem 1rem;
+  padding: 0.75rem 1rem;
   font-weight: 700;
 }
-.skip-link:focus { transform: translateY(0); }
+.skip-link:focus {
+  transform: translateY(0);
+}
 
 .section-kicker {
   color: var(--aqua);
-  font-size: .75rem;
+  font-size: 0.75rem;
   font-weight: 800;
-  letter-spacing: .16em;
+  letter-spacing: 0.16em;
   text-transform: uppercase;
 }
 
 @media (prefers-reduced-motion: reduce) {
-  *, *::before, *::after { animation-duration: .01ms !important; animation-iteration-count: 1 !important; scroll-behavior: auto !important; transition-duration: .01ms !important; }
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    scroll-behavior: auto !important;
+    transition-duration: 0.01ms !important;
+  }
 }

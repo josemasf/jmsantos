@@ -1,8 +1,17 @@
 [build]
-  command = "pnpm run build"
-  publish = "dist"
+command = "pnpm run build"
+publish = "dist"
 
 [build.environment]
-  NPM_FLAGS = "--version"
-  PNPM_VERSION = "10"
-  NODE_VERSION = "22.12.0"
+NPM_FLAGS = "--version"
+PNPM_VERSION = "10"
+NODE_VERSION = "22.12.0"
+
+[[headers]]
+for = "/*"
+[headers.values]
+Content-Security-Policy = "default-src 'self'; base-uri 'self'; connect-src 'self' https://cloudflareinsights.com; font-src 'self'; frame-ancestors 'none'; img-src 'self' data: https://res.cloudinary.com; object-src 'none'; script-src 'self' 'unsafe-inline' https://static.cloudflareinsights.com; style-src 'self' 'unsafe-inline'; upgrade-insecure-requests"
+Permissions-Policy = "camera=(), geolocation=(), microphone=(), payment=(), usb=()"
+Referrer-Policy = "strict-origin-when-cross-origin"
+X-Content-Type-Options = "nosniff"
+X-Frame-Options = "DENY"
