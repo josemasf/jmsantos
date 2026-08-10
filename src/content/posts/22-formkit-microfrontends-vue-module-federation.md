@@ -1,7 +1,7 @@
 ---
 title: "FormKit: cómo llevar una plataforma de microfrontends con Vue 3 a un nivel de entrega verificable"
 description: "Caso práctico de una plataforma de formularios con Vite Module Federation: configuración por entorno, pruebas con MSW y quality gates para cuatro aplicaciones."
-date: 2026-08-06
+date: 2026-06-12
 tags: [Vue 3, Vite, Module Federation, microfrontends, Vitest, MSW, CI]
 category: Arquitectura frontend
 ---

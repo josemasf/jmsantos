@@ -1,7 +1,7 @@
 ---
 title: "Tests E2E con IA: investigación práctica con Midscene.js y Playwright"
 description: "Cómo exploramos el uso de inteligencia artificial para generar y ejecutar tests end-to-end, comparando enfoques YAML vs Playwright, con análisis de costes reales."
-date: 2025-05-07
+date: 2025-09-19
 tags: [testing, IA, e2e, Playwright, Midscene, automatización]
 category: Testing
 ---

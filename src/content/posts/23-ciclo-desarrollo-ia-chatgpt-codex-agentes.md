@@ -1,7 +1,7 @@
 ---
 title: "Mi ciclo de desarrollo con IA: de una idea al producto con ChatGPT, Linear, Codex y agentes"
 description: "Así utilizo ChatGPT, Linear, Codex y agentes especializados para convertir ideas de mis side projects en funcionalidades planificadas, implementadas, probadas y revisadas visualmente."
-date: 2026-08-07
+date: 2026-06-26
 tags: [IA, ChatGPT, Codex, Linear, Frontend, Vue, Astro, testing, productividad]
 category: Desarrollo profesional
 image:

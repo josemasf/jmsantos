@@ -1,7 +1,7 @@
 ---
 title: "Awesome Copilot MCP: encuentra y aplica personalizaciones para GitHub Copilot desde el editor"
 description: "Qué aporta Awesome Copilot MCP, cómo configurarlo en VS Code y cómo usar sus instrucciones, prompts y agentes para mejorar revisiones, tests y documentación."
-date: 2026-08-06
+date: 2026-05-29
 tags: [MCP, GitHub Copilot, VSCode, DX, prompts, calidad de código]
 category: Herramientas
 ---

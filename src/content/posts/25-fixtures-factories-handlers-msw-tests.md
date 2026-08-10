@@ -1,7 +1,7 @@
 ---
 title: "Fixtures, factories y handlers de MSW: organiza escenarios de test escalables"
 description: "Una estructura práctica para separar datos de prueba, variaciones y respuestas HTTP con Vitest, MSW y TypeScript en aplicaciones Vue 3."
-date: 2026-08-09
+date: 2026-07-24
 tags: [testing, MSW, Vitest, Vue, TypeScript, mocks, API]
 category: Testing
 series:

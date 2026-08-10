@@ -1,7 +1,7 @@
 ---
 title: "Debugging en producción desde VSCode: analiza APIs problemáticas con Sentry MCP"
 description: "Cómo conectar Sentry MCP en VSCode para resumir errores, detectar APIs con mayor impacto y priorizar correcciones sin salir del editor."
-date: 2026-08-05
+date: 2026-04-03
 tags: [Sentry, MCP, VSCode, debugging, observabilidad, DX]
 category: DevOps
 ---

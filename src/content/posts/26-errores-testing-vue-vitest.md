@@ -1,7 +1,7 @@
 ---
 title: "10 errores comunes al testear aplicaciones Vue con Vitest (y cómo evitarlos)"
 description: "Diez problemas frecuentes en suites Vue con Vitest, Testing Library y MSW, con alternativas prácticas para escribir pruebas más fiables y mantenibles."
-date: 2026-08-09
+date: 2026-08-07
 tags: [testing, Vitest, Vue, Testing Library, MSW, calidad, refactorización]
 category: Testing
 series:

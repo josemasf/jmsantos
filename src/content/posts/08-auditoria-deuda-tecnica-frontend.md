@@ -1,7 +1,7 @@
 ---
 title: "Auditoría de deuda técnica en un proyecto frontend Vue: caso real con Sentry, knip y eslint"
 description: "Cómo realizar una auditoría completa de deuda técnica en un proyecto frontend con Vue, analizando errores de producción (Sentry), tipado débil, código muerto y dependencias desactualizadas."
-date: 2026-03-04
+date: 2025-11-28
 tags: [deuda técnica, auditoría, Sentry, TypeScript, Vue, frontend, calidad]
 category: Calidad de código
 ---

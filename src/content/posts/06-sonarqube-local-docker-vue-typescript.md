@@ -1,7 +1,7 @@
 ---
 title: "Cómo montar SonarQube local con Docker para proyectos Vue/TypeScript"
 description: "Guía paso a paso para levantar SonarQube con Docker, configurar proyectos Vue con TypeScript, integrar cobertura de tests con vitest+lcov, y complementar con Dependency-Track."
-date: 2025-05-01
+date: 2025-10-31
 tags: [SonarQube, Docker, Vue, TypeScript, calidad, DevOps, CI/CD]
 category: DevOps
 ---

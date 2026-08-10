@@ -1,7 +1,7 @@
 ---
 title: "Tests rápidos con Vitest: cómo aplicar la F de FIRST sin perder confianza"
 description: "Seis decisiones prácticas para acelerar tests de Vue con Vitest y Testing Library, evitando optimizaciones que vuelven la suite menos fiable."
-date: 2026-08-05
+date: 2026-04-17
 tags: [testing, vitest, vue, performance, CI/CD, clean-code]
 category: Testing
 series:

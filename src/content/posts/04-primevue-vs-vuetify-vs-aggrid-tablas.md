@@ -1,7 +1,7 @@
 ---
 title: "PrimeVue vs Vuetify vs AG Grid: comparativa real para tablas de datos en Vue 3"
 description: "Una evaluación exhaustiva de las tres principales librerías de tablas para Vue 3, basada en una implementación real sobre un proyecto en producción con más de 40 criterios funcionales."
-date: 2025-11-11
+date: 2025-10-03
 tags: [Vue, PrimeVue, Vuetify, AG Grid, tablas, componentes, frontend]
 category: Frontend
 ---

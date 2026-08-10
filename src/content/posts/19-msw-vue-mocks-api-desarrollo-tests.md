@@ -1,7 +1,7 @@
 ---
 title: "MSW en Vue 3: mocks de API fiables para desarrollo, Vitest y Storybook"
 description: "Cómo centralizar mocks HTTP con Mock Service Worker en una aplicación Vue 3 para reutilizarlos en desarrollo local, tests con Vitest y Storybook sin duplicar contratos."
-date: 2026-08-06
+date: 2026-05-01
 tags: [MSW, Vue, testing, Vitest, Storybook, mocks, API]
 category: Testing
 series:

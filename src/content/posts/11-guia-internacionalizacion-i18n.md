@@ -1,7 +1,7 @@
 ---
 title: "Guía completa de internacionalización (i18n) para aplicaciones web y APIs"
 description: "Todo lo que debes considerar al internacionalizar una aplicación web empresarial: formatos numéricos, monedas, fechas, unidades de medida, direcciones y parámetros de localización en APIs."
-date: 2024-11-15
+date: 2026-01-09
 tags: [i18n, internacionalización, frontend, API, localización]
 category: Frontend
 ---

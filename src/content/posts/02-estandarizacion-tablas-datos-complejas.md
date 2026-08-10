@@ -1,7 +1,7 @@
 ---
 title: "Estandarización de tablas de datos complejas en aplicaciones empresariales"
 description: "Cómo definir criterios mínimos obligatorios para tablas de datos de alta funcionalidad, agnósticos a la tecnología, cuando tu plataforma tiene múltiples frameworks frontend."
-date: 2025-12-10
+date: 2025-09-05
 tags: [UX, frontend, tablas, Material Design, arquitectura, Vue, Blazor]
 category: UX/Arquitectura
 ---

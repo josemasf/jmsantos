@@ -1,7 +1,7 @@
 ---
 title: "Diagnóstico y plan de acción: cuando tu suite de tests tarda 15 minutos"
 description: "Caso real de diagnóstico de una suite de vitest que tardaba 15 minutos, con identificación de 7 causas raíz y un plan de acción en 3 fases para reducirla a menos de 5 minutos."
-date: 2026-03-04
+date: 2025-11-14
 tags: [testing, vitest, performance, diagnóstico, CI/CD, frontend]
 category: Testing
 ---

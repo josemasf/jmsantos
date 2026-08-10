@@ -1,7 +1,7 @@
 ---
 title: "Arquitectura de widgets autocontenidos en Blazor: principios y flujo de trabajo"
 description: "Cómo diseñar componentes Blazor reutilizables que encapsulan lógica de negocio, llamadas API y gestión de estados, usando inyección de dependencias y separación de responsabilidades."
-date: 2025-07-25
+date: 2026-03-20
 tags: [Blazor, arquitectura, componentes, .NET, widgets, DI]
 category: Arquitectura
 ---

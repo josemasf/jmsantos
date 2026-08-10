@@ -1,7 +1,7 @@
 ---
 title: "SonarQube vs Snyk vs Dependency-Track: cómo elegir tu stack de análisis de código"
 description: "Evaluación comparativa de herramientas de análisis de calidad y seguridad de código para proyectos frontend, con precios, pros/contras y criterios de selección."
-date: 2025-01-15
+date: 2026-01-23
 tags: [seguridad, calidad, SonarQube, Snyk, DevSecOps, CI/CD]
 category: DevOps
 ---

@@ -1,7 +1,7 @@
 ---
 title: "Accesibilidad web (a11y): herramientas, realidad y decisiones pragmáticas"
 description: "Evaluación práctica de herramientas de accesibilidad web (Axe Core, Pa11y, WAVE, Playwright+AXE) con conclusiones honestas sobre los desafíos reales de cumplir WCAG al 100%."
-date: 2025-03-18
+date: 2025-10-17
 tags: [accesibilidad, a11y, WCAG, testing, Playwright, frontend]
 category: Accesibilidad
 ---

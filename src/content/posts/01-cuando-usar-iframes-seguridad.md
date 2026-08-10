@@ -1,7 +1,7 @@
 ---
 title: "Cuándo y cómo usar iframes de forma segura en aplicaciones web modernas"
 description: "Una guía práctica de decisión arquitectónica sobre la integración de servicios de terceros mediante iframes, con medidas de seguridad, alternativas evaluadas y buenas prácticas."
-date: 2026-03-25
+date: 2025-08-22
 tags: [arquitectura, seguridad, frontend, iframe, ADR]
 category: Arquitectura
 ---

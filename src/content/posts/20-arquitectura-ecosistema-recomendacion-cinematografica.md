@@ -1,7 +1,7 @@
 ---
 title: "Arquitectura de un ecosistema de recomendación cinematográfica: app, contenido e IA"
 description: "Cómo separar una aplicación de recomendaciones y una plataforma editorial automatizada, compartir servicios y usar IA con controles técnicos y revisión humana."
-date: 2026-08-06
+date: 2026-05-15
 tags: [arquitectura, Vue, Astro, Supabase, IA, automatización, cine]
 category: Arquitectura
 ---

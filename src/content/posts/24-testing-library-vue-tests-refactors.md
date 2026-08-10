@@ -1,7 +1,7 @@
 ---
 title: "Testing Library en Vue: tests que sobreviven a los refactors"
 description: "Cómo escribir tests de componentes Vue 3 centrados en comportamiento observable, consultas accesibles e interacciones de usuario para refactorizar con confianza."
-date: 2026-08-09
+date: 2026-07-10
 tags: [testing, Testing Library, Vue, Vitest, accesibilidad, refactorización]
 category: Testing
 series:

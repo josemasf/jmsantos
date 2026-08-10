@@ -1,7 +1,7 @@
 ---
 title: "Alert, Banner o Snackbar: cuándo usar cada componente de notificación"
 description: "Guía de decisión rápida para elegir el componente correcto de notificación en tu aplicación web, basada en Material Design y experiencia real."
-date: 2024-02-16
+date: 2026-03-06
 tags: [UX, componentes, Material Design, Vue, frontend]
 category: UX
 ---

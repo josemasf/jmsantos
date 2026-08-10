@@ -1,7 +1,7 @@
 ---
 title: "De librería de componentes propia a Vuetify directo: cómo y por qué simplificamos nuestro stack"
 description: "Lecciones aprendidas al deprecar una librería de componentes wrapper sobre Vuetify en favor de usar Vuetify directamente con una configuración centralizada."
-date: 2025-04-22
+date: 2025-12-26
 tags: [Vue, Vuetify, componentes, arquitectura, DX, frontend]
 category: Arquitectura
 ---

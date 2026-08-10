@@ -1,7 +1,7 @@
 ---
 title: "Qué es un ADR y por qué tu equipo debería usarlos"
 description: "Guía práctica sobre Architecture Decision Records (ADR): qué son, cuándo crearlos, qué deben contener, y cómo implementar el proceso en tu equipo de desarrollo."
-date: 2024-10-15
+date: 2025-12-12
 tags: [arquitectura, ADR, documentación, equipos, buenas prácticas]
 category: Arquitectura
 ---

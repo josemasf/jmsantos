@@ -1,7 +1,7 @@
 ---
 title: "Diseño responsive con enfoque Mobile First en Vue 3 + TypeScript"
 description: "Guía práctica para crear componentes responsive con enfoque Mobile First usando Vue 3, TypeScript y Composition API, con referencias a herramientas de desarrollo."
-date: 2024-08-20
+date: 2026-02-06
 tags: [responsive, mobile first, Vue, TypeScript, CSS, frontend]
 category: Frontend
 ---

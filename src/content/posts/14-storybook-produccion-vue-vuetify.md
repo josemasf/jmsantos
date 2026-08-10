@@ -1,7 +1,7 @@
 ---
 title: "Cómo desplegar Storybook en producción para proyectos Vue 3 + Vuetify"
 description: "Guía paso a paso para configurar, construir y desplegar Storybook en una Azure Static Web App, integrado con tu pipeline de CI/CD."
-date: 2024-09-10
+date: 2026-02-20
 tags: [Storybook, Vue, Vuetify, CI/CD, Azure, DevOps]
 category: DevOps
 ---
