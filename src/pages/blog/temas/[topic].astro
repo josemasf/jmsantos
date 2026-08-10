@@ -1,0 +1,71 @@
+---
+import { getCollection, type CollectionEntry } from "astro:content";
+import MainLayout from "@layouts/MainLayout.astro";
+import PostPreview from "@components/PostPreview.astro";
+import { blogTopics, getPostTopics, type BlogTopic } from "@data/blog-topics";
+import { breadcrumbSchema } from "@data/blog-seo";
+
+export async function getStaticPaths() {
+  const posts = await getCollection("posts");
+  return blogTopics
+    .filter((topic) => posts.some((post) => getPostTopics(post).some((item) => item.slug === topic.slug)))
+    .map((topic) => ({ params: { topic: topic.slug }, props: { topic } }));
+}
+
+interface Props {
+  topic: BlogTopic;
+}
+
+const { topic } = Astro.props;
+const posts = (await getCollection("posts"))
+  .filter((post) => getPostTopics(post).some((item) => item.slug === topic.slug))
+  .sort((a, b) => b.data.date.valueOf() - a.data.date.valueOf()) as CollectionEntry<"posts">[];
+const otherTopics = blogTopics.filter((item) => item.slug !== topic.slug);
+const path = `/blog/temas/${topic.slug}/`;
+const schemas = [
+  breadcrumbSchema([
+    { name: "Inicio", path: "/" },
+    { name: "Blog", path: "/blog/" },
+    { name: topic.title, path },
+  ]),
+];
+---
+
+<MainLayout title={`${topic.title} | Blog de José María Santos`} description={topic.description} ogImage="/images/social/blog-default.png" schemas={schemas}>
+  <main id="main-content">
+    <section class="relative isolate overflow-hidden border-b border-slate-200 bg-slate-950 text-white dark:border-slate-800">
+      <div class="absolute -left-24 top-0 -z-10 h-72 w-72 rounded-full bg-cyan-400/20 blur-3xl"></div>
+      <div class="absolute -right-20 bottom-0 -z-10 h-80 w-80 rounded-full bg-indigo-500/30 blur-3xl"></div>
+      <div class="container mx-auto px-6 py-16 md:px-10 md:py-24">
+        <p class="section-kicker text-cyan-200">Tema del blog</p>
+        <h1 class="mt-4 max-w-4xl font-display text-5xl font-bold leading-[.95] tracking-tight md:text-7xl">{topic.title}</h1>
+        <p class="mt-7 max-w-3xl text-lg leading-relaxed text-slate-200 md:text-xl">{topic.description}</p>
+        <a href="/blog/" class="mt-8 inline-flex min-h-11 items-center font-bold text-cyan-200 hover:text-white"><span class="mr-2" aria-hidden="true">←</span>Ver todos los artículos</a>
+      </div>
+    </section>
+
+    <section class="container mx-auto px-6 py-16 md:px-10 md:py-24" aria-labelledby="topic-posts-heading">
+      <div class="flex items-end justify-between gap-4">
+        <div>
+          <p class="section-kicker">{posts.length} artículos</p>
+          <h2 id="topic-posts-heading" class="mt-2 font-display text-3xl font-bold text-slate-900 dark:text-white">Lecturas sobre {topic.title.toLocaleLowerCase("es-ES")}</h2>
+        </div>
+      </div>
+      <div class="mt-10 grid gap-6 md:grid-cols-2 xl:grid-cols-3">
+        {posts.map((post) => <PostPreview post={post} />)}
+      </div>
+    </section>
+
+    <aside class="border-t border-slate-200 bg-white dark:border-slate-800 dark:bg-slate-900/40" aria-labelledby="other-topics-heading">
+      <div class="container mx-auto px-6 py-14 md:px-10">
+        <p class="section-kicker">Explora más</p>
+        <h2 id="other-topics-heading" class="mt-2 font-display text-3xl font-bold text-slate-900 dark:text-white">Otros temas</h2>
+        <ul class="mt-7 grid gap-3 sm:grid-cols-2 lg:grid-cols-4">
+          {otherTopics.map((item) => (
+            <li><a href={`/blog/temas/${item.slug}/`} class="block min-h-full rounded-lg border border-slate-200 bg-slate-50 p-5 font-bold text-indigo-800 transition hover:-translate-y-0.5 hover:border-cyan-400 hover:bg-cyan-50 dark:border-slate-700 dark:bg-slate-950 dark:text-cyan-200 dark:hover:bg-slate-800">{item.title}<span class="ml-2" aria-hidden="true">→</span></a></li>
+          ))}
+        </ul>
+      </div>
+    </aside>
+  </main>
+</MainLayout>

@@ -29,9 +29,7 @@ export default defineConfig({
     },
   },
   integrations: [
-    sitemap({
-      lastmod: new Date(),
-    }),
+    sitemap(),
     partytown({
       config: {
         forward: ["dataLayer.push"],

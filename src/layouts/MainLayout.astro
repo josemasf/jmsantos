@@ -10,6 +10,8 @@ export interface Props {
   title?: string;
   ogImage?: string;
   ogType?: string;
+  noindex?: boolean;
+  schemas?: unknown | unknown[];
 }
 
 const {
@@ -17,13 +19,15 @@ const {
   title = "José María Santos: Desarrollador Web",
   ogImage,
   ogType,
+  noindex,
+  schemas,
 } = Astro.props;
 ---
 
 <html lang="es">
   <head>
     <ClientRouter />
-    <MainHead title={title} description={description} ogImage={ogImage} ogType={ogType} />
+    <MainHead title={title} description={description} ogImage={ogImage} ogType={ogType} noindex={noindex} schemas={schemas} />
     <!-- Pixel Code for https://overtracking.com/ -->
     <script is:inline defer src="https://cdn.overtracking.com/t/tCElhnUuwll9eKe9c/"></script>
     <!-- END Pixel Code -->

@@ -3,6 +3,7 @@ import { getCollection, render, type CollectionEntry } from "astro:content";
 import Post from "@layouts/Post.astro";
 import PostWithImage from "@layouts/PostWithImage.astro";
 import SeriesPost from "@layouts/SeriesPost.astro";
+import { getPrimaryPostTopic, getPostTopics } from "@data/blog-topics";
 
 export async function getStaticPaths() {
   const posts = await getCollection("posts");
@@ -30,14 +31,21 @@ const formattedDate = new Intl.DateTimeFormat("es-ES", {
   month: "long",
   year: "numeric",
 }).format(post.data.date);
+const primaryTopic = getPrimaryPostTopic(post);
+const relatedPosts = primaryTopic
+  ? posts
+      .filter((entry) => entry.id !== post.id && getPostTopics(entry).some((topic) => topic.slug === primaryTopic.slug))
+      .sort((a, b) => b.data.date.valueOf() - a.data.date.valueOf())
+      .slice(0, 3)
+  : [];
 ---
 
 {
   post.data.series ? (
-    <SeriesPost post={post} seriesPosts={seriesPosts} Content={Content} formattedDate={formattedDate} />
+    <SeriesPost post={post} seriesPosts={seriesPosts} relatedPosts={relatedPosts} primaryTopic={primaryTopic} Content={Content} formattedDate={formattedDate} />
   ) : post.data.image ? (
-    <PostWithImage post={post} Content={Content} formattedDate={formattedDate} />
+    <PostWithImage post={post} relatedPosts={relatedPosts} primaryTopic={primaryTopic} Content={Content} formattedDate={formattedDate} />
   ) : (
-    <Post post={post} Content={Content} formattedDate={formattedDate} />
+    <Post post={post} relatedPosts={relatedPosts} primaryTopic={primaryTopic} Content={Content} formattedDate={formattedDate} />
   )
 }

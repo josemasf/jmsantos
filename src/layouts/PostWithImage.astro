@@ -1,26 +1,33 @@
 ---
 import type { CollectionEntry } from "astro:content";
 import MainLayout from "@layouts/MainLayout.astro";
+import RelatedPosts from "@components/RelatedPosts.astro";
+import type { BlogTopic } from "@data/blog-topics";
+import { articleSchema, breadcrumbSchema } from "@data/blog-seo";
 
 interface Props {
   post: CollectionEntry<"posts">;
   Content: any;
   formattedDate: string;
+  primaryTopic?: BlogTopic;
+  relatedPosts: CollectionEntry<"posts">[];
 }
 
-const { post, Content, formattedDate } = Astro.props;
+const { post, Content, formattedDate, primaryTopic, relatedPosts } = Astro.props;
 const image = post.data.image;
+const schemas = [articleSchema(post), breadcrumbSchema([{ name: "Inicio", path: "/" }, { name: "Blog", path: "/blog/" }, ...(primaryTopic ? [{ name: primaryTopic.title, path: `/blog/temas/${primaryTopic.slug}/` }] : []), { name: post.data.title, path: `/blog/${post.id}/` }])];
 ---
 
-<MainLayout title={`${post.data.title} | José María Santos`} description={post.data.description} ogImage={image?.src}>
+<MainLayout title={`${post.data.title} | José María Santos`} description={post.data.description} ogImage={image?.src} ogType="article" schemas={schemas}>
   <main id="main-content" class="container mx-auto px-6 py-14 md:px-10 md:py-20">
     <article class="mx-auto max-w-5xl">
       <a href="/blog/" class="inline-flex min-h-11 items-center font-bold text-indigo-700 hover:text-indigo-900 dark:text-indigo-300 dark:hover:text-white"><span class="mr-2" aria-hidden="true">←</span> Volver al blog</a>
       <header class="mx-auto mt-10 max-w-3xl text-center">
-        <p class="section-kicker">{post.data.category}</p>
+        {primaryTopic ? <a href={`/blog/temas/${primaryTopic.slug}/`} class="section-kicker hover:underline">{primaryTopic.title}</a> : <p class="section-kicker">{post.data.category}</p>}
         <h1 class="mt-4 font-display text-4xl font-bold leading-tight tracking-tight text-slate-900 dark:text-white md:text-6xl">{post.data.title}</h1>
         <p class="mt-6 text-lg leading-relaxed text-slate-600 dark:text-slate-300">{post.data.description}</p>
-        <time datetime={post.data.date.toISOString()} class="mt-6 block text-sm font-bold text-slate-500 dark:text-slate-400">Publicado el {formattedDate}</time>
+        <p class="mt-6 text-sm font-bold text-slate-500 dark:text-slate-400">Escrito por <a href="/about/" class="underline hover:text-indigo-700 dark:hover:text-cyan-200">José María Santos, Frontend Tech Lead</a></p>
+        <time datetime={post.data.date.toISOString()} class="mt-2 block text-sm font-bold text-slate-500 dark:text-slate-400">Publicado el {formattedDate}</time>
         <div class="mt-5 flex flex-wrap justify-center gap-2">
           {post.data.tags.map((tag) => <span class="rounded-full bg-cyan-50 px-2.5 py-1 text-xs font-bold text-cyan-800 dark:bg-cyan-950/50 dark:text-cyan-200">{tag}</span>)}
         </div>
@@ -35,6 +42,7 @@ const image = post.data.image;
       }
       <div class="prose prose-slate mx-auto mt-10 max-w-3xl prose-headings:font-display prose-headings:font-bold prose-a:text-indigo-700 hover:prose-a:text-indigo-900 dark:prose-invert dark:prose-a:text-cyan-300 dark:hover:prose-a:text-cyan-100">
         <Content />
+        <RelatedPosts posts={relatedPosts} />
       </div>
     </article>
   </main>

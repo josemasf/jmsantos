@@ -5,19 +5,22 @@ import { collaborators, experience, principles, projects, publicWork, responsibi
 
 const title = "Sobre mí | José María Santos — Frontend Tech Lead";
 const description = "Conoce la experiencia, forma de trabajo, valores y proyectos de José María Santos, Frontend Tech Lead especializado en Vue, arquitectura frontend, testing y liderazgo técnico.";
-const personSchema = {
+const profileSchema = {
   "@context": "https://schema.org",
-  "@type": "Person",
-  name: "José María Santos",
-  jobTitle: "Frontend Tech Lead",
-  url: "https://josemariasantos.com",
-  sameAs: ["https://www.linkedin.com/in/jos%C3%A9-mar%C3%ADa-santos-90a8a73a/", "https://github.com/josemasf"],
-  knowsAbout: ["Vue.js", "TypeScript", "Frontend Architecture", "Software Testing", "Technical Leadership"],
+  "@type": "ProfilePage",
+  mainEntity: {
+    "@type": "Person",
+    name: "José María Santos",
+    jobTitle: "Frontend Tech Lead",
+    url: "https://josemariasantos.com/about/",
+    image: "https://josemariasantos.com/assets/yo.webp",
+    sameAs: ["https://www.linkedin.com/in/jos%C3%A9-mar%C3%ADa-santos-90a8a73a/", "https://github.com/josemasf"],
+    knowsAbout: ["Vue.js", "TypeScript", "Frontend Architecture", "Software Testing", "Technical Leadership"],
+  },
 };
 ---
 
-<MainLayout title={title} description={description} ogImage="/images/social/about-jose-maria-santos.jpg" ogType="profile">
-  <script is:inline type="application/ld+json" set:html={JSON.stringify(personSchema)} />
+<MainLayout title={title} description={description} ogImage="/images/social/about-jose-maria-santos.jpg" ogType="profile" schemas={profileSchema}>
   <main id="main-content" tabindex="-1">
     <section class="about-hero">
       <div class="about-shell about-hero__grid">
