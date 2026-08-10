@@ -42,7 +42,7 @@ const schemas = [articleSchema(post), breadcrumbSchema([{ name: "Inicio", path: 
       }
       <div class="prose prose-slate mx-auto mt-10 max-w-3xl prose-headings:font-display prose-headings:font-bold prose-a:text-indigo-700 hover:prose-a:text-indigo-900 dark:prose-invert dark:prose-a:text-cyan-300 dark:hover:prose-a:text-cyan-100">
         <Content />
-        <RelatedPosts posts={relatedPosts} />
+        <RelatedPosts posts={relatedPosts} topicTitle={primaryTopic?.title} />
       </div>
     </article>
   </main>
