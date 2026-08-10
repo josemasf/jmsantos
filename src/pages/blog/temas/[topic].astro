@@ -31,7 +31,7 @@ const schemas = [
 ];
 ---
 
-<MainLayout title={`${topic.title} | Blog de José María Santos`} description={topic.description} ogImage="/images/social/blog-default.png" schemas={schemas}>
+<MainLayout title={`${topic.title} | Blog de José María Santos`} description={topic.description} ogImage={topic.ogImage} schemas={schemas}>
   <main id="main-content">
     <section class="relative isolate overflow-hidden border-b border-slate-200 bg-slate-950 text-white dark:border-slate-800">
       <div class="absolute -left-24 top-0 -z-10 h-72 w-72 rounded-full bg-cyan-400/20 blur-3xl"></div>
