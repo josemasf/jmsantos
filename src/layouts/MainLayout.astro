@@ -10,6 +10,9 @@ export interface Props {
   description?: string;
   title?: string;
   ogImage?: string;
+  ogImageAlt?: string;
+  ogImageWidth?: number;
+  ogImageHeight?: number;
   ogType?: string;
   noindex?: boolean;
   schemas?: unknown | unknown[];
@@ -19,6 +22,9 @@ const {
   description = "El rincón de José María Santos",
   title = "José María Santos: Desarrollador Web",
   ogImage,
+  ogImageAlt,
+  ogImageWidth,
+  ogImageHeight,
   ogType,
   noindex,
   schemas,
@@ -28,7 +34,7 @@ const {
 <html lang="es">
   <head>
     <ClientRouter />
-    <MainHead title={title} description={description} ogImage={ogImage} ogType={ogType} noindex={noindex} schemas={schemas} />
+    <MainHead title={title} description={description} ogImage={ogImage} ogImageAlt={ogImageAlt} ogImageWidth={ogImageWidth} ogImageHeight={ogImageHeight} ogType={ogType} noindex={noindex} schemas={schemas} />
     <CloudflareAnalytics />
   </head>
   <body class="bg-slate-50 text-slate-900 dark:bg-slate-950 dark:text-slate-100">

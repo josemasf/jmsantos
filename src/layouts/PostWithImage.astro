@@ -18,7 +18,7 @@ const image = post.data.image;
 const schemas = [articleSchema(post), breadcrumbSchema([{ name: "Inicio", path: "/" }, { name: "Blog", path: "/blog/" }, ...(primaryTopic ? [{ name: primaryTopic.title, path: `/blog/temas/${primaryTopic.slug}/` }] : []), { name: post.data.title, path: `/blog/${post.id}/` }])];
 ---
 
-<MainLayout title={`${post.data.title} | José María Santos`} description={post.data.description} ogImage={image?.src} ogType="article" schemas={schemas}>
+<MainLayout title={`${post.data.title} | José María Santos`} description={post.data.description} ogImage={image?.src} ogImageAlt={image?.alt} ogImageWidth={image?.width} ogImageHeight={image?.height} ogType="article" schemas={schemas}>
   <main id="main-content" class="container mx-auto px-6 py-14 md:px-10 md:py-20">
     <article class="mx-auto max-w-5xl">
       <a href="/blog/" class="inline-flex min-h-11 items-center font-bold text-indigo-700 hover:text-indigo-900 dark:text-indigo-300 dark:hover:text-white"><span class="mr-2" aria-hidden="true">←</span> Volver al blog</a>
