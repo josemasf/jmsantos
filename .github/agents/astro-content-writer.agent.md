@@ -77,6 +77,28 @@ Producir contenido técnico riguroso, útil y publicable que refleje criterio de
 - Para testing: priorizar Vitest, Testing Library, MSW y pruebas centradas en comportamiento observable.
 - Evitar tests frágiles acoplados a detalles internos.
 
+## Frontmatter de series
+
+Los posts de una misma serie usan el objeto `series` con `title`, `slug`, `order` y, opcionalmente, `description` e `image`.
+
+```yaml
+series:
+  title: "Nombre de la serie"
+  slug: nombre-de-la-serie
+  order: 1
+  description: "Descripción opcional de la serie."
+  image:
+    src: /images/blog/nombre-de-la-serie/portada-social.png
+    alt: Descripción accesible de la imagen de la serie.
+    width: 1536
+    height: 1024
+```
+
+- `series.image` es opcional. Si existe, se emplea como imagen Open Graph y Twitter al compartir el enlace de cualquier post de la serie, por encima de `image` del post.
+- No se renderiza como imagen dentro del artículo; `image` del nivel superior conserva esa función editorial.
+- Repetir exactamente `title`, `slug`, `description` e `image` en cada post de la misma serie; solo debe variar `order`.
+- Guardar la imagen en `public/images/blog/<slug-de-la-serie>/`, usar rutas públicas absolutas y proporcionar siempre un `alt` descriptivo. Añadir `width` y `height` cuando se conozcan.
+
 ## Formato de Respuesta
 
 Cuando te pidan crear o modificar un artículo:
