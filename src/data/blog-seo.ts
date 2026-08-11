@@ -23,9 +23,12 @@ export function breadcrumbSchema(items: Array<{ name: string; path: string }>) {
   };
 }
 
-export function articleSchema(post: CollectionEntry<"posts">) {
+export function articleSchema(
+  post: CollectionEntry<"posts">,
+  socialImage?: string,
+) {
   const path = `/blog/${post.id}/`;
-  const image = post.data.image?.src ?? "/images/social/blog-default.png";
+  const image = socialImage ?? post.data.image?.src ?? "/images/social/blog-default.png";
   return {
     "@context": "https://schema.org",
     "@type": "BlogPosting",

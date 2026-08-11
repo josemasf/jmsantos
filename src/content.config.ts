@@ -53,6 +53,14 @@ const postsCollection = defineCollection({
         slug: z.string(),
         order: z.number(),
         description: z.string().optional(),
+        image: z
+          .object({
+            src: z.string(),
+            alt: z.string(),
+            width: z.number().optional(),
+            height: z.number().optional(),
+          })
+          .optional(),
       })
       .optional(),
   }),
