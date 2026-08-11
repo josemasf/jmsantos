@@ -1,0 +1,108 @@
+name: Publicar posts programados
+
+on:
+  schedule:
+    # 08:00 Europe/Madrid: 06:00 UTC durante el horario de verano y 07:00 UTC en invierno.
+    - cron: "0 6 * * 1"
+    - cron: "0 7 * * 1"
+  workflow_dispatch:
+
+permissions:
+  contents: write
+  issues: write
+
+concurrency:
+  group: publish-scheduled-posts
+  cancel-in-progress: false
+
+jobs:
+  check-publication-time:
+    runs-on: ubuntu-latest
+    outputs:
+      should-run: ${{ steps.madrid-time.outputs.should-run }}
+    steps:
+      - id: madrid-time
+        env:
+          EVENT_NAME: ${{ github.event_name }}
+        run: |
+          SHOULD_RUN="$(node -e '
+            const now = new Date();
+            const parts = new Intl.DateTimeFormat("en-GB", {
+              timeZone: "Europe/Madrid",
+              hour: "2-digit",
+              hourCycle: "h23",
+            }).formatToParts(now);
+            const hour = parts.find((part) => part.type === "hour")?.value;
+            console.log(process.env.EVENT_NAME === "workflow_dispatch" || hour === "08");
+          ')"
+          echo "should-run=$SHOULD_RUN" >> "$GITHUB_OUTPUT"
+
+  publish:
+    needs: check-publication-time
+    if: needs.check-publication-time.outputs.should-run == 'true'
+    runs-on: ubuntu-latest
+    env:
+      SITE_URL: https://josemariasantos.com
+    steps:
+      - uses: actions/checkout@v5
+        with:
+          ref: master
+
+      - uses: pnpm/action-setup@v4
+        with:
+          version: 10
+
+      - uses: actions/setup-node@v5
+        with:
+          node-version: 22.12.0
+          cache: pnpm
+
+      - run: pnpm install --frozen-lockfile
+      - run: pnpm lint
+      - run: pnpm format:check
+      - run: pnpm test:publish
+
+      - name: Detectar posts publicables
+        run: pnpm publish:scheduled -- --dry-run > publication.json
+
+      - id: publication
+        run: |
+          node -e 'const result = JSON.parse(require("node:fs").readFileSync("publication.json", "utf8")); console.log(`count=${result.posts.length}`); console.log(`date=${result.publicationDate}`);' >> "$GITHUB_OUTPUT"
+
+      - name: Mover posts publicables
+        if: steps.publication.outputs.count != '0'
+        run: pnpm publish:scheduled -- --date "${{ steps.publication.outputs.date }}" > publication.json
+
+      - run: pnpm build
+
+      - name: Confirmar publicación
+        if: steps.publication.outputs.count != '0'
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add -A src/content/drafts/posts src/content/posts
+          git commit -m "chore(blog): publicar posts programados"
+          git push origin master
+
+      - name: Crear aviso de publicación
+        if: steps.publication.outputs.count != '0'
+        env:
+          GH_TOKEN: ${{ github.token }}
+          PUBLICATION_DATE: ${{ steps.publication.outputs.date }}
+        run: |
+          node - <<'NODE'
+          const fs = require("node:fs");
+          const { posts } = JSON.parse(fs.readFileSync("publication.json", "utf8"));
+          const siteUrl = process.env.SITE_URL.replace(/\/$/, "");
+          const lines = [
+            "## Posts publicados",
+            "",
+            ...posts.map((post) => `- [${post.title}](${siteUrl}/blog/${post.id}) — ${post.date}`),
+            "",
+            "Issue creada automáticamente después de publicar el lote en master.",
+          ];
+          fs.writeFileSync("publication-issue.md", `${lines.join("\n")}\n`);
+          NODE
+          gh label create "publicación automática" --color "0E8A16" --description "Avisos de posts publicados por el workflow" --force
+          issue_url="$(gh issue create --title "Posts publicados: $PUBLICATION_DATE" --label "publicación automática" --body-file publication-issue.md)"
+          gh issue close "$issue_url" --reason completed
