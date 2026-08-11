@@ -59,7 +59,13 @@ Producir contenido técnico riguroso, útil y publicable que refleje criterio de
 3. Diseñar estructura interna
    - Título, tesis central, introducción, H2/H3 necesarios, ejemplo práctico, conclusión, enlaces internos posibles y metadatos SEO.
 4. Redactar
-   - Español de España por defecto, tono profesional y directo, problema antes que solución, ejemplos útiles, distinción entre hechos/recomendaciones/opiniones.
+   - Español de España por defecto y tono profesional, directo y argumentativo.
+   - Desarrollar las ideas en párrafos completos y cohesionados, evitando una sucesión de frases breves separadas por saltos de línea.
+   - Introducir primero el problema o contexto y después la solución o posición propuesta.
+   - Utilizar ejemplos útiles y explicar las decisiones técnicas, no limitarse a enumerarlas.
+   - Distinguir claramente entre hechos, recomendaciones, experiencia personal y opinión.
+   - Evitar un tono promocional, grandilocuente, excesivamente categórico o propio de publicaciones generadas para engagement.
+   - Usar énfasis mediante la argumentación y no mediante saltos de línea artificiales.
 5. Integrar ejemplos de código
    - TypeScript por defecto cuando corresponda, ejemplos pequeños y realistas, lenguaje correcto en bloques, explicación del porqué técnico.
 6. Afinar SEO editorial
@@ -68,6 +74,10 @@ Producir contenido técnico riguroso, útil y publicable que refleje criterio de
    - Jerarquía de encabezados, enlaces descriptivos, alt text útil en imágenes, tablas solo cuando aporten comparación.
 8. Revisión final
    - Ortografía, coherencia global, precisión técnica, enlaces/rutas válidas y cumplimiento del esquema.
+   - Revisar el ritmo de los párrafos y detectar patrones de escritura artificial.
+   - Reagrupar párrafos excesivamente cortos cuando desarrollen una misma idea.
+   - Comprobar que los saltos de línea responden a cambios reales de argumento y no a una búsqueda artificial de énfasis.
+   - Eliminar repeticiones de estructuras como «No X, sino Y», preguntas retóricas innecesarias, conclusiones obvias y frases genéricas que no aporten información.
 9. Validaciones
    - Ejecutar lint/typecheck/build y validaciones de contenido cuando sea viable. Nunca afirmar validaciones no ejecutadas.
 
@@ -76,6 +86,34 @@ Producir contenido técnico riguroso, útil y publicable que refleje criterio de
 - Para Vue: priorizar Vue 3, Composition API y `<script setup lang="ts">`.
 - Para testing: priorizar Vitest, Testing Library, MSW y pruebas centradas en comportamiento observable.
 - Evitar tests frágiles acoplados a detalles internos.
+
+## Estilo editorial y ritmo de escritura
+
+- Escribir en español de España con una estructura natural para textos técnicos en castellano.
+- Priorizar párrafos desarrollados de varias frases relacionadas entre sí, en lugar de encadenar frases breves separadas por saltos de línea.
+- No convertir cada idea secundaria en un párrafo independiente. Agrupar las ideas que formen parte del mismo razonamiento dentro de un único párrafo coherente.
+- Usar saltos de párrafo cuando exista un cambio real de idea, argumento, fase, ejemplo o perspectiva, no simplemente para dar ritmo visual.
+- Como regla general, favorecer párrafos de entre 3 y 6 frases cuando el contenido lo permita, sin forzar artificialmente su longitud.
+- Combinar frases cortas, medias y largas para conseguir un ritmo natural. Las frases cortas pueden utilizarse puntualmente para enfatizar una conclusión, pero no deben convertirse en el patrón dominante.
+- Utilizar conectores propios de una exposición técnica natural en español, como «por tanto», «sin embargo», «además», «en este caso», «a partir de aquí», «esto implica», «por otro lado» o «en la práctica», evitando abusar de ellos.
+- Evitar estructuras excesivamente telegráficas, enumeraciones disfrazadas de párrafos y sucesiones de sentencias independientes.
+- No abusar de fórmulas de contraste artificial como «No se trata de X. Se trata de Y.» o «No es X. Es Y.», especialmente cuando aparecen repetidamente.
+- Evitar aperturas genéricas propias de textos generados por IA, como «En el mundo actual», «En un entorno cada vez más...» o «La tecnología está transformando...», cuando no aporten contenido concreto.
+- Mantener un tono técnico, directo y argumentativo. El texto debe parecer escrito por un profesional que explica cómo trabaja o por qué toma determinadas decisiones, no por un redactor de marketing.
+- Cuando el autor exponga una opinión o experiencia, desarrollar el razonamiento que lleva a esa conclusión en lugar de limitarse a afirmaciones contundentes sin contexto.
+- No optimizar el texto para el ritmo de LinkedIn; optimizarlo para lectura editorial.
+- Antes de dar por terminado un artículo, revisar visualmente la distribución de párrafos. Si aparecen muchos párrafos consecutivos de una o dos frases muy cortas, reagruparlos cuando pertenezcan al mismo argumento.
+
+## Prueba de naturalidad editorial
+
+Antes de considerar terminado un artículo, comprobar:
+
+1. Si hay tres o más párrafos consecutivos de una sola frase, revisar si pueden formar un único razonamiento.
+2. Si el texto utiliza saltos de línea para crear énfasis en lugar de contenido, reescribirlo en forma de prosa natural.
+3. Si hay demasiadas frases con estructuras similares o la misma longitud, variar sintaxis y ritmo.
+4. Si el texto podría confundirse con un post de LinkedIn aunque se eliminasen los encabezados, revisar la estructura de párrafos.
+5. Si cada párrafo desarrolla una idea y conduce de forma natural al siguiente; si no, mejorar las transiciones o reorganizar el contenido.
+6. Si hay afirmaciones contundentes sin explicar por qué, añadir razonamiento, ejemplo o contexto cuando aporte valor.
 
 ## Frontmatter de series
 
