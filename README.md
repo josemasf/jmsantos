@@ -33,6 +33,29 @@ El sitio no incorpora analítica por defecto. Para activar Cloudflare Web Analyt
 
 Si la variable no existe, el script de analítica no se genera. Tras el despliegue, comprueba en las herramientas de desarrollo del navegador que no se crean cookies de analítica y que solo aparece la solicitud a Cloudflare cuando se ha configurado el token.
 
+## Publicación programada del blog
+
+Los artículos preparados para una fecha futura se guardan en
+`src/content/drafts/posts/`, con la misma estructura, frontmatter y convención
+de imágenes que los posts publicados. Las imágenes editoriales deben vivir en
+`public/images/blog/<slug>/` y el campo `date` debe usar el formato
+`YYYY-MM-DD`.
+
+El workflow `Publicar posts programados` se ejecuta cada lunes a las 08:00 en
+`Europe/Madrid`. Mueve a `src/content/posts/` los artículos con fecha igual o
+anterior a ese lunes, valida el proyecto y publica el commit en `master`, desde
+donde Netlify despliega automáticamente. Después crea y cierra una issue con
+los enlaces de los artículos publicados.
+
+Para probar la selección sin mover archivos:
+
+```bash
+pnpm publish:scheduled -- --dry-run
+```
+
+Activa las notificaciones de Issues del repositorio para recibir el aviso de
+cada lote publicado.
+
 ## Tipografías locales
 
 Inter y Montserrat Alternates se sirven desde `public/fonts/` en formato WOFF2. No se cargan desde Google Fonts ni desde otro proveedor externo.
