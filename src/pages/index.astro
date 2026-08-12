@@ -3,6 +3,7 @@ import PorfolioPreview from "@components/PorfolioPreview.astro";
 import PresentationPreview from "@components/PresentationPreview.astro";
 import PostPreview from "@components/PostPreview.astro";
 import MainLayout from "@layouts/MainLayout.astro";
+import { cloudinaryAssetUrl, cloudinarySrcSet } from "../utils/cloudinary";
 import { getCollection } from "astro:content";
 
 const byNewest = (a: any, b: any) => new Date(b.frontmatter.publishDate).valueOf() - new Date(a.frontmatter.publishDate).valueOf();
@@ -13,12 +14,17 @@ const featuredPresentations = presentations.slice(0, 2);
 const featuredPosts = (await getCollection("posts"))
   .sort((a, b) => b.data.date.valueOf() - a.data.date.valueOf())
   .slice(0, 2);
+const heroImage = "/assets/cordoba-spain.avif";
+const aboutImage = "/assets/jose-maria-santos-03.png";
+const heroBackground = cloudinaryAssetUrl(heroImage, { width: 1920, height: 900, crop: "fill" });
+const aboutImageSrc = cloudinaryAssetUrl(aboutImage, { width: 960, height: 960, crop: "fill" });
+const aboutImageSrcSet = cloudinarySrcSet(aboutImage, [480, 720, 960], { height: 960, crop: "fill" });
 ---
 
 <MainLayout title="José María Santos | Frontend Tech Lead" description="Portfolio de José María Santos, Frontend Tech Lead especializado en Vue, arquitectura y productos web." ogImage="/images/social/home.png">
   <main id="main-content">
     <section class="home-hero relative isolate overflow-hidden bg-slate-950 text-white">
-      <div class="absolute inset-0 -z-20 bg-[url('/assets/cordoba-spain.avif')] bg-cover bg-center opacity-25"></div>
+      <div class="absolute inset-0 -z-20 bg-cover bg-center opacity-25" style={`background-image: url('${heroBackground}')`}></div>
       <div class="absolute -left-32 top-0 -z-10 h-96 w-96 rounded-full bg-cyan-400/20 blur-3xl"></div>
       <div class="absolute -right-24 bottom-0 -z-10 h-80 w-80 rounded-full bg-indigo-500/30 blur-3xl"></div>
       <div class="home-hero__content container mx-auto px-6 md:px-10">
@@ -74,12 +80,16 @@ const featuredPosts = (await getCollection("posts"))
       <div class="home-about rounded-3xl bg-gradient-to-br from-indigo-950 to-slate-950 text-white">
         <div class="home-about__media">
           <img
-            src="/assets/jose-maria-santos-03.png"
+            src={aboutImageSrc}
+            srcset={aboutImageSrcSet}
+            sizes="(min-width: 768px) 42vw, 100vw"
             alt="Ilustración de José María Santos, Frontend Tech Lead"
             class="home-about__image"
             width="1024"
             height="1024"
             decoding="async"
+            loading="lazy"
+            onerror={`this.removeAttribute('srcset'); this.src='${aboutImage}'`}
           />
         </div>
         <div class="home-about__content">
