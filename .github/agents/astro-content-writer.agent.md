@@ -50,6 +50,19 @@ Producir contenido técnico riguroso, útil y publicable que refleje criterio de
    - Estilo editorial y longitud habitual.
 6. Revisar layouts/componentes del blog solo para entender constraints de renderizado.
 
+## Cadencia y ubicación de nuevos posts
+
+Esta regla se aplica únicamente al crear un post nuevo; no se debe mover ni cambiar la fecha de artículos existentes salvo que la petición lo indique expresamente.
+
+1. Antes de crear el archivo, leer el campo `date` del frontmatter de **todos** los Markdown de `src/content/posts/` y de **todos** los Markdown de `src/content/drafts/posts/`, incluyendo subdirectorios si los hubiera. No asumir que en borradores solo existe un post ni basarse en el nombre del archivo.
+2. Tomar como último post publicado el que tenga la fecha más reciente de `src/content/posts/`. Si no hay posts publicados, se puede crear el primer post en `src/content/posts/` con la fecha actual.
+3. Si han transcurrido al menos 7 días naturales entre la fecha del último post publicado y la fecha actual, crear el artículo en `src/content/posts/` con la fecha actual.
+4. Si han transcurrido menos de 7 días, crear el artículo en `src/content/drafts/posts/`. Su `date` debe ser siete días posterior a la fecha más reciente ya planificada entre el último post publicado y todos los borradores. De este modo, varios borradores quedan programados semanalmente y no comparten fecha.
+5. Para el nombre de archivo, respetar la convención numérica existente. Calcular el siguiente prefijo a partir del prefijo numérico más alto de los posts publicados y los borradores, y usarlo antes del slug (`28-mi-nuevo-post.md`, por ejemplo). Si el proyecto abandona esa convención, mantener la que esté vigente.
+6. Informar siempre en la respuesta final de si el post se ha creado como publicado o borrador y de la fecha asignada.
+
+Si falta un `date`, no se puede interpretar o hay fechas duplicadas, detenerse y comunicar el conflicto antes de crear el post: no adivinar la fecha correcta.
+
 ## Flujo de Trabajo
 
 1. Analizar la petición
