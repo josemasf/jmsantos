@@ -19,6 +19,40 @@ All commands are run from the root of the project, from a terminal:
 | `npm run astro ...`    | Run CLI commands like `astro add`, `astro check` |
 | `npm run astro --help` | Get help using the Astro CLI                     |
 
+## Imágenes y Cloudinary
+
+Las imágenes rasterizadas de la portada y las tarjetas de proyectos se sirven
+desde Cloudinary cuando están disponibles. Las URLs incorporan `f_auto`,
+`q_auto`, `dpr_auto` y dimensiones adaptadas al espacio en el que se muestran;
+las tarjetas además incluyen `srcset` para no descargar una imagen mayor de la
+necesaria. Los SVG continúan sirviéndose como archivos locales.
+
+La utilidad `src/utils/cloudinary.ts` centraliza la generación de las URLs. Si
+un asset todavía no está en la carpeta `jmsantos/assets` de Cloudinary, el
+navegador vuelve automáticamente a la copia local en `public/assets/`, por lo
+que no se rompe ninguna imagen mientras se completa la migración.
+
+Para subir los assets locales, crea un archivo `.env` (no se versiona) con las
+credenciales de Cloudinary:
+
+```dotenv
+CLOUD_NAME=tu_cloud_name
+API_KEY=tu_api_key
+API_SECRET=tu_api_secret
+```
+
+Después ejecuta:
+
+```bash
+pnpm images:upload
+```
+
+El comando usa `script/upload.mts`, recorre también las subcarpetas y sincroniza
+los archivos de `public/assets/` bajo `jmsantos/assets`, con identificadores
+predecibles. Sobrescribe el recurso remoto si ha cambiado. Cuando se haya
+subido un recurso, confirma que su URL de Cloudinary devuelve `200` antes de
+eliminar o cambiar su copia local.
+
 ## 👀 Want to learn more?
 
 Feel free to check [our documentation](https://docs.astro.build) or jump into our [Discord server](https://astro.build/chat).

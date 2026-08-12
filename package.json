@@ -15,7 +15,7 @@
     "format": "oxfmt",
     "format:check": "oxfmt --check",
     "a11y:contrast": "node script/checkContrast.js",
-    "cld:upload": "node script/upload",
+    "images:upload": "node --experimental-strip-types script/upload.mts",
     "publish:scheduled": "node script/publish-scheduled-posts.mjs",
     "test:publish": "node --test script/publish-scheduled-posts.test.mjs",
     "unlighthouse": "pnpm dlx unlighthouse --site https://josemariasantos.com/"
