@@ -1,5 +1,7 @@
 # Un equipo sano no es un equipo sin problemas
 
+> **Estado: escrito (borrador)** — desarrollado como `src/content/drafts/posts/28-equipo-sano-no-es-equipo-sin-problemas.md`. No proponer de nuevo este artículo ni el enfoque de retrospectivas como sesión de desahogo salvo que se plantee con un ángulo editorial claramente diferente.
+
 Cuando hablamos de mejorar un equipo de desarrollo es muy fácil acabar hablando de herramientas.
 
 Tests. Arquitectura. Deuda técnica. Métricas. IA. CI/CD.

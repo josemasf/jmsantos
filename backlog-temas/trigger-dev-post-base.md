@@ -1,5 +1,7 @@
 # Base para post: lo util que ha sido Trigger.dev en Student Tracking System
 
+> **Estado: escrito (borrador)** — desarrollado como `src/content/drafts/posts/29-trigger-dev-jobs-durables-reglas-negocio.md`, programado para el 25 de agosto de 2026. No proponer de nuevo este tema ni sus subtemas de jobs, estados recuperables, privacidad de payloads u observabilidad como artículos pendientes salvo que se planteen con un enfoque claramente distinto.
+
 ## Tesis posible
 
 Trigger.dev ha sido util en este proyecto porque permitio mover trabajo pesado, periodico y recuperable fuera del ciclo HTTP sin perder control de negocio. La ganancia no esta solo en "tener jobs", sino en poder combinar colas, cron, reintentos, logs y run IDs con una capa propia de persistencia, permisos, idempotencia y observabilidad.
