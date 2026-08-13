@@ -1,5 +1,7 @@
 # Por qué Cloudinary es útil para optimizar imágenes sin complicar el frontend
 
+> **Estado: escrito (borrador)** — desarrollado como `src/content/drafts/posts/30-cloudinary-optimizar-imagenes-frontend.md`, programado para el 1 de septiembre de 2026.
+
 ## Idea central
 
 Cloudinary permite tratar las imágenes como recursos que se adaptan a cada
