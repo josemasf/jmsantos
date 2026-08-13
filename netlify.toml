@@ -3,9 +3,7 @@ command = "pnpm run build"
 publish = "dist"
 
 [build.environment]
-NPM_FLAGS = "--version"
-PNPM_VERSION = "10"
-NODE_VERSION = "22.12.0"
+NODE_VERSION = "24.18.0"
 
 [[headers]]
 for = "/*"
