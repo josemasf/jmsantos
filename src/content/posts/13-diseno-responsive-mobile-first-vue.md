@@ -4,6 +4,11 @@ description: "Guía práctica para crear componentes responsive con enfoque Mobi
 date: 2026-02-06
 tags: [responsive, mobile first, Vue, TypeScript, CSS, frontend]
 category: Frontend
+image:
+  src: /images/blog/13-diseno-responsive-mobile-first-vue/diseno-responsive-mobile-first-vue.png
+  alt: Ilustración de un componente que crece ordenadamente desde un móvil hacia pantallas mayores.
+  width: 1536
+  height: 1024
 ---
 
 El enfoque Mobile First no es solo una técnica de CSS — es una filosofía de diseño que te obliga a priorizar lo esencial. Cuando diseñas primero para la pantalla más pequeña, eliminas lo superfluo y construyes experiencias más limpias.

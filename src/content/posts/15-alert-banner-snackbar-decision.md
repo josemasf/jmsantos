@@ -4,6 +4,11 @@ description: "Guía de decisión rápida para elegir el componente correcto de n
 date: 2026-03-06
 tags: [UX, componentes, Material Design, Vue, frontend]
 category: UX
+image:
+  src: /images/blog/15-alert-banner-snackbar-decision/alert-banner-snackbar.png
+  alt: Ilustración de tres avisos visuales para urgencia, información persistente y confirmación breve.
+  width: 1536
+  height: 1024
 ---
 
 Es una de las preguntas más frecuentes en desarrollo frontend: ¿debo usar un Alert, un Banner o un Snackbar para mostrar este mensaje? La respuesta parece simple, pero en la práctica muchos equipos usan estos componentes de forma intercambiable, generando una experiencia inconsistente.

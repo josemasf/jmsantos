@@ -4,6 +4,11 @@ description: "Caso práctico de una plataforma de formularios con Vite Module Fe
 date: 2026-06-12
 tags: [Vue 3, Vite, Module Federation, microfrontends, Vitest, MSW, CI]
 category: Arquitectura frontend
+image:
+  src: /images/blog/22-formkit-microfrontends-vue-module-federation/formkit-microfrontends-vue.png
+  alt: Ilustración de cuatro aplicaciones modulares conectadas a una plataforma de formularios y controles de calidad.
+  width: 1536
+  height: 1024
 ---
 
 Un *spike* demuestra que una idea es posible. Un proyecto de ingeniería tiene que responder además a otras preguntas: ¿se construye de forma reproducible?, ¿puede configurarse fuera de localhost?, ¿detecta regresiones?, ¿qué ocurre cuando una dependencia introduce una vulnerabilidad?

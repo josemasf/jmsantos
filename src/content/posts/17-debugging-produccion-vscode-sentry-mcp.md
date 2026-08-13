@@ -4,6 +4,11 @@ description: "Cómo conectar Sentry MCP en VSCode para resumir errores, detectar
 date: 2026-04-03
 tags: [Sentry, MCP, VSCode, debugging, observabilidad, DX]
 category: DevOps
+image:
+  src: /images/blog/17-debugging-produccion-vscode-sentry-mcp/debugging-produccion-sentry-mcp.png
+  alt: Ilustración de una investigación técnica de errores de API con señales y prioridades.
+  width: 1536
+  height: 1024
 ---
 
 Cuando un sistema falla en producción, la primera pregunta no es qué excepción concreta ha saltado, sino dónde estamos perdiendo más tiempo y más confianza de usuario.

@@ -4,6 +4,11 @@ description: "Cómo separar una aplicación de recomendaciones y una plataforma 
 date: 2026-05-15
 tags: [arquitectura, Vue, Astro, Supabase, IA, automatización, cine]
 category: Arquitectura
+image:
+  src: /images/blog/20-arquitectura-ecosistema-recomendacion-cinematografica/arquitectura-recomendacion-cinematografica.png
+  alt: Ilustración de dos plataformas que comparten servicios con IA supervisada.
+  width: 1536
+  height: 1024
 ---
 
 Una recomendación cinematográfica parece un problema sencillo hasta que se mira el sistema completo. Una persona quiere saber qué ver hoy según sus gustos, el catálogo disponible en su país y el tiempo que tiene. Al mismo tiempo, necesita contexto: críticas, noticias o fichas que le ayuden a decidir. Resolver ambas necesidades dentro de una única aplicación suele mezclar dos ritmos de trabajo muy distintos: la interacción de producto y la publicación de contenido.

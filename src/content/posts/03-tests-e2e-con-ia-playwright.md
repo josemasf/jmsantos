@@ -4,6 +4,11 @@ description: "Cómo exploramos el uso de inteligencia artificial para generar y 
 date: 2025-09-19
 tags: [testing, IA, e2e, Playwright, Midscene, automatización]
 category: Testing
+image:
+  src: /images/blog/03-tests-e2e-con-ia-playwright/tests-e2e-ia-playwright.png
+  alt: Ilustración de un asistente de IA guiando pruebas entre pantallas abstractas y comprobaciones.
+  width: 1536
+  height: 1024
 ---
 
 Durante la migración de una plataforma empresarial a tecnologías web modernas, uno de los sacrificios asumidos fue prescindir de tests que validaran los desarrollos. Para paliar esta deuda técnica, decidimos investigar si la inteligencia artificial podía ayudarnos a generar y mantener tests end-to-end de forma más eficiente.

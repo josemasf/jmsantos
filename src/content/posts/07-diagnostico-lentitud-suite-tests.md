@@ -4,6 +4,11 @@ description: "Caso real de diagnóstico de una suite de vitest que tardaba 15 mi
 date: 2025-11-14
 tags: [testing, vitest, performance, diagnóstico, CI/CD, frontend]
 category: Testing
+image:
+  src: /images/blog/07-diagnostico-lentitud-suite-tests/diagnostico-lentitud-suite-tests.png
+  alt: Ilustración de un cronómetro pesado cuya carga se reduce en estaciones de reparación.
+  width: 1536
+  height: 1024
 ---
 
 Una suite de tests que tarda 15 minutos en ejecutarse no es solo un problema de rendimiento — es un problema de productividad. Los desarrolladores dejan de ejecutar tests localmente, los pipelines de CI se convierten en cuellos de botella, y la confianza en el sistema de tests se erosiona.

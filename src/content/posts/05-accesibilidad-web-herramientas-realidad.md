@@ -4,6 +4,11 @@ description: "Evaluación práctica de herramientas de accesibilidad web (Axe Co
 date: 2025-10-17
 tags: [accesibilidad, a11y, WCAG, testing, Playwright, frontend]
 category: Accesibilidad
+image:
+  src: /images/blog/05-accesibilidad-web-herramientas-realidad/accesibilidad-web-herramientas.png
+  alt: Ilustración de una persona usando una rampa que atraviesa controles y validaciones accesibles.
+  width: 1536
+  height: 1024
 ---
 
 La accesibilidad web no es opcional — es un requisito legal en muchos países y, sobre todo, una responsabilidad ética. Pero, ¿cómo integras el análisis de accesibilidad en tu flujo de desarrollo sin que se convierta en un cuello de botella?

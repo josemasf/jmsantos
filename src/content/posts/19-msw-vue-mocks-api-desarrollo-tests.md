@@ -4,6 +4,11 @@ description: "Cómo centralizar mocks HTTP con Mock Service Worker en una aplica
 date: 2026-05-01
 tags: [MSW, Vue, testing, Vitest, Storybook, mocks, API]
 category: Testing
+image:
+  src: /images/blog/19-msw-vue-mocks-api-desarrollo-tests/msw-vue-mocks-api.png
+  alt: Ilustración de un intermediario de red que distribuye respuestas coherentes a desarrollo y pruebas.
+  width: 1536
+  height: 1024
 series:
   title: "Testing moderno en Vue: confianza sin fragilidad"
   slug: testing-moderno-vue-confianza-sin-fragilidad

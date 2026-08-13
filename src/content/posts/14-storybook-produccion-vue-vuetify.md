@@ -4,6 +4,11 @@ description: "Guía paso a paso para configurar, construir y desplegar Storybook
 date: 2026-02-20
 tags: [Storybook, Vue, Vuetify, CI/CD, Azure, DevOps]
 category: DevOps
+image:
+  src: /images/blog/14-storybook-produccion-vue-vuetify/storybook-produccion-vue-vuetify.png
+  alt: Ilustración de un libro de componentes que recorre una tubería hasta su publicación.
+  width: 1536
+  height: 1024
 ---
 
 Storybook es una herramienta excelente para documentar componentes, pero su verdadero valor aparece cuando el equipo completo puede acceder a él en una URL pública. Diseñadores, POs y otros desarrolladores pueden consultar los componentes disponibles sin clonar el repo.

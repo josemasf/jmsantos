@@ -4,6 +4,11 @@ description: "Guía paso a paso para levantar SonarQube con Docker, configurar p
 date: 2025-10-31
 tags: [SonarQube, Docker, Vue, TypeScript, calidad, DevOps, CI/CD]
 category: DevOps
+image:
+  src: /images/blog/06-sonarqube-local-docker-vue-typescript/sonarqube-local-docker-vue-typescript.png
+  alt: Ilustración de un contenedor técnico analizando componentes y comprobaciones de calidad.
+  width: 1536
+  height: 1024
 ---
 
 Cuando necesitas visibilizar la calidad del código de tus proyectos frontend pero la instancia corporativa de SonarQube está desactualizada (o directamente no soporta versiones modernas de TypeScript), montar una instancia local con Docker es la solución más rápida.

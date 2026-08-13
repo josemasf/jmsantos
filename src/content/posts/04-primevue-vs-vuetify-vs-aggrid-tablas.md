@@ -4,6 +4,11 @@ description: "Una evaluación exhaustiva de las tres principales librerías de t
 date: 2025-10-03
 tags: [Vue, PrimeVue, Vuetify, AG Grid, tablas, componentes, frontend]
 category: Frontend
+image:
+  src: /images/blog/04-primevue-vs-vuetify-vs-aggrid-tablas/comparativa-tablas-vue.png
+  alt: Ilustración de tres estructuras de tabla evaluadas con una balanza y criterios técnicos.
+  width: 1536
+  height: 1024
 ---
 
 Cuando tu equipo necesita tablas de datos con filas colapsables, filtros avanzados, agrupación y un aspecto consistente con Material Design, ¿qué librería eliges? Esta fue exactamente la pregunta que tuvimos que responder en un proyecto real.

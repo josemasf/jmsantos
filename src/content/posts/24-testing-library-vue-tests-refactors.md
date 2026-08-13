@@ -4,6 +4,11 @@ description: "Cómo escribir tests de componentes Vue 3 centrados en comportamie
 date: 2026-07-10
 tags: [testing, Testing Library, Vue, Vitest, accesibilidad, refactorización]
 category: Testing
+image:
+  src: /images/blog/24-testing-library-vue-tests-refactors/testing-library-vue-refactors.png
+  alt: Ilustración de un test que observa el comportamiento visible de un componente mientras cambia su interior.
+  width: 1536
+  height: 1024
 series:
   title: "Testing moderno en Vue: confianza sin fragilidad"
   slug: testing-moderno-vue-confianza-sin-fragilidad

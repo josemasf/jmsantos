@@ -4,6 +4,11 @@ description: "Cómo realizar una auditoría completa de deuda técnica en un pro
 date: 2025-11-28
 tags: [deuda técnica, auditoría, Sentry, TypeScript, Vue, frontend, calidad]
 category: Calidad de código
+image:
+  src: /images/blog/08-auditoria-deuda-tecnica-frontend/auditoria-deuda-tecnica-frontend.png
+  alt: Ilustración de una lupa sobre componentes con grietas, alertas y piezas obsoletas.
+  width: 1536
+  height: 1024
 ---
 
 La deuda técnica es como la deuda financiera: no es mala en sí misma, pero si no la gestionas, los intereses te devoran. Este artículo documenta una auditoría real de un proyecto Vue en producción, con herramientas concretas y hallazgos clasificados por prioridad.

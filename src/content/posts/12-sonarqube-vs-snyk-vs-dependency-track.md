@@ -4,6 +4,11 @@ description: "Evaluación comparativa de herramientas de análisis de calidad y 
 date: 2026-01-23
 tags: [seguridad, calidad, SonarQube, Snyk, DevSecOps, CI/CD]
 category: DevOps
+image:
+  src: /images/blog/12-sonarqube-vs-snyk-vs-dependency-track/comparativa-stack-analisis-codigo.png
+  alt: Ilustración de tres instrumentos analizando de forma complementaria una base de código.
+  width: 1536
+  height: 1024
 ---
 
 Cuando tu organización decide "visibilizar la calidad del código", la primera pregunta es: ¿qué herramientas usamos? El mercado está lleno de opciones que se solapan, se complementan o directamente compiten.

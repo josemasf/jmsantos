@@ -4,6 +4,11 @@ description: "Cómo interpretar los resultados de Knip en proyectos frontend, re
 date: 2026-08-11
 tags: [Knip, deuda técnica, TypeScript, frontend, tooling, calidad]
 category: Frontend
+image:
+  src: /images/blog/27-knip-unused-no-significa-codigo-muerto/knip-unused-codigo-muerto.png
+  alt: Ilustración de código señalado como sin uso examinado con lupa antes de retirarlo con seguridad.
+  width: 1536
+  height: 1024
 ---
 
 Ejecutar Knip por primera vez en un proyecto con años de recorrido puede producir una mezcla incómoda de entusiasmo y alarma. En una auditoría reciente aparecieron 182 archivos potencialmente no utilizados, además de dependencias, _devDependencies_, exports y tipos sin consumidores detectables. La tentación era clara: eliminar la lista y dar por resuelta una parte de la deuda técnica.

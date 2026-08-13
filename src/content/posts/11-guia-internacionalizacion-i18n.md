@@ -4,6 +4,11 @@ description: "Todo lo que debes considerar al internacionalizar una aplicación 
 date: 2026-01-09
 tags: [i18n, internacionalización, frontend, API, localización]
 category: Frontend
+image:
+  src: /images/blog/11-guia-internacionalizacion-i18n/internacionalizacion-i18n.png
+  alt: Ilustración de una aplicación que adapta fechas, monedas, unidades y direcciones a distintos contextos.
+  width: 1536
+  height: 1024
 ---
 
 Internacionalizar una aplicación empresarial va mucho más allá de traducir textos. Cuando tu producto necesita dar servicio a mercados con culturas diferentes (español, anglosajón, alemán...), la lista de cosas que pueden salir mal es sorprendentemente larga.

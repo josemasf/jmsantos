@@ -4,6 +4,11 @@ description: "Diez problemas frecuentes en suites Vue con Vitest, Testing Librar
 date: 2026-08-07
 tags: [testing, Vitest, Vue, Testing Library, MSW, calidad, refactorización]
 category: Testing
+image:
+  src: /images/blog/26-errores-testing-vue-vitest/errores-testing-vue-vitest.png
+  alt: Ilustración de una ruta de pruebas con obstáculos técnicos y soluciones señalizadas.
+  width: 1536
+  height: 1024
 series:
   title: "Testing moderno en Vue: confianza sin fragilidad"
   slug: testing-moderno-vue-confianza-sin-fragilidad

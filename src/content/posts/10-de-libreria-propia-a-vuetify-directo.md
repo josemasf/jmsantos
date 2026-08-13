@@ -4,6 +4,11 @@ description: "Lecciones aprendidas al deprecar una librería de componentes wrap
 date: 2025-12-26
 tags: [Vue, Vuetify, componentes, arquitectura, DX, frontend]
 category: Arquitectura
+image:
+  src: /images/blog/10-de-libreria-propia-a-vuetify-directo/migracion-libreria-propia-vuetify.png
+  alt: Ilustración de una capa envolvente retirada para revelar componentes simples conectados.
+  width: 1536
+  height: 1024
 ---
 
 Cuando tu plataforma crece, es tentador crear una librería de componentes interna que "envuelva" los componentes de tu framework UI. Nosotros lo hicimos con Vuetify — y después tuvimos que deshacerlo. Esta es la historia de por qué.

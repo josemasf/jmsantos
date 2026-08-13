@@ -4,6 +4,11 @@ description: "Cómo definir criterios mínimos obligatorios para tablas de datos
 date: 2025-09-05
 tags: [UX, frontend, tablas, Material Design, arquitectura, Vue, Blazor]
 category: UX/Arquitectura
+image:
+  src: /images/blog/02-estandarizacion-tablas-datos-complejas/estandarizacion-tablas-datos-complejas.png
+  alt: Ilustración de varias tablas de datos alineadas mediante una regla y una plantilla común.
+  width: 1536
+  height: 1024
 ---
 
 Cuando una plataforma empresarial crece y múltiples equipos trabajan con diferentes stacks tecnológicos (Vue/PrimeVue, Blazor/Radzen, etc.), la experiencia de usuario se fragmenta. Las tablas de datos — uno de los componentes más utilizados en cualquier aplicación de gestión — son especialmente susceptibles a esta inconsistencia.

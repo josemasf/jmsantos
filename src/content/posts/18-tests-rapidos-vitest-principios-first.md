@@ -4,6 +4,11 @@ description: "Seis decisiones prácticas para acelerar tests de Vue con Vitest y
 date: 2026-04-17
 tags: [testing, vitest, vue, performance, CI/CD, clean-code]
 category: Testing
+image:
+  src: /images/blog/18-tests-rapidos-vitest-principios-first/tests-rapidos-vitest-first.png
+  alt: Ilustración de una pista de pruebas rápida con controles que mantienen la confianza.
+  width: 1536
+  height: 1024
 series:
   title: "Testing moderno en Vue: confianza sin fragilidad"
   slug: testing-moderno-vue-confianza-sin-fragilidad

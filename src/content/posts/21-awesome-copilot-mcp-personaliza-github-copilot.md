@@ -4,6 +4,11 @@ description: "Qué aporta Awesome Copilot MCP, cómo configurarlo en VS Code y c
 date: 2026-05-29
 tags: [MCP, GitHub Copilot, VSCode, DX, prompts, calidad de código]
 category: Herramientas
+image:
+  src: /images/blog/21-awesome-copilot-mcp-personaliza-github-copilot/awesome-copilot-mcp.png
+  alt: Ilustración de una caja de herramientas de agentes que aporta instrucciones al editor.
+  width: 1536
+  height: 1024
 ---
 
 Un asistente de código resulta mucho más útil cuando entiende las reglas del proyecto: el stack, los criterios de revisión, el formato de los commits y la forma en que el equipo prueba sus componentes. El problema es que esa personalización suele empezar de cero en cada repositorio.

@@ -4,6 +4,11 @@ description: "Una estructura práctica para separar datos de prueba, variaciones
 date: 2026-07-24
 tags: [testing, MSW, Vitest, Vue, TypeScript, mocks, API]
 category: Testing
+image:
+  src: /images/blog/25-fixtures-factories-handlers-msw-tests/fixtures-factories-handlers-msw.png
+  alt: Ilustración de una línea de ensamblaje que transforma datos base en escenarios y respuestas HTTP.
+  width: 1536
+  height: 1024
 series:
   title: "Testing moderno en Vue: confianza sin fragilidad"
   slug: testing-moderno-vue-confianza-sin-fragilidad

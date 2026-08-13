@@ -4,6 +4,11 @@ description: "Cómo diseñar componentes Blazor reutilizables que encapsulan ló
 date: 2026-03-20
 tags: [Blazor, arquitectura, componentes, .NET, widgets, DI]
 category: Arquitectura
+image:
+  src: /images/blog/16-widgets-autocontenidos-blazor/widgets-autocontenidos-blazor.png
+  alt: Ilustración de módulos encapsulados con estado, API y dependencias organizadas.
+  width: 1536
+  height: 1024
 ---
 
 Cuando múltiples equipos comparten componentes entre módulos, la tentación de crear componentes "tontos" que reciben datos del padre es fuerte. Pero en una plataforma empresarial, los **widgets autocontenidos** — componentes que gestionan sus propios datos — son una alternativa más escalable.

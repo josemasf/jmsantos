@@ -4,6 +4,11 @@ description: "Guía práctica sobre Architecture Decision Records (ADR): qué so
 date: 2025-12-12
 tags: [arquitectura, ADR, documentación, equipos, buenas prácticas]
 category: Arquitectura
+image:
+  src: /images/blog/09-que-es-un-adr-arquitectura/adr-arquitectura.png
+  alt: Ilustración de un documento de decisión que conecta opciones arquitectónicas y valida una ruta.
+  width: 1536
+  height: 1024
 ---
 
 Un **Architecture Decision Record (ADR)** es un documento que describe una elección arquitectónica que hace el equipo sobre un aspecto importante del software que está construyendo. No es un RFC, no es un diseño técnico — es el **registro de una decisión ya tomada**, con su contexto y consecuencias.

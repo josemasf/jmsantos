@@ -4,6 +4,11 @@ description: "Una guía práctica de decisión arquitectónica sobre la integrac
 date: 2025-08-22
 tags: [arquitectura, seguridad, frontend, iframe, ADR]
 category: Arquitectura
+image:
+  src: /images/blog/01-cuando-usar-iframes-seguridad/iframes-seguridad.png
+  alt: Ilustración de una ventana web protegida dentro de un marco con barreras y permisos controlados.
+  width: 1536
+  height: 1024
 ---
 
 En el desarrollo de aplicaciones empresariales es habitual encontrar la necesidad de integrar funcionalidades proporcionadas por terceros: una calculadora financiera, un catálogo oficial de piezas con despiece de motor, un widget de seguros... Muchas veces estos proveedores no ofrecen API pública ni SDK — solo un widget embebible mediante `<iframe>`.
