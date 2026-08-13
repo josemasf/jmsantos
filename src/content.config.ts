@@ -27,9 +27,15 @@ const presentationsCollection = defineCollection({
 
 const postsCollection = defineCollection({
   loader: glob({
-    base: "./src/content/posts",
-    pattern: "**/*.md",
-    generateId: ({ entry }) => entry.replace(/\.md$/, "").replace(/^\d+-/, ""),
+    base: "./src/content",
+    pattern: import.meta.env.DEV
+      ? ["posts/**/*.md", "drafts/posts/**/*.md"]
+      : "posts/**/*.md",
+    generateId: ({ entry }) =>
+      entry
+        .replace(/^(?:posts|drafts\/posts)\//, "")
+        .replace(/\.md$/, "")
+        .replace(/^\d+-/, ""),
   }),
   schema: z.object({
     title: z.string(),
