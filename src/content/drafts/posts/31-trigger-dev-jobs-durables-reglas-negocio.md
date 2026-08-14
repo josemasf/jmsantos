@@ -1,7 +1,7 @@
 ---
 title: "Jobs durables con Trigger.dev: infraestructura y reglas de negocio"
 description: "Cómo separar el trabajo pesado del ciclo HTTP con Trigger.dev y proteger el dominio con estados persistidos, idempotencia, recuperación y observabilidad."
-date: 2026-08-25
+date: 2026-09-08
 tags: [Trigger.dev, Node.js, colas, observabilidad, arquitectura]
 category: DevOps
 image:

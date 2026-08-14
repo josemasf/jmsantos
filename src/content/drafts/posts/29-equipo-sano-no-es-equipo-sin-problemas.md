@@ -1,7 +1,7 @@
 ---
 title: "Un equipo sano no es un equipo sin problemas"
 description: "Cómo construir una forma de trabajo en la que el equipo detecta problemas, participa en las decisiones y convierte las retrospectivas en mejoras concretas."
-date: 2026-08-18
+date: 2026-08-25
 tags:
   [
     equipos,
