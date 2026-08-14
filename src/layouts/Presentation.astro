@@ -1,7 +1,11 @@
 ---
 import MainLayout from "../layouts/MainLayout.astro";
+import { canUseCloudinary, cloudinaryAssetUrl, cloudinarySrcSet, cloudinaryWidths } from "../utils/cloudinary";
 
 const { content } = Astro.props;
+const useCloudinary = content.img && canUseCloudinary(content.img);
+const heroImageSrc = useCloudinary ? cloudinaryAssetUrl(content.img, { width: 960, height: 600, crop: "fill" }) : content.img;
+const heroImageSrcSet = useCloudinary ? cloudinarySrcSet(content.img, cloudinaryWidths.hero, { height: 600, crop: "fill" }) : undefined;
 ---
 
 <MainLayout title={content.title} description={content.description}>
@@ -9,7 +13,7 @@ const { content } = Astro.props;
   <div class="bg-slate-200 dark:bg-slate-900">
     <section class="bg-slate-200 dark:bg-slate-900 flex lg:container">
       <picture class="hidden md:block">
-        <img class="h-full" src={content.img} alt={`Portada de la ponencia ${content.title}`} loading="lazy" />
+        <img class="h-full" src={heroImageSrc} srcset={heroImageSrcSet} sizes="(min-width: 1024px) 50vw, 100vw" alt={`Portada de la ponencia ${content.title}`} width="960" height="600" loading="eager" fetchpriority="high" decoding="async" onerror={useCloudinary ? `this.removeAttribute('srcset'); this.src='${content.img}'` : undefined} />
       </picture>
       <div
         class="relative px-4 py-32 mx-auto max-w-screen-md lg:items-center md:flex"

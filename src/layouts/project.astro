@@ -1,5 +1,6 @@
 ---
 import MainLayout from "../layouts/MainLayout.astro";
+import { canUseCloudinary, cloudinaryAssetUrl, cloudinarySrcSet, cloudinaryWidths } from "../utils/cloudinary";
 
 interface Props {
   content: {
@@ -15,6 +16,9 @@ interface Props {
 }
 
 const { content } = Astro.props as Props;
+const useCloudinary = canUseCloudinary(content.img);
+const heroImageSrc = useCloudinary ? cloudinaryAssetUrl(content.img, { width: 960, height: 600, crop: "fill" }) : content.img;
+const heroImageSrcSet = useCloudinary ? cloudinarySrcSet(content.img, cloudinaryWidths.hero, { height: 600, crop: "fill" }) : undefined;
 ---
 
 <MainLayout title={content.title} description={content.description}>
@@ -75,10 +79,17 @@ const { content } = Astro.props as Props;
           <div class="relative group">
             <div class="absolute -inset-1 bg-gradient-to-r from-indigo-500 to-cyan-500 rounded-2xl blur opacity-25 group-hover:opacity-50 transition duration-1000 group-hover:duration-200"></div>
             <img
-              src={content.img}
+              src={heroImageSrc}
+              srcset={heroImageSrcSet}
+              sizes="(min-width: 1024px) 50vw, 100vw"
               alt={content.title}
+              width="960"
+              height="600"
               class="relative rounded-2xl shadow-2xl w-full object-cover aspect-video lg:aspect-square transition-transform duration-500 hover:scale-[1.02]"
               loading="eager"
+              fetchpriority="high"
+              decoding="async"
+              onerror={useCloudinary ? `this.removeAttribute('srcset'); this.src='${content.img}'` : undefined}
             />
           </div>
         </div>

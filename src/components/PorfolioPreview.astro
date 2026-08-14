@@ -1,16 +1,16 @@
 ---
-import { cloudinaryAssetUrl, cloudinarySrcSet } from "../utils/cloudinary";
+import { cloudinaryAssetUrl, cloudinarySrcSet, cloudinaryWidths } from "../utils/cloudinary";
 
 const { frontmatter, url } = Astro.props.presentation;
 const tags = (frontmatter.tags ?? []).slice(0, 4);
 const canUseCloudinary = frontmatter.img?.startsWith("/assets/") && !frontmatter.img.endsWith(".svg");
 const fallbackSrc = frontmatter.img;
 const imgSrc = canUseCloudinary ? cloudinaryAssetUrl(frontmatter.img, { width: 960, height: 600, crop: "fill" }) : fallbackSrc;
-const imgSrcSet = canUseCloudinary ? cloudinarySrcSet(frontmatter.img, [480, 720, 960], { height: 600, crop: "fill" }) : undefined;
+const imgSrcSet = canUseCloudinary ? cloudinarySrcSet(frontmatter.img, cloudinaryWidths.grid, { height: 600, crop: "fill" }) : undefined;
 ---
 
 <article class="group h-full overflow-hidden rounded-2xl border border-slate-200 bg-white shadow-sm transition duration-300 hover:-translate-y-1 hover:shadow-xl hover:shadow-indigo-950/10 dark:border-slate-700 dark:bg-slate-900">
-  <a href={url} class="block h-full" aria-label={`Ver proyecto: ${frontmatter.title}`}>
+  <a href={url} class="block h-full">
     <img
       alt={`Captura del proyecto ${frontmatter.title}`}
       src={imgSrc}

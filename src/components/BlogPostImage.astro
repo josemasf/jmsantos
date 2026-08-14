@@ -1,5 +1,5 @@
 ---
-import { canUseCloudinary, cloudinaryAssetUrl, cloudinarySrcSet } from "../utils/cloudinary";
+import { canUseCloudinary, cloudinaryAssetUrl, cloudinarySrcSet, cloudinaryWidths } from "../utils/cloudinary";
 
 interface Props {
   image: {
@@ -16,7 +16,7 @@ const { image, bordered = false } = Astro.props;
 const useCloudinary = canUseCloudinary(image.src);
 const width = image.width ?? 1536;
 const cloudinarySrc = useCloudinary ? cloudinaryAssetUrl(image.src, { width }) : image.src;
-const srcSet = useCloudinary ? cloudinarySrcSet(image.src, [640, 960, 1280, 1536]) : undefined;
+const srcSet = useCloudinary ? cloudinarySrcSet(image.src, cloudinaryWidths.content) : undefined;
 ---
 
 <figure class:list={["mt-10", bordered && "border-y border-slate-200 py-6 dark:border-slate-800"]}>

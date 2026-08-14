@@ -2,6 +2,7 @@
 import MainLayout from "../layouts/MainLayout.astro";
 
 import PorfolioPreview from "@components/PorfolioPreview.astro";
+import { cloudinaryAssetUrl, cloudinarySrcSet, cloudinaryWidths } from "../utils/cloudinary";
 
 const porfolio = Object.values(
   import.meta.glob<{ frontmatter: { publishDate: string } }>("./porfolio/**/*.md", { eager: true })
@@ -12,6 +13,9 @@ const porfolio = Object.values(
       new Date(b.frontmatter.publishDate).valueOf() -
       new Date(a.frontmatter.publishDate).valueOf()
   );
+const heroImage = "/assets/jose-maria-santos-08.png";
+const heroImageSrc = cloudinaryAssetUrl(heroImage, { width: 960, height: 640, crop: "fit" });
+const heroImageSrcSet = cloudinarySrcSet(heroImage, cloudinaryWidths.hero, { height: 640, crop: "fit" });
 ---
 
 <MainLayout
@@ -29,13 +33,16 @@ const porfolio = Object.values(
         </div>
         <figure class="portfolio-hero__visual">
           <img
-            src="/assets/jose-maria-santos-08.png"
+            src={heroImageSrc}
+            srcset={heroImageSrcSet}
+            sizes="(min-width: 672px) 42vw, 100vw"
             alt="José María Santos, Tech Lead"
             width="1536"
             height="1024"
             loading="eager"
             fetchpriority="high"
             decoding="async"
+            onerror={`this.removeAttribute('srcset'); this.src='${heroImage}'`}
           />
         </figure>
       </div>

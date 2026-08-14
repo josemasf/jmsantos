@@ -2,6 +2,7 @@
 import type { CollectionEntry } from "astro:content";
 import BlogPagination from "@components/BlogPagination.astro";
 import PostPreview from "@components/PostPreview.astro";
+import { cloudinaryAssetUrl, cloudinarySrcSet, cloudinaryWidths } from "../utils/cloudinary";
 
 interface Props {
   posts: CollectionEntry<"posts">[];
@@ -10,6 +11,9 @@ interface Props {
 }
 
 const { posts, currentPage, totalPages } = Astro.props;
+const heroImage = "/assets/jose-maria-santos-01.png";
+const heroImageSrc = cloudinaryAssetUrl(heroImage, { width: 960, height: 640, crop: "fit" });
+const heroImageSrcSet = cloudinarySrcSet(heroImage, cloudinaryWidths.hero, { height: 640, crop: "fit" });
 ---
 
 <main id="main-content">
@@ -23,7 +27,7 @@ const { posts, currentPage, totalPages } = Astro.props;
         <p class="blog-hero__description text-slate-200">Notas prácticas sobre frontend, arquitectura, calidad y las decisiones que hacen avanzar a los equipos.</p>
       </div>
       <div class="blog-hero__media">
-        <img class="blog-hero__image" src="/assets/jose-maria-santos-01.png" alt="Ilustración de José María Santos trabajando con un portátil" width="1536" height="1024" />
+        <img class="blog-hero__image" src={heroImageSrc} srcset={heroImageSrcSet} sizes="(min-width: 1100px) 48vw, (min-width: 769px) 42vw, 100vw" alt="Ilustración de José María Santos trabajando con un portátil" width="1536" height="1024" loading="eager" fetchpriority="high" decoding="async" onerror={`this.removeAttribute('srcset'); this.src='${heroImage}'`} />
       </div>
     </div>
   </section>

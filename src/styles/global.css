@@ -110,6 +110,33 @@ body {
   text-transform: uppercase;
 }
 
+/* Markdown task lists render disabled inputs without a label. Keep the visual
+   checklist while leaving assistive technology a simple, readable list. */
+.prose .contains-task-list {
+  padding-left: 0;
+  list-style: none;
+}
+
+.prose .task-list-item > input[type="checkbox"] {
+  display: none;
+}
+
+.prose .task-list-item::before {
+  display: inline-block;
+  width: 1em;
+  height: 1em;
+  margin-right: 0.55em;
+  border: 1px solid currentColor;
+  border-radius: 0.15em;
+  content: "";
+  vertical-align: -0.1em;
+}
+
+/* The default Shiki GitHub token gray fails AA on its dark code surface. */
+pre.astro-code span[style*="color:#6a737d"] {
+  color: #c9d1d9 !important;
+}
+
 @media (prefers-reduced-motion: reduce) {
   *,
   *::before,

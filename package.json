@@ -18,7 +18,7 @@
     "images:upload": "node --experimental-strip-types script/upload.mts",
     "publish:scheduled": "node script/publish-scheduled-posts.mjs",
     "test:publish": "node --test script/publish-scheduled-posts.test.mjs",
-    "unlighthouse": "pnpm dlx unlighthouse --site https://josemariasantos.com/"
+    "unlighthouse": "pnpm dlx unlighthouse"
   },
   "dependencies": {
     "@astrojs/partytown": "2.1.7",

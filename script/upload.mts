@@ -7,12 +7,27 @@ import { v2 as cloudinary } from "cloudinary";
 const currentDirectory = dirname(fileURLToPath(import.meta.url));
 const publicDirectory = join(currentDirectory, "../public");
 const uploadDirectories = [
-  { directory: join(publicDirectory, "assets"), cloudinaryFolder: "jmsantos/assets" },
-  { directory: join(publicDirectory, "images/blog"), cloudinaryFolder: "jmsantos/images/blog" },
+  {
+    directory: join(publicDirectory, "assets"),
+    cloudinaryFolder: "jmsantos/assets",
+  },
+  {
+    directory: join(publicDirectory, "images/about"),
+    cloudinaryFolder: "jmsantos/images/about",
+  },
+  {
+    directory: join(publicDirectory, "images/blog"),
+    cloudinaryFolder: "jmsantos/images/blog",
+  },
 ];
-const requiredEnvironmentVariables = ["CLOUD_NAME", "API_KEY", "API_SECRET"] as const;
+const requiredEnvironmentVariables = [
+  "CLOUD_NAME",
+  "API_KEY",
+  "API_SECRET",
+] as const;
 
-type CloudinaryEnvironmentVariable = (typeof requiredEnvironmentVariables)[number];
+type CloudinaryEnvironmentVariable =
+  (typeof requiredEnvironmentVariables)[number];
 
 async function main() {
   const configuration = getConfiguration();
@@ -36,10 +51,14 @@ async function main() {
 }
 
 function getConfiguration() {
-  const missingEnvironmentVariables = requiredEnvironmentVariables.filter((name) => !process.env[name]);
+  const missingEnvironmentVariables = requiredEnvironmentVariables.filter(
+    (name) => !process.env[name],
+  );
 
   if (missingEnvironmentVariables.length > 0) {
-    throw new Error(`Faltan las variables de entorno: ${missingEnvironmentVariables.join(", ")}`);
+    throw new Error(
+      `Faltan las variables de entorno: ${missingEnvironmentVariables.join(", ")}`,
+    );
   }
 
   return {
