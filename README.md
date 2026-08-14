@@ -21,14 +21,15 @@ All commands are run from the root of the project, from a terminal:
 
 ## Imágenes y Cloudinary
 
-Las imágenes rasterizadas de la portada y las tarjetas de proyectos se sirven
-desde Cloudinary cuando están disponibles. Las URLs incorporan `f_auto`,
+Las imágenes rasterizadas de la portada, las tarjetas de proyectos y las
+cabeceras de los posts se sirven desde Cloudinary cuando están disponibles. Las URLs incorporan `f_auto`,
 `q_auto`, `dpr_auto` y dimensiones adaptadas al espacio en el que se muestran;
 las tarjetas además incluyen `srcset` para no descargar una imagen mayor de la
 necesaria. Los SVG continúan sirviéndose como archivos locales.
 
 La utilidad `src/utils/cloudinary.ts` centraliza la generación de las URLs. Si
-un asset todavía no está en la carpeta `jmsantos/assets` de Cloudinary, el
+un asset todavía no está en las carpetas `jmsantos/assets` o
+`jmsantos/images/blog` de Cloudinary, el
 navegador vuelve automáticamente a la copia local en `public/assets/`, por lo
 que no se rompe ninguna imagen mientras se completa la migración.
 
@@ -48,8 +49,8 @@ pnpm images:upload
 ```
 
 El comando usa `script/upload.mts`, recorre también las subcarpetas y sincroniza
-los archivos de `public/assets/` bajo `jmsantos/assets`, con identificadores
-predecibles. Sobrescribe el recurso remoto si ha cambiado. Cuando se haya
+los archivos de `public/assets/` y `public/images/blog/` bajo sus carpetas
+equivalentes en Cloudinary, con identificadores predecibles. Sobrescribe el recurso remoto si ha cambiado. Cuando se haya
 subido un recurso, confirma que su URL de Cloudinary devuelve `200` antes de
 eliminar o cambiar su copia local.
 

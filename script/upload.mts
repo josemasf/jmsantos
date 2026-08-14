@@ -5,7 +5,11 @@ import { fileURLToPath } from "node:url";
 import { v2 as cloudinary } from "cloudinary";
 
 const currentDirectory = dirname(fileURLToPath(import.meta.url));
-const assetsDirectory = join(currentDirectory, "../public/assets");
+const publicDirectory = join(currentDirectory, "../public");
+const uploadDirectories = [
+  { directory: join(publicDirectory, "assets"), cloudinaryFolder: "jmsantos/assets" },
+  { directory: join(publicDirectory, "images/blog"), cloudinaryFolder: "jmsantos/images/blog" },
+];
 const requiredEnvironmentVariables = ["CLOUD_NAME", "API_KEY", "API_SECRET"] as const;
 
 type CloudinaryEnvironmentVariable = (typeof requiredEnvironmentVariables)[number];
@@ -15,17 +19,19 @@ async function main() {
 
   cloudinary.config(configuration);
 
-  for (const filePath of await listFiles(assetsDirectory)) {
-    const relativePath = relative(assetsDirectory, filePath).replaceAll("\\", "/");
-    const publicId = `jmsantos/assets/${relativePath.replace(/\.[^.]+$/, "")}`;
+  for (const { directory, cloudinaryFolder } of uploadDirectories) {
+    for (const filePath of await listFiles(directory)) {
+      const relativePath = relative(directory, filePath).replaceAll("\\", "/");
+      const publicId = `${cloudinaryFolder}/${relativePath.replace(/\.[^.]+$/, "")}`;
 
-    await cloudinary.uploader.upload(filePath, {
-      public_id: publicId,
-      overwrite: true,
-      resource_type: "image",
-    });
+      await cloudinary.uploader.upload(filePath, {
+        public_id: publicId,
+        overwrite: true,
+        resource_type: "image",
+      });
 
-    console.log(`Subido: ${relativePath}`);
+      console.log(`Subido: ${relativePath}`);
+    }
   }
 }
 

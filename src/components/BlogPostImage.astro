@@ -1,0 +1,36 @@
+---
+import { canUseCloudinary, cloudinaryAssetUrl, cloudinarySrcSet } from "../utils/cloudinary";
+
+interface Props {
+  image: {
+    src: string;
+    alt: string;
+    caption?: string;
+    width?: number;
+    height?: number;
+  };
+  bordered?: boolean;
+}
+
+const { image, bordered = false } = Astro.props;
+const useCloudinary = canUseCloudinary(image.src);
+const width = image.width ?? 1536;
+const cloudinarySrc = useCloudinary ? cloudinaryAssetUrl(image.src, { width }) : image.src;
+const srcSet = useCloudinary ? cloudinarySrcSet(image.src, [640, 960, 1280, 1536]) : undefined;
+---
+
+<figure class:list={["mt-10", bordered && "border-y border-slate-200 py-6 dark:border-slate-800"]}>
+  <img
+    src={cloudinarySrc}
+    srcset={srcSet}
+    sizes="(min-width: 1024px) 1024px, (min-width: 768px) calc(100vw - 5rem), calc(100vw - 3rem)"
+    alt={image.alt}
+    width={image.width}
+    height={image.height}
+    loading="eager"
+    decoding="async"
+    onerror={useCloudinary ? `this.removeAttribute('srcset'); this.src='${image.src}'` : undefined}
+    class="w-full rounded-lg border border-slate-200 bg-white shadow-sm dark:border-slate-800"
+  />
+  {image.caption && <figcaption class="mx-auto mt-3 max-w-3xl text-center text-sm text-slate-500 dark:text-slate-400">{image.caption}</figcaption>}
+</figure>

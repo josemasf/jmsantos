@@ -2,6 +2,7 @@
 import type { CollectionEntry } from "astro:content";
 import MainLayout from "@layouts/MainLayout.astro";
 import RelatedPosts from "@components/RelatedPosts.astro";
+import BlogPostImage from "@components/BlogPostImage.astro";
 import type { BlogTopic } from "@data/blog-topics";
 import { articleSchema, breadcrumbSchema } from "@data/blog-seo";
 
@@ -34,10 +35,7 @@ const schemas = [articleSchema(post), breadcrumbSchema([{ name: "Inicio", path: 
       </header>
       {
         image && (
-          <figure class="mt-10 border-y border-slate-200 py-6 dark:border-slate-800">
-            <img src={image.src} alt={image.alt} width={image.width} height={image.height} loading="eager" decoding="async" class="w-full rounded-lg border border-slate-200 bg-white shadow-sm dark:border-slate-800" />
-            {image.caption && <figcaption class="mx-auto mt-3 max-w-3xl text-center text-sm text-slate-500 dark:text-slate-400">{image.caption}</figcaption>}
-          </figure>
+          <BlogPostImage image={image} bordered />
         )
       }
       <div class="prose prose-slate mx-auto mt-10 max-w-3xl prose-headings:font-display prose-headings:font-bold prose-a:text-indigo-700 hover:prose-a:text-indigo-900 dark:prose-invert dark:prose-a:text-cyan-300 dark:hover:prose-a:text-cyan-100">
