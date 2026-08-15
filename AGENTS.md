@@ -75,10 +75,8 @@ Para un post de serie:
 
 ```yaml
 series:
-  title: "Nombre de la serie"
   slug: nombre-de-la-serie
   order: 1
-  description: "Descripción opcional de la serie."
   image:
     src: /images/blog/nombre-de-la-serie/portada-social.png
     alt: Descripción accesible de la imagen de la serie.
@@ -90,12 +88,25 @@ Reglas para series:
 
 - Usar el mismo `series.slug` en todos los posts relacionados.
 - Definir `series.order` con números consecutivos para ordenar el listado lateral.
-- Repetir `series.title` y, si aplica, `series.description` de forma coherente entre los posts de la misma serie.
+- Antes de crear o publicar artículos de una serie nueva, añadir sus metadatos compartidos en `src/data/blog-series.ts`. La clave debe coincidir exactamente con `series.slug` e incluir, como mínimo, `title` y, cuando exista, `description`.
+- El nombre y la descripción de la serie se leen desde `src/data/blog-series.ts`; no duplicarlos en el frontmatter de cada post.
 - `series.image` es opcional y se usa como imagen Open Graph y Twitter al compartir cualquiera de los enlaces de la serie; tiene prioridad sobre la imagen individual del post, pero no se muestra dentro del artículo.
 - Si se define `series.image`, repetir exactamente el mismo objeto en todos los posts de esa serie para que el resultado al compartir sea consistente.
 - Guardar la imagen de serie en `public/images/blog/<slug-de-la-serie>/` y usar una ruta pública absoluta en `src`.
 - Si un post tiene `series` e `image`, se renderiza con `SeriesPost.astro` y también muestra la imagen destacada.
 - No crear enlaces manuales de "posts relacionados" dentro del cuerpo salvo que aporten contexto adicional; el layout ya lista la serie.
+
+Ejemplo de registro centralizado:
+
+```ts
+// src/data/blog-series.ts
+export const blogSeries = {
+  "testing-vue": {
+    title: "Testing en Vue",
+    description: "Una guía práctica para construir una suite de tests rápida y mantenible.",
+  },
+};
+```
 
 ### Prompt sugerido
 
