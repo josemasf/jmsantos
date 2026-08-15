@@ -123,6 +123,10 @@ Usar este agente cuando la tarea sea:
 - Definir prompts negativos para evitar artefactos y resultados genéricos.
 - Obtener alt text sugerido para accesibilidad.
 
+Regla obligatoria para portadas:
+
+- Antes de generar, editar o sustituir la portada de un post, cargar el contenido completo de `.github/agents/visual-asset-prompt-designer.agent.md` y usar su dirección de arte para definir el prompt, el prompt negativo y el texto alternativo. Esta regla también se aplica cuando la petición del usuario solo diga «genera una portada» o «crea una imagen para el post».
+
 ### Cómo consumirlo desde Codex u otros LLM
 
 1. Cargar el contenido completo de `.github/agents/visual-asset-prompt-designer.agent.md` como instrucción de sistema o rol especializado.
