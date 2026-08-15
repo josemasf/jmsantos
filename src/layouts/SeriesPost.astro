@@ -4,31 +4,39 @@ import MainLayout from "@layouts/MainLayout.astro";
 import RelatedPosts from "@components/RelatedPosts.astro";
 import BlogPostImage from "@components/BlogPostImage.astro";
 import type { BlogTopic } from "@data/blog-topics";
+import type { BlogSeries } from "@data/blog-series";
 import { articleSchema, breadcrumbSchema } from "@data/blog-seo";
 
 interface Props {
   post: CollectionEntry<"posts">;
   seriesPosts: CollectionEntry<"posts">[];
+  seriesInfo?: BlogSeries;
   Content: any;
   formattedDate: string;
   primaryTopic?: BlogTopic;
   relatedPosts: CollectionEntry<"posts">[];
 }
 
-const { post, seriesPosts, Content, formattedDate, primaryTopic, relatedPosts } = Astro.props;
+const { post, seriesPosts, seriesInfo, Content, formattedDate, primaryTopic, relatedPosts } = Astro.props;
 const image = post.data.image;
 const series = post.data.series;
 const socialImage = series?.image ?? image;
 const schemas = [articleSchema(post, socialImage?.src), breadcrumbSchema([{ name: "Inicio", path: "/" }, { name: "Blog", path: "/blog/" }, ...(primaryTopic ? [{ name: primaryTopic.title, path: `/blog/temas/${primaryTopic.slug}/` }] : []), { name: post.data.title, path: `/blog/${post.id}/` }])];
+const currentIndex = seriesPosts.findIndex((seriesPost) => seriesPost.id === post.id);
+const previousPost = currentIndex > 0 ? seriesPosts[currentIndex - 1] : undefined;
+const nextPost = currentIndex >= 0 && currentIndex < seriesPosts.length - 1 ? seriesPosts[currentIndex + 1] : undefined;
+const seriesTitle = seriesInfo?.title ?? series?.slug ?? "Serie";
+const seriesDescription = seriesInfo?.description;
+const seriesPath = series ? `/blog/series/${series.slug}/` : "/blog/";
 ---
 
 <MainLayout title={`${post.data.title} | José María Santos`} description={post.data.description} ogImage={socialImage?.src} ogImageAlt={socialImage?.alt} ogImageWidth={socialImage?.width} ogImageHeight={socialImage?.height} ogType="article" schemas={schemas}>
   <main id="main-content" class="container mx-auto px-6 py-14 md:px-10 md:py-20">
     <article class="mx-auto max-w-6xl">
       <a href="/blog/" class="inline-flex min-h-11 items-center font-bold text-indigo-700 hover:text-indigo-900 dark:text-indigo-300 dark:hover:text-white"><span class="mr-2" aria-hidden="true">←</span> Volver al blog</a>
-      <header class="mt-10 grid gap-8 border-b border-slate-200 pb-10 dark:border-slate-800 lg:grid-cols-[minmax(0,1fr)_20rem] lg:items-end">
+      <header class="mt-10 grid gap-8 border-b border-slate-200 pb-10 dark:border-slate-800 lg:grid-cols-[minmax(0,1fr)_20rem] lg:items-start">
         <div>
-          {primaryTopic ? <a href={`/blog/temas/${primaryTopic.slug}/`} class="section-kicker hover:underline">{primaryTopic.title}</a> : series && <p class="section-kicker">Serie: {series.title}</p>}
+          {primaryTopic ? <a href={`/blog/temas/${primaryTopic.slug}/`} class="section-kicker hover:underline">{primaryTopic.title}</a> : series && <p class="section-kicker">Serie</p>}
           <h1 class="mt-4 font-display text-4xl font-bold leading-tight tracking-tight text-slate-900 dark:text-white md:text-6xl">{post.data.title}</h1>
           <p class="mt-6 text-lg leading-relaxed text-slate-600 dark:text-slate-300">{post.data.description}</p>
           <p class="mt-6 text-sm font-bold text-slate-500 dark:text-slate-400">Escrito por <a href="/about/" class="underline hover:text-indigo-700 dark:hover:text-cyan-200">José María Santos, Tech Lead</a></p>
@@ -39,28 +47,18 @@ const schemas = [articleSchema(post, socialImage?.src), breadcrumbSchema([{ name
         </div>
         {
           series && (
-            <aside class="rounded-lg border border-slate-200 bg-white p-5 shadow-sm dark:border-slate-800 dark:bg-slate-900">
-              <p class="text-xs font-bold uppercase tracking-[.16em] text-cyan-700 dark:text-cyan-300">En esta serie</p>
-              {series.description && <p class="mt-3 text-sm leading-relaxed text-slate-600 dark:text-slate-300">{series.description}</p>}
-              <ol class="mt-5 space-y-3">
-                {seriesPosts.map((seriesPost) => (
-                  <li>
-                    <a
-                      href={`/blog/${seriesPost.id}/`}
-                      aria-current={seriesPost.id === post.id ? "page" : undefined}
-                      class:list={[
-                        "block rounded-md border px-3 py-2 text-sm font-bold transition",
-                        seriesPost.id === post.id
-                          ? "border-cyan-300 bg-cyan-50 text-cyan-900 dark:border-cyan-700 dark:bg-cyan-950/40 dark:text-cyan-100"
-                          : "border-transparent text-slate-700 hover:border-slate-200 hover:bg-slate-50 dark:text-slate-200 dark:hover:border-slate-700 dark:hover:bg-slate-800",
-                      ]}
-                    >
-                      <span class="mr-2 text-slate-400">{seriesPost.data.series?.order}.</span>{seriesPost.data.title}
-                    </a>
-                  </li>
-                ))}
-              </ol>
-            </aside>
+            <nav aria-label={`Navegación de la serie ${seriesTitle}`} class="rounded-lg border border-slate-200 bg-white p-5 shadow-sm dark:border-slate-800 dark:bg-slate-900">
+              <p class="text-xs font-bold uppercase tracking-[.16em] text-cyan-700 dark:text-cyan-300">Serie · {seriesTitle}</p>
+              <p class="mt-2 font-display text-xl font-bold text-slate-900 dark:text-white">{currentIndex + 1} de {seriesPosts.length}</p>
+              {seriesDescription && <p class="mt-3 text-sm leading-relaxed text-slate-600 dark:text-slate-300">{seriesDescription}</p>}
+              {(previousPost || nextPost) && (
+                <div class="mt-5 grid grid-cols-2 gap-4 border-t border-slate-200 pt-4 dark:border-slate-800 lg:grid-cols-1">
+                  {previousPost && <a href={`/blog/${previousPost.id}/`} aria-label={`Artículo anterior: ${previousPost.data.title}`} class="group min-h-11 text-sm font-bold text-slate-700 transition hover:text-indigo-700 dark:text-slate-200 dark:hover:text-cyan-200"><span class="block text-xs uppercase tracking-[.14em] text-slate-500 group-hover:text-indigo-700 dark:text-slate-400 dark:group-hover:text-cyan-200">← Anterior</span><span class="mt-1 hidden leading-snug sm:block">{previousPost.data.title}</span></a>}
+                  {nextPost && <a href={`/blog/${nextPost.id}/`} aria-label={`Artículo siguiente: ${nextPost.data.title}`} class="group min-h-11 text-right text-sm font-bold text-slate-700 transition hover:text-indigo-700 dark:text-slate-200 dark:hover:text-cyan-200 lg:text-right"><span class="block text-xs uppercase tracking-[.14em] text-slate-500 group-hover:text-indigo-700 dark:text-slate-400 dark:group-hover:text-cyan-200">Siguiente →</span><span class="mt-1 hidden leading-snug sm:block">{nextPost.data.title}</span></a>}
+                </div>
+              )}
+              <a href={seriesPath} class="mt-5 inline-flex min-h-11 items-center text-sm font-bold text-indigo-700 underline decoration-2 underline-offset-4 hover:text-indigo-900 dark:text-cyan-200 dark:hover:text-white">Ver la serie completa <span class="ml-1" aria-hidden="true">→</span></a>
+            </nav>
           )
         }
       </header>

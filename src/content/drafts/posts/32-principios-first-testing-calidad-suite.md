@@ -10,10 +10,8 @@ image:
   width: 1672
   height: 941
 series:
-  title: "Testing moderno en Vue: confianza sin fragilidad"
   slug: testing-moderno-vue-confianza-sin-fragilidad
   order: 6
-  description: "Una guía práctica para construir una suite de tests rápida, realista y mantenible en Vue 3."
 ---
 
 Una suite en verde no es necesariamente una buena suite. Podemos tener cientos de pruebas que pasan y seguir dependiendo de un orden de ejecución concreto, de una API externa o de un _snapshot_ de cuatrocientas líneas que nadie sabe revisar. Cuando eso ocurre, los tests siguen existiendo, pero dejan de ofrecer el feedback y la confianza por los que se escribieron.

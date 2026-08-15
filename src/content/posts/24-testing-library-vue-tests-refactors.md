@@ -10,10 +10,8 @@ image:
   width: 1536
   height: 1024
 series:
-  title: "Testing moderno en Vue: confianza sin fragilidad"
   slug: testing-moderno-vue-confianza-sin-fragilidad
   order: 3
-  description: "Una guía práctica para construir una suite de tests rápida, realista y mantenible en Vue 3."
 ---
 
 Un refactor debería poder cambiar la estructura interna de un componente sin obligarnos a reescribir sus tests. Sin embargo, es fácil acabar con una suite que conoce demasiado: clases CSS, nombres de métodos, estado de un composable o la jerarquía exacta del HTML. Entonces el test falla aunque la persona usuaria siga pudiendo completar la misma tarea.

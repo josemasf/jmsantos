@@ -55,10 +55,8 @@ const postsCollection = defineCollection({
       .optional(),
     series: z
       .object({
-        title: z.string(),
         slug: z.string(),
         order: z.number(),
-        description: z.string().optional(),
         image: z
           .object({
             src: z.string(),

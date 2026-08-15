@@ -10,10 +10,8 @@ image:
   width: 1536
   height: 1024
 series:
-  title: "Testing moderno en Vue: confianza sin fragilidad"
   slug: testing-moderno-vue-confianza-sin-fragilidad
   order: 4
-  description: "Una guía práctica para construir una suite de tests rápida, realista y mantenible en Vue 3."
 ---
 
 Al principio, un mock cabe en el propio test. Un objeto con dos propiedades y un `vi.mock` parecen suficientes. El problema aparece cuando el mismo usuario debe ser administrador, no tener permisos, tener una suscripción caducada y además recibir una respuesta incompleta de la API. Los datos se copian, los nombres dejan de explicar el escenario y cambiar el contrato obliga a editar decenas de archivos.

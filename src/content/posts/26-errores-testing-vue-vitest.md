@@ -10,10 +10,8 @@ image:
   width: 1536
   height: 1024
 series:
-  title: "Testing moderno en Vue: confianza sin fragilidad"
   slug: testing-moderno-vue-confianza-sin-fragilidad
   order: 5
-  description: "Una guía práctica para construir una suite de tests rápida, realista y mantenible en Vue 3."
 ---
 
 Una suite de tests puede tener muchos archivos y seguir ofreciendo poca confianza. El síntoma no siempre es una cobertura baja: a menudo son pruebas que fallan de forma intermitente, que se reescriben en cada refactor o que obligan a mockear media aplicación para comprobar un botón.

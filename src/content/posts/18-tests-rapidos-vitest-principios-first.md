@@ -10,10 +10,8 @@ image:
   width: 1536
   height: 1024
 series:
-  title: "Testing moderno en Vue: confianza sin fragilidad"
   slug: testing-moderno-vue-confianza-sin-fragilidad
   order: 1
-  description: "Una guía práctica para construir una suite de tests rápida, realista y mantenible en Vue 3."
 ---
 
 Una suite lenta no solo consume minutos de CI: reduce la frecuencia con la que el equipo la ejecuta y hace más difícil detectar una regresión cerca del cambio que la introdujo. La **F** de _Fast_ en los principios FIRST persigue precisamente un feedback rápido.
