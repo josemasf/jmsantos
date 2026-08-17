@@ -3,8 +3,8 @@ name: Publicar posts programados
 on:
   schedule:
     # 08:00 Europe/Madrid: 06:00 UTC durante el horario de verano y 07:00 UTC en invierno.
-    - cron: "0 6 * * 1"
-    - cron: "0 7 * * 1"
+    - cron: "0 6,7 * * 1,3,6"
+
   workflow_dispatch:
 
 permissions:
