@@ -4,6 +4,11 @@ export interface BlogSeries {
 }
 
 export const blogSeries = {
+  "mantenibilidad-frontend-coste-de-entender": {
+    title: "Mantener software: el coste de entenderlo",
+    description:
+      "Seis perspectivas para priorizar deuda técnica, pruebas, CI, observabilidad y arquitectura a partir del coste real de cambiar un frontend.",
+  },
   "testing-moderno-vue-confianza-sin-fragilidad": {
     title: "Testing moderno en Vue: confianza sin fragilidad",
     description:
