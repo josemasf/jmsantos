@@ -156,4 +156,4 @@ Entrega: prompt principal, prompt negativo, 3 variantes y alt text.
 
 - Este registro documenta la existencia del agente para herramientas que no descubren automáticamente archivos `.agent.md`.
 - Si se actualiza el agente, actualizar también este archivo para mantener compatibilidad entre asistentes.
-- Cuando se cree un post a partir de un tema de `backlog-temas/`, actualizar el archivo de backlog de origen antes de terminar la tarea: marcar el tema como **escrito** (o **escrito como borrador**), incluir la ruta al post creado y, si corresponde, su fecha programada. Esta actualización es obligatoria para que los temas ya desarrollados no vuelvan a proponerse como pendientes.
+- Las GitHub Issues son la fuente de verdad del estado editorial. Cuando se cree un post a partir de una issue, actualizar su sección **Estado editorial** a **Borrador programado** e incluir la ruta al archivo y su fecha. Cuando el post se publique, actualizar la issue a **Publicado** con su ruta pública o cerrarla con el motivo `completed`.
