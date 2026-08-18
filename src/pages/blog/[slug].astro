@@ -21,13 +21,14 @@ interface Props {
 
 const { post } = Astro.props;
 const { Content } = await render(post);
-const posts = await getCollection("posts");
+const [posts, draftPosts] = await Promise.all([getCollection("posts"), getCollection("draftPosts")]);
 const seriesPosts = post.data.series
   ? posts
       .filter((entry) => entry.data.series?.slug === post.data.series?.slug)
       .sort((a, b) => (a.data.series?.order ?? 0) - (b.data.series?.order ?? 0))
   : [];
 const seriesInfo = post.data.series ? getBlogSeries(post.data.series.slug) : undefined;
+const hasUpcomingPosts = post.data.series ? draftPosts.some((entry) => entry.data.series?.slug === post.data.series?.slug) : false;
 const formattedDate = new Intl.DateTimeFormat("es-ES", {
   day: "numeric",
   month: "long",
@@ -44,7 +45,7 @@ const relatedPosts = primaryTopic
 
 {
   post.data.series ? (
-    <SeriesPost post={post} seriesPosts={seriesPosts} seriesInfo={seriesInfo} relatedPosts={relatedPosts} primaryTopic={primaryTopic} Content={Content} formattedDate={formattedDate} />
+    <SeriesPost post={post} seriesPosts={seriesPosts} seriesInfo={seriesInfo} hasUpcomingPosts={hasUpcomingPosts} relatedPosts={relatedPosts} primaryTopic={primaryTopic} Content={Content} formattedDate={formattedDate} />
   ) : post.data.image ? (
     <PostWithImage post={post} relatedPosts={relatedPosts} primaryTopic={primaryTopic} Content={Content} formattedDate={formattedDate} />
   ) : (

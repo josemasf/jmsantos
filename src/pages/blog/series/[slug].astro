@@ -12,9 +12,11 @@ export async function getStaticPaths() {
 
 const { slug } = Astro.params;
 const series = slug ? getBlogSeries(slug) : undefined;
-const posts = (await getCollection("posts"))
+const [allPosts, draftPosts] = await Promise.all([getCollection("posts"), getCollection("draftPosts")]);
+const posts = allPosts
   .filter((post) => post.data.series?.slug === slug)
   .sort((a, b) => (a.data.series?.order ?? 0) - (b.data.series?.order ?? 0));
+const hasUpcomingPosts = draftPosts.some((post) => post.data.series?.slug === slug);
 
 if (!series) {
   throw new Error(`No se han definido los metadatos de la serie "${slug}".`);
@@ -29,6 +31,7 @@ if (!series) {
         <p class="section-kicker">Serie</p>
         <h1 class="mt-4 font-display text-4xl font-bold leading-tight tracking-tight text-slate-900 dark:text-white md:text-6xl">{series.title}</h1>
         {series.description && <p class="mt-6 max-w-2xl text-lg leading-relaxed text-slate-600 dark:text-slate-300">{series.description}</p>}
+        {hasUpcomingPosts && <p class="mt-6 font-bold text-indigo-700 dark:text-cyan-200">Próximamente se publicarán más artículos de esta serie.</p>}
       </header>
       <ol class="mt-10 space-y-4">
         {posts.map((post, index) => (
