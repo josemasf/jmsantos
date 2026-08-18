@@ -1,7 +1,7 @@
 ---
 title: "Tu CI también forma parte de la experiencia de usuario"
 description: "Una CI lenta o poco fiable cambia cómo desarrolla un equipo. Cómo medir su impacto y recuperar ciclos de feedback útiles."
-date: 2026-11-10
+date: 2026-12-01
 tags: [CI, experiencia de desarrollo, testing, calidad, DevOps, equipos]
 category: DevOps
 image:

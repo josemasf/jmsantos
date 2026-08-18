@@ -1,7 +1,7 @@
 ---
 title: "Documentación viva con Astro y Starlight: menos conocimiento tribal, más contexto compartido"
 description: "Cómo convertir la documentación de arquitectura, operaciones y contratos en una herramienta de trabajo para el equipo, usando Astro y Starlight sin escribir por escribir."
-date: 2026-10-06
+date: 2026-10-13
 tags: [documentación, Astro, Starlight, equipos, arquitectura, DX, OpenAPI]
 category: Arquitectura
 image:

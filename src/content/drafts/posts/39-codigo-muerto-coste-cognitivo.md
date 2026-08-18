@@ -1,7 +1,7 @@
 ---
 title: "El código muerto no está muerto: alguien sigue pagando por él"
 description: "El coste cognitivo del código, exports y dependencias sin uso, y una forma segura de identificar y retirar residuos de un frontend."
-date: 2026-11-03
+date: 2026-11-17
 tags: [código muerto, deuda técnica, Knip, TypeScript, mantenimiento, frontend]
 category: Frontend
 image:

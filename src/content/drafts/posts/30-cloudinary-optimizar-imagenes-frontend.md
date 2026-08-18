@@ -1,7 +1,7 @@
 ---
 title: "Cómo optimizar imágenes con Cloudinary sin complicar el frontend"
 description: "Cómo usar Cloudinary para servir imágenes adaptadas al dispositivo con formatos automáticos, recortes, srcset y fallbacks sin multiplicar los assets del proyecto."
-date: 2026-09-01
+date: 2026-08-25
 tags: [Cloudinary, imágenes, rendimiento web, frontend, Astro, optimización]
 category: Frontend
 image:

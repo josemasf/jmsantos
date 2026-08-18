@@ -1,7 +1,7 @@
 ---
 title: "Runbooks: cómo responder a incidencias sin depender de la memoria del equipo"
 description: "Qué debe contener un runbook útil, cómo diseñarlo para actuar con seguridad ante una incidencia y cómo convertir cada problema real en aprendizaje compartido."
-date: 2026-10-13
+date: 2026-09-29
 tags: [runbooks, operaciones, incidencias, equipos, observabilidad, documentación, DevOps]
 category: DevOps
 image:
