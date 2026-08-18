@@ -2,6 +2,7 @@
 import type { CollectionEntry } from "astro:content";
 import MainLayout from "@layouts/MainLayout.astro";
 import RelatedPosts from "@components/RelatedPosts.astro";
+import BackToTop from "@components/BackToTop.astro";
 import BlogPostImage from "@components/BlogPostImage.astro";
 import type { BlogTopic } from "@data/blog-topics";
 import type { BlogSeries } from "@data/blog-series";
@@ -75,4 +76,5 @@ const seriesPath = series ? `/blog/series/${series.slug}/` : "/blog/";
       </div>
     </article>
   </main>
+  <BackToTop />
 </MainLayout>

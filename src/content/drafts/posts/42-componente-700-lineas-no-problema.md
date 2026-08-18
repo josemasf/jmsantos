@@ -4,6 +4,11 @@ description: "Por qué el número de líneas es una señal, no un diagnóstico, 
 date: 2026-11-24
 tags: [arquitectura, componentes, Vue, mantenibilidad, refactorización, frontend]
 category: Frontend
+image:
+  src: /images/blog/42-componente-700-lineas-no-problema/componente-grande-cohesion-acoplamiento.png
+  alt: Una persona compara un gran bloque modular cohesionado con varios bloques pequeños unidos por conexiones enredadas.
+  width: 1536
+  height: 1024
 series:
   slug: mantenibilidad-frontend-coste-de-entender
   order: 6

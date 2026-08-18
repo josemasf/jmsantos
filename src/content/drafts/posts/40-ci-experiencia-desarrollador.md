@@ -4,6 +4,11 @@ description: "Una CI lenta o poco fiable cambia cómo desarrolla un equipo. Cóm
 date: 2026-11-10
 tags: [CI, experiencia de desarrollo, testing, calidad, DevOps, equipos]
 category: DevOps
+image:
+  src: /images/blog/40-ci-experiencia-desarrollador/ci-experiencia-desarrollador.png
+  alt: Una cinta de integración lleva paquetes de código por estaciones de validación y atraviesa un cuello de botella iluminado mientras una persona espera junto a un cronómetro.
+  width: 1536
+  height: 1024
 series:
   slug: mantenibilidad-frontend-coste-de-entender
   order: 4

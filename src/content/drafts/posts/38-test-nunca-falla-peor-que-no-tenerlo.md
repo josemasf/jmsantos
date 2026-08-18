@@ -4,6 +4,11 @@ description: "Por qué los tests que no detectan regresiones generan una confian
 date: 2026-10-27
 tags: [testing, calidad, Vitest, Testing Library, mantenimiento, frontend]
 category: Testing
+image:
+  src: /images/blog/38-test-nunca-falla-peor-que-no-tenerlo/test-sin-senal-regresiones.png
+  alt: Un semáforo de pruebas con todas las luces verdes se alza sobre una plataforma agrietada que una persona examina con una lupa.
+  width: 1536
+  height: 1024
 series:
   slug: mantenibilidad-frontend-coste-de-entender
   order: 2

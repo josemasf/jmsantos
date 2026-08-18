@@ -4,6 +4,11 @@ description: "El coste cognitivo del código, exports y dependencias sin uso, y 
 date: 2026-11-03
 tags: [código muerto, deuda técnica, Knip, TypeScript, mantenimiento, frontend]
 category: Frontend
+image:
+  src: /images/blog/39-codigo-muerto-coste-cognitivo/codigo-muerto-coste-cognitivo.png
+  alt: Una persona retira una caja de código de una estantería con módulos antiguos mientras quedan visibles las conexiones activas.
+  width: 1536
+  height: 1024
 series:
   slug: mantenibilidad-frontend-coste-de-entender
   order: 3

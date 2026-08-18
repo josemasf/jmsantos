@@ -4,6 +4,11 @@ description: "La IA acelera la producción de código, pero no reemplaza el crit
 date: 2026-10-20
 tags: [IA, arquitectura, mantenimiento, calidad, equipos, desarrollo de software]
 category: Frontend
+image:
+  src: /images/blog/37-ia-escribir-codigo-barato-entenderlo-caro/escribir-codigo-barato-mantenerlo-carisimo.png
+  alt: Una persona genera bloques de código mientras sostiene un gran mapa de conexiones de software que necesita organizar.
+  width: 1536
+  height: 1024
 series:
   slug: mantenibilidad-frontend-coste-de-entender
   order: 1

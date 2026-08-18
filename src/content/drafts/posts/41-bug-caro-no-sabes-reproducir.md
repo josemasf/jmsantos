@@ -4,6 +4,11 @@ description: "Cómo diseñar observabilidad frontend para convertir errores ambi
 date: 2026-11-17
 tags: [observabilidad, debugging, Sentry, frontend, errores, calidad]
 category: Frontend
+image:
+  src: /images/blog/41-bug-caro-no-sabes-reproducir/bug-dificil-reproducir-observabilidad.png
+  alt: Una investigadora sigue con una lupa una ruta de pistas y nodos hasta una grieta en un bloque de software.
+  width: 1536
+  height: 1024
 series:
   slug: mantenibilidad-frontend-coste-de-entender
   order: 5
