@@ -194,6 +194,11 @@ export const technologies = [
 
 export const publicWork = [
   {
+    title: "De escribir código a construir producto",
+    year: "2026",
+    href: "/presentations/construir-producto/",
+  },
+  {
     title: "Mocking and testing",
     year: "2022",
     href: "/presentations/mocking-and-testing/",
