@@ -2,9 +2,9 @@
 layout: ../../layouts/Presentation.astro
 duration: 45m
 title: "De escribir código a construir producto"
-urlPresentation: "https://github.com/josemasf/construir-producto"
+urlPresentation: "https://construir-producto.vercel.app/1"
 github: "https://github.com/josemasf/construir-producto"
-img: "https://raw.githubusercontent.com/josemasf/construir-producto/main/public/images/cover-producto.png"
+img: "/assets/construir-producto.png"
 description: "Cómo pasar de medir el avance por funcionalidades entregadas a construir producto con intención, experimentación y criterio."
 publishDate: 2026-08-16 00:00:00
 tags:
