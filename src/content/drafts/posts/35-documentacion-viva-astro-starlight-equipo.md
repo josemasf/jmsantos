@@ -62,9 +62,18 @@ starlight({
   title: "Documentación del producto",
   sidebar: [
     { label: "Producto", items: [{ autogenerate: { directory: "producto" } }] },
-    { label: "Arquitectura", items: [{ autogenerate: { directory: "arquitectura" } }] },
-    { label: "Operaciones", items: [{ autogenerate: { directory: "operaciones" } }] },
-    { label: "Contribución", items: [{ autogenerate: { directory: "contribucion" } }] },
+    {
+      label: "Arquitectura",
+      items: [{ autogenerate: { directory: "arquitectura" } }],
+    },
+    {
+      label: "Operaciones",
+      items: [{ autogenerate: { directory: "operaciones" } }],
+    },
+    {
+      label: "Contribución",
+      items: [{ autogenerate: { directory: "contribucion" } }],
+    },
   ],
 });
 ```

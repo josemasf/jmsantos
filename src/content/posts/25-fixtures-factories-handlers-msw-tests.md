@@ -18,11 +18,11 @@ Al principio, un mock cabe en el propio test. Un objeto con dos propiedades y un
 
 La solución no consiste en crear una capa de abstracción para cada JSON. Consiste en separar tres responsabilidades que suelen mezclarse:
 
-| Pieza | Responde a | Ejemplo |
-| --- | --- | --- |
-| *Fixture* | ¿Cuál es un dato válido y reconocible? | Un producto o usuario base. |
-| *Factory* | ¿Cómo creo una variante sin repetir todo el objeto? | Un usuario sin permisos. |
-| *Handler* | ¿Qué responde la API en este escenario? | `GET /api/profile` devuelve 403. |
+| Pieza     | Responde a                                          | Ejemplo                          |
+| --------- | --------------------------------------------------- | -------------------------------- |
+| _Fixture_ | ¿Cuál es un dato válido y reconocible?              | Un producto o usuario base.      |
+| _Factory_ | ¿Cómo creo una variante sin repetir todo el objeto? | Un usuario sin permisos.         |
+| _Handler_ | ¿Qué responde la API en este escenario?             | `GET /api/profile` devuelve 403. |
 
 Esta organización complementa el uso de [MSW en Vue 3](/blog/msw-vue-mocks-api-desarrollo-tests/) y hace que los tests escritos con [Testing Library](/blog/testing-library-vue-tests-refactors/) sigan leyéndose como historias de usuario.
 
@@ -46,7 +46,7 @@ src/
       profile.ts
 ```
 
-Las *fixtures* contienen ejemplos válidos y fáciles de reconocer. No deben ser una colección de datos aleatorios ni un volcado de una respuesta real con información sensible.
+Las _fixtures_ contienen ejemplos válidos y fáciles de reconocer. No deben ser una colección de datos aleatorios ni un volcado de una respuesta real con información sensible.
 
 ```ts
 // src/mocks/fixtures/profile.ts
@@ -147,9 +147,7 @@ import ProfilePanel from "./ProfilePanel.vue";
 it("oculta la acción de editar a quien solo puede consultar", async () => {
   server.use(
     http.get("/api/profile", () =>
-      HttpResponse.json(
-        createProfile({ permissions: ["profile:read"] }),
-      ),
+      HttpResponse.json(createProfile({ permissions: ["profile:read"] })),
     ),
   );
 
@@ -172,10 +170,7 @@ Una respuesta de red no disponible, una autorización rechazada y una lista vac�
 
 ```ts
 export const productErrorHandler = http.get("/api/products", () =>
-  HttpResponse.json(
-    { message: "Servicio no disponible" },
-    { status: 503 },
-  ),
+  HttpResponse.json({ message: "Servicio no disponible" }, { status: 503 }),
 );
 
 export const emptyProductsHandler = http.get("/api/products", () =>

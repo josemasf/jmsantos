@@ -28,11 +28,11 @@ Investigamos las principales herramientas disponibles, las probamos en proyectos
 La combinación de [Playwright con AXE](https://github.com/dequelabs/axe-core-npm/tree/develop/packages/playwright) resuelve el problema de la CLI porque Playwright gestiona el navegador y la navegación, incluyendo autenticación y rutas protegidas.
 
 ```typescript
-import { test, expect } from '@playwright/test';
-import AxeBuilder from '@axe-core/playwright';
+import { test, expect } from "@playwright/test";
+import AxeBuilder from "@axe-core/playwright";
 
-test('should pass accessibility checks', async ({ page }) => {
-  await page.goto('/my-page');
+test("should pass accessibility checks", async ({ page }) => {
+  await page.goto("/my-page");
   const results = await new AxeBuilder({ page }).analyze();
   expect(results.violations).toEqual([]);
 });

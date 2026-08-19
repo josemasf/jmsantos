@@ -27,58 +27,58 @@ Dividimos los criterios en cinco categorías:
 
 ### A. Visualización y UX
 
-| Criterio | Requisito |
-|----------|-----------|
-| **Filas expandibles** | La tabla debe permitir expandir una fila para ver información detallada anidada |
-| **Estilo consistente** | Diseño basado en Material Design. Priorizar librerías que ya sigan este estándar |
-| **Scroll dinámico** | La tabla debe ocupar el máximo alto vertical disponible con scroll limitado al cuerpo |
-| **Estados visuales** | Esqueletos/spinners durante la carga, mensaje claro cuando no hay datos |
+| Criterio               | Requisito                                                                             |
+| ---------------------- | ------------------------------------------------------------------------------------- |
+| **Filas expandibles**  | La tabla debe permitir expandir una fila para ver información detallada anidada       |
+| **Estilo consistente** | Diseño basado en Material Design. Priorizar librerías que ya sigan este estándar      |
+| **Scroll dinámico**    | La tabla debe ocupar el máximo alto vertical disponible con scroll limitado al cuerpo |
+| **Estados visuales**   | Esqueletos/spinners durante la carga, mensaje claro cuando no hay datos               |
 
 ### B. Interacción y configuración
 
-| Criterio | Requisito |
-|----------|-----------|
-| **Filtros por columna** | Filtrado avanzado directamente en el encabezado de cada columna |
-| **Filtro global** | Campos de búsqueda general ubicados en el área de control sobre la tabla |
-| **Agrupación** | Agrupamiento de filas por criterios definidos por el usuario |
-| **Visibilidad de columnas** | Permitir al usuario mostrar/ocultar columnas según necesidad |
-| **Copiar valor de celda** | Click para copiar el contenido de una celda individual |
+| Criterio                    | Requisito                                                                |
+| --------------------------- | ------------------------------------------------------------------------ |
+| **Filtros por columna**     | Filtrado avanzado directamente en el encabezado de cada columna          |
+| **Filtro global**           | Campos de búsqueda general ubicados en el área de control sobre la tabla |
+| **Agrupación**              | Agrupamiento de filas por criterios definidos por el usuario             |
+| **Visibilidad de columnas** | Permitir al usuario mostrar/ocultar columnas según necesidad             |
+| **Copiar valor de celda**   | Click para copiar el contenido de una celda individual                   |
 
 ### C. Productividad y persistencia
 
-| Criterio | Requisito |
-|----------|-----------|
-| **Selección de filas** | Selección individual y masiva con checkboxes |
-| **Reordenar columnas** | Drag & drop para reorganizar el orden visual |
-| **Redimensionar columnas** | Ajuste manual del ancho de columnas |
+| Criterio                   | Requisito                                    |
+| -------------------------- | -------------------------------------------- |
+| **Selección de filas**     | Selección individual y masiva con checkboxes |
+| **Reordenar columnas**     | Drag & drop para reorganizar el orden visual |
+| **Redimensionar columnas** | Ajuste manual del ancho de columnas          |
 
 ### D. Datos y paginación
 
-| Criterio | Requisito |
-|----------|-----------|
-| **Controles de paginación** | Selector de registros por página, navegación y total visible |
-| **Columna de acciones fija** | Columna sticky que permanece visible al hacer scroll horizontal |
-| **Virtual scrolling/Lazy loading** | Para datasets grandes, renderizado eficiente |
+| Criterio                           | Requisito                                                       |
+| ---------------------------------- | --------------------------------------------------------------- |
+| **Controles de paginación**        | Selector de registros por página, navegación y total visible    |
+| **Columna de acciones fija**       | Columna sticky que permanece visible al hacer scroll horizontal |
+| **Virtual scrolling/Lazy loading** | Para datasets grandes, renderizado eficiente                    |
 
 ### E. Servicios
 
-| Criterio | Requisito |
-|----------|-----------|
+| Criterio                        | Requisito                                                      |
+| ------------------------------- | -------------------------------------------------------------- |
 | **Internacionalización (i18n)** | Soporte para textos, formatos numéricos y de fecha localizados |
 
 ## Evaluación de alternativas
 
 Evaluamos tres librerías principales para el stack Vue:
 
-| Característica | Vuetify DataTable | PrimeVue DataTable | AG Grid Community |
-|---------------|-------------------|--------------------|--------------------|
-| Filas expandibles | ✅ Nativo | ✅ Nativo | ❌ Solo Enterprise |
-| Material Design | ✅ Nativo | 🟡 Custom viable | ❌ |
-| Filtros por columna | ✅ Custom | ✅ Nativo | ✅ Nativo |
-| Agrupación | 🟡 Custom | ✅ Nativo | ❌ Enterprise |
-| Redimensionar columnas | 🔴 No nativo | ✅ Nativo | ✅ Nativo |
-| Virtual scrolling | ✅ Desde v3.5 | ✅ Nativo | ✅ Nativo |
-| Licencia | MIT | MIT | MIT (Community) |
+| Característica         | Vuetify DataTable | PrimeVue DataTable | AG Grid Community  |
+| ---------------------- | ----------------- | ------------------ | ------------------ |
+| Filas expandibles      | ✅ Nativo         | ✅ Nativo          | ❌ Solo Enterprise |
+| Material Design        | ✅ Nativo         | 🟡 Custom viable   | ❌                 |
+| Filtros por columna    | ✅ Custom         | ✅ Nativo          | ✅ Nativo          |
+| Agrupación             | 🟡 Custom         | ✅ Nativo          | ❌ Enterprise      |
+| Redimensionar columnas | 🔴 No nativo      | ✅ Nativo          | ✅ Nativo          |
+| Virtual scrolling      | ✅ Desde v3.5     | ✅ Nativo          | ✅ Nativo          |
+| Licencia               | MIT               | MIT                | MIT (Community)    |
 
 ### La decisión
 

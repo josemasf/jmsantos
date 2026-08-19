@@ -66,10 +66,10 @@ Midscene permite definir tests en YAML, donde describes las acciones y validacio
 
 Este fue uno de los hallazgos más reveladores:
 
-| Concepto | Playwright + IA | YAML |
-|----------|----------------|------|
-| **Coste de desarrollo** | 5,62 € | 0,52 € (migración desde Playwright) |
-| **Coste de ejecución** | ~0,72 € por suite | Variable según complejidad |
+| Concepto                | Playwright + IA   | YAML                                |
+| ----------------------- | ----------------- | ----------------------------------- |
+| **Coste de desarrollo** | 5,62 €            | 0,52 € (migración desde Playwright) |
+| **Coste de ejecución**  | ~0,72 € por suite | Variable según complejidad          |
 
 La diferencia de coste en desarrollo fue significativa: el enfoque YAML fue **10x más barato** para crear los mismos tests.
 

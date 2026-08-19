@@ -35,19 +35,22 @@ El estándar de facto para análisis de calidad de código.
 **Qué analiza**: bugs, vulnerabilidades, code smells, cobertura, duplicaciones.
 
 **Tipos de issues**:
-| Tipo | Descripción |
-|------|-------------|
-| Bug | Punto de fallo real o potencial |
+
+| Tipo          | Descripción                     |
+| ------------- | ------------------------------- |
+| Bug           | Punto de fallo real o potencial |
 | Vulnerability | Agujero de seguridad explotable |
-| Code Smell | Problema de mantenibilidad |
+| Code Smell    | Problema de mantenibilidad      |
 
 **Pros**:
+
 - Análisis profundo del código propio
 - Reglas configurables por lenguaje
 - Quality Gates para CI/CD
 - Comunidad y documentación extensa
 
 **Contras**:
+
 - La versión comunitaria tiene limitaciones
 - Requiere servidor (o Docker)
 - Necesita Java en el runner
@@ -60,6 +63,7 @@ Especializado en seguridad de dependencias y código.
 **Qué analiza**: vulnerabilidades en dependencias (npm, NuGet, pip...) y en código propio.
 
 **Pros**:
+
 - Monitoreo continuo de dependencias
 - Reparación automática (PRs con upgrades)
 - Integración con IDEs (IntelliJ, VS Code)
@@ -67,6 +71,7 @@ Especializado en seguridad de dependencias y código.
 - Base de datos de vulnerabilidades propia y validada
 
 **Contras**:
+
 - Tier gratuito limitado
 - Coste por desarrollador en planes Enterprise
 - Menor profundidad en análisis de calidad (no reemplaza SonarQube)
@@ -78,6 +83,7 @@ Plataforma open-source de OWASP para gestión de Bill of Materials (BOM) de soft
 **Qué analiza**: vulnerabilidades en todas las dependencias del proyecto, generando un SBOM.
 
 **Pros**:
+
 - Totalmente gratuito (OWASP)
 - SBOM completo del proyecto
 - Múltiples fuentes de vulnerabilidades (NVD, GitHub Advisories, etc.)
@@ -85,6 +91,7 @@ Plataforma open-source de OWASP para gestión de Bill of Materials (BOM) de soft
 - API REST completa
 
 **Contras**:
+
 - Requiere infraestructura propia
 - No analiza código propio (solo dependencias)
 - Configuración inicial más compleja
@@ -97,17 +104,17 @@ Consideramos construir una herramienta interna ligera.
 
 ## Matriz de comparación
 
-| Criterio | SonarQube | Snyk | Dependency-Track | MVP propio |
-|----------|-----------|------|-------------------|------------|
-| Calidad de código | ✅✅✅ | ✅ | ❌ | ✅ |
-| Vulnerabilidades en código | ✅✅ | ✅✅✅ | ❌ | ❌ |
-| Vulnerabilidades en deps | ✅ | ✅✅✅ | ✅✅✅ | ❌ |
-| Cobertura de tests | ✅✅✅ | ❌ | ❌ | ❌ |
-| Code smells | ✅✅✅ | ❌ | ❌ | ✅ |
-| SBOM | ❌ | ✅ | ✅✅✅ | ❌ |
-| Coste | Gratis (Community) | Freemium | Gratis | Alto |
-| Mantenimiento | Medio | Bajo (SaaS) | Medio | Alto |
-| Integración CI/CD | ✅✅✅ | ✅✅✅ | ✅✅ | ✅ |
+| Criterio                   | SonarQube          | Snyk        | Dependency-Track | MVP propio |
+| -------------------------- | ------------------ | ----------- | ---------------- | ---------- |
+| Calidad de código          | ✅✅✅             | ✅          | ❌               | ✅         |
+| Vulnerabilidades en código | ✅✅               | ✅✅✅      | ❌               | ❌         |
+| Vulnerabilidades en deps   | ✅                 | ✅✅✅      | ✅✅✅           | ❌         |
+| Cobertura de tests         | ✅✅✅             | ❌          | ❌               | ❌         |
+| Code smells                | ✅✅✅             | ❌          | ❌               | ✅         |
+| SBOM                       | ❌                 | ✅          | ✅✅✅           | ❌         |
+| Coste                      | Gratis (Community) | Freemium    | Gratis           | Alto       |
+| Mantenimiento              | Medio              | Bajo (SaaS) | Medio            | Alto       |
+| Integración CI/CD          | ✅✅✅             | ✅✅✅      | ✅✅             | ✅         |
 
 ## La decisión
 

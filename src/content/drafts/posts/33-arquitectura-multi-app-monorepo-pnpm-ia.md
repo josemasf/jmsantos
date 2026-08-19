@@ -13,7 +13,7 @@ image:
 
 Un monorepo no convierte por sí solo un sistema en una arquitectura limpia. Si las aplicaciones comparten límites confusos, dependencias circulares o una base de datos sin reglas claras, guardar todo en el mismo repositorio solo hace que esos problemas estén más cerca. Sin embargo, cuando un producto tiene varias capas que evolucionan juntas, reunirlas puede reducir una fricción muy concreta: entender qué debe cambiar para entregar una funcionalidad completa.
 
-En uno de mis proyectos conviven la aplicación de usuario, la API, un backoffice y la documentación. Uso un *workspace* de pnpm porque cada parte puede mantener sus responsabilidades y su ciclo de ejecución, pero también porque una funcionalidad rara vez pertenece a una sola carpeta. Puede necesitar un campo nuevo en la base de datos, una migración, una regla de negocio, un endpoint, permisos y una vista para crear, consultar y editar ese dato.
+En uno de mis proyectos conviven la aplicación de usuario, la API, un backoffice y la documentación. Uso un _workspace_ de pnpm porque cada parte puede mantener sus responsabilidades y su ciclo de ejecución, pero también porque una funcionalidad rara vez pertenece a una sola carpeta. Puede necesitar un campo nuevo en la base de datos, una migración, una regla de negocio, un endpoint, permisos y una vista para crear, consultar y editar ese dato.
 
 Esa cercanía resulta especialmente valiosa cuando trabajo con IA. En vez de describir de memoria cómo se conectan varios repositorios, el agente puede inspeccionar el modelo, la API y la interfaz que ya existen. No sustituye la decisión de diseño ni la revisión, pero parte de un contexto real y puede seguir el cambio de extremo a extremo.
 
@@ -21,7 +21,7 @@ Esa cercanía resulta especialmente valiosa cuando trabajo con IA. En vez de des
 
 Separar la aplicación de usuario, el backoffice, el backend y la documentación suele ser una decisión sana. Sus audiencias, permisos, despliegues y prioridades no son exactamente los mismos. El problema aparece cuando esa separación obliga a reconstruir el sistema cada vez que llega una funcionalidad transversal.
 
-En repositorios independientes, una tarea aparentemente pequeña puede abrir una cadena de preguntas: ¿en qué repositorio vive el modelo?, ¿qué contrato expone la API?, ¿hay un tipo compartido?, ¿el backoffice ya tiene una pantalla parecida?, ¿dónde se documenta el cambio?, ¿qué repositorios hay que probar y publicar? Nada de esto impide desarrollar, pero aumenta el coste de *discovery* y hace más fácil que una capa evolucione sin las demás.
+En repositorios independientes, una tarea aparentemente pequeña puede abrir una cadena de preguntas: ¿en qué repositorio vive el modelo?, ¿qué contrato expone la API?, ¿hay un tipo compartido?, ¿el backoffice ya tiene una pantalla parecida?, ¿dónde se documenta el cambio?, ¿qué repositorios hay que probar y publicar? Nada de esto impide desarrollar, pero aumenta el coste de _discovery_ y hace más fácil que una capa evolucione sin las demás.
 
 Un monorepo no elimina las fronteras. Lo que hace es permitir que esas fronteras estén visibles en un único lugar. La estructura puede expresar, por ejemplo, que existen aplicaciones independientes y paquetes compartidos:
 
@@ -41,7 +41,7 @@ La forma exacta no es lo importante. En algunos productos no habrá componentes 
 
 ## pnpm aporta un espacio de trabajo, no una excusa para acoplarlo todo
 
-pnpm encaja bien en este modelo porque los *workspaces* declaran qué paquetes forman parte del repositorio y permiten tratarlos como proyectos relacionados. La raíz puede centralizar las herramientas comunes y cada aplicación mantiene sus scripts y dependencias propias.
+pnpm encaja bien en este modelo porque los _workspaces_ declaran qué paquetes forman parte del repositorio y permiten tratarlos como proyectos relacionados. La raíz puede centralizar las herramientas comunes y cada aplicación mantiene sus scripts y dependencias propias.
 
 ```yaml
 # pnpm-workspace.yaml
@@ -96,7 +96,7 @@ Una secuencia razonable para trabajar con un agente es esta:
 2. Revisar el plan y decidir el contrato, permisos y alcance antes de editar.
 3. Implementar en cambios pequeños y coherentes, respetando las fronteras entre aplicaciones y paquetes.
 4. Ejecutar las validaciones de los paquetes implicados y una prueba integrada del flujo cuando corresponda.
-5. Revisar el *diff* como una propuesta: buscar supuestos, cambios laterales y reglas de negocio que no deberían haberse inferido.
+5. Revisar el _diff_ como una propuesta: buscar supuestos, cambios laterales y reglas de negocio que no deberían haberse inferido.
 
 La IA acelera el paso entre capas, pero la responsabilidad sobre los datos y el comportamiento sigue siendo del equipo. De hecho, cuanto más fácil es modificar varias aplicaciones de una vez, más importante resulta que el alcance esté bien definido.
 

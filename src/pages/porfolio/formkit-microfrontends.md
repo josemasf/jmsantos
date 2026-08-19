@@ -21,7 +21,7 @@ FormKit es una plataforma de formularios orientados a esquema construida como un
 
 ## Decisiones de ingeniería
 
-- **Module Federation con Vite:** el host usa un target `esnext` para soportar la salida de federación basada en *top-level await*.
+- **Module Federation con Vite:** el host usa un target `esnext` para soportar la salida de federación basada en _top-level await_.
 - **Configuración por entorno:** las URLs de las APIs y los `remote entry` se resuelven en tiempo de ejecución, evitando endpoints locales fijados en el código.
 - **Flujo de envío consistente:** los formularios construyen su payload de forma explícita y generan identificadores con `crypto.randomUUID()`.
 - **Calidad automatizada:** Vitest, Testing Library y MSW cubren el comportamiento observable de los remotos; el host incorpora una prueba de humo del router.

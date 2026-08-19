@@ -2,7 +2,16 @@
 title: "Checklist para entender la salud real de un equipo de producto"
 description: "Una guía para observar cómo un equipo entiende el producto, toma decisiones, entrega valor y hace visibles sus problemas sin reducirlo a sus especialidades técnicas."
 date: 2026-10-06
-tags: [equipos, producto, liderazgo técnico, colaboración, arquitectura, calidad, desarrollo profesional]
+tags:
+  [
+    equipos,
+    producto,
+    liderazgo técnico,
+    colaboración,
+    arquitectura,
+    calidad,
+    desarrollo profesional,
+  ]
 category: Desarrollo profesional
 image:
   src: /images/blog/checklist-salud-equipo-producto/checklist-salud-equipo-producto.png

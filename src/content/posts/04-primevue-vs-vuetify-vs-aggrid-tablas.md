@@ -32,47 +32,47 @@ No nos limitamos a leer documentación. Implementamos las mismas funcionalidades
 
 ### Estructura y presentación
 
-| Feature | Vuetify | PrimeVue | AG Grid Community | Radzen (Blazor) |
-|---------|---------|----------|-------------------|-----------------|
-| Filas expandibles | ✅ Slots | ✅ Nativo | ❌ Solo Enterprise | ✅ Nativo |
-| Master-Detail | ✅ Con slots | ✅ Nativo | ❌ Solo Enterprise | ✅ Nativo |
-| Mostrar/ocultar columnas | 🟡 Custom | ✅ ColumnToggler | ✅ Column menu | ✅ ColumnPicker |
-| Reordenar columnas (drag) | 🟡 Custom | ✅ Nativo | ✅ Nativo | ✅ Nativo |
-| Ordenar por columna | ✅ Nativo | ✅ Nativo | ✅ Nativo | ✅ Nativo |
-| Agrupación de columnas | 🟡 Custom | ✅ ColumnGroup | ❌ Enterprise | ✅ Nativo |
-| Redimensionar columnas | 🔴 No nativo | ✅ Nativo | ✅ Nativo | ✅ Nativo |
-| Columnas fijas (frozen) | ✅ Sticky CSS | ✅ Nativo | ✅ Nativo | ✅ Nativo |
-| Virtual scrolling | ✅ Desde v3.5 | ✅ Nativo | ✅ Nativo | ✅ Nativo |
+| Feature                   | Vuetify       | PrimeVue         | AG Grid Community  | Radzen (Blazor) |
+| ------------------------- | ------------- | ---------------- | ------------------ | --------------- |
+| Filas expandibles         | ✅ Slots      | ✅ Nativo        | ❌ Solo Enterprise | ✅ Nativo       |
+| Master-Detail             | ✅ Con slots  | ✅ Nativo        | ❌ Solo Enterprise | ✅ Nativo       |
+| Mostrar/ocultar columnas  | 🟡 Custom     | ✅ ColumnToggler | ✅ Column menu     | ✅ ColumnPicker |
+| Reordenar columnas (drag) | 🟡 Custom     | ✅ Nativo        | ✅ Nativo          | ✅ Nativo       |
+| Ordenar por columna       | ✅ Nativo     | ✅ Nativo        | ✅ Nativo          | ✅ Nativo       |
+| Agrupación de columnas    | 🟡 Custom     | ✅ ColumnGroup   | ❌ Enterprise      | ✅ Nativo       |
+| Redimensionar columnas    | 🔴 No nativo  | ✅ Nativo        | ✅ Nativo          | ✅ Nativo       |
+| Columnas fijas (frozen)   | ✅ Sticky CSS | ✅ Nativo        | ✅ Nativo          | ✅ Nativo       |
+| Virtual scrolling         | ✅ Desde v3.5 | ✅ Nativo        | ✅ Nativo          | ✅ Nativo       |
 
 ### Interacción y filtrado
 
-| Feature | Vuetify | PrimeVue | AG Grid Community |
-|---------|---------|----------|--------------------|
-| Filtro global | ✅ Nativo | ✅ Nativo | ✅ Nativo |
-| Filtros por columna | ✅ Custom slots | ✅ Nativo | ✅ Nativo |
-| Selección de filas | ✅ Nativo | ✅ Nativo | ✅ Nativo |
-| Selección múltiple | ✅ Nativo | ✅ Nativo | ✅ Nativo |
-| Exportar datos | 🟡 Custom | ✅ Nativo | ✅ Nativo |
-| Copiar celda | 🟡 Custom | 🟡 Custom | ✅ Nativo |
+| Feature             | Vuetify         | PrimeVue  | AG Grid Community |
+| ------------------- | --------------- | --------- | ----------------- |
+| Filtro global       | ✅ Nativo       | ✅ Nativo | ✅ Nativo         |
+| Filtros por columna | ✅ Custom slots | ✅ Nativo | ✅ Nativo         |
+| Selección de filas  | ✅ Nativo       | ✅ Nativo | ✅ Nativo         |
+| Selección múltiple  | ✅ Nativo       | ✅ Nativo | ✅ Nativo         |
+| Exportar datos      | 🟡 Custom       | ✅ Nativo | ✅ Nativo         |
+| Copiar celda        | 🟡 Custom       | 🟡 Custom | ✅ Nativo         |
 
 ### Estilo y Material Design
 
-| Feature | Vuetify | PrimeVue | AG Grid Community |
-|---------|---------|----------|--------------------|
-| Material Design nativo | ✅ | 🟡 Requiere tema | ❌ |
-| Filas dense | ✅ | ✅ | ❌ |
-| Consistencia con Radzen | ✅ | 🟡 Con custom | ❌ |
+| Feature                 | Vuetify | PrimeVue         | AG Grid Community |
+| ----------------------- | ------- | ---------------- | ----------------- |
+| Material Design nativo  | ✅      | 🟡 Requiere tema | ❌                |
+| Filas dense             | ✅      | ✅               | ❌                |
+| Consistencia con Radzen | ✅      | 🟡 Con custom    | ❌                |
 
 ## Resultados de performance
 
 Realizamos mediciones reales comparando PrimeVue vs la solución previa con AG Grid:
 
-| Métrica | AG Grid | PrimeVue | Diferencia |
-|---------|---------|----------|------------|
-| Líneas de código | Base | -33% | Reducción significativa |
-| Bundle size | Base | +10.5% | Ligeramente mayor |
-| Memoria en runtime | Base | Similar | Sin impacto notable |
-| Build time | Base | Similar | Sin impacto notable |
+| Métrica            | AG Grid | PrimeVue | Diferencia              |
+| ------------------ | ------- | -------- | ----------------------- |
+| Líneas de código   | Base    | -33%     | Reducción significativa |
+| Bundle size        | Base    | +10.5%   | Ligeramente mayor       |
+| Memoria en runtime | Base    | Similar  | Sin impacto notable     |
+| Build time         | Base    | Similar  | Sin impacto notable     |
 
 PrimeVue requirió **un tercio menos de código** para implementar las mismas funcionalidades, a costa de un incremento moderado en el tamaño del bundle.
 

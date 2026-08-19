@@ -11,7 +11,7 @@ image:
   height: 1024
 ---
 
-Un *spike* demuestra que una idea es posible. Un proyecto de ingeniería tiene que responder además a otras preguntas: ¿se construye de forma reproducible?, ¿puede configurarse fuera de localhost?, ¿detecta regresiones?, ¿qué ocurre cuando una dependencia introduce una vulnerabilidad?
+Un _spike_ demuestra que una idea es posible. Un proyecto de ingeniería tiene que responder además a otras preguntas: ¿se construye de forma reproducible?, ¿puede configurarse fuera de localhost?, ¿detecta regresiones?, ¿qué ocurre cuando una dependencia introduce una vulnerabilidad?
 
 [FormKit](https://github.com/josemasf/formkit) parte de una plataforma de formularios basada en Vue 3 y Vite Module Federation. Su estructura combina un host orquestador con tres aplicaciones remotas. El objetivo de la evolución no fue reemplazar esa arquitectura, sino convertirla en una entrega más fiable y defendible: configuración por entorno, pruebas automatizadas, controles de calidad y documentación de colaboración.
 
@@ -44,7 +44,7 @@ Este reparto permite desplegar piezas por separado, pero introduce un contrato r
 
 ## 1. Estabilizar el build de federación
 
-La salida de Module Federation usada por el host depende de *top-level await*. El build productivo fallaba porque el objetivo de compilación no estaba alineado con ese requisito.
+La salida de Module Federation usada por el host depende de _top-level await_. El build productivo fallaba porque el objetivo de compilación no estaba alineado con ese requisito.
 
 La corrección consistió en fijar el target del host en `esnext`. Es una decisión pequeña de configuración, pero expresa un contrato importante: el artefacto generado necesita una base de navegadores moderna.
 
@@ -52,15 +52,15 @@ El compromiso es explícito. Se reduce ligeramente la compatibilidad con navegad
 
 ## 2. Llevar la configuración fuera del código
 
-Las APIs de los remotos y las URLs de sus *remote entry* se movieron a variables de entorno, acompañadas de plantillas `.env.example`.
+Las APIs de los remotos y las URLs de sus _remote entry_ se movieron a variables de entorno, acompañadas de plantillas `.env.example`.
 
 La diferencia práctica es notable:
 
-| Antes | Después |
-| --- | --- |
-| Endpoints de desarrollo fijados en el código | URLs resueltas por entorno |
-| Cambio manual para cada despliegue | Promoción entre entornos mediante configuración |
-| Riesgo de publicar referencias a localhost | Contrato de runtime documentado |
+| Antes                                        | Después                                         |
+| -------------------------------------------- | ----------------------------------------------- |
+| Endpoints de desarrollo fijados en el código | URLs resueltas por entorno                      |
+| Cambio manual para cada despliegue           | Promoción entre entornos mediante configuración |
+| Riesgo de publicar referencias a localhost   | Contrato de runtime documentado                 |
 
 Una configuración por entorno no elimina el acoplamiento entre host y remotos; lo hace visible y gestionable. Para que funcione, la matriz de URLs debe formar parte del proceso de despliegue y comprobarse en cada entorno.
 
@@ -105,7 +105,7 @@ La idea no es que un único comando sustituya el criterio técnico. Es un punto 
 
 ## Seguridad y gobernanza también forman parte de la entrega
 
-El proyecto aplica actualizaciones de lockfile y *overrides* de dependencias para mitigar vulnerabilidades conocidas, y ejecuta `pnpm audit --prod` dentro de su automatización. Esta clase de control necesita mantenimiento periódico: un override útil hoy puede crear conflictos o dejar de ser necesario cuando cambien las dependencias upstream.
+El proyecto aplica actualizaciones de lockfile y _overrides_ de dependencias para mitigar vulnerabilidades conocidas, y ejecuta `pnpm audit --prod` dentro de su automatización. Esta clase de control necesita mantenimiento periódico: un override útil hoy puede crear conflictos o dejar de ser necesario cuando cambien las dependencias upstream.
 
 Junto al código, la documentación de contribución y seguridad aclara cómo colaborar y cómo reportar incidencias. En proyectos con varias aplicaciones, esa documentación reduce decisiones implícitas y facilita que el estándar de calidad sea compartido.
 
@@ -113,7 +113,7 @@ Junto al código, la documentación de contribución y seguridad aclara cómo co
 
 El caso de estudio identifica tres evoluciones coherentes con la base actual:
 
-1. *Contract tests* entre el host y los remotos para proteger sus límites de integración.
+1. _Contract tests_ entre el host y los remotos para proteger sus límites de integración.
 2. Pruebas de regresión visual para los flujos de formulario críticos.
 3. Observabilidad de cliente para diagnosticar errores runtime y fallos de integración.
 

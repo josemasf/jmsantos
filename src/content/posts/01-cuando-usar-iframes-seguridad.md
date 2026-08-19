@@ -42,12 +42,12 @@ La clave está en aplicar un enfoque de **mínimos privilegios**:
 
 ### Desglose de atributos de seguridad
 
-| Atributo | Propósito |
-|----------|-----------|
-| `sandbox="allow-scripts allow-forms allow-same-origin"` | Restringe las capacidades del iframe al mínimo necesario |
-| `allow="clipboard-write"` | Solo concede permisos explícitamente necesarios |
-| `loading="lazy"` | Carga diferida para mejorar el rendimiento |
-| `referrerpolicy="no-referrer"` | Evita que el proveedor conozca la URL exacta donde está embebido |
+| Atributo                                                | Propósito                                                        |
+| ------------------------------------------------------- | ---------------------------------------------------------------- |
+| `sandbox="allow-scripts allow-forms allow-same-origin"` | Restringe las capacidades del iframe al mínimo necesario         |
+| `allow="clipboard-write"`                               | Solo concede permisos explícitamente necesarios                  |
+| `loading="lazy"`                                        | Carga diferida para mejorar el rendimiento                       |
+| `referrerpolicy="no-referrer"`                          | Evita que el proveedor conozca la URL exacta donde está embebido |
 
 ### Sobre `allow-same-origin`
 

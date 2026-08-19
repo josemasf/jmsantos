@@ -70,9 +70,9 @@ SonarQube necesita el formato `lcov` para procesar la cobertura de tests. Actual
 export default defineConfig({
   test: {
     coverage: {
-      provider: 'v8',
-      reporter: ['text', 'lcov', 'html'],
-      reportsDirectory: './coverage',
+      provider: "v8",
+      reporter: ["text", "lcov", "html"],
+      reportsDirectory: "./coverage",
     },
   },
 });
@@ -107,19 +107,19 @@ coverage/
 
 SonarQube clasifica los problemas en tres tipos:
 
-| Tipo | Descripción |
-|------|-------------|
-| **Bug** | Punto de fallo real o potencial |
-| **Vulnerability** | Agujero de seguridad explotable |
-| **Code Smell** | Problema de mantenibilidad que dificulta cambios futuros |
+| Tipo              | Descripción                                              |
+| ----------------- | -------------------------------------------------------- |
+| **Bug**           | Punto de fallo real o potencial                          |
+| **Vulnerability** | Agujero de seguridad explotable                          |
+| **Code Smell**    | Problema de mantenibilidad que dificulta cambios futuros |
 
 ## Complemento: Dependency-Track
 
 Además de SonarQube, evaluamos [Dependency-Track](https://dependencytrack.org/) como complemento para el análisis de vulnerabilidades en dependencias. Mientras SonarQube se centra en el **código que escribes**, Dependency-Track analiza las **dependencias que consumes**.
 
-| Herramienta | Enfoque |
-|-------------|---------|
-| SonarQube | Calidad y seguridad del código propio |
+| Herramienta      | Enfoque                                             |
+| ---------------- | --------------------------------------------------- |
+| SonarQube        | Calidad y seguridad del código propio               |
 | Dependency-Track | Vulnerabilidades en dependencias (npm, NuGet, etc.) |
 
 La combinación de ambas herramientas ofrece una visión completa de la postura de seguridad del proyecto.

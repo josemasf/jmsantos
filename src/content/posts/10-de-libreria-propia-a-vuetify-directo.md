@@ -32,10 +32,10 @@ Al wrapear los componentes de Vuetify, estábamos **restringiendo el acceso a pr
 <SButton variant="primary" @click="save">Guardar</SButton>
 
 <!-- Lo que el desarrollador realmente necesitaba -->
-<v-btn 
-  variant="tonal" 
-  prepend-icon="mdi-save" 
-  :loading="saving" 
+<v-btn
+  variant="tonal"
+  prepend-icon="mdi-save"
+  :loading="saving"
   :disabled="!valid"
 >
   Guardar
@@ -66,15 +66,15 @@ En lugar de wrapear componentes, creamos un **paquete de configuración de Vueti
 ### Configuración centralizada de Vuetify
 
 ```typescript
-import { createVuetify } from 'vuetify'
-import { md2 } from 'vuetify/blueprints'
-import { aliases, mdi } from 'vuetify/iconsets/mdi-svg'
+import { createVuetify } from "vuetify";
+import { md2 } from "vuetify/blueprints";
+import { aliases, mdi } from "vuetify/iconsets/mdi-svg";
 
 export function createAppVuetify(moduleTheme: ThemeConfig) {
   return createVuetify({
     blueprint: md2,
     icons: {
-      defaultSet: 'mdi',
+      defaultSet: "mdi",
       aliases,
       sets: { mdi },
     },
@@ -87,11 +87,11 @@ export function createAppVuetify(moduleTheme: ThemeConfig) {
       },
     },
     defaults: {
-      VBtn: { variant: 'flat', rounded: 'lg' },
-      VTextField: { variant: 'outlined', density: 'compact' },
-      VDataTable: { density: 'compact' },
+      VBtn: { variant: "flat", rounded: "lg" },
+      VTextField: { variant: "outlined", density: "compact" },
+      VDataTable: { density: "compact" },
     },
-  })
+  });
 }
 ```
 
@@ -99,16 +99,16 @@ export function createAppVuetify(moduleTheme: ThemeConfig) {
 
 ```typescript
 const salesTheme = {
-  name: 'sales',
+  name: "sales",
   colors: {
-    primary: '#1976D2',
-    secondary: '#424242',
+    primary: "#1976D2",
+    secondary: "#424242",
     // ...
   },
-}
+};
 
-const app = createApp(App)
-app.use(createAppVuetify(salesTheme))
+const app = createApp(App);
+app.use(createAppVuetify(salesTheme));
 ```
 
 ## ¿Qué pasa con Storybook?

@@ -33,19 +33,19 @@ Analizamos el proyecto desde cuatro ángulos:
 
 #### P0 — Impacto alto / repetitivas
 
-| Issue | Eventos | Descripción |
-|-------|---------|-------------|
-| Error en detalle | 16 eventos | `AxiosError 500` en flujo de detalle — afecta estabilidad funcional |
-| Error en tabla | 10 eventos | `focusedHeader` undefined en AG Grid al interactuar con filtros |
-| Error de assets | 226 eventos | `Unable to preload CSS` — problema de bundle/deploy |
+| Issue            | Eventos     | Descripción                                                         |
+| ---------------- | ----------- | ------------------------------------------------------------------- |
+| Error en detalle | 16 eventos  | `AxiosError 500` en flujo de detalle — afecta estabilidad funcional |
+| Error en tabla   | 10 eventos  | `focusedHeader` undefined en AG Grid al interactuar con filtros     |
+| Error de assets  | 226 eventos | `Unable to preload CSS` — problema de bundle/deploy                 |
 
 #### P1 — Fallos funcionales
 
-| Issue | Eventos | Descripción |
-|-------|---------|-------------|
+| Issue          | Eventos   | Descripción                                                         |
+| -------------- | --------- | ------------------------------------------------------------------- |
 | Reset password | 7 eventos | `.validate is not a function` — método inexistente en el componente |
-| Búsquedas | Varios | Errores `null` sobre operaciones de strings/columnas |
-| Reportes | Varios | `postMessage` sobre `null`, variable no inicializada |
+| Búsquedas      | Varios    | Errores `null` sobre operaciones de strings/columnas                |
+| Reportes       | Varios    | `postMessage` sobre `null`, variable no inicializada                |
 
 #### P2 — Resiliencia de red
 
@@ -77,6 +77,7 @@ data.nonExistentProperty.map(...); // 💥 Runtime error
 ```
 
 El tipado débil genera:
+
 - Errores silenciosos que solo se detectan en producción
 - Peor autocompletado y contratos difusos
 - Mayor riesgo de regresiones en refactors
@@ -91,6 +92,7 @@ El tipado débil genera:
 ## 3. Código muerto (knip)
 
 [knip](https://knip.dev/) analiza tu proyecto y detecta:
+
 - Archivos no importados
 - Exports no utilizados
 - Dependencias instaladas pero no usadas
@@ -110,14 +112,14 @@ Ejecutar knip periódicamente (idealmente en CI) para evitar acumulación.
 
 ## 4. Dependencias desactualizadas
 
-| Dependencia | Versión actual | Última versión | Riesgo |
-|-------------|---------------|----------------|--------|
-| Vite | Anterior | Major upgrade | Breaking changes en config |
-| Vitest | Anterior | Major upgrade | Breaking changes en config |
-| Sentry | Anterior | Major upgrade | API changes |
-| AG Grid | Anterior | Major upgrade | Breaking changes si migras |
-| Vuetify | Anterior | Minor/Patch | Generalmente seguro |
-| Vue Router | Anterior | Major upgrade | API changes |
+| Dependencia | Versión actual | Última versión | Riesgo                     |
+| ----------- | -------------- | -------------- | -------------------------- |
+| Vite        | Anterior       | Major upgrade  | Breaking changes en config |
+| Vitest      | Anterior       | Major upgrade  | Breaking changes en config |
+| Sentry      | Anterior       | Major upgrade  | API changes                |
+| AG Grid     | Anterior       | Major upgrade  | Breaking changes si migras |
+| Vuetify     | Anterior       | Minor/Patch    | Generalmente seguro        |
+| Vue Router  | Anterior       | Major upgrade  | API changes                |
 
 ## Plan de acción priorizado
 

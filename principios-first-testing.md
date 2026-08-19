@@ -69,10 +69,10 @@ FIRST no debería convertirse en:
 
 Debe ayudarnos a entender los **trade-offs** que estamos aceptando.
 
-| Enfoque | Velocidad | Fidelidad | Mantenimiento |
-| --- | --- | --- | --- |
-| Vitest + jsdom + muchos mocks | Muy alta | Media o baja | Puede ser alto |
-| Playwright + navegador real | Menor | Alta | A menudo más sencillo |
+| Enfoque                       | Velocidad | Fidelidad    | Mantenimiento         |
+| ----------------------------- | --------- | ------------ | --------------------- |
+| Vitest + jsdom + muchos mocks | Muy alta  | Media o baja | Puede ser alto        |
+| Playwright + navegador real   | Menor     | Alta         | A menudo más sencillo |
 
 No se trata de que AG Grid deba probarse siempre mediante E2E. Hay comportamientos sencillos que podemos cubrir perfectamente con tests unitarios o de componentes.
 
@@ -85,15 +85,15 @@ Un test debería poder ejecutarse de forma aislada sin depender de que otro test
 Un ejemplo sencillo:
 
 ```ts
-let user: User
+let user: User;
 
-it('creates a user', () => {
-  user = createUser()
-})
+it("creates a user", () => {
+  user = createUser();
+});
 
-it('shows the user name', () => {
-  expect(user.name).toBe('Jose')
-})
+it("shows the user name", () => {
+  expect(user.name).toBe("Jose");
+});
 ```
 
 El segundo test funciona mientras ejecutemos ambos en ese orden.
@@ -128,7 +128,7 @@ Esto parece obvio hasta que aparecen dependencias externas.
 Por ejemplo:
 
 ```ts
-const response = await fetch('https://api.example.com/users')
+const response = await fetch("https://api.example.com/users");
 ```
 
 Si nuestro test depende directamente de esa API estamos introduciendo variables que no controlamos:
@@ -144,12 +144,10 @@ Con MSW podemos controlar esa frontera:
 
 ```ts
 server.use(
-  http.get('/api/users', () => {
-    return HttpResponse.json([
-      { id: 1, name: 'Jose' }
-    ])
-  })
-)
+  http.get("/api/users", () => {
+    return HttpResponse.json([{ id: 1, name: "Jose" }]);
+  }),
+);
 ```
 
 Ahora el escenario pertenece al propio test.
@@ -181,9 +179,7 @@ No debería necesitar que una persona interprete manualmente el resultado.
 Por ejemplo:
 
 ```ts
-expect(
-  screen.getByRole('heading', { name: 'Usuarios' })
-).toBeVisible()
+expect(screen.getByRole("heading", { name: "Usuarios" })).toBeVisible();
 ```
 
 Cuando falla, sabemos qué comportamiento esperábamos.
@@ -195,7 +191,7 @@ El problema aparece cuando nuestra validación necesita interpretación externa.
 Por ejemplo, abusar de snapshots gigantes puede generar situaciones como esta:
 
 ```ts
-expect(wrapper.html()).toMatchSnapshot()
+expect(wrapper.html()).toMatchSnapshot();
 ```
 
 El test falla.

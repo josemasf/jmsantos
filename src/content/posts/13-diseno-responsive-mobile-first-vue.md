@@ -57,22 +57,22 @@ Vamos a crear una tarjeta de producto responsive con Vue 3 + TypeScript + Compos
 ```vue
 <script setup lang="ts">
 interface Product {
-  name: string
-  price: number
-  image: string
-  description: string
-  rating: number
+  name: string;
+  price: number;
+  image: string;
+  description: string;
+  rating: number;
 }
 
 defineProps<{
-  product: Product
-}>()
+  product: Product;
+}>();
 </script>
 
 <template>
   <article class="product-card" role="article">
-    <img 
-      :src="product.image" 
+    <img
+      :src="product.image"
       :alt="product.name"
       class="product-card__image"
       loading="lazy"
@@ -82,14 +82,14 @@ defineProps<{
       <p class="product-card__description">{{ product.description }}</p>
       <div class="product-card__footer">
         <span class="product-card__price">
-          {{ new Intl.NumberFormat('es-ES', { 
-            style: 'currency', 
-            currency: 'EUR' 
-          }).format(product.price) }}
+          {{
+            new Intl.NumberFormat("es-ES", {
+              style: "currency",
+              currency: "EUR",
+            }).format(product.price)
+          }}
         </span>
-        <button class="product-card__cta">
-          Añadir al carrito
-        </button>
+        <button class="product-card__cta">Añadir al carrito</button>
       </div>
     </div>
   </article>
@@ -157,12 +157,12 @@ defineProps<{
 
 ## Herramientas útiles
 
-| Herramienta | Uso |
-|-------------|-----|
+| Herramienta                                   | Uso                                               |
+| --------------------------------------------- | ------------------------------------------------- |
 | [Responsively App](https://responsively.app/) | Ver tu app en múltiples viewports simultáneamente |
-| [Figma](https://figma.com/) | Inspeccionar diseños y obtener tokens |
-| Chrome DevTools | Device toolbar para simular dispositivos |
-| [Prettier](https://prettier.io/) | Formateo automático del código |
+| [Figma](https://figma.com/)                   | Inspeccionar diseños y obtener tokens             |
+| Chrome DevTools                               | Device toolbar para simular dispositivos          |
+| [Prettier](https://prettier.io/)              | Formateo automático del código                    |
 
 ## Buenas prácticas
 

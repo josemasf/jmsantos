@@ -17,13 +17,17 @@ Explicación de arquitectura atomic container, orientado a programadores C#
 ## Contenido de la ponencia
 
 ### Atomic Desing
+
 Patrón de diseño para diseñadores gráficos
 
 ### Componentes para Backender
+
 Coceptos de componentes para programadores C#
 
 ### Responsabilidades
+
 Atomic Containers en profundidad
 
 ### Testing
+
 Test unitarios, integración y E2E ¿dónde?

@@ -20,7 +20,7 @@ Los mocks de API suelen empezar como una solución puntual: un `vi.mock` para de
 
 En este artículo construiremos una estructura para Vue 3 y TypeScript que sirve en tres lugares:
 
-- Desarrollo local, mediante un *Service Worker*.
+- Desarrollo local, mediante un _Service Worker_.
 - Tests de componentes e integración con Vitest, mediante un servidor de MSW en Node.js.
 - Historias de Storybook, sobrescribiendo solo el escenario que cada historia necesita.
 
@@ -32,11 +32,11 @@ Un mock de módulo es una herramienta válida para aislar una dependencia en un 
 
 La diferencia práctica es importante:
 
-| Enfoque | Qué se sustituye | Riesgo habitual |
-| --- | --- | --- |
-| `vi.mock("./api")` | La implementación del módulo | El test conoce detalles internos y cada suite inventa sus datos. |
-| `vi.stubGlobal("fetch")` | Una API global | Hay que recrear respuestas, errores y cabeceras a mano. |
-| MSW | La comunicación HTTP saliente | Requiere mantener los handlers alineados con el contrato. |
+| Enfoque                  | Qué se sustituye              | Riesgo habitual                                                  |
+| ------------------------ | ----------------------------- | ---------------------------------------------------------------- |
+| `vi.mock("./api")`       | La implementación del módulo  | El test conoce detalles internos y cada suite inventa sus datos. |
+| `vi.stubGlobal("fetch")` | Una API global                | Hay que recrear respuestas, errores y cabeceras a mano.          |
+| MSW                      | La comunicación HTTP saliente | Requiere mantener los handlers alineados con el contrato.        |
 
 MSW no elimina la necesidad de tests unitarios ni valida por sí solo el contrato del backend. Su valor está en simular la red con la misma definición en varios entornos y permitir que el test compruebe comportamiento observable: qué ve la persona usuaria ante carga, éxito o error.
 
@@ -105,7 +105,10 @@ export const handlers = [
     const product = products.find((item) => item.id === params.id);
 
     if (!product) {
-      return HttpResponse.json({ message: "Producto no encontrado" }, { status: 404 });
+      return HttpResponse.json(
+        { message: "Producto no encontrado" },
+        { status: 404 },
+      );
     }
 
     return HttpResponse.json(product);
@@ -117,7 +120,7 @@ Usa una URL base coherente con la configuración de tu cliente HTTP. Si la aplic
 
 ## Activa MSW en el navegador solo cuando lo necesites
 
-En el navegador, MSW registra un *Service Worker*. Crea el adaptador:
+En el navegador, MSW registra un _Service Worker_. Crea el adaptador:
 
 ```ts
 // src/mocks/browser.ts
@@ -153,7 +156,7 @@ La condición explícita `VITE_ENABLE_MSW` hace que el mock sea una decisión de
 
 ## Configura el servidor de MSW para Vitest
 
-Node.js no dispone de *Service Workers*. Para tests, MSW proporciona `setupServer`, que intercepta el tráfico HTTP del proceso de Node:
+Node.js no dispone de _Service Workers_. Para tests, MSW proporciona `setupServer`, que intercepta el tráfico HTTP del proceso de Node:
 
 ```ts
 // src/mocks/node.ts
@@ -213,7 +216,9 @@ import ProductList from "./ProductList.vue";
 it("muestra los productos devueltos por la API", async () => {
   render(ProductList);
 
-  expect(screen.getByRole("status", { name: /cargando productos/i })).toBeVisible();
+  expect(
+    screen.getByRole("status", { name: /cargando productos/i }),
+  ).toBeVisible();
 
   expect(
     await screen.findByRole("heading", { name: /teclado compacto/i }),
@@ -231,14 +236,19 @@ import { server } from "../mocks/node";
 it("informa cuando no se pueden cargar los productos", async () => {
   server.use(
     http.get("https://api.example.test/products", () => {
-      return HttpResponse.json({ message: "Servicio no disponible" }, { status: 503 });
+      return HttpResponse.json(
+        { message: "Servicio no disponible" },
+        { status: 503 },
+      );
     }),
   );
 
   render(ProductList);
 
   expect(
-    await screen.findByRole("alert", { name: /no se han podido cargar los productos/i }),
+    await screen.findByRole("alert", {
+      name: /no se han podido cargar los productos/i,
+    }),
   ).toBeVisible();
 });
 ```
@@ -267,7 +277,10 @@ export const Error: Story = {
     msw: {
       handlers: [
         http.get("https://api.example.test/products", () =>
-          HttpResponse.json({ message: "Servicio no disponible" }, { status: 503 }),
+          HttpResponse.json(
+            { message: "Servicio no disponible" },
+            { status: 503 },
+          ),
         ),
       ],
     },

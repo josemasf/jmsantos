@@ -28,17 +28,18 @@ A diferencia de un blog tradicional, "Qué Veo Ahora" cuenta con un "cerebro" (e
 
 ## 🛠️ Tecnologías clave
 
--   **Frontend:** [Astro](https://astro.build/) para un blog ligero y rápido.
--   **Lenguaje:** [TypeScript](https://www.typescriptlang.org/) en todo el monorepo para un código robusto y escalable.
--   **IA:** Integración con la API de OpenAI para la generación de lenguaje natural.
--   **Datos:** API de The Movie Database (TMDB) para la obtención de metadatos cinematográficos.
--   **Infraestructura:** Monorepo gestionado con **PNPM Workspaces** y despliegue automático en **Netlify**.
+- **Frontend:** [Astro](https://astro.build/) para un blog ligero y rápido.
+- **Lenguaje:** [TypeScript](https://www.typescriptlang.org/) en todo el monorepo para un código robusto y escalable.
+- **IA:** Integración con la API de OpenAI para la generación de lenguaje natural.
+- **Datos:** API de The Movie Database (TMDB) para la obtención de metadatos cinematográficos.
+- **Infraestructura:** Monorepo gestionado con **PNPM Workspaces** y despliegue automático en **Netlify**.
 
 ## 📁 Estructura del Ecosistema
 
 El proyecto se divide en tres piezas fundamentales:
--   `apps/blog`: El sitio web que visitan los usuarios.
--   `packages/generator`: El motor de scrapping e IA que redacta el contenido.
--   `packages/cli`: Una herramienta propia de línea de comandos para gestionar prompts y generar noticias temáticas bajo demanda.
+
+- `apps/blog`: El sitio web que visitan los usuarios.
+- `packages/generator`: El motor de scrapping e IA que redacta el contenido.
+- `packages/cli`: Una herramienta propia de línea de comandos para gestionar prompts y generar noticias temáticas bajo demanda.
 
 Este proyecto es una prueba de concepto real sobre cómo la automatización y la inteligencia artificial pueden potenciar la creación de contenido de calidad sin perder el control sobre la tecnología.

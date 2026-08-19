@@ -42,7 +42,7 @@ Las circunstancias que provocan la decisión. ¿Qué problema existe? ¿Qué lim
 ```markdown
 ## Contexto
 
-Los equipos están usando tres patrones diferentes para gestionar 
+Los equipos están usando tres patrones diferentes para gestionar
 notificaciones en la UI, generando inconsistencia y confusión.
 ```
 
@@ -53,8 +53,8 @@ La decisión en sí misma, clara y sin ambigüedades.
 ```markdown
 ## Decisión
 
-Adoptamos un componente unificado `AlertsHandler` que gestiona 
-todos los tipos de notificación (Alert, Banner, Snackbar) según 
+Adoptamos un componente unificado `AlertsHandler` que gestiona
+todos los tipos de notificación (Alert, Banner, Snackbar) según
 las guías de Material Design.
 ```
 
@@ -66,10 +66,12 @@ Los efectos de la decisión — tanto positivos como negativos.
 ## Consecuencias
 
 ### Positivas
+
 - Un solo componente para todas las notificaciones
 - Consistencia visual entre módulos
 
 ### Negativas
+
 - Los equipos deben migrar sus implementaciones actuales
 - Curva de aprendizaje para la nueva API
 ```
@@ -79,6 +81,7 @@ Los efectos de la decisión — tanto positivos como negativos.
 > Uno de los aspectos más poderosos de la estructura de ADR es que **se centra en el motivo de la decisión**, no en cómo se implementó.
 
 Comprender **por qué** se tomó una decisión facilita que:
+
 - Nuevos miembros del equipo la adopten
 - Otros arquitectos no la anulen sin contexto
 - El equipo pueda revisarla cuando cambien las circunstancias
@@ -98,6 +101,7 @@ Los ADRs tienen estados:
 ### 1. Identificación
 
 Cualquier miembro del equipo puede identificar la necesidad de un ADR cuando:
+
 - Hay desacuerdo sobre cómo resolver algo
 - Se va a tomar una decisión que afecta a múltiples equipos
 - Se elige una tecnología o patrón nuevo
@@ -128,23 +132,31 @@ Los ADRs deben revisarse periódicamente para verificar que siguen siendo válid
 **Autor**: [Nombre]
 
 ## Contexto
+
 [¿Qué problema existe? ¿Qué opciones hay?]
 
 ## Decisión
+
 [¿Qué decidimos hacer?]
 
 ## Consecuencias
+
 ### Positivas
+
 - [...]
 
 ### Negativas
+
 - [...]
 
 ## Alternativas consideradas
+
 ### Alternativa 1: [Nombre]
+
 **Descartada** porque: [razón]
 
 ### Alternativa 2: [Nombre]
+
 **Descartada** porque: [razón]
 ```
 

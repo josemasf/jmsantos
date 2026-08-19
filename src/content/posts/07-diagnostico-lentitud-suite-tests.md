@@ -46,6 +46,7 @@ El script de CI usaba `--max-workers=1`, forzando ejecución secuencial en runne
 `vitest.config.ts` cargaba plugins pesados (Vue + Vuetify + AutoImport + Components) para **todos** los tests, incluyendo los puramente unitarios que no renderizan UI.
 
 **Solución**: separar la configuración en proyectos (`test.projects`):
+
 - `unit` — configuración mínima, sin render UI
 - `integration-ui` — configuración completa con Vuetify
 
@@ -54,6 +55,7 @@ El script de CI usaba `--max-workers=1`, forzando ejecución secuencial en runne
 El timeout global era de 7 segundos (`testTimeout: 7000`), insuficiente para tests de UI complejos. Algunos tests ya sobreescribían localmente a 20-25 segundos.
 
 **Solución**: definir una política de timeout por tipo:
+
 - Unitarios: 5-7s
 - Integración UI: 12-15s
 
@@ -109,11 +111,11 @@ Tests que montaban componentes completos con todas sus dependencias reales, cuan
 
 ## Métricas de seguimiento
 
-| KPI | Antes | Objetivo |
-|-----|-------|----------|
-| Duración total | 15:18 | < 5:00 |
-| Tests fallidos por timeout | 13 | 0 |
-| Tiempo de setup+import | 209s | < 60s |
+| KPI                        | Antes | Objetivo |
+| -------------------------- | ----- | -------- |
+| Duración total             | 15:18 | < 5:00   |
+| Tests fallidos por timeout | 13    | 0        |
+| Tiempo de setup+import     | 209s  | < 60s    |
 
 ## Conclusiones
 

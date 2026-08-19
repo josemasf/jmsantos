@@ -16,6 +16,7 @@ Cuando múltiples equipos comparten componentes entre módulos, la tentación de
 ## ¿Qué es un widget autocontenido?
 
 Un widget autocontenido es un componente que encapsula:
+
 - **UI**: la representación visual
 - **Lógica de negocio**: transformaciones y reglas
 - **Acceso a datos**: llamadas HTTP a la API
@@ -87,7 +88,7 @@ public record SalesSummary(
 public interface ISalesSummaryService
 {
     Task<SalesSummary?> GetSummaryAsync(
-        DateTime startDate, 
+        DateTime startDate,
         DateTime endDate
     );
 }
@@ -102,7 +103,7 @@ public class SalesSummaryService : ISalesSummaryService
     }
 
     public async Task<SalesSummary?> GetSummaryAsync(
-        DateTime startDate, 
+        DateTime startDate,
         DateTime endDate)
     {
         var response = await _http.GetAsync(
@@ -132,7 +133,7 @@ public class SalesSummaryService : ISalesSummaryService
     }
     else if (_error)
     {
-        <ErrorMessage Message="No se pudieron cargar los datos" 
+        <ErrorMessage Message="No se pudieron cargar los datos"
                       OnRetry="LoadData" />
     }
     else if (_data is null)
@@ -142,11 +143,11 @@ public class SalesSummaryService : ISalesSummaryService
     else
     {
         <div class="sales-summary">
-            <MetricCard Title="Ingresos" 
+            <MetricCard Title="Ingresos"
                        Value="@_data.TotalRevenue.ToString("C")" />
-            <MetricCard Title="Pedidos" 
+            <MetricCard Title="Pedidos"
                        Value="@_data.TotalOrders.ToString()" />
-            <MetricCard Title="Ticket medio" 
+            <MetricCard Title="Ticket medio"
                        Value="@_data.AverageOrderValue.ToString("C")" />
         </div>
     }
@@ -192,8 +193,8 @@ public class SalesSummaryService : ISalesSummaryService
 ### Uso del widget
 
 ```razor
-<SalesSummaryWidget 
-    StartDate="@DateTime.Today.AddMonths(-1)" 
+<SalesSummaryWidget
+    StartDate="@DateTime.Today.AddMonths(-1)"
     EndDate="@DateTime.Today" />
 ```
 

@@ -2,7 +2,8 @@
 title: "Un componente de 700 líneas no es necesariamente el problema"
 description: "Por qué el número de líneas es una señal, no un diagnóstico, y cómo evaluar cohesión, acoplamiento y razones de cambio en un componente frontend."
 date: 2027-01-12
-tags: [arquitectura, componentes, Vue, mantenibilidad, refactorización, frontend]
+tags:
+  [arquitectura, componentes, Vue, mantenibilidad, refactorización, frontend]
 category: Frontend
 image:
   src: /images/blog/42-componente-700-lineas-no-problema/componente-grande-cohesion-acoplamiento.png

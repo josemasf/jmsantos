@@ -2,7 +2,16 @@
 title: "Runbooks: cómo responder a incidencias sin depender de la memoria del equipo"
 description: "Qué debe contener un runbook útil, cómo diseñarlo para actuar con seguridad ante una incidencia y cómo convertir cada problema real en aprendizaje compartido."
 date: 2026-09-29
-tags: [runbooks, operaciones, incidencias, equipos, observabilidad, documentación, DevOps]
+tags:
+  [
+    runbooks,
+    operaciones,
+    incidencias,
+    equipos,
+    observabilidad,
+    documentación,
+    DevOps,
+  ]
 category: DevOps
 image:
   src: /images/blog/runbooks-responder-incidencias-equipo/runbooks-responder-incidencias-equipo.png
@@ -45,31 +54,39 @@ Un runbook funciona mejor si su orden sigue el razonamiento de quien lo consulta
 # [Síntoma o situación reconocible]
 
 ## Objetivo
+
 Qué servicio se intenta recuperar y qué significa una recuperación correcta.
 
 ## Señales para confirmar el problema
+
 - Alertas, métricas o comportamiento observable.
 - Cómo distinguirlo de síntomas parecidos.
 
 ## Impacto y alcance
+
 - Personas, flujos o datos afectados.
 - Qué información recoger antes de intervenir.
 
 ## Comprobaciones iniciales
+
 1. Acción de solo lectura y resultado esperado.
 2. Acción de solo lectura y cómo interpretarla.
 
 ## Acciones seguras
+
 1. Acción reversible, con precondiciones y resultado esperado.
 2. Cómo verificar que ha funcionado.
 
 ## No hacer sin escalado
+
 - Acciones destructivas, irreversibles o que exigen aprobación.
 
 ## Escalado y comunicación
+
 Cuándo pedir ayuda, a quién y qué contexto aportar.
 
 ## Cierre y seguimiento
+
 Cómo confirmar la recuperación y qué registrar después.
 ```
 

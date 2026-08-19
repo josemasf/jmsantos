@@ -25,7 +25,7 @@ export default defineConfig({
   build: {
     // Configuración limpia sin topLevelAwait
   },
-})
+});
 ```
 
 ## Paso 2: Configurar `preview.ts` para Vuetify
@@ -34,22 +34,22 @@ Storybook necesita cargar la misma configuración de Vuetify que tu aplicación:
 
 ```typescript
 // .storybook/preview.ts
-import { setup } from '@storybook/vue3'
-import { createVuetify } from 'vuetify'
-import 'vuetify/styles'
+import { setup } from "@storybook/vue3";
+import { createVuetify } from "vuetify";
+import "vuetify/styles";
 
 const vuetify = createVuetify({
   // Tu configuración de Vuetify
-})
+});
 
 setup((app) => {
-  app.use(vuetify)
-})
+  app.use(vuetify);
+});
 
 export const parameters = {
-  actions: { argTypesRegex: '^on[A-Z].*' },
+  actions: { argTypesRegex: "^on[A-Z].*" },
   controls: { expanded: true },
-}
+};
 ```
 
 ## Paso 3: Crear el pipeline de CI/CD
@@ -67,29 +67,30 @@ trigger:
       - .storybook/**
 
 pool:
-  vmImage: 'ubuntu-latest'
+  vmImage: "ubuntu-latest"
 
 steps:
   - task: NodeTool@0
     inputs:
-      versionSpec: '20.x'
+      versionSpec: "20.x"
 
   - script: pnpm install --frozen-lockfile
-    displayName: 'Install dependencies'
+    displayName: "Install dependencies"
 
   - script: pnpm test:ci
-    displayName: 'Run tests'
+    displayName: "Run tests"
 
   - script: pnpm build-storybook
-    displayName: 'Build Storybook'
+    displayName: "Build Storybook"
 
   - task: AzureStaticWebApp@0
     inputs:
-      app_location: 'storybook-static'
+      app_location: "storybook-static"
       skip_app_build: true
 ```
 
 > **Nota**: el pipeline espera que exista un script `test:ci` en tu `package.json`. Si no tienes tests, registra uno vacío:
+>
 > ```json
 > "test:ci": "echo \"No test needed\""
 > ```
@@ -122,7 +123,7 @@ Configura el Storybook para que se despliegue automáticamente cuando se actuali
 resources:
   pipelines:
     - pipeline: main-build
-      source: 'mi-proyecto-build'
+      source: "mi-proyecto-build"
       trigger:
         branches:
           include:

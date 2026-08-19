@@ -27,7 +27,9 @@ expect(wrapper.vm.isLoading).toBe(false);
 Ese estado puede desaparecer, dividirse o derivarse de otra fuente sin que el producto cambie. Comprueba qué puede observar una persona usuaria:
 
 ```ts
-expect(screen.queryByRole("status", { name: /cargando/i })).not.toBeInTheDocument();
+expect(
+  screen.queryByRole("status", { name: /cargando/i }),
+).not.toBeInTheDocument();
 expect(await screen.findByText(/perfil guardado/i)).toBeVisible();
 ```
 
@@ -57,7 +59,7 @@ expect(
 ).toBeVisible();
 ```
 
-Para un *debounce* o un temporizador que forme parte del requisito, usa fake timers solo en esa suite y restaura los timers reales al terminar.
+Para un _debounce_ o un temporizador que forme parte del requisito, usa fake timers solo en esa suite y restaura los timers reales al terminar.
 
 ## 4. Mockear `fetch` o el módulo de API en cada test de componente
 

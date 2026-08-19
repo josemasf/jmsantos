@@ -17,21 +17,23 @@ Esta guía define criterios claros basados en Material Design y experiencia real
 
 ## La regla rápida
 
-| Componente | Cuándo usarlo | Acumulable | Acciones |
-|-----------|--------------|------------|----------|
-| **Alert** | Errores de la vista, cambios de estado, avisos que requieren atención | ✅ Sí | No accionable |
-| **Banner** | Cambios en la aplicación, solicitudes de permisos | ❌ No | Hasta 2 acciones |
-| **Snackbar** | Acción completada, avisos de poco impacto | ❌ No | Hasta 1 acción |
+| Componente   | Cuándo usarlo                                                         | Acumulable | Acciones         |
+| ------------ | --------------------------------------------------------------------- | ---------- | ---------------- |
+| **Alert**    | Errores de la vista, cambios de estado, avisos que requieren atención | ✅ Sí      | No accionable    |
+| **Banner**   | Cambios en la aplicación, solicitudes de permisos                     | ❌ No      | Hasta 2 acciones |
+| **Snackbar** | Acción completada, avisos de poco impacto                             | ❌ No      | Hasta 1 acción   |
 
 ## Alert: "algo requiere tu atención"
 
 Usa **Alert** cuando:
+
 - Hay un **error en la vista** que el usuario debe conocer
 - Una acción se completó parcialmente
 - Hay un aviso importante que requiere atención
 - El estado de algo ha cambiado
 
 **Características**:
+
 - Son **acumulables**: puede haber varios simultáneamente
 - No son accionables (no llevan botones)
 - Persisten hasta que la condición se resuelve
@@ -53,11 +55,13 @@ Usa **Alert** cuando:
 ## Banner: "algo cambió en la aplicación"
 
 Usa **Banner** cuando:
+
 - Necesitas solicitar **permisos** al usuario
 - Hay un **cambio en la aplicación** (nueva versión, mantenimiento programado)
 - El mensaje **no requiere atención inmediata** pero es importante
 
 **Características**:
+
 - **No son acumulables**: solo uno a la vez
 - Pueden tener **hasta 2 acciones** (generalmente una redirección)
 - Se muestran en la parte superior de la vista
@@ -77,11 +81,13 @@ Usa **Banner** cuando:
 ## Snackbar: "algo se completó"
 
 Usa **Snackbar** cuando:
+
 - Una **acción se completó** exitosamente
 - Una **tarea finalizó** en segundo plano
 - Quieres dar un **aviso de poco impacto**
 
 **Características**:
+
 - **No son acumulables**: solo uno a la vez
 - Pueden tener **hasta 1 acción** (generalmente "Deshacer")
 - Se auto-ocultan después de unos segundos
@@ -118,30 +124,31 @@ En lugar de tener múltiples sistemas de gestión de mensajes, centraliza todo e
 
 ```typescript
 // composables/useNotifications.ts
-type NotificationType = 'alert' | 'banner' | 'snackbar'
+type NotificationType = "alert" | "banner" | "snackbar";
 
 interface Notification {
-  type: NotificationType
-  severity: 'info' | 'success' | 'warning' | 'error'
-  message: string
-  action?: { label: string; handler: () => void }
+  type: NotificationType;
+  severity: "info" | "success" | "warning" | "error";
+  message: string;
+  action?: { label: string; handler: () => void };
 }
 
 export function useNotifications() {
-  const notifications = ref<Notification[]>([])
+  const notifications = ref<Notification[]>([]);
 
   function notify(notification: Notification) {
-    if (notification.type === 'alert') {
-      notifications.value.push(notification) // Acumulable
+    if (notification.type === "alert") {
+      notifications.value.push(notification); // Acumulable
     } else {
       // Banner y Snackbar reemplazan al anterior
-      notifications.value = notifications.value
-        .filter(n => n.type !== notification.type)
-      notifications.value.push(notification)
+      notifications.value = notifications.value.filter(
+        (n) => n.type !== notification.type,
+      );
+      notifications.value.push(notification);
     }
   }
 
-  return { notifications, notify }
+  return { notifications, notify };
 }
 ```
 

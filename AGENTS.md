@@ -36,11 +36,11 @@ Usar este agente cuando la tarea sea:
 
 La ruta `src/pages/blog/[slug].astro` selecciona automáticamente el layout de cada artículo según el frontmatter del post. Los agentes no deben importar layouts desde el Markdown ni duplicar HTML de portada dentro del cuerpo del artículo.
 
-| Caso de uso                            | Layout generado                 | Cómo activarlo                                   |
-| -------------------------------------- | ------------------------------- | ------------------------------------------------ |
-| Artículo estándar sin imagen destacada | `src/layouts/Post.astro`        | Usar solo los campos obligatorios del post.      |
-| Artículo con imagen destacada          | `src/layouts/PostWithImage.astro` | Añadir el objeto `image` al frontmatter.         |
-| Artículo perteneciente a una serie     | `src/layouts/SeriesPost.astro`  | Añadir el objeto `series` al frontmatter.        |
+| Caso de uso                            | Layout generado                   | Cómo activarlo                              |
+| -------------------------------------- | --------------------------------- | ------------------------------------------- |
+| Artículo estándar sin imagen destacada | `src/layouts/Post.astro`          | Usar solo los campos obligatorios del post. |
+| Artículo con imagen destacada          | `src/layouts/PostWithImage.astro` | Añadir el objeto `image` al frontmatter.    |
+| Artículo perteneciente a una serie     | `src/layouts/SeriesPost.astro`    | Añadir el objeto `series` al frontmatter.   |
 
 Campos obligatorios comunes para todos los posts:
 
@@ -103,7 +103,8 @@ Ejemplo de registro centralizado:
 export const blogSeries = {
   "testing-vue": {
     title: "Testing en Vue",
-    description: "Una guía práctica para construir una suite de tests rápida y mantenible.",
+    description:
+      "Una guía práctica para construir una suite de tests rápida y mantenible.",
   },
 };
 ```

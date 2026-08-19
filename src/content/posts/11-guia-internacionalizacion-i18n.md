@@ -19,16 +19,16 @@ Esta guía recopila todos los aspectos que debes revisar, con ejemplos concretos
 
 ### Separadores de miles y decimales
 
-| Cultura | Ejemplo |
-|---------|---------|
-| Español | 1.234,56 |
+| Cultura    | Ejemplo  |
+| ---------- | -------- |
+| Español    | 1.234,56 |
 | Anglosajón | 1,234.56 |
-| Alemán | 1.234,56 |
+| Alemán     | 1.234,56 |
 
 ```typescript
 // ✅ Usa Intl.NumberFormat
-new Intl.NumberFormat('en-US').format(1234.56) // "1,234.56"
-new Intl.NumberFormat('es-ES').format(1234.56) // "1.234,56"
+new Intl.NumberFormat("en-US").format(1234.56); // "1,234.56"
+new Intl.NumberFormat("es-ES").format(1234.56); // "1.234,56"
 ```
 
 **Regla de oro**: nunca formatees números manualmente con `replace()`. Siempre usa `Intl.NumberFormat`.
@@ -37,22 +37,22 @@ new Intl.NumberFormat('es-ES').format(1234.56) // "1.234,56"
 
 ### Símbolo y posición
 
-| Cultura | Ejemplo |
-|---------|---------|
-| España | 1.234,56 € |
-| EEUU | $1,234.56 |
-| UK | £1,234.56 |
+| Cultura | Ejemplo    |
+| ------- | ---------- |
+| España  | 1.234,56 € |
+| EEUU    | $1,234.56  |
+| UK      | £1,234.56  |
 
 ```typescript
-new Intl.NumberFormat('es-ES', { 
-  style: 'currency', 
-  currency: 'EUR' 
-}).format(1234.56) // "1.234,56 €"
+new Intl.NumberFormat("es-ES", {
+  style: "currency",
+  currency: "EUR",
+}).format(1234.56); // "1.234,56 €"
 
-new Intl.NumberFormat('en-US', { 
-  style: 'currency', 
-  currency: 'USD' 
-}).format(1234.56) // "$1,234.56"
+new Intl.NumberFormat("en-US", {
+  style: "currency",
+  currency: "USD",
+}).format(1234.56); // "$1,234.56"
 ```
 
 **Consideración**: si tu aplicación maneja múltiples monedas, necesitas un servicio de conversión de divisas además del formateo.
@@ -61,14 +61,14 @@ new Intl.NumberFormat('en-US', {
 
 ### Formato y primer día de la semana
 
-| Aspecto | España | UK | EEUU |
-|---------|--------|----|------|
-| Formato | 04/06/2024 | 04/06/2024 | 06/04/2024 |
-| Primer día semana | Lunes | Lunes | Domingo |
+| Aspecto           | España     | UK         | EEUU       |
+| ----------------- | ---------- | ---------- | ---------- |
+| Formato           | 04/06/2024 | 04/06/2024 | 06/04/2024 |
+| Primer día semana | Lunes      | Lunes      | Domingo    |
 
 ```typescript
-new Intl.DateTimeFormat('es-ES').format(new Date()) // "4/6/2024"
-new Intl.DateTimeFormat('en-US').format(new Date()) // "6/4/2024"
+new Intl.DateTimeFormat("es-ES").format(new Date()); // "4/6/2024"
+new Intl.DateTimeFormat("en-US").format(new Date()); // "6/4/2024"
 ```
 
 > ⚠️ España y UK usan el mismo formato dd/mm/yyyy pero EEUU usa mm/dd/yyyy. Esto es fuente constante de bugs.
@@ -77,31 +77,31 @@ new Intl.DateTimeFormat('en-US').format(new Date()) // "6/4/2024"
 
 ### Formato 24h vs 12h
 
-| Cultura | Ejemplo |
-|---------|---------|
-| Español | 14:30 |
+| Cultura    | Ejemplo |
+| ---------- | ------- |
+| Español    | 14:30   |
 | Anglosajón | 2:30 PM |
 
 ```typescript
-new Intl.DateTimeFormat('es-ES', { 
-  timeStyle: 'short' 
-}).format(new Date()) // "14:30"
+new Intl.DateTimeFormat("es-ES", {
+  timeStyle: "short",
+}).format(new Date()); // "14:30"
 
-new Intl.DateTimeFormat('en-US', { 
-  timeStyle: 'short' 
-}).format(new Date()) // "2:30 PM"
+new Intl.DateTimeFormat("en-US", {
+  timeStyle: "short",
+}).format(new Date()); // "2:30 PM"
 ```
 
 ## 5. Unidades de medida
 
 Si tu aplicación muestra datos de vehículos, productos o logística, las unidades importan:
 
-| Magnitud | Métrico | Imperial |
-|----------|---------|----------|
-| Longitud | metros, km | pies, pulgadas, millas |
-| Peso | kilogramos | libras |
-| Volumen | litros | galones |
-| Temperatura | °C | °F |
+| Magnitud    | Métrico    | Imperial               |
+| ----------- | ---------- | ---------------------- |
+| Longitud    | metros, km | pies, pulgadas, millas |
+| Peso        | kilogramos | libras                 |
+| Volumen     | litros     | galones                |
+| Temperatura | °C         | °F                     |
 
 **Consejo**: usa una capa de conversión que aplique la transformación según el locale del usuario, no conviertas en el componente.
 
@@ -109,8 +109,8 @@ Si tu aplicación muestra datos de vehículos, productos o logística, las unida
 
 ### Direcciones
 
-| España | Anglosajón |
-|--------|-----------|
+| España                  | Anglosajón                             |
+| ----------------------- | -------------------------------------- |
 | Calle, Ciudad, CP, País | Address, City, **State**, ZIP, Country |
 
 Los países anglosajones incluyen el **estado** como campo obligatorio, lo que requiere cambios en formularios y modelos de datos.
@@ -153,12 +153,12 @@ Accept-Language: en-GB
 
 ## Herramientas recomendadas
 
-| Herramienta | Uso |
-|-------------|-----|
-| `Intl` API nativa | Formateo de números, fechas, monedas |
-| `vue-i18n` | Gestión de traducciones en Vue |
-| `date-fns` con locales | Manipulación de fechas localizada |
-| [Weblate](https://weblate.org/) | Gestión de traducciones en equipo |
+| Herramienta                     | Uso                                  |
+| ------------------------------- | ------------------------------------ |
+| `Intl` API nativa               | Formateo de números, fechas, monedas |
+| `vue-i18n`                      | Gestión de traducciones en Vue       |
+| `date-fns` con locales          | Manipulación de fechas localizada    |
+| [Weblate](https://weblate.org/) | Gestión de traducciones en equipo    |
 
 ## Conclusiones
 

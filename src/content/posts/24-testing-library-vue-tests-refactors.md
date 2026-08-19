@@ -89,11 +89,11 @@ Esta regla también evita una trampa frecuente: buscar texto que no representa u
 
 Las tres variantes más habituales tienen significados distintos:
 
-| Consulta | Cuándo usarla | Si no encuentra el elemento |
-| --- | --- | --- |
-| `getBy...` | El elemento ya debe estar en el DOM. | Falla de inmediato. |
-| `findBy...` | El elemento aparece tras una operación asíncrona. | Espera hasta el límite configurado y falla. |
-| `queryBy...` | Quieres comprobar que algo no existe. | Devuelve `null`. |
+| Consulta     | Cuándo usarla                                     | Si no encuentra el elemento                 |
+| ------------ | ------------------------------------------------- | ------------------------------------------- |
+| `getBy...`   | El elemento ya debe estar en el DOM.              | Falla de inmediato.                         |
+| `findBy...`  | El elemento aparece tras una operación asíncrona. | Espera hasta el límite configurado y falla. |
+| `queryBy...` | Quieres comprobar que algo no existe.             | Devuelve `null`.                            |
 
 Un ejemplo de carga y error lo deja claro. No hace falta añadir una espera manual ni consultar una propiedad interna para saber cuándo ha terminado la petición:
 
@@ -106,9 +106,13 @@ it("informa del error si no se puede cargar el perfil", async () => {
   ).toBeVisible();
 
   expect(
-    await screen.findByRole("alert", { name: /no se ha podido cargar el perfil/i }),
+    await screen.findByRole("alert", {
+      name: /no se ha podido cargar el perfil/i,
+    }),
   ).toBeVisible();
-  expect(screen.queryByRole("status", { name: /cargando perfil/i })).not.toBeInTheDocument();
+  expect(
+    screen.queryByRole("status", { name: /cargando perfil/i }),
+  ).not.toBeInTheDocument();
 });
 ```
 
@@ -170,19 +174,14 @@ it("emite los datos normalizados al enviar", async () => {
   const user = userEvent.setup();
   const { emitted } = render(ProfileForm);
 
-  await user.type(
-    screen.getByRole("textbox", { name: /nombre/i }),
-    "  Ana  ",
-  );
+  await user.type(screen.getByRole("textbox", { name: /nombre/i }), "  Ana  ");
   await user.type(
     screen.getByRole("textbox", { name: /correo electrónico/i }),
     "ana@example.com",
   );
   await user.click(screen.getByRole("button", { name: /guardar/i }));
 
-  expect(emitted().save).toEqual([
-    [{ name: "Ana", email: "ana@example.com" }],
-  ]);
+  expect(emitted().save).toEqual([[{ name: "Ana", email: "ana@example.com" }]]);
 });
 ```
 
@@ -206,4 +205,4 @@ Una suite resistente no es la que nunca falla durante un refactor. Es la que fal
 - ¿La interacción reproduce teclado, foco o escritura solo cuando esos detalles forman parte del requisito?
 - ¿El test seguiría teniendo sentido si cambia la librería visual o se extrae un componente hijo?
 
-Cuando la respuesta es afirmativa, el test protege una capacidad del producto, no una fotografía de la implementación. En el siguiente artículo de la serie separaremos *fixtures*, *factories* y *handlers* para que esos escenarios sigan siendo fáciles de leer a medida que aumente la suite.
+Cuando la respuesta es afirmativa, el test protege una capacidad del producto, no una fotografía de la implementación. En el siguiente artículo de la serie separaremos _fixtures_, _factories_ y _handlers_ para que esos escenarios sigan siendo fáciles de leer a medida que aumente la suite.
