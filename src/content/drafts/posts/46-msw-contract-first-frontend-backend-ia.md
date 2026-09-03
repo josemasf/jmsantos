@@ -120,6 +120,20 @@ Esto permite comprobar desde muy pronto el estado de carga, los datos válidos, 
 
 La ventaja importante no es solo que frontend pueda avanzar. Es que la interfaz empieza a ejercer presión sobre el contrato antes de que implementarlo sea caro.
 
+## ¿Por qué no usar json-server o un backend mockeado?
+
+También podemos resolver la espera de una forma más simple: levantar [json-server](https://github.com/typicode/json-server), preparar un pequeño backend de mentira o desplegar un servicio mockeado que devuelva respuestas conocidas. Para empezar una pantalla puede ser perfectamente válido. Tenemos una URL real, hacemos una petición HTTP y dejamos de depender del backend definitivo.
+
+El problema aparece cuando queremos utilizar ese entorno para refinar el contrato, no solo para pintar el _happy path_. Un fichero JSON con clientes suele representar muy bien el caso en el que todo funciona, pero bastante peor qué ocurre cuando no hay resultados, faltan permisos, una operación devuelve `409`, el servidor tarda cinco segundos o una dependencia responde con un `503`.
+
+Podemos programar todos esos comportamientos también en un backend mockeado, por supuesto. Pero entonces empezamos a construir otra aplicación: rutas, condiciones, estados y mecanismos para seleccionar escenarios. Cada iteración sobre el contrato exige modificar ese servicio, ejecutarlo y coordinar cómo provocar la respuesta que necesitamos. Para una conversación que debería ser barata —«¿qué debería ver la interfaz si ocurre esto?»— hemos introducido otra pieza que mantener.
+
+MSW mantiene esa iteración más cerca del consumidor. Si estamos desarrollando una tabla y descubrimos que necesitamos distinguir entre una lista realmente vacía y una respuesta que no podemos mostrar por permisos, podemos representar ambos escenarios junto al frontend y probar inmediatamente si el contrato nos sirve. No necesitamos preparar datos especiales ni modificar un proceso externo para llegar hasta ese estado.
+
+Hay además otra diferencia práctica: los escenarios que definimos con MSW durante el desarrollo pueden reutilizarse después en los tests. Si usamos json-server únicamente para trabajar mientras llega el backend, es frecuente que construyamos allí el _happy path_ y, cuando empezamos a escribir pruebas, volvamos a representar desde cero el `403`, el vacío, el error de validación o el fallo temporal.
+
+No significa que json-server o un backend mockeado sean malas herramientas. Son soluciones muy útiles cuando necesitamos una API sencilla, estado compartido entre varias aplicaciones o una demo accesible fuera del entorno de frontend. La diferencia está en el objetivo: si queremos iterar rápido sobre el contrato y convertir esos mismos escenarios en evidencia automatizada, MSW reduce el salto entre desarrollo y testing.
+
 ## Un mock útil no imita al backend: ambos respetan el mismo contrato
 
 Hay una forma peligrosa de trabajar con mocks: frontend inventa respuestas para poder avanzar y, semanas después, intenta adaptarlas a lo que backend ha construido. En ese caso hemos creado dos APIs diferentes y MSW solo ha retrasado el problema.
