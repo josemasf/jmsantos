@@ -12,7 +12,7 @@ tags:
     IA,
     desarrollo profesional,
   ]
-category: Desarrollo profesional
+category: Cultura de equipo
 image:
   src: /images/blog/equipo-sano-no-es-equipo-sin-problemas/equipo-sano-colaboracion.png
   alt: Cinco integrantes de un equipo de desarrollo revisan juntos un mapa de trabajo con alertas y validaciones conectadas.
