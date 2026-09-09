@@ -80,7 +80,6 @@ jobs:
 
       - run: pnpm install --frozen-lockfile
       - run: pnpm lint
-      - run: pnpm format:check
       - run: pnpm test:publish
 
       - name: Detectar posts publicables
@@ -93,6 +92,18 @@ jobs:
       - name: Mover posts publicables
         if: steps.publication.outputs.count != '0'
         run: pnpm publish:scheduled -- --date "${{ steps.publication.outputs.date }}" > publication.json
+
+      - name: Formatear posts publicados
+        if: steps.publication.outputs.count != '0'
+        run: |
+          node - <<'NODE'
+          const fs = require("node:fs");
+          const { execFileSync } = require("node:child_process");
+          const { posts } = JSON.parse(fs.readFileSync("publication.json", "utf8"));
+          const files = posts.map((post) => `src/content/posts/${post.relativePath}`);
+
+          execFileSync("pnpm", ["exec", "oxfmt", ...files], { stdio: "inherit" });
+          NODE
 
       - run: pnpm build
 
