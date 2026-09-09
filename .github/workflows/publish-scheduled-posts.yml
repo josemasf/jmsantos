@@ -2,8 +2,10 @@ name: Publicar posts programados
 
 on:
   schedule:
-    # 08:00 Europe/Madrid: 06:00 UTC durante el horario de verano y 07:00 UTC en invierno.
-    - cron: "0 6,7 * * 1,2,3,4,6"
+    # 08:00 Europe/Madrid. Se separan los cron para poder identificar cuál
+    # corresponde al horario vigente aunque GitHub retrase la ejecución.
+    - cron: "0 6 * * 1,2,3,4,6"
+    - cron: "0 7 * * 1,2,3,4,6"
 
   workflow_dispatch:
 
@@ -24,16 +26,23 @@ jobs:
       - id: madrid-time
         env:
           EVENT_NAME: ${{ github.event_name }}
+          SCHEDULE: ${{ github.event.schedule }}
         run: |
           SHOULD_RUN="$(node -e '
+            if (process.env.EVENT_NAME === "workflow_dispatch") {
+              console.log(true);
+              process.exit(0);
+            }
+
             const now = new Date();
-            const parts = new Intl.DateTimeFormat("en-GB", {
-              timeZone: "Europe/Madrid",
-              hour: "2-digit",
-              hourCycle: "h23",
-            }).formatToParts(now);
-            const hour = parts.find((part) => part.type === "hour")?.value;
-            console.log(process.env.EVENT_NAME === "workflow_dispatch" || hour === "08");
+            const madrid = new Date(now.toLocaleString("en-US", { timeZone: "Europe/Madrid" }));
+            const utc = new Date(now.toLocaleString("en-US", { timeZone: "UTC" }));
+            const offsetHours = Math.round((madrid - utc) / 3_600_000);
+            const expectedSchedule = offsetHours === 2
+              ? "0 6 * * 1,2,3,4,6"
+              : "0 7 * * 1,2,3,4,6";
+
+            console.log(process.env.SCHEDULE === expectedSchedule);
           ')"
           echo "should-run=$SHOULD_RUN" >> "$GITHUB_OUTPUT"
 
