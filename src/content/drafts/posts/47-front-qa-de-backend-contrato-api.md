@@ -13,6 +13,11 @@ tags:
     testing,
   ]
 category: Cultura de equipo
+image:
+  src: /images/blog/47-front-qa-de-backend-contrato-api/front-qa-de-backend-contrato-api.png
+  alt: Un contrato de API validado actúa como puerta de calidad entre un backend y una interfaz frontend.
+  width: 1536
+  height: 1024
 ---
 
 En muchos equipos existe una fase del desarrollo que nadie ha decidido formalmente, pero que se repite sprint tras sprint: backend da por terminada una historia en cuanto el endpoint responde en Swagger, y es frontend quien, al integrarlo, descubre que faltan casos, que un error no está contemplado o que la respuesta no coincide con lo acordado. No es un problema de que frontend encuentre errores de backend; eso va a ocurrir siempre y forma parte de trabajar con sistemas conectados. El problema es que frontend se convierta, de facto, en el principal mecanismo de control de calidad de una funcionalidad que backend consideraba ya cerrada.
