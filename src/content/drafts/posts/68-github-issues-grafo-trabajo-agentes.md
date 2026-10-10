@@ -13,6 +13,7 @@ image:
   width: 1536
   height: 1024
 ---
+issue: 65
 
 Una lista de issues muestra tareas, pero no siempre revela qué trabajo puede empezar ahora, qué depende de una decisión ni cómo una entrega pequeña contribuye a una iniciativa mayor. Cuando varias personas y agentes avanzan a la vez, esa estructura afecta directamente a la coordinación. El issue tracker puede servir como mapa compartido del trabajo, siempre que las relaciones expresen dependencias reales y las unidades sean ejecutables.
 

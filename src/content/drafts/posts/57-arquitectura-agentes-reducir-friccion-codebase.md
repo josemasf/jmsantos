@@ -13,6 +13,7 @@ image:
   width: 1536
   height: 1024
 ---
+issue: 65
 
 Un agente puede leer una codebase más deprisa que una persona en algunas tareas, pero eso no vuelve comprensible un sistema con dependencias ocultas, nombres inconsistentes y reglas repartidas por muchas capas. Cuando no hay una frontera clara, cada cambio exige buscar más archivos, inferir qué convención prevalece y validar efectos que no están cerca del código editado.
 

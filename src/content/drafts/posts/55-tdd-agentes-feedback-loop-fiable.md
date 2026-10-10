@@ -13,6 +13,7 @@ image:
   width: 1536
   height: 1024
 ---
+issue: 65
 
 Un agente puede producir una primera implementación en pocos minutos. Si después tardamos mucho en averiguar si el cambio funciona, esa velocidad inicial no se traduce en una entrega rápida. El agente necesita feedback que llegue pronto y que señale un comportamiento real; cuando las pruebas son lentas, aleatorias o difíciles de interpretar, cada iteración cuesta más y las hipótesis erróneas pueden acumularse.
 

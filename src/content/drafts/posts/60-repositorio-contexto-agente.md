@@ -13,6 +13,7 @@ image:
   width: 1536
   height: 1024
 ---
+issue: 65
 
 Cuando un agente propone un cambio inadecuado, es tentador responder con un prompt más largo. A veces falta una instrucción; otras, el repositorio no ofrece una forma fácil de encontrar la convención correcta, entender el dominio o comprobar el resultado. El contexto de trabajo no empieza y termina en el texto del prompt: también vive en la estructura, los nombres, los documentos y las señales que el código puede producir.
 

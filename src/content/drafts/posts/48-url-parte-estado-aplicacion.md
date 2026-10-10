@@ -10,6 +10,7 @@ image:
   width: 1536
   height: 1024
 ---
+issue: 49
 
 Una lista de pedidos muestra solo los pendientes, ordenados por fecha y en la tercera página. Una persona copia la dirección, recarga el navegador o comparte el enlace con soporte. Si al abrirlo la aplicación vuelve a mostrar la primera página con todos los pedidos, la interfaz no ha conservado una vista que era relevante para completar una tarea. Ha guardado su estado en el lugar equivocado.
 

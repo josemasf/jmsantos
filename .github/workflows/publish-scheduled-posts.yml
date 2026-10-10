@@ -63,7 +63,7 @@ jobs:
 
       - uses: actions/setup-node@a0853c24544627f65ddf259abe73b1d18a591444 # v5
         with:
-          node-version: 22.13.0
+          node-version-file: .nvmrc
           package-manager-cache: false
 
       - uses: pnpm/action-setup@f40ffcd9367d9f12939873eb1018b921a783ffaa # v4
@@ -80,10 +80,11 @@ jobs:
 
       - run: pnpm install --frozen-lockfile
       - run: pnpm lint
-      - run: pnpm test:publish
+      - run: pnpm test:content
+      - run: pnpm content:check
 
       - name: Detectar posts publicables
-        run: pnpm publish:scheduled -- --dry-run > publication.json
+        run: node script/publish-scheduled-posts.mjs --dry-run > publication.json
 
       - id: publication
         run: |
@@ -91,7 +92,7 @@ jobs:
 
       - name: Mover posts publicables
         if: steps.publication.outputs.count != '0'
-        run: pnpm publish:scheduled -- --date "${{ steps.publication.outputs.date }}" > publication.json
+        run: node script/publish-scheduled-posts.mjs --date "${{ steps.publication.outputs.date }}" > publication.json
 
       - name: Formatear posts publicados
         if: steps.publication.outputs.count != '0'
@@ -105,7 +106,9 @@ jobs:
           execFileSync("pnpm", ["exec", "oxfmt", ...files], { stdio: "inherit" });
           NODE
 
+      - run: pnpm astro check
       - run: pnpm build
+      - run: pnpm content:check -- --built
 
       - name: Confirmar publicación
         if: steps.publication.outputs.count != '0'
@@ -115,6 +118,20 @@ jobs:
           git add -A src/content/drafts/posts src/content/posts
           git commit -m "chore(blog): publicar posts programados"
           git push origin master
+
+      - name: Conservar manifiesto para recuperar la sincronización
+        if: steps.publication.outputs.count != '0'
+        uses: actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02 # v4
+        with:
+          name: publication-${{ github.run_id }}
+          path: publication.json
+          retention-days: 30
+
+      - name: Actualizar issues editoriales originales
+        if: steps.publication.outputs.count != '0'
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: node script/sync-publication-issues.mjs publication.json
 
       - name: Crear aviso de publicación
         if: steps.publication.outputs.count != '0'

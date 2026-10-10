@@ -13,6 +13,7 @@ image:
   width: 1536
   height: 1024
 ---
+issue: 65
 
 La evolución importante del desarrollo con IA no consiste solo en tener un modelo más potente. Consiste en construir un entorno donde una tarea bien delimitada pueda ejecutarse con menos instrucciones improvisadas y el resultado se pueda evaluar con evidencia fiable. A lo largo de esta serie hemos recorrido las piezas de ese sistema: descubrir el problema, codificar prácticas, preparar trabajo delegable, organizar contexto y decidir cuánto riesgo podemos asumir.
 

@@ -1,0 +1,4 @@
+interface:
+  display_name: "Preparar difusión del blog"
+  short_description: "Adaptar un artículo para LinkedIn y X"
+  default_prompt: "Usa $social-distribution para preparar la difusión de este artículo."

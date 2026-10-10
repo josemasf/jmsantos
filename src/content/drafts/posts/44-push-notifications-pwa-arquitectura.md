@@ -10,6 +10,7 @@ image:
   width: 1536
   height: 1024
 ---
+issue: 24
 
 Las notificaciones push suelen llegar a un producto como una petición aparentemente pequeña: «avisa a la persona cuando termine el proceso». La complejidad aparece cuando se intenta resolverla pegando una clave VAPID, un registro de _service worker_ y una llamada a una librería. Una notificación fiable es un sistema distribuido: el navegador concede permiso, registra una suscripción que puede cambiar, el backend decide cuándo enviar y un _service worker_ recibe y presenta el aviso aunque la aplicación no esté abierta.
 

@@ -1,0 +1,4 @@
+interface:
+  display_name: "Actualizar artículos técnicos"
+  short_description: "Revisar vigencia y actualizar contenido publicado"
+  default_prompt: "Usa $content-refresh para actualizar este artículo con evidencia actual."

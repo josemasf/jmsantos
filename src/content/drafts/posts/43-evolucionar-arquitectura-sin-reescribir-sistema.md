@@ -10,6 +10,7 @@ image:
   width: 1536
   height: 1024
 ---
+issue: 25
 
 Una arquitectura rara vez llega a un punto incómodo porque una decisión aislada haya sido mala. Suele ser el resultado de muchas decisiones razonables tomadas bajo plazos, con necesidades que cambiaron y partes del sistema que crecieron más de lo previsto. Cuando cada modificación atraviesa componentes, peticiones HTTP, reglas de negocio y estados compartidos, la respuesta intuitiva es proponer una reescritura. Sin embargo, sustituir todo el sistema de una vez crea un periodo largo sin valor visible, duplica trabajo y obliga a mantener dos realidades hasta que la migración termine.
 

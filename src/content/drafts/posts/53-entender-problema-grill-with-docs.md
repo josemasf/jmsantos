@@ -13,6 +13,7 @@ image:
   width: 1536
   height: 1024
 ---
+issue: 65
 
 «Hazme esta funcionalidad» parece una instrucción suficiente hasta que el agente entrega algo que compila, pero responde a una interpretación distinta de la que teníamos en mente. El problema suele aparecer antes de escribir código: faltaba acordar qué necesidad queríamos resolver, qué comportamiento era importante y qué condiciones no debían cambiar.
 

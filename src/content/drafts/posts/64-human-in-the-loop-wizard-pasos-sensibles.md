@@ -13,6 +13,7 @@ image:
   width: 1536
   height: 1024
 ---
+issue: 65
 
 Delegar una tarea no significa que todas sus acciones deban ejecutarse automáticamente. Obtener una credencial, cambiar una política en un dashboard, aplicar una migración de producción o realizar un cutover puede requerir permisos, conocimiento del entorno y responsabilidad humana. Pedir al agente que «lo haga todo» en esos pasos añade riesgo y suele depender de información que no debería estar en el chat.
 

@@ -130,7 +130,7 @@ Los mejores runbooks suelen nacer después de una incidencia, cuando todavía es
 
 Después hay que probar el documento. No siempre hará falta simular una caída completa. Puede revisarse en pareja, recorrer las consultas en un entorno seguro o usar un ejercicio corto para comprobar que una persona que no vivió el incidente entiende los pasos. Si el procedimiento no se puede probar porque requiere permisos, herramientas o datos inaccesibles, eso también es una señal operativa que merece resolverse.
 
-Actualizar el runbook tras usarlo es esencial. Un enlace roto, una métrica que ha cambiado de nombre o una acción que ya no es segura convierten un documento útil en una fuente de riesgo. La documentación viva de un equipo incluye estas correcciones pequeñas y continuas, como explico en el artículo sobre [documentación viva con Astro y Starlight](/blog/documentacion-viva-astro-starlight-equipo/).
+Actualizar el runbook tras usarlo es esencial. Un enlace roto, una métrica que ha cambiado de nombre o una acción que ya no es segura convierten un documento útil en una fuente de riesgo. La documentación viva de un equipo incluye estas correcciones pequeñas y continuas.
 
 ## No sustituye el diseño para fallar bien
 

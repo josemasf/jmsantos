@@ -13,6 +13,7 @@ image:
   width: 1536
   height: 1024
 ---
+issue: 65
 
 Hay iniciativas cuyo problema inicial ocupa una frase, pero cuya solución exige comprender un sistema legacy, acordar cambios de dominio, validar contratos entre repositorios y planificar una migración. Empezar a programar puede sentirse productivo, aunque cada hallazgo obligue a rehacer la ruta. Si todavía no sabemos qué decisiones hacen falta para llegar a una solución, dividir el trabajo en tareas de implementación es prematuro.
 

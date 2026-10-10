@@ -10,6 +10,7 @@ image:
   width: 1536
   height: 1024
 ---
+issue: 22
 
 Una estrategia de testing se vuelve costosa cuando usa la misma respuesta para cualquier cambio. Exigir E2E para una función pura ralentiza el feedback; limitarse a unitarios para un flujo de pago o permisos deja sin comprobar los puntos donde se integran decisiones importantes. La alternativa no es adivinar cuántos tests hacen falta. Es decidir qué evidencia proporciona cada tipo de prueba y proporcionarla en proporción al riesgo que estamos introduciendo o modificando.
 

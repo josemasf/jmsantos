@@ -13,6 +13,7 @@ image:
   width: 1536
   height: 1024
 ---
+issue: 65
 
 Cuando algo falla, es fácil empezar por la explicación más plausible: un estado que no se actualiza, una carrera asíncrona o un dato inesperado. Un agente puede convertir esa intuición en un cambio rápidamente, pero si la hipótesis no explica el síntoma real, el parche añade movimiento sin reducir incertidumbre. En depuración, la primera tarea no es elegir la causa: es construir una forma fiable de observar el fallo.
 

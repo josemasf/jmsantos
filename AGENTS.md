@@ -2,35 +2,47 @@
 
 Este repositorio mantiene agentes personalizados para tareas específicas.
 
-## Tabla de agentes disponibles
+## Flujo y selección por tarea
 
-| Agente                       | Objetivo                                                                              | Archivo                                                |
-| ---------------------------- | ------------------------------------------------------------------------------------- | ------------------------------------------------------ |
-| Astro Content Writer         | Planificar, redactar, revisar y optimizar artículos técnicos para el blog Astro.      | `.github/agents/astro-content-writer.agent.md`         |
-| Visual Asset Prompt Designer | Diseñar prompts de alta calidad para generar recursos visuales de artículos técnicos. | `.github/agents/visual-asset-prompt-designer.agent.md` |
+Leer [el flujo editorial](docs/editorial-workflow.md) antes de editar contenido o
+su automatización. Ese documento define contratos de entrega, estados, privacidad,
+fechas, series, imágenes y validaciones. Cargar solo el rol y las skills aplicables.
 
-## Astro Content Writer
+| Agente                       | Objetivo                                                       | Archivo                                                |
+| ---------------------------- | -------------------------------------------------------------- | ------------------------------------------------------ |
+| Editorial Planner            | Elegir temas, ordenar backlog y detectar duplicados.           | `.github/agents/editorial-planner.agent.md`            |
+| Technical Researcher         | Contrastar fuentes, versiones y ejemplos.                      | `.github/agents/technical-researcher.agent.md`         |
+| Astro Content Writer         | Redactar y actualizar artículos desde una ficha contrastada.   | `.github/agents/astro-content-writer.agent.md`         |
+| Editorial Reviewer           | Revisar rigor, estilo, privacidad y preparación para publicar. | `.github/agents/editorial-reviewer.agent.md`           |
+| Visual Asset Prompt Designer | Diseñar dirección de arte y prompts de imágenes.               | `.github/agents/visual-asset-prompt-designer.agent.md` |
 
-- Nombre: `Astro Content Writer`
-- Archivo fuente: `.github/agents/astro-content-writer.agent.md`
-- Descripción: agente especializado en planificación, redacción, revisión y optimización SEO de artículos técnicos para el blog Astro.
-- Herramientas declaradas: `read`, `search`, `edit`, `execute`.
-- Idioma por defecto: español de España.
+| Skill                     | Tarea                                                      | Archivo                                             |
+| ------------------------- | ---------------------------------------------------------- | --------------------------------------------------- |
+| editorial-dedup           | Comparar ideas con posts, drafts e issues.                 | `.agents/skills/editorial-dedup/SKILL.md`           |
+| research-sources          | Contrastar afirmaciones con fuentes primarias.             | `.agents/skills/research-sources/SKILL.md`          |
+| prepublish-check          | Revisar contenido, assets y evidencias antes de programar. | `.agents/skills/prepublish-check/SKILL.md`          |
+| social-distribution       | Preparar textos de LinkedIn/X.                             | `.agents/skills/social-distribution/SKILL.md`       |
+| content-refresh           | Actualizar contenido preservando URL e historial.          | `.agents/skills/content-refresh/SKILL.md`           |
+| seo                       | Revisar metadatos y SEO del blog Astro.                    | `.agents/skills/seo/SKILL.md`                       |
+| astro-ui-layout-architect | Implementar cambios de interfaz.                           | `.github/skills/astro-ui-layout-architect/SKILL.md` |
 
-### Cuándo usarlo
+Para Copilot, seleccionar el agente por nombre. En Codex u otro asistente, leer
+el archivo `.agent.md` correspondiente y aplicar sus instrucciones dentro del
+encargo del usuario. Las skills se invocan por tarea; no son procesos recurrentes.
 
-Usar este agente cuando la tarea sea:
+El planificador entrega la ficha; el investigador aporta evidencia; el redactor
+crea el Markdown; el revisor devuelve hallazgos. El agente visual diseña prompts:
+la generación e integración del asset corresponde al asistente con herramienta
+de imágenes. Un prompt no cuenta como portada terminada.
 
-- Proponer ideas editoriales para el blog.
-- Crear o mejorar artículos en `src/content/posts`.
-- Revisar calidad técnica/editorial de borradores.
-- Optimizar SEO on-page de contenidos existentes.
+### Restricciones compartidas
 
-### Cómo consumirlo desde Codex u otros LLM
-
-1. Cargar el contenido completo de `.github/agents/astro-content-writer.agent.md` como instrucción de sistema o rol especializado.
-2. Mantener sus restricciones editoriales y técnicas (no inventar datos, respetar frontmatter y convención del repositorio).
-3. Ejecutar las tareas de escritura sobre la colección de posts de Astro, validando formato y coherencia con `src/content.config.ts`.
+- No inventar vivencias, fuentes ni resultados. Anonimizar ejemplos profesionales
+  y mantener documentos privados fuera del repositorio y de issues públicas.
+- No publicar drafts vencidos como efecto secundario de planificar o redactar.
+- Conservar fechas aprobadas y verificar qué fechas activan autopublicación.
+- No enviar difusión social como parte de preparar textos.
+- Registrar solo comprobaciones realmente ejecutadas y sus límites.
 
 ### Layouts de posts disponibles
 
@@ -157,4 +169,8 @@ Entrega: prompt principal, prompt negativo, 3 variantes y alt text.
 
 - Este registro documenta la existencia del agente para herramientas que no descubren automáticamente archivos `.agent.md`.
 - Si se actualiza el agente, actualizar también este archivo para mantener compatibilidad entre asistentes.
-- Las GitHub Issues son la fuente de verdad del estado editorial. Cuando se cree un post a partir de una issue, actualizar su sección **Estado editorial** a **Borrador programado** e incluir la ruta al archivo y su fecha. Cuando el post se publique, actualizar la issue a **Publicado** con su ruta pública o cerrarla con el motivo `completed`.
+- Las GitHub Issues son la fuente de verdad del estado editorial. Cuando se cree un post a partir de una issue, verificarla y añadir su número en
+  `issue` del frontmatter. Registrar **Borrador** o **Programado** según preparación
+  y fecha, con ruta y siguiente acción. El workflow actualiza un bloque por artículo
+  en la issue original al publicar; conserva su contenido/estado global y no la
+  cierra automáticamente porque puede representar una serie.

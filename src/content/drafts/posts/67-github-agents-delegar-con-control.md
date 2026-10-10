@@ -13,6 +13,7 @@ image:
   width: 1536
   height: 1024
 ---
+issue: 65
 
 Un agente que trabaja en segundo plano puede ahorrar tiempo de espera, pero solo si la tarea se puede ejecutar sin convertir cada decisión importante en una pregunta bloqueante. Asignar una iniciativa completa descrita en una issue padre suele transferir demasiada ambigüedad. Una unidad pequeña, con contexto y criterio de aceptación, ofrece un encargo más claro y un resultado que el equipo puede revisar.
 

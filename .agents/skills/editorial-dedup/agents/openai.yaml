@@ -1,0 +1,4 @@
+interface:
+  display_name: "Detectar duplicados editoriales"
+  short_description: "Comparar ideas con artículos, borradores e issues"
+  default_prompt: "Usa $editorial-dedup para decidir si esta idea merece un artículo nuevo."

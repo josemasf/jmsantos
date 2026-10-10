@@ -13,6 +13,7 @@ image:
   width: 1536
   height: 1024
 ---
+issue: 65
 
 Lanzar varias sesiones de agentes en paralelo puede aumentar el trabajo completado, pero también multiplica los conflictos si todas modifican el mismo checkout o dependen de decisiones aún no cerradas. Un working tree compartido mezcla archivos, estado de Git y contexto de tareas; una sesión puede encontrar cambios que no hizo y atribuirlos al ticket equivocado.
 

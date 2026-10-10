@@ -13,6 +13,7 @@ image:
   width: 1536
   height: 1024
 ---
+issue: 65
 
 Instalar una skill y cambiarla inmediatamente puede parecer una forma de adaptarla al equipo. Pero personalizar antes de probarla significa que aún no sabemos qué parte aporta valor ni qué fricción queremos resolver. Es fácil acabar manteniendo una versión propia que se aleja de la práctica original sin evidencias de que funcione mejor.
 

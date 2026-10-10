@@ -10,14 +10,14 @@ npm init astro -- --template portfolio
 
 All commands are run from the root of the project, from a terminal:
 
-| Command                | Action                                           |
-| :--------------------- | :----------------------------------------------- |
-| `npm install`          | Installs dependencies                            |
-| `npm run dev`          | Starts local dev server at `localhost:3000`      |
-| `npm run build`        | Build your production site to `./dist/`          |
-| `npm run preview`      | Preview your build locally, before deploying     |
-| `npm run astro ...`    | Run CLI commands like `astro add`, `astro check` |
-| `npm run astro --help` | Get help using the Astro CLI                     |
+| Command             | Action                                           |
+| :------------------ | :----------------------------------------------- |
+| `pnpm install`      | Installs dependencies                            |
+| `pnpm dev`          | Starts local dev server at `localhost:3000`      |
+| `pnpm build`        | Build your production site to `./dist/`          |
+| `pnpm preview`      | Preview your build locally, before deploying     |
+| `pnpm astro ...`    | Run CLI commands like `astro add`, `astro check` |
+| `pnpm astro --help` | Get help using the Astro CLI                     |
 
 ## Imágenes y Cloudinary
 
@@ -76,11 +76,13 @@ de imágenes que los posts publicados. Las imágenes editoriales deben vivir en
 `public/images/blog/<slug>/` y el campo `date` debe usar el formato
 `YYYY-MM-DD`.
 
-El workflow `Publicar posts programados` se ejecuta cada lunes a las 08:00 en
+El workflow `Publicar posts programados` se ejecuta cada día a las 08:00 en
 `Europe/Madrid`. Mueve a `src/content/posts/` los artículos con fecha igual o
-anterior a ese lunes, valida el proyecto y publica el commit en `master`, desde
-donde Netlify despliega automáticamente. Después crea y cierra una issue con
-los enlaces de los artículos publicados.
+anterior a la fecha actual de Madrid, valida el proyecto y publica el commit en `master`, desde
+donde Netlify despliega automáticamente. Después actualiza la issue original indicada en el campo opcional `issue` de cada
+post (sin cerrarla) y conserva el aviso de lote con los enlaces publicados.
+La actualización registra publicación en master; no demuestra que Netlify haya
+terminado el despliegue.
 
 Para probar la selección sin mover archivos:
 
@@ -95,9 +97,32 @@ cada lote publicado.
 
 Inter y Montserrat Alternates se sirven desde `public/fonts/` en formato WOFF2. No se cargan desde Google Fonts ni desde otro proveedor externo.
 
-## Agent Registry
+## Gestión editorial con agentes
 
-This repository documents custom agents for AI assistants in [AGENTS.md](AGENTS.md).
+El [registro de agentes y skills](AGENTS.md) asigna cada tarea a un responsable.
+El [flujo editorial](docs/editorial-workflow.md) explica fichas, evidencias,
+privacidad, calendario, series, generación de assets y preparación social.
 
-- Main agent for editorial workflows: [Astro Content Writer](.github/agents/astro-content-writer.agent.md)
-- Usage and interoperability notes for Codex/other LLMs: [AGENTS.md](AGENTS.md)
+- Editorial Planner: temas, backlog y duplicados.
+- Technical Researcher: fuentes primarias y ejemplos.
+- Astro Content Writer: redacción y actualizaciones.
+- Editorial Reviewer: rigor, estilo y preparación.
+- Visual Asset Prompt Designer: dirección de arte de portadas.
+
+Las skills reutilizables están en `.agents/skills/`: `editorial-dedup`,
+`research-sources`, `prepublish-check`, `social-distribution`, `content-refresh`
+y `seo`. La skill existente `astro-ui-layout-architect` cubre cambios de interfaz.
+
+```bash
+pnpm content:check
+pnpm test:content
+pnpm astro check
+pnpm build
+pnpm content:check -- --built
+pnpm images:optimize -- entrada.png public/images/blog/mi-post/portada.webp
+```
+
+La CI `Calidad de contenido` valida PRs y master. El esquema compartido,
+series, slugs, assets y enlaces internos se comprueban automáticamente; el rigor,
+la privacidad y la voz del autor requieren revisión editorial. Los borradores se
+previsualizan con `pnpm dev` y se excluyen del build de producción.

@@ -1,0 +1,4 @@
+interface:
+  display_name: "Revisar antes de publicar"
+  short_description: "Comprobar contenido, series, enlaces y assets"
+  default_prompt: "Usa $prepublish-check para validar este borrador antes de programarlo."

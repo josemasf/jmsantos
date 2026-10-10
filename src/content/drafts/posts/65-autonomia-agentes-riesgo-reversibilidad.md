@@ -13,6 +13,7 @@ image:
   width: 1536
   height: 1024
 ---
+issue: 65
 
 Preguntar «¿puede el agente hacerlo?» no basta para decidir si debería hacerlo sin supervisión. Una refactorización protegida por tests puede ser fácil de revisar y revertir; una migración de datos o un cambio de autorización puede afectar a usuarios de formas difíciles de reparar. El nivel de delegación debe depender de qué puede salir mal, a quién afecta y qué evidencia tenemos para detectar el error.
 
