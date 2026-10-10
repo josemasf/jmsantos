@@ -10,6 +10,7 @@ image:
   width: 1536
   height: 1024
 ---
+issue: 66
 
 En la [serie sobre desarrollo agéntico](/blog/ciclo-desarrollo-ia-chatgpt-codex-agentes/), he recorrido cómo convertir decisiones en especificaciones, trabajo delegable y ciclos de feedback. Ese flujo plantea una pregunta organizativa que merece una respuesta propia: si parte de la investigación, la implementación y la revisión puede avanzar de forma asíncrona con agentes, ¿qué deberían hacer las personas y qué sentido conservan las ceremonias de Scrum?
 

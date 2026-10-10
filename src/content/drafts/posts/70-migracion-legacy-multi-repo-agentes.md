@@ -13,6 +13,7 @@ image:
   width: 1536
   height: 1024
 ---
+issue: 65
 
 Migrar una aplicación de escritorio a web no consiste en reemplazar cada formulario por una pantalla equivalente. En un sistema legacy, las reglas de negocio pueden vivir en la interfaz, los accesos a datos pueden llamar directamente a procedimientos almacenados y el comportamiento puede depender de varios repositorios. Generar una nueva UI rápidamente no resuelve qué hace realmente el sistema ni dónde deberían vivir sus responsabilidades.
 

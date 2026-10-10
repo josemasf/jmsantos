@@ -1,6 +1,7 @@
 import { defineCollection } from "astro:content";
 import { glob } from "astro/loaders";
 import { z } from "astro/zod";
+import { postSchema } from "./data/post-schema";
 
 const jobsCollection = defineCollection({
   loader: glob({ base: "./src/content/jobs", pattern: "**/*.md" }),
@@ -23,38 +24,6 @@ const presentationsCollection = defineCollection({
     url: z.string().optional(),
     slideUrl: z.string().optional(),
   }),
-});
-
-const postSchema = z.object({
-  title: z.string(),
-  description: z.string(),
-  date: z.coerce.date(),
-  updatedDate: z.coerce.date().optional(),
-  tags: z.array(z.string()),
-  category: z.string(),
-  image: z
-    .object({
-      src: z.string(),
-      alt: z.string(),
-      caption: z.string().optional(),
-      width: z.number().optional(),
-      height: z.number().optional(),
-    })
-    .optional(),
-  series: z
-    .object({
-      slug: z.string(),
-      order: z.number(),
-      image: z
-        .object({
-          src: z.string(),
-          alt: z.string(),
-          width: z.number().optional(),
-          height: z.number().optional(),
-        })
-        .optional(),
-    })
-    .optional(),
 });
 
 const postsCollection = defineCollection({

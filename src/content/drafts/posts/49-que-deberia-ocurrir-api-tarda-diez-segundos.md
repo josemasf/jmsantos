@@ -10,6 +10,7 @@ image:
   width: 1536
   height: 1024
 ---
+issue: 52
 
 Una persona pulsa «Generar informe» y la pantalla no cambia. Durante unos segundos no sabe si el clic se ha registrado, si la aplicación está trabajando o si algo se ha roto. Cuando por fin aparece una respuesta, quizá el informe ya no sea relevante o la persona haya pulsado varias veces y lanzado la misma operación más de una vez.
 

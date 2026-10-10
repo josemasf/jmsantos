@@ -13,6 +13,7 @@ image:
   width: 1536
   height: 1024
 ---
+issue: 65
 
 Una especificación puede aclarar trabajo complejo, pero también puede convertirse en un documento que nadie consulta. Un conjunto de tickets puede permitir que varias personas y agentes trabajen en paralelo, pero también puede repartir una funcionalidad en tareas por capas que no producen nada utilizable hasta el final. La pregunta útil no es si todo trabajo necesita una spec; es qué forma de preparación reduce más riesgo para este cambio.
 

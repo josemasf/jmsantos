@@ -13,6 +13,7 @@ image:
   width: 1536
   height: 1024
 ---
+issue: 65
 
 Cuando un agente repite un error, la reacción habitual es corregir la última modificación y continuar. Si vuelve a pasar en tareas similares, quizá el problema no sea esa línea de código: puede faltar una instrucción, un chequeo automático, un ejemplo de arquitectura o una forma sencilla de encontrar la información correcta.
 

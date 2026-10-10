@@ -10,6 +10,7 @@ image:
   width: 1536
   height: 1024
 ---
+issue: 53
 
 Una feature flag permite cambiar el comportamiento de una aplicación sin desplegar una versión nueva. Es útil para lanzar una funcionalidad por etapas, limitar el impacto de un cambio o comparar variantes. El coste aparece cuando la bandera sobrevive al motivo por el que se creó: cada condición añade una ruta posible, cada prueba debe decidir qué valor usar y cada persona que lee el código necesita averiguar si la rama sigue teniendo sentido.
 

@@ -13,6 +13,7 @@ image:
   width: 1536
   height: 1024
 ---
+issue: 65
 
 La primera skill propia no debería empezar como una guía exhaustiva de todo lo que el equipo sabe. Suele nacer de algo más concreto: una instrucción que se repite, una secuencia que se olvida o un resultado que distintos agentes producen de forma inconsistente. El objetivo es empaquetar una responsabilidad acotada, no escribir una metodología completa.
 

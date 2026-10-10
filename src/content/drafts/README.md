@@ -26,22 +26,23 @@ Antes de asignar fecha o prefijo a un nuevo borrador, sigue esta secuencia:
    ```
 
 2. Revisa el resultado junto con `src/content/posts/`. Los posts cuya fecha ya ha llegado y estén en la colección pública ya no deben considerarse borradores ni ocupar huecos del calendario.
-3. Si existen borradores vencidos que siguen en `src/content/drafts/posts/`, publícalos antes de planificar el siguiente, salvo que la petición indique expresamente conservarlos como borradores:
+3. Si existen borradores vencidos, comunicar el estado y comprobar que están listos.
+   No publicarlos como efecto secundario de planificar o crear otro artículo. Su
+   incorporación a master activa la publicación diaria si la fecha ya ha llegado.
 
-   ```bash
-   pnpm publish:scheduled
-   ```
-
-4. Lee las fechas de **todos** los archivos Markdown de `src/content/posts/` y `src/content/drafts/posts/`, incluidos subdirectorios. Detecta fechas ausentes, inválidas o duplicadas antes de continuar.
+4. Lee las fechas de **todos** los archivos Markdown de `src/content/posts/` y `src/content/drafts/posts/`, incluidos subdirectorios. Detecta fechas ausentes o inválidas y revisa coincidencias según la cadencia aprobada.
 5. Ordena el calendario por `date`, identifica huecos de siete días y decide si un borrador existente debe ocupar uno antes de añadir otro al final.
 6. Solo entonces calcula el prefijo numérico siguiente y la fecha del nuevo borrador.
 
 ## Criterio de programación
 
-Un borrador nuevo se programa semanalmente a partir de la fecha más reciente ya planificada. Si hay huecos previos, pueden reutilizarse cuando el tema encaje y se mantenga la cadencia editorial. No se cambian fechas de otros borradores sin una decisión explícita.
+Respetar primero el calendario aprobado de cada serie. En ausencia de otro calendario, un borrador nuevo se programa semanalmente a partir de la fecha más reciente ya planificada. Si hay huecos previos, pueden reutilizarse cuando el tema encaje y se mantenga la cadencia editorial. No se cambian fechas de otros borradores sin una decisión explícita.
 
 Después de crear, mover o publicar un borrador, vuelve a comprobar el calendario por fecha y ejecuta las validaciones de contenido habituales.
 
 ## Publicación programada
 
 `script/publish-scheduled-posts.mjs` mueve a `src/content/posts/` todos los borradores con fecha igual o anterior a la fecha actual de Madrid. La opción `--dry-run` solo informa de qué archivos se publicarían. El script evita sobrescribir un post público con la misma ruta.
+
+El workflow comprueba fechas diariamente a las 08:00 de Madrid. Validar el
+borrador con `pnpm content:check` y el flujo de `docs/editorial-workflow.md`.

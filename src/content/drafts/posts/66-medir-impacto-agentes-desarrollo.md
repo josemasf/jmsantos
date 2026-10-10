@@ -13,6 +13,7 @@ image:
   width: 1536
   height: 1024
 ---
+issue: 65
 
 La cantidad de código generado por IA es fácil de contar y difícil de interpretar. Más líneas pueden significar más funcionalidad, más boilerplate o más trabajo que habrá que revisar y retirar. Si un equipo usa esa cifra para decidir si los agentes mejoran la productividad, corre el riesgo de optimizar el volumen producido en lugar del resultado entregado.
 

@@ -1,0 +1,4 @@
+interface:
+  display_name: "Investigar fuentes técnicas"
+  short_description: "Contrastar afirmaciones con fuentes primarias"
+  default_prompt: "Usa $research-sources para contrastar el esquema de este artículo."

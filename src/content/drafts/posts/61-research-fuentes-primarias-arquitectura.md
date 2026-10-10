@@ -13,6 +13,7 @@ image:
   width: 1536
   height: 1024
 ---
+issue: 65
 
 Una conversación sobre una librería o arquitectura puede producir argumentos convincentes sin comprobar qué soporta la versión actual, cuál es el comportamiento por defecto o qué limitación documenta el proyecto. Cuando una opinión técnica afecta a una migración, una API o una decisión difícil de revertir, conviene separar la exploración de la conclusión y buscar evidencia en quien mantiene la fuente.
 

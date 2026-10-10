@@ -1,6 +1,12 @@
-import { access, mkdir, readdir, readFile, rename } from "node:fs/promises";
+import { access, mkdir, readFile, rename } from "node:fs/promises";
 import { dirname, join, relative, resolve } from "node:path";
 import { fileURLToPath } from "node:url";
+
+import {
+  findMarkdownFiles,
+  parsePostDocument,
+  postId,
+} from "./post-frontmatter.mjs";
 
 const DATE_PATTERN = /^\d{4}-\d{2}-\d{2}$/;
 
@@ -19,45 +25,31 @@ function getArgumentValue(argumentsList, argumentName) {
   return value;
 }
 
-function removeOptionalQuotes(value) {
-  const trimmedValue = value.trim();
-  const hasMatchingQuotes =
-    (trimmedValue.startsWith('"') && trimmedValue.endsWith('"')) ||
-    (trimmedValue.startsWith("'") && trimmedValue.endsWith("'"));
-
-  return hasMatchingQuotes ? trimmedValue.slice(1, -1).trim() : trimmedValue;
-}
-
 export function parsePostFrontmatter(contents, filePath = "el post") {
-  const frontmatterMatch = contents.match(
-    /^---\r?\n([\s\S]*?)\r?\n---(?:\r?\n|$)/,
-  );
-
-  if (!frontmatterMatch) {
-    throw new Error(`${filePath}: falta un frontmatter YAML válido.`);
-  }
-
-  const fields = new Map();
-  for (const line of frontmatterMatch[1].split(/\r?\n/)) {
-    const fieldMatch = line.match(/^([A-Za-z][\w-]*):\s*(.*?)\s*(?:#.*)?$/);
-    if (fieldMatch) {
-      fields.set(fieldMatch[1], removeOptionalQuotes(fieldMatch[2]));
-    }
-  }
-
-  const date = fields.get("date");
-  if (!date || !isValidDate(date)) {
+  const { data } = parsePostDocument(contents, filePath);
+  const date = data.date;
+  if (typeof date !== "string" || !isValidDate(date)) {
     throw new Error(
       `${filePath}: el campo date debe tener el formato YYYY-MM-DD y ser una fecha válida.`,
     );
   }
 
-  const title = fields.get("title");
-  if (!title) {
+  const title = data.title;
+  if (typeof title !== "string" || !title.trim()) {
     throw new Error(`${filePath}: falta el campo title en el frontmatter.`);
   }
 
-  return { date, title };
+  if (
+    data.issue !== undefined &&
+    (!Number.isSafeInteger(data.issue) || data.issue <= 0)
+  ) {
+    throw new Error(`${filePath}: issue debe ser un número entero positivo.`);
+  }
+  return {
+    date,
+    title,
+    ...(data.issue !== undefined ? { issue: data.issue } : {}),
+  };
 }
 
 export function isValidDate(value) {
@@ -85,33 +77,6 @@ export function getMadridDate(now = new Date()) {
   );
 
   return `${values.year}-${values.month}-${values.day}`;
-}
-
-async function findMarkdownFiles(directory) {
-  let entries;
-  try {
-    entries = await readdir(directory, { withFileTypes: true });
-  } catch (error) {
-    if (error.code === "ENOENT") {
-      return [];
-    }
-    throw error;
-  }
-
-  const files = await Promise.all(
-    entries.map(async (entry) => {
-      const path = join(directory, entry.name);
-      if (entry.isDirectory()) {
-        return findMarkdownFiles(path);
-      }
-
-      return entry.isFile() && entry.name.endsWith(".md") ? [path] : [];
-    }),
-  );
-
-  return files
-    .flat()
-    .sort((firstFile, secondFile) => firstFile.localeCompare(secondFile));
 }
 
 async function pathExists(path) {
@@ -153,10 +118,7 @@ export async function publishScheduledPosts({
         ...frontmatter,
         filePath,
         relativePath,
-        id: relativePath
-          .replaceAll("\\", "/")
-          .replace(/\.md$/, "")
-          .replace(/^\d+-/, ""),
+        id: postId(relativePath),
         destinationPath: join(destination, relativePath),
       };
     }),
@@ -181,11 +143,12 @@ export async function publishScheduledPosts({
   return {
     publicationDate,
     dryRun,
-    posts: duePosts.map(({ date, id, relativePath, title }) => ({
+    posts: duePosts.map(({ date, id, relativePath, title, issue }) => ({
       date,
       id,
       relativePath,
       title,
+      ...(issue !== undefined ? { issue } : {}),
     })),
   };
 }
