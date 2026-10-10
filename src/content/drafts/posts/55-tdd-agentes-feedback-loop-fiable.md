@@ -1,7 +1,7 @@
 ---
 title: "TDD para agentes: el feedback fiable acelera más que generar código"
 description: "Cómo aplicar ciclos red-green a tareas de agentes, elegir seams observables y evitar tests frágiles que ralentizan la validación del software."
-date: 2026-11-03
+date: 2026-10-13
 tags: [TDD, testing, IA, agentes, Vitest, arquitectura, calidad]
 category: Testing
 series:

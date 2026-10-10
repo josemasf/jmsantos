@@ -1,7 +1,7 @@
 ---
 title: "Testing proporcional al riesgo: decide qué probar antes de medir cobertura"
 description: "Un marco práctico para elegir el nivel de pruebas según el impacto y la incertidumbre de cada cambio, sin aplicar la misma estrategia a todo el sistema."
-date: 2027-04-13
+date: 2026-11-24
 tags: [testing, calidad, Vitest, Playwright, estrategia, riesgo]
 category: Testing
 image:

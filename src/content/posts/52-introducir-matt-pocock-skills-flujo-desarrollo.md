@@ -1,7 +1,7 @@
 ---
 title: "Matt Pocock Skills: cómo empezar sin cambiar todo tu proceso"
 description: "Qué ofrece el repositorio mattpocock/skills, cómo elegir entre un plugin gestionado y archivos editables, y una forma gradual de incorporarlo a un proyecto real."
-date: 2026-10-13
+date: 2026-10-10
 tags: [IA, agentes, skills, desarrollo de software, productividad, ingeniería]
 category: Desarrollo profesional
 series:

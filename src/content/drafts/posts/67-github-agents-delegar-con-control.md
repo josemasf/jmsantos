@@ -1,7 +1,7 @@
 ---
 title: "Delegar trabajo en GitHub Agents sin perder el control"
 description: "Cómo preparar tareas agent-ready, combinar roles con skills reutilizables y revisar el trabajo asíncrono que vuelve en forma de pull request."
-date: 2027-01-26
+date: 2026-10-25
 tags: [IA, agentes, GitHub, issues, pull requests, delegación]
 category: Desarrollo profesional
 series:

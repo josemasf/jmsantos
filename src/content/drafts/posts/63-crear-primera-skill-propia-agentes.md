@@ -1,7 +1,7 @@
 ---
 title: "Cómo crear tu primera skill propia para un agente"
 description: "Un método para convertir una instrucción repetida en una skill pequeña, activable y comprobable con tareas reales del proyecto."
-date: 2026-12-29
+date: 2026-10-21
 tags: [IA, agentes, skills, documentación, productividad, ingeniería]
 category: Desarrollo profesional
 series:

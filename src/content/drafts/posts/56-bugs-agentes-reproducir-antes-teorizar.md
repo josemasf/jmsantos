@@ -1,7 +1,7 @@
 ---
 title: "Bugs con agentes: reproducir antes de teorizar"
 description: "Un proceso para depurar con agentes a partir de una reproducción determinista, hipótesis comprobables e instrumentación útil."
-date: 2026-11-10
+date: 2026-10-14
 tags: [IA, agentes, debugging, testing, observabilidad, calidad]
 category: Testing
 series:

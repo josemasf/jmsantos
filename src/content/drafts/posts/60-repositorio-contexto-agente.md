@@ -1,7 +1,7 @@
 ---
 title: "Tu repositorio también forma parte del contexto del agente"
 description: "Cómo la navegación, el lenguaje compartido, la arquitectura, las pruebas y el tooling determinan cuánto puede hacer un agente con seguridad."
-date: 2026-12-08
+date: 2026-10-18
 tags: [IA, agentes, documentación, arquitectura, DX, mantenibilidad]
 category: Arquitectura
 series:

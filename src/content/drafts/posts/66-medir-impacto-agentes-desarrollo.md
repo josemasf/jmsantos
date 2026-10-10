@@ -1,7 +1,7 @@
 ---
 title: "Cómo medir si trabajar con agentes mejora realmente el desarrollo"
 description: "Qué métricas ayudan a evaluar el efecto de los agentes en el flujo de entrega y por qué contar líneas, prompts o skills puede incentivar el comportamiento equivocado."
-date: 2027-01-19
+date: 2026-10-24
 tags: [IA, agentes, métricas, productividad, calidad, equipos]
 category: Cultura de equipo
 series:

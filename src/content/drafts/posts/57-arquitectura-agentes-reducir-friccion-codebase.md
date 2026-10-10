@@ -1,7 +1,7 @@
 ---
 title: "Arquitectura para agentes: reduce la fricción antes de delegar más"
 description: "Por qué los agentes heredan los costes de una codebase difícil de navegar y cómo mejorar seams, interfaces y locality antes de aumentar su autonomía."
-date: 2026-11-17
+date: 2026-10-15
 tags: [IA, agentes, arquitectura, mantenibilidad, codebase, desarrollo de software]
 category: Arquitectura
 series:

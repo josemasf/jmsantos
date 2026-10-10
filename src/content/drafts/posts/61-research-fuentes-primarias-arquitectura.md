@@ -1,7 +1,7 @@
 ---
 title: "Research técnico: investiga antes de convertir una opinión en arquitectura"
 description: "Un flujo para investigar decisiones técnicas con fuentes primarias, conservar los hallazgos y llevar la evidencia a una decisión o ADR."
-date: 2026-12-15
+date: 2026-10-19
 tags: [IA, agentes, research, arquitectura, documentación, toma de decisiones]
 category: Arquitectura
 series:

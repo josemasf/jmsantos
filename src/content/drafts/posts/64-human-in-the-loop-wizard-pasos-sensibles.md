@@ -1,7 +1,7 @@
 ---
 title: "Human in the loop: prepara los pasos que un agente no debe ejecutar solo"
 description: "Cómo diseñar flujos donde el agente prepara y verifica el trabajo, mientras una persona realiza acciones sensibles, externas o difíciles de revertir."
-date: 2027-01-05
+date: 2026-10-22
 tags: [IA, agentes, seguridad, operaciones, automatización, infraestructura]
 category: DevOps
 series:

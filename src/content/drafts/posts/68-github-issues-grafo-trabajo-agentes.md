@@ -1,7 +1,7 @@
 ---
 title: "GitHub Issues como grafo de trabajo para un equipo de agentes"
 description: "Cómo relacionar specs, tickets implementables y dependencias para que personas y agentes trabajen sobre una frontera lista y compartan una fuente de verdad."
-date: 2027-02-02
+date: 2026-10-26
 tags: [IA, agentes, GitHub, issues, planificación, task graph]
 category: Desarrollo profesional
 series:

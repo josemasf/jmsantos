@@ -1,7 +1,7 @@
 ---
 title: "Specs y tickets para agentes: cuándo ayudan y cuándo sobran"
 description: "Cuándo convertir una conversación en una especificación, cómo dividir el trabajo en tickets verticales y por qué cada tarea debe poder ejecutarse con contexto fresco."
-date: 2026-10-27
+date: 2026-10-12
 tags: [IA, agentes, arquitectura, gestión de producto, desarrollo de software, planificación]
 category: Desarrollo profesional
 series:

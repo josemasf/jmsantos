@@ -1,7 +1,7 @@
 ---
 title: "De las skills de Matt a las skills de tu equipo"
 description: "Cuándo adaptar una skill externa, cómo conservar su intención y dónde colocar cada regla para construir un sistema de trabajo propio."
-date: 2026-12-22
+date: 2026-10-20
 tags: [IA, agentes, skills, equipos, arquitectura, documentación]
 category: Desarrollo profesional
 series:

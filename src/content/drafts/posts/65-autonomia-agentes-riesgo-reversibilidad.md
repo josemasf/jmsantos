@@ -1,7 +1,7 @@
 ---
 title: "¿Cuándo no delegar? Ajusta la autonomía al riesgo del cambio"
 description: "Un marco para decidir cuánto trabajo puede delegarse según la reversibilidad, el impacto potencial y la evidencia disponible."
-date: 2027-01-12
+date: 2026-10-23
 tags: [IA, agentes, seguridad, riesgo, arquitectura, desarrollo de software]
 category: Arquitectura
 series:

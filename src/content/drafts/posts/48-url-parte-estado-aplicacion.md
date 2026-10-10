@@ -1,7 +1,7 @@
 ---
 title: "La URL es parte del estado de tu aplicación"
 description: "Qué estado de una interfaz conviene representar en la URL y cómo sincronizar filtros, búsquedas, paginación y pestañas con Vue Router sin duplicar fuentes de verdad."
-date: 2027-06-08
+date: 2027-01-19
 tags: [Vue, Vue Router, URL, estado, navegación, UX, arquitectura]
 category: Arquitectura
 image:

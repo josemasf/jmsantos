@@ -1,7 +1,7 @@
 ---
 title: "Migrar un legacy multi-repositorio con agentes: casos de uso antes que pantallas"
 description: "Cómo descubrir el comportamiento de una aplicación de escritorio, acordar contratos y migrar casos de uso completos entre repositorios con ayuda de agentes."
-date: 2027-02-16
+date: 2026-10-28
 tags: [IA, agentes, legacy, migración, .NET, Vue, arquitectura]
 category: Arquitectura
 series:

@@ -1,7 +1,7 @@
 ---
 title: "Wayfinder: decide el camino antes de abordar una iniciativa grande"
 description: "Cómo usar Wayfinder para convertir una iniciativa incierta en un mapa compartido de decisiones y avanzar hasta que el trabajo esté listo para especificarse."
-date: 2026-11-24
+date: 2026-10-16
 tags: [IA, agentes, planificación, arquitectura, discovery, Wayfinder]
 category: Arquitectura
 series:

@@ -1,7 +1,7 @@
 ---
 title: "Retro para agentes: mejora el entorno, no solo el código"
 description: "Cómo convertir errores repetidos de agentes en mejoras de instrucciones, tooling, documentación y estándares sin inflar AGENTS.md."
-date: 2026-12-01
+date: 2026-10-17
 tags: [IA, agentes, retrospectiva, DX, documentación, calidad]
 category: Cultura de equipo
 series:

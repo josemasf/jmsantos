@@ -1,7 +1,7 @@
 ---
 title: "Feature flags: la deuda invisible después del despliegue"
 description: "Cómo clasificar, probar y retirar feature flags para controlar su ciclo de vida y evitar que las ramas temporales se conviertan en complejidad permanente."
-date: 2027-05-11
+date: 2026-12-22
 tags: [frontend, arquitectura, feature flags, testing, mantenibilidad]
 category: Arquitectura
 image:

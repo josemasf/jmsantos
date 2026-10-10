@@ -2,10 +2,10 @@ name: Publicar posts programados
 
 on:
   schedule:
-    # 08:00 Europe/Madrid. Se separan los cron para poder identificar cuál
-    # corresponde al horario vigente aunque GitHub retrase la ejecución.
-    - cron: "0 6 * * 1,2,3,4,6"
-    - cron: "0 7 * * 1,2,3,4,6"
+    # 08:00 Europe/Madrid. Se separan los cron para mantener la hora local
+    # durante los cambios entre horario de verano e invierno.
+    - cron: "0 6 * * *"
+    - cron: "0 7 * * *"
 
   workflow_dispatch:
 
@@ -39,8 +39,8 @@ jobs:
             const utc = new Date(now.toLocaleString("en-US", { timeZone: "UTC" }));
             const offsetHours = Math.round((madrid - utc) / 3_600_000);
             const expectedSchedule = offsetHours === 2
-              ? "0 6 * * 1,2,3,4,6"
-              : "0 7 * * 1,2,3,4,6";
+              ? "0 6 * * *"
+              : "0 7 * * *";
 
             console.log(process.env.SCHEDULE === expectedSchedule);
           ')"

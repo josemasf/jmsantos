@@ -1,7 +1,7 @@
 ---
 title: "Del copiloto al equipo de agentes: un flujo completo de ingeniería"
 description: "Cómo conectar skills, contexto de repositorio, issues, delegación y feedback loops para construir un sistema de trabajo agéntico con límites claros."
-date: 2027-02-23
+date: 2026-10-29
 tags: [IA, agentes, ingeniería, skills, arquitectura, testing, equipos]
 category: Desarrollo profesional
 series:
