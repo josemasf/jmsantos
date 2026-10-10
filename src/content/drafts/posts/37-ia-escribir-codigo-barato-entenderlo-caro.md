@@ -1,7 +1,7 @@
 ---
 title: "Escribir código ya es barato. Mantenerlo sigue siendo carísimo."
 description: "La IA acelera la producción de código, pero no reemplaza el criterio necesario para integrarlo, validarlo y mantenerlo en un producto real."
-date: 2026-10-20
+date: 2027-03-09
 tags:
   [IA, arquitectura, mantenimiento, calidad, equipos, desarrollo de software]
 category: Frontend

@@ -14,6 +14,11 @@ export const blogSeries = {
     description:
       "Una guía práctica para construir una suite de tests rápida, realista y mantenible en Vue 3.",
   },
+  "matt-pocock-skills-flujo-desarrollo": {
+    title: "Matt Pocock Skills en un flujo de desarrollo real",
+    description:
+      "Una serie práctica para adoptar, adaptar y escalar skills de ingeniería en equipos que trabajan con agentes.",
+  },
 } satisfies Record<string, BlogSeries>;
 
 export function getBlogSeries(slug: string): BlogSeries | undefined {

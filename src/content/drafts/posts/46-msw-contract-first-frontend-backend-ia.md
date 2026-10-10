@@ -1,7 +1,7 @@
 ---
 title: "MSW no es solo para tests: desarrollar frontend sin esperar al backend"
 description: "Cómo usar MSW y un contrato de API acordado para desarrollar frontend y backend en paralelo, validar escenarios antes de implementar y aprovechar la IA sin delegarle las decisiones importantes."
-date: 2026-12-08
+date: 2027-04-27
 tags: [MSW, frontend, testing, API, OpenAPI, IA, contract-first]
 category: Frontend
 image:

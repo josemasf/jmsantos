@@ -1,7 +1,7 @@
 ---
 title: "Cuando Front acaba siendo el QA de Backend"
 description: "Por qué la integración entre frontend y backend se convierte en el verdadero control de calidad de muchos equipos, y cómo un contrato compartido y una Definition of Done más exigente evitan ese desgaste."
-date: 2027-01-19
+date: 2027-06-01
 tags:
   [
     cultura de equipo,

@@ -1,7 +1,7 @@
 ---
 title: "El bug más caro es el que no sabes reproducir"
 description: "Cómo diseñar observabilidad frontend para convertir errores ambiguos en incidentes investigables sin recoger datos innecesarios."
-date: 2026-12-15
+date: 2027-05-04
 tags: [observabilidad, debugging, Sentry, frontend, errores, calidad]
 category: Frontend
 image:
