@@ -2,7 +2,8 @@
 title: "Arquitectura para agentes: reduce la fricción antes de delegar más"
 description: "Por qué los agentes heredan los costes de una codebase difícil de navegar y cómo mejorar seams, interfaces y locality antes de aumentar su autonomía."
 date: 2026-10-15
-tags: [IA, agentes, arquitectura, mantenibilidad, codebase, desarrollo de software]
+tags:
+  [IA, agentes, arquitectura, mantenibilidad, codebase, desarrollo de software]
 category: Arquitectura
 series:
   slug: matt-pocock-skills-flujo-desarrollo
@@ -13,7 +14,6 @@ image:
   width: 1536
   height: 1024
 ---
-issue: 65
 
 Un agente puede leer una codebase más deprisa que una persona en algunas tareas, pero eso no vuelve comprensible un sistema con dependencias ocultas, nombres inconsistentes y reglas repartidas por muchas capas. Cuando no hay una frontera clara, cada cambio exige buscar más archivos, inferir qué convención prevalece y validar efectos que no están cerca del código editado.
 

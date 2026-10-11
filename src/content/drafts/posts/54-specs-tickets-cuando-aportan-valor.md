@@ -2,7 +2,15 @@
 title: "Specs y tickets para agentes: cuándo ayudan y cuándo sobran"
 description: "Cuándo convertir una conversación en una especificación, cómo dividir el trabajo en tickets verticales y por qué cada tarea debe poder ejecutarse con contexto fresco."
 date: 2026-10-12
-tags: [IA, agentes, arquitectura, gestión de producto, desarrollo de software, planificación]
+tags:
+  [
+    IA,
+    agentes,
+    arquitectura,
+    gestión de producto,
+    desarrollo de software,
+    planificación,
+  ]
 category: Desarrollo profesional
 series:
   slug: matt-pocock-skills-flujo-desarrollo
@@ -13,7 +21,6 @@ image:
   width: 1536
   height: 1024
 ---
-issue: 65
 
 Una especificación puede aclarar trabajo complejo, pero también puede convertirse en un documento que nadie consulta. Un conjunto de tickets puede permitir que varias personas y agentes trabajen en paralelo, pero también puede repartir una funcionalidad en tareas por capas que no producen nada utilizable hasta el final. La pregunta útil no es si todo trabajo necesita una spec; es qué forma de preparación reduce más riesgo para este cambio.
 
