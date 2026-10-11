@@ -2,7 +2,8 @@
 title: "Antes de pedir una feature, aclara el problema con tu agente"
 description: "Cómo usar grill-with-docs para explorar requisitos, distinguir decisiones conversables de preguntas que necesitan un prototipo y dejar el contexto importante por escrito."
 date: 2026-10-11
-tags: [IA, agentes, producto, requisitos, domain modeling, prototipos, arquitectura]
+tags:
+  [IA, agentes, producto, requisitos, domain modeling, prototipos, arquitectura]
 category: Desarrollo profesional
 series:
   slug: matt-pocock-skills-flujo-desarrollo
@@ -13,6 +14,7 @@ image:
   width: 1536
   height: 1024
 ---
+
 issue: 65
 
 «Hazme esta funcionalidad» parece una instrucción suficiente hasta que el agente entrega algo que compila, pero responde a una interpretación distinta de la que teníamos en mente. El problema suele aparecer antes de escribir código: faltaba acordar qué necesidad queríamos resolver, qué comportamiento era importante y qué condiciones no debían cambiar.
