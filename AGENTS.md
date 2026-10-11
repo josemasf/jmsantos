@@ -99,6 +99,7 @@ series:
 Reglas para series:
 
 - Usar el mismo `series.slug` en todos los posts relacionados.
+- Programar las publicaciones de una serie con cadencia diaria, salvo que el usuario apruebe expresamente otra cadencia. Esta es una excepción a la pauta semanal general.
 - Definir `series.order` con números consecutivos para ordenar el listado lateral.
 - Antes de crear o publicar artículos de una serie nueva, añadir sus metadatos compartidos en `src/data/blog-series.ts`. La clave debe coincidir exactamente con `series.slug` e incluir, como mínimo, `title` y, cuando exista, `description`.
 - El nombre y la descripción de la serie se leen desde `src/data/blog-series.ts`; no duplicarlos en el frontmatter de cada post.
