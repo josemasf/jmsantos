@@ -14,7 +14,7 @@ fechas, series, imágenes y validaciones. Cargar solo el rol y las skills aplica
 | Technical Researcher         | Contrastar fuentes, versiones y ejemplos.                      | `.github/agents/technical-researcher.agent.md`         |
 | Astro Content Writer         | Redactar y actualizar artículos desde una ficha contrastada.   | `.github/agents/astro-content-writer.agent.md`         |
 | Editorial Reviewer           | Revisar rigor, estilo, privacidad y preparación para publicar. | `.github/agents/editorial-reviewer.agent.md`           |
-| Visual Asset Prompt Designer | Diseñar dirección de arte y prompts de imágenes.               | `.github/agents/visual-asset-prompt-designer.agent.md` |
+| Visual Asset Prompt Designer | Diseñar prompts visuales en estética ukiyo-e sin motivos recurrentes.               | `.github/agents/visual-asset-prompt-designer.agent.md` |
 
 | Skill                     | Tarea                                                      | Archivo                                             |
 | ------------------------- | ---------------------------------------------------------- | --------------------------------------------------- |
@@ -134,9 +134,11 @@ Repositorio: respeta esquema de Content Collections y estilo editorial existente
 
 - Nombre: `Visual Asset Prompt Designer`
 - Archivo fuente: `.github/agents/visual-asset-prompt-designer.agent.md`
-- Descripción: agente especializado en diseño de prompts para portadas, miniaturas sociales, ilustraciones técnicas y recursos visuales de artículos.
+- Descripción: agente especializado en diseño de prompts para portadas, miniaturas sociales, ilustraciones técnicas y recursos visuales con estética xilográfica ukiyo-e inspirada en Hokusai.
 - Herramientas declaradas: `read`, `search`.
 - Idioma por defecto: español de España.
+- Estilo visual de referencia: xilografía japonesa ukiyo-e de Katsushika Hokusai (*La gran ola de Kanagawa*) en técnica, línea, paleta y textura. **No reproducir la ola ni añadir mar, barcos, monte Fuji o símbolos japoneses a todas las portadas**; la escena la determina el artículo.
+- El agente diseña prompts; la imagen final debe generarse y verificarse por una herramienta capaz de producir assets.
 
 ### Cuándo usarlo
 
@@ -150,7 +152,7 @@ Usar este agente cuando la tarea sea:
 
 Regla obligatoria para portadas:
 
-- Antes de generar, editar o sustituir la portada de un post, cargar el contenido completo de `.github/agents/visual-asset-prompt-designer.agent.md` y usar su dirección de arte para definir el prompt, el prompt negativo y el texto alternativo. Esta regla también se aplica cuando la petición del usuario solo diga «genera una portada» o «crea una imagen para el post».
+- Antes de generar, editar o sustituir la portada de un post, cargar el contenido completo de `.github/agents/visual-asset-prompt-designer.agent.md` y usar su dirección de arte ukiyo-e para definir el prompt, el prompt negativo y el texto alternativo. La obra de Hokusai es una referencia de estilo gráfico, nunca una obligación de dibujar olas o recrear su composición. Esta regla también se aplica cuando la petición del usuario solo diga «genera una portada» o «crea una imagen para el post».
 
 ### Cómo consumirlo desde Codex u otros LLM
 
@@ -162,7 +164,7 @@ Regla obligatoria para portadas:
 
 ```text
 Actúa como el agente "Visual Asset Prompt Designer" definido en .github/agents/visual-asset-prompt-designer.agent.md.
-Tarea: genera 5 prompts para la portada de un artículo sobre [tema], para [canal], en formato [16:9/1:1/4:5], estilo [editorial/técnico/conceptual].
+Tarea: genera 5 prompts para la portada de un artículo sobre [tema], para [canal], en formato [16:9/1:1/4:5], con técnica de xilografía ukiyo-e inspirada en Hokusai, pero con una escena original dictada por el tema. No incluyas olas ni motivos japoneses por defecto.
 Entrega: prompt principal, prompt negativo, 3 variantes y alt text.
 ```
 
