@@ -8,7 +8,7 @@ NODE_VERSION = "24.18.0"
 [[headers]]
 for = "/*"
 [headers.values]
-Content-Security-Policy = "default-src 'self'; base-uri 'self'; connect-src 'self' https://cloudflareinsights.com; font-src 'self'; frame-ancestors 'none'; img-src 'self' data: https://res.cloudinary.com; object-src 'none'; script-src 'self' 'unsafe-inline' https://static.cloudflareinsights.com; style-src 'self' 'unsafe-inline'; upgrade-insecure-requests"
+Content-Security-Policy = "default-src 'self'; base-uri 'self'; connect-src 'self' https://cloudflareinsights.com https://app.kit.com https://app.convertkit.com https://f.convertkit.com; font-src 'self'; frame-ancestors 'none'; img-src 'self' data: https://res.cloudinary.com https://f.convertkit.com https://assets.kit.com; object-src 'none'; script-src 'self' 'unsafe-inline' https://static.cloudflareinsights.com https://f.convertkit.com; style-src 'self' 'unsafe-inline' https://f.convertkit.com; upgrade-insecure-requests"
 Permissions-Policy = "camera=(), geolocation=(), microphone=(), payment=(), usb=()"
 Referrer-Policy = "strict-origin-when-cross-origin"
 X-Content-Type-Options = "nosniff"

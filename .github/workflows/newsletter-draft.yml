@@ -1,0 +1,59 @@
+name: Preparar borrador de newsletter quincenal
+
+on:
+  schedule:
+    # Lunes 08:00 UTC (09:00/10:00 de Madrid). Solo semanas que coinciden con el ancla.
+    - cron: "0 8 * * 1"
+  workflow_dispatch:
+    inputs:
+      edition_date:
+        description: "Fecha de edición YYYY-MM-DD (vacío = hoy, Madrid)"
+        type: string
+        required: false
+
+permissions:
+  contents: read
+
+jobs:
+  prepare:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 15
+    steps:
+      - name: Comprobar quincena
+        id: cadence
+        env:
+          EVENT_NAME: ${{ github.event_name }}
+        run: |
+          node - <<'JS' >> "$GITHUB_OUTPUT"
+          const format = new Intl.DateTimeFormat("en-CA", { timeZone: "Europe/Madrid", year: "numeric", month: "2-digit", day: "2-digit" });
+          const date = format.format(new Date());
+          const days = (Date.parse(date + "T00:00:00Z") - Date.parse("2026-11-02T00:00:00Z")) / 86400000;
+          console.log("should_run=" + (process.env.EVENT_NAME === "workflow_dispatch" || (days >= 0 && days % 14 === 0)));
+          JS
+      - uses: actions/checkout@fbc6f3992d24b796d5a048ff273f7fcc4a7b6c09 # v5
+        if: steps.cadence.outputs.should_run == 'true'
+      - uses: actions/setup-node@a0853c24544627f65ddf259abe73b1d18a591444 # v5
+        if: steps.cadence.outputs.should_run == 'true'
+        with:
+          node-version-file: .nvmrc
+          package-manager-cache: false
+      - uses: pnpm/action-setup@f40ffcd9367d9f12939873eb1018b921a783ffaa # v4
+        if: steps.cadence.outputs.should_run == 'true'
+      - run: pnpm install --frozen-lockfile
+        if: steps.cadence.outputs.should_run == 'true'
+      - name: Generar borrador (sin enviar)
+        if: steps.cadence.outputs.should_run == 'true'
+        env:
+          EDITION_DATE: ${{ inputs.edition_date }}
+        run: |
+          if [ -n "$EDITION_DATE" ]; then
+            pnpm newsletter:draft -- --date "$EDITION_DATE" --output newsletter-draft.md
+          else
+            pnpm newsletter:draft -- --output newsletter-draft.md
+          fi
+      - uses: actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02 # v4.6.2
+        if: steps.cadence.outputs.should_run == 'true'
+        with:
+          name: newsletter-pendiente-revision
+          path: newsletter-draft.md
+          retention-days: 14

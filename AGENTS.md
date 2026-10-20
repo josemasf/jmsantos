@@ -10,6 +10,7 @@ fechas, series, imágenes y validaciones. Cargar solo el rol y las skills aplica
 
 | Agente                       | Objetivo                                                       | Archivo                                                |
 | ---------------------------- | -------------------------------------------------------------- | ------------------------------------------------------ |
+| Newsletter Curator           | Preparar la newsletter quincenal a partir de publicaciones y calendario. | `.github/agents/newsletter-curator.agent.md` |
 | Editorial Planner            | Elegir temas, ordenar backlog y detectar duplicados.           | `.github/agents/editorial-planner.agent.md`            |
 | Technical Researcher         | Contrastar fuentes, versiones y ejemplos.                      | `.github/agents/technical-researcher.agent.md`         |
 | Astro Content Writer         | Redactar y actualizar artículos desde una ficha contrastada.   | `.github/agents/astro-content-writer.agent.md`         |
@@ -34,6 +35,8 @@ El planificador entrega la ficha; el investigador aporta evidencia; el redactor
 crea el Markdown; el revisor devuelve hallazgos. El agente visual diseña prompts:
 la generación e integración del asset corresponde al asistente con herramienta
 de imágenes. Un prompt no cuenta como portada terminada.
+
+La newsletter sigue el circuito **Newsletter Curator → Astro Content Writer (validador redactor) → Editorial Reviewer → aprobación del autor**, documentado en `docs/newsletter.md`. Los agents de VS Code no se ejecutan automáticamente desde GitHub Actions; ningún workflow puede aprobar o enviar campañas.
 
 ### Restricciones compartidas
 

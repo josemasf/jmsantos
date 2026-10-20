@@ -21,3 +21,6 @@ pnpm-debug.log*
 .unlighthouse
 
 .astro/*
+
+# newsletter editable draft
+newsletter-draft.md
