@@ -2,13 +2,14 @@ import { getCollection } from "astro:content";
 import type { APIRoute } from "astro";
 
 function escapeXml(value: string): string {
-  return value.replace(/[&<>"']/g, (character) => ({
+  const entities: Record<string, string> = {
     "&": "&amp;",
     "<": "&lt;",
     ">": "&gt;",
     '"': "&quot;",
     "'": "&apos;",
-  })[character] ?? character);
+  };
+  return value.replace(/[&<>"']/g, (character) => entities[character] ?? character);
 }
 
 export const GET: APIRoute = async ({ site }) => {
