@@ -9,8 +9,8 @@ El calendario de preparación comienza el **lunes 2 de noviembre de 2026** y con
 ## Captación con Kit
 
 1. Crear una cuenta en Kit y un formulario **Inline Form** con **doble confirmación** activada. Desactivar recomendaciones de la red de Kit y cualquier programa promocional no aprobado.
-2. En Kit, ir a **Grow → Landing Pages & Forms → formulario → Embed → JavaScript**. Copiar el atributo `src` del script generado, normalmente alojado en `https://f.convertkit.com/...`. No pegar claves privadas, API tokens ni el código entero en el repositorio.
-3. Definir `PUBLIC_KIT_FORM_SCRIPT_SRC` con esa URL pública en el entorno de build de Netlify. El formulario aparece en `/newsletter/`; sin esa configuración, la página muestra un aviso transparente y el enlace RSS.
+2. En Kit, ir a **Grow → Landing Pages & Forms → formulario → Embed → JavaScript**. Copiar el atributo `src` del script generado. Puede ser una URL `https://f.convertkit.com/...js` o la URL del formulario alojado en Kit, como `https://jose-maria-santos.kit.com/5c2c8714b9/index.js`. No pegar claves privadas, API tokens ni el código entero en el repositorio.
+3. Definir `PUBLIC_KIT_FORM_SCRIPT_SRC` con esa URL pública completa (sin las etiquetas `<script>`) en el entorno de build de Netlify. El formulario aparece en `/newsletter/`; sin esa configuración, la página muestra un aviso transparente y el enlace RSS.
 4. Comprobar el formulario en móvil, navegación cliente de Astro, CSP en la consola, doble confirmación, correo de bienvenida, enlace a privacidad y enlace de baja.
 5. Revisar las condiciones vigentes de Kit para transferencias internacionales, acuerdo de tratamiento y branding. No guardar suscriptores en el repositorio ni ceder sus datos a anunciantes.
 

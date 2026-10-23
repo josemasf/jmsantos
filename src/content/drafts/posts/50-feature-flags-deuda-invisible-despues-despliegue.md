@@ -10,7 +10,6 @@ image:
   width: 1536
   height: 1024
 ---
-issue: 53
 
 Una feature flag permite cambiar el comportamiento de una aplicación sin desplegar una versión nueva. Es útil para lanzar una funcionalidad por etapas, limitar el impacto de un cambio o comparar variantes. El coste aparece cuando la bandera sobrevive al motivo por el que se creó: cada condición añade una ruta posible, cada prueba debe decidir qué valor usar y cada persona que lee el código necesita averiguar si la rama sigue teniendo sentido.
 
@@ -22,12 +21,12 @@ Antes de añadir una bandera, identifica para qué sirve. Las flags de lanzamien
 
 La clasificación importa porque determina quién decide y cuándo se limpia. Una bandera temporal puede tener una caducidad concreta; una de operación necesita una revisión recurrente; una regla de autorización debe validarse en el servidor, aunque la interfaz oculte acciones que la persona no puede usar.
 
-| Tipo | Pregunta que responde | Condición de retirada o revisión |
-| --- | --- | --- |
-| Lanzamiento | ¿Quién recibe ya la funcionalidad? | Toda la audiencia objetivo la tiene activa y el despliegue está estable |
-| Experimento | ¿Qué variante produce el resultado esperado? | La evaluación termina y se toma una decisión |
-| Operativa | ¿Hay que desactivar temporalmente esta capacidad? | Se revisa su necesidad y se prueba el procedimiento de activación |
-| Permiso | ¿Puede esta persona realizar esta acción? | Se mantiene como regla de autorización del servidor, no como flag de cliente |
+| Tipo        | Pregunta que responde                             | Condición de retirada o revisión                                             |
+| ----------- | ------------------------------------------------- | ---------------------------------------------------------------------------- |
+| Lanzamiento | ¿Quién recibe ya la funcionalidad?                | Toda la audiencia objetivo la tiene activa y el despliegue está estable      |
+| Experimento | ¿Qué variante produce el resultado esperado?      | La evaluación termina y se toma una decisión                                 |
+| Operativa   | ¿Hay que desactivar temporalmente esta capacidad? | Se revisa su necesidad y se prueba el procedimiento de activación            |
+| Permiso     | ¿Puede esta persona realizar esta acción?         | Se mantiene como regla de autorización del servidor, no como flag de cliente |
 
 Una misma herramienta puede implementar varios tipos, pero eso no los convierte en el mismo concepto. El nombre, el propietario, la evaluación y la retirada deben seguir la intención de cada flag.
 
