@@ -3,6 +3,7 @@
 import MainHead from "../components/MainHead.astro";
 import Nav from "../components/Nav.astro";
 import Footer from "../components/Footer.astro";
+import KitStickyBar from "../components/KitStickyBar.astro";
 import CloudflareAnalytics from "../components/CloudflareAnalytics.astro";
 import { ClientRouter } from 'astro:transitions';
 
@@ -42,5 +43,6 @@ const {
     <Nav />
     <slot />
     <Footer />
+    <KitStickyBar />
   </body>
 </html>
