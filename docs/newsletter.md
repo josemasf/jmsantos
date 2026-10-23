@@ -14,7 +14,19 @@ El calendario de preparación comienza el **lunes 2 de noviembre de 2026** y con
 4. Comprobar el formulario en móvil, navegación cliente de Astro, CSP en la consola, doble confirmación, correo de bienvenida, enlace a privacidad y enlace de baja.
 5. Revisar las condiciones vigentes de Kit para transferencias internacionales, acuerdo de tratamiento y branding. No guardar suscriptores en el repositorio ni ceder sus datos a anunciantes.
 
-El componente es deliberadamente el **embed oficial** de Kit. No hay plugin específico de Astro ni API key en el frontend. Los CTA de los artículos conducen a la página única de suscripción.
+### Barra inferior Grove (opcional)
+
+Además del formulario Inline de `/newsletter/`, se puede utilizar una **Sticky Bar** de Kit en las páginas `/blog/` y los artículos. La barra nunca se carga en `/newsletter/` ni en las secciones de portfolio.
+
+1. Crear Grove como formulario **Sticky Bar**, traducir sus textos (sin promociones por defecto) y conservar la confirmación doble.
+2. Kit **Settings → General**: configurar **Display form in: Bottom**, **Scroll percentage: 50 %** y una aparición como máximo cada 15 días. Ocultar a suscriptores existentes, cuando corresponda.
+3. Publicar el formulario. Copiar la URL `src` del código **Embed → JavaScript**, que debe empezar por `https://f.convertkit.com/` y terminar en `.js`.
+4. Añadir `PUBLIC_KIT_STICKY_FORM_SCRIPT_SRC` en las variables de entorno de **build** de Netlify, sin usar secretos. El script se incluye solo cuando su origen es válido; sin esta variable la barra no aparece.
+5. Probar escritorio y móvil, ancho de la barra, botones de cierre, scroll, frecuencia, accesibilidad, CSP y navegación con Astro ClientRouter. La aparición depende de las preferencias y cookies gestionadas por Kit; probar en ventana de incógnito para descartar que se haya ocultado por frecuencia.
+
+Este segundo formulario complementa al Inline de `/newsletter/`; **no reemplaza** `PUBLIC_KIT_FORM_SCRIPT_SRC`. Cada uno tiene su propia URL de embed. No se realizan envíos en esta integración.
+
+El componente Inline usa el **embed oficial** de Kit. No hay plugin específico de Astro ni API key en el frontend. Los CTA de los artículos conducen a la página única de suscripción.
 
 ## Preparación automática, aprobación manual
 

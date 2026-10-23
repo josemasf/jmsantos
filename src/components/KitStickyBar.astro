@@ -1,0 +1,11 @@
+---
+// La barra Grove solo aparece en el blog. No mostrarla encima del formulario Inline.
+const path = Astro.url.pathname;
+const isBlogPage = path === "/blog" || path.startsWith("/blog/");
+const scriptSrc = import.meta.env.PUBLIC_KIT_STICKY_FORM_SCRIPT_SRC?.trim() ?? "";
+const hasValidKitScript = /^https:\/\/f\.convertkit\.com\/[a-zA-Z0-9_./?=&%-]+\.js(?:\?[a-zA-Z0-9_=&%-]+)?$/.test(scriptSrc);
+---
+
+{isBlogPage && hasValidKitScript && (
+  <script is:inline data-astro-rerun async src={scriptSrc}></script>
+)}
