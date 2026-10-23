@@ -8,5 +8,5 @@ const hasValidKitScript = /^https:\/\/(?:f\.kit\.com\/[a-zA-Z0-9_./?=&%-]+\.js(?
 ---
 
 {hasValidKitScript && (
-  <script is:inline data-astro-rerun async src={scriptSrc} data-kit-sticky-bar></script>
+  <script is:inline async src={scriptSrc} data-kit-sticky-bar></script>
 )}
