@@ -4,6 +4,7 @@
 
 | Tarea                          | Responsable                                 | Skill                     | Entrega                                                             |
 | ------------------------------ | ------------------------------------------- | ------------------------- | ------------------------------------------------------------------- |
+| Preparar newsletter quincenal    | Newsletter Curator → Astro Content Writer → Editorial Reviewer → autor | — | Borrador fundamentado, revisiones y aprobación manual. Ver `docs/newsletter.md` |
 | Elegir tema y ordenar backlog  | Editorial Planner                           | editorial-dedup           | Ficha con tesis, evidencia pendiente, duplicados y siguiente acción |
 | Contrastar afirmaciones        | Technical Researcher                        | research-sources          | Tabla de afirmación, fuente primaria, fecha, versión y límites      |
 | Crear o mejorar el borrador    | Astro Content Writer                        | seo                       | Markdown, metadatos e issue de origen verificada                    |

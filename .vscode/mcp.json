@@ -1,0 +1,9 @@
+{
+  "servers": {
+    "kit-newsletter": {
+      "url": "https://app.kit.com/mcp",
+      "type": "http"
+    }
+  },
+  "inputs": []
+}

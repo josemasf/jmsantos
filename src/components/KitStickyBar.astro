@@ -1,0 +1,12 @@
+---
+// La barra Grove solo aparece en el blog. No mostrarla encima del formulario Inline.
+const path = Astro.url.pathname;
+const isBlogPage = path === "/blog" || path.startsWith("/blog/");
+const scriptSrc = import.meta.env.PUBLIC_KIT_STICKY_FORM_SCRIPT_SRC?.trim() ?? "";
+// Kit también ofrece embeds alojados en el subdominio del formulario.
+const hasValidKitScript = /^https:\/\/(?:f\.kit\.com\/[a-zA-Z0-9_./?=&%-]+\.js(?:\?[a-zA-Z0-9_=&%-]+)?|[a-zA-Z0-9-]+\.kit\.com\/[a-zA-Z0-9_-]+\/index\.js)$/.test(scriptSrc);
+---
+
+{hasValidKitScript && (
+  <script is:inline async src={scriptSrc} data-kit-sticky-bar></script>
+)}

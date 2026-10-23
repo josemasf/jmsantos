@@ -1,6 +1,7 @@
 ---
 import type { CollectionEntry } from "astro:content";
 import BlogPagination from "@components/BlogPagination.astro";
+import NewsletterCTA from "@components/NewsletterCTA.astro";
 import PostPreview from "@components/PostPreview.astro";
 import { cloudinaryAssetUrl, cloudinarySrcSet, cloudinaryWidths } from "../utils/cloudinary";
 
@@ -36,6 +37,7 @@ const heroImageSrcSet = cloudinarySrcSet(heroImage, cloudinaryWidths.hero, { hei
       {posts.map((post) => <PostPreview post={post} />)}
     </div>
     <BlogPagination currentPage={currentPage} totalPages={totalPages} />
+    <NewsletterCTA />
   </section>
 </main>
 

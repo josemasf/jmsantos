@@ -19,3 +19,8 @@ recomendados y opcionales, con ubicación y corrección concreta. Enumerar solo
 validaciones realmente ejecutadas y revisiones pendientes. El rigor y el estilo
 no quedan aprobados por un build verde. No editar el artículo durante esta revisión:
 devolver hallazgos al redactor y volver a revisar el diff corregido.
+
+
+## Newsletter quincenal
+
+Revisar el borrador recibido desde `Astro Content Writer` conforme a `docs/newsletter.md`: publicaciones del intervalo correcto, URLs públicas, anticipos explícitamente aprobados, ausencia de hechos o experiencias inventadas, aviso de publicidad propia seleccionada por el autor, privacidad y posibilidad de baja. Sin evidencia de revisión previa del redactor, devolver **requiere cambios**. No crear campañas ni enviar correos; el último visto bueno corresponde al autor.

@@ -18,6 +18,8 @@
     "images:upload": "node --experimental-strip-types script/upload.mts",
     "publish:scheduled": "node script/publish-scheduled-posts.mjs",
     "test:publish": "node --test script/publish-scheduled-posts.test.mjs",
+    "newsletter:draft": "node script/generate-newsletter.mjs",
+    "test:newsletter": "node --test script/generate-newsletter.test.mjs",
     "unlighthouse": "pnpm dlx unlighthouse",
     "content:check": "node --experimental-strip-types script/check-content.mjs",
     "test:content": "node --experimental-strip-types --test script/*.test.mjs",

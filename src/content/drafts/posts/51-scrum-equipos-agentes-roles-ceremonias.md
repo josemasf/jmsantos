@@ -2,7 +2,8 @@
 title: "Scrum en equipos con agentes: de las reuniones de estado a las decisiones"
 description: "Cómo evolucionan los roles de Product Owner, Tech Lead y developer, y qué propósito conservan las ceremonias de Scrum cuando parte de la ejecución se delega a agentes."
 date: 2026-12-29
-tags: [Scrum, IA, agentes, equipos, producto, arquitectura, desarrollo de software]
+tags:
+  [Scrum, IA, agentes, equipos, producto, arquitectura, desarrollo de software]
 category: Cultura de equipo
 image:
   src: /images/blog/51-scrum-equipos-agentes/scrum-equipos-agentes.png
@@ -10,7 +11,6 @@ image:
   width: 1536
   height: 1024
 ---
-issue: 66
 
 En la [serie sobre desarrollo agéntico](/blog/ciclo-desarrollo-ia-chatgpt-codex-agentes/), he recorrido cómo convertir decisiones en especificaciones, trabajo delegable y ciclos de feedback. Ese flujo plantea una pregunta organizativa que merece una respuesta propia: si parte de la investigación, la implementación y la revisión puede avanzar de forma asíncrona con agentes, ¿qué deberían hacer las personas y qué sentido conservan las ceremonias de Scrum?
 
@@ -88,14 +88,14 @@ Los agentes pueden acelerar investigación, escritura, generación de tests y re
 
 Por eso, las conversaciones de planificación y estimación deberían hacer visibles preguntas como cuánta incertidumbre queda, qué dependencias deben resolverse, qué impacto tendría un error y qué intervención humana será crítica. La velocidad observada de un agente en una tarea no garantiza el mismo resultado en otra: el contexto, las herramientas disponibles y el coste de validar cambian el trabajo real.
 
-| Práctica | Enfoque útil cuando hay agentes |
-| --- | --- |
-| Discovery | Acordar problema, hipótesis, comportamiento y decisiones |
-| Refinement | Resolver ambigüedades que no quedaron cerradas en asíncrono |
-| Planning | Alinear objetivo, prioridad, capacidad y riesgo |
-| Daily | Coordinar dependencias, bloqueos y decisiones |
-| Review / demo | Validar el producto y el resultado esperado |
-| Retrospectiva | Mejorar el sistema humano y el entorno de ingeniería |
+| Práctica           | Enfoque útil cuando hay agentes                             |
+| ------------------ | ----------------------------------------------------------- |
+| Discovery          | Acordar problema, hipótesis, comportamiento y decisiones    |
+| Refinement         | Resolver ambigüedades que no quedaron cerradas en asíncrono |
+| Planning           | Alinear objetivo, prioridad, capacidad y riesgo             |
+| Daily              | Coordinar dependencias, bloqueos y decisiones               |
+| Review / demo      | Validar el producto y el resultado esperado                 |
+| Retrospectiva      | Mejorar el sistema humano y el entorno de ingeniería        |
 | Refinement técnico | Reunir a las personas implicadas ante trade-offs relevantes |
 
 ## Una cadencia humana alrededor de la ejecución asíncrona

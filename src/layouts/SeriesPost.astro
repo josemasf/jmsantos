@@ -2,6 +2,7 @@
 import type { CollectionEntry } from "astro:content";
 import MainLayout from "@layouts/MainLayout.astro";
 import RelatedPosts from "@components/RelatedPosts.astro";
+import NewsletterCTA from "@components/NewsletterCTA.astro";
 import BackToTop from "@components/BackToTop.astro";
 import BlogPostImage from "@components/BlogPostImage.astro";
 import type { BlogTopic } from "@data/blog-topics";
@@ -73,6 +74,7 @@ const seriesPath = series ? `/blog/series/${series.slug}/` : "/blog/";
       <div class="prose prose-slate mx-auto mt-10 max-w-3xl prose-headings:font-display prose-headings:font-bold prose-a:text-indigo-700 hover:prose-a:text-indigo-900 dark:prose-invert dark:prose-a:text-cyan-300 dark:hover:prose-a:text-cyan-100">
         <Content />
         <RelatedPosts posts={relatedPosts} topicTitle={primaryTopic?.title} />
+        <NewsletterCTA compact />
       </div>
     </article>
   </main>
