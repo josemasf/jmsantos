@@ -4,6 +4,7 @@
 
 | Tarea                          | Responsable                                 | Skill                     | Entrega                                                             |
 | ------------------------------ | ------------------------------------------- | ------------------------- | ------------------------------------------------------------------- |
+| Coordinar artículo de inicio a fin | Editorial Orchestrator | editorial-dedup y prepublish-check según fase | Issue, dossier, borrador, imagen real cuando se requiera, revisión independiente y estado verificado |
 | Preparar newsletter quincenal    | Newsletter Curator → Astro Content Writer → Editorial Reviewer → autor | — | Borrador fundamentado, revisiones y aprobación manual. Ver `docs/newsletter.md` |
 | Elegir tema y ordenar backlog  | Editorial Planner                           | editorial-dedup           | Ficha con tesis, evidencia pendiente, duplicados y siguiente acción |
 | Contrastar afirmaciones        | Technical Researcher                        | research-sources          | Tabla de afirmación, fuente primaria, fecha, versión y límites      |
@@ -20,6 +21,67 @@ definen procedimientos. Seleccionar el agente en Copilot o leer su archivo al
 usar otro asistente. Cargar solo las skills necesarias. La skill de UI existente
 está en `.github/skills/astro-ui-layout-architect/`. Estas instrucciones no se
 ejecutan solas: los únicos procesos recurrentes son los workflows configurados.
+
+## Orquestación de artículos
+
+Usar `.github/agents/editorial-orchestrator.agent.md` como **punto de entrada**
+cuando se pida desarrollar un post completo. Editorial Planner sigue siendo el
+especialista en backlog, tesis y duplicados; **no** es responsable de gestionar
+las ejecuciones de los demás agentes.
+
+```text
+Issue verificada + calendario
+            ↓
+Editorial Planner (si hace falta definir / deduplicar)
+            ↓
+Technical Researcher (si hay afirmaciones que contrastar)
+            ↓
+Astro Content Writer → borrador con issue: N
+            ├───────────────┐
+            ↓               ↓
+Visual Asset Prompt Designer (dirección visual; no archivo de imagen)
+            ↓
+Asset real generado e integrado, si el post lo exige
+            ↓
+Editorial Reviewer (revisión independiente, solo lectura)
+            ├─ requiere cambios → redactor → revisor (máximo 2 ciclos)
+            └─ listo → validaciones + informe al autor
+```
+
+**Contrato de fases:** cada rol recibe el número/URL de issue en `josemasf/jmsantos`,
+la tesis vigente, decisiones de alcance, archivos relevantes, lo que puede editar
+y su resultado esperado. La persona que orquesta comprueba esas entregas y no
+marca una fase como completada hasta observar evidencia. No lanzar edición y
+revisión simultáneas sobre un mismo artículo. Investigación y propuesta visual
+pueden solaparse con escritura **solo si** el contexto necesario ya está cerrado
+y no se pisan los archivos.
+
+**Límites operativos y aprobación:**
+
+- Los agentes de VS Code **no** se ejecutan por definir flechas en Markdown.
+  En el harness **Local** la delegación se realiza con el toolset `agent`
+  habilitado; en **Copilot** el runtime usa su herramienta nativa `task`.
+  Revisar la selección de herramientas y el harness activo. Si la delegación no
+  existe o está deshabilitada, el coordinador debe indicar qué roles **no han
+  sido realmente invocados** y ofrecer ejecución manual; no simular resultados.
+- Un prompt de portada no equivale a un archivo gráfico. Si el diseño aprobado
+  requiere imagen, integrarla con una herramienta de imágenes disponible,
+  comprobar la ruta, el alt y las dimensiones; si no se puede, bloquear esa
+  entrega concreta.
+- **Revisión independiente obligatoria** antes de declarar `listo para
+  programar`. Errores bloqueantes vuelven al redactor y después al revisor.
+  Sin revisión no hay aprobación, aunque los tests pasen.
+- No mover drafts a posts, activar el publicador, modificar fechas aprobadas,
+  publicar en redes, ni cerrar issues por defecto. El flujo habitual acaba en
+  un borrador preparado y validado, no en su publicación.
+- El orquestador entrega una tabla de fase, estado, evidencia/bloqueo, además
+  de issue, ruta, fecha y próxima acción. No atribuir una fase a otro agente si
+  se hizo directamente o no se pudo ejecutar.
+
+**Uso en VS Code:** seleccionar `Editorial Orchestrator` en el selector de agentes
+y encargar «Desarrolla un borrador de la issue #96, revisa duplicados, contrasta
+fuentes, prepara portada si corresponde, solicita revisión independiente y no
+publiques». Se mantiene el calendario de borradores sin cambios.
 
 ## Ficha e información compartida
 

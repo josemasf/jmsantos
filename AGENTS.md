@@ -10,6 +10,7 @@ fechas, series, imágenes y validaciones. Cargar solo el rol y las skills aplica
 
 | Agente                       | Objetivo                                                       | Archivo                                                |
 | ---------------------------- | -------------------------------------------------------------- | ------------------------------------------------------ |
+| Editorial Orchestrator        | Coordinar el flujo completo, delegar fases y exigir revisión independiente sin publicar. | `.github/agents/editorial-orchestrator.agent.md` |
 | Newsletter Curator           | Preparar la newsletter quincenal a partir de publicaciones y calendario. | `.github/agents/newsletter-curator.agent.md` |
 | Editorial Planner            | Elegir temas, ordenar backlog y detectar duplicados.           | `.github/agents/editorial-planner.agent.md`            |
 | Technical Researcher         | Contrastar fuentes, versiones y ejemplos.                      | `.github/agents/technical-researcher.agent.md`         |
@@ -31,10 +32,19 @@ Para Copilot, seleccionar el agente por nombre. En Codex u otro asistente, leer
 el archivo `.agent.md` correspondiente y aplicar sus instrucciones dentro del
 encargo del usuario. Las skills se invocan por tarea; no son procesos recurrentes.
 
-El planificador entrega la ficha; el investigador aporta evidencia; el redactor
-crea el Markdown; el revisor devuelve hallazgos. El agente visual diseña prompts:
-la generación e integración del asset corresponde al asistente con herramienta
-de imágenes. Un prompt no cuenta como portada terminada.
+Para desarrollar **un post de extremo a extremo**, seleccionar **Editorial Orchestrator**
+como punto de entrada. Coordina las entregas de Editorial Planner → Technical
+Researcher → Astro Content Writer → Visual Asset Prompt Designer → Editorial
+Reviewer, en las fases que correspondan. Conserva el gate de revisión independiente,
+respeta el calendario y **no publica**. Los demás agentes siguen disponibles por
+separado para encargos puntuales. El agente visual solo diseña prompts: la
+integración del asset corresponde a un asistente con generación de imágenes real.
+
+En VS Code Local, habilitar la herramienta de subagentes `agent`. En el harness
+Copilot, comprobar la disponibilidad de delegación nativa `task`; nombres de
+herramientas y compatibilidad varían según el harness. Si no puede delegarse,
+el orquestador debe identificar fases pendientes y no fingir que se ejecutaron.
+Ver [el contrato de fases](docs/editorial-workflow.md#orquestación-de-artículos).
 
 La newsletter sigue el circuito **Newsletter Curator → Astro Content Writer (validador redactor) → Editorial Reviewer → aprobación del autor**, documentado en `docs/newsletter.md`. Los agents de VS Code no se ejecutan automáticamente desde GitHub Actions; ningún workflow puede aprobar o enviar campañas.
 
