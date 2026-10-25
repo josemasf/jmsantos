@@ -8,6 +8,11 @@ Esta carpeta contiene artículos ya redactados y pendientes de publicación. Su 
 - `src/content/drafts/posts/` contiene los borradores pendientes.
 - El campo `date` del frontmatter determina la fecha programada; el prefijo numérico del archivo no determina el orden de publicación.
 - La zona horaria de referencia es `Europe/Madrid`.
+- Cada borrador necesita `issue: N` en frontmatter, con una issue real del
+  artículo o de su serie, verificada en `josemasf/jmsantos`. Si no existe ficha,
+  crearla antes de programar; no deducir el número del nombre de archivo.
+- `pnpm content:check` y `pnpm publish:scheduled -- --dry-run` bloquean
+  borradores sin `issue` para impedir publicaciones sin seguimiento.
 
 ## Revisión obligatoria antes de crear un borrador
 
