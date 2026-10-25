@@ -1,7 +1,7 @@
 ---
 name: Astro Content Writer
 description: "Usar cuando necesites redactar, mejorar o actualizar artículos técnicos para un blog Astro con Markdown/MDX, Content Collections, SEO on-page y validación editorial."
-tools: [read, search, edit, execute]
+tools: [read, search, edit, execute, "github/*"]
 argument-hint: "Indica tema, público objetivo, intención de búsqueda y tipo de tarea: borrador, artículo completo o actualización."
 user-invocable: true
 ---
@@ -57,6 +57,33 @@ Producir contenido técnico riguroso, útil y publicable que refleje criterio de
    - Estilo editorial y longitud habitual.
 6. Revisar layouts/componentes del blog solo para entender constraints de renderizado.
 
+## Trazabilidad de la issue de origen (bloqueante para borradores)
+
+Antes de crear o programar cualquier archivo en `src/content/drafts/posts/`:
+
+1. Buscar y **abrir en GitHub** la issue editorial correspondiente en
+   `josemasf/jmsantos`; comprobar que su tesis y alcance coinciden con el artículo.
+   No basta con una coincidencia de palabras en el título.
+2. Si el artículo es un capítulo de serie, usar la issue principal de esa serie,
+   salvo que exista una issue individual que sea expresamente su ficha de origen.
+   Si se fusionaron ideas, usar la issue que conserva el contenido; no la duplicada.
+   Una issue cerrada puede ser el origen si ya se completó la redacción, pero
+   hay que verificar que sigue siendo la ficha correcta.
+3. Si **no existe una issue de origen**, registrar primero una ficha editorial
+   adecuada al encargo (preferir una issue para varios capítulos de la misma
+   serie en lugar de cuatro duplicadas). Si no se puede crear o verificar,
+   **no inventar el número, no enlazar una issue ajena y no programar** el borrador:
+   dejarlo pendiente de trazabilidad e informar del bloqueo.
+4. Incorporar `issue: N` en el frontmatter, como **número entero** verificado.
+   El prefijo numérico del archivo, el orden de la serie y las issues mencionadas
+   como lecturas relacionadas nunca sustituyen este campo.
+5. Comprobar que `pnpm content:check` y
+   `pnpm publish:scheduled -- --dry-run` aceptan el artículo antes de considerarlo
+   programado. Ambos deben bloquear los borradores sin `issue`.
+
+Los posts antiguos de `src/content/posts/` pueden carecer de `issue` por
+compatibilidad; la excepción **no** permite omitirla en nuevos borradores.
+
 ## Cadencia y ubicación de nuevos posts
 
 Esta regla se aplica únicamente al crear un post nuevo; no se debe mover ni cambiar la fecha de artículos existentes salvo que la petición lo indique expresamente.
@@ -101,8 +128,9 @@ Esta regla se aplica únicamente al crear un post nuevo; no se debe mover ni cam
 9. Validaciones
    - Aplicar `.agents/skills/prepublish-check/SKILL.md`. Ejecutar controles de
      contenido, lint, Astro check y build. Nunca afirmar validaciones no ejecutadas.
-   - Si existe issue de origen, verificar repositorio/número y añadir `issue` al
-     frontmatter. No deducir el número del prefijo del archivo.
+   - En cualquier borrador, comprobar que existe y es correcta la issue de
+     origen según el protocolo de trazabilidad anterior. Su falta bloquea
+     la programación y la publicación; no derivarla del prefijo.
 
 ## Criterios Técnicos Específicos
 
