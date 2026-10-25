@@ -17,13 +17,13 @@ async function createFixture() {
 async function writePost(
   directory,
   fileName,
-  { date, title = "Post de prueba" },
+  { date, title = "Post de prueba", issue = 65 },
 ) {
   const filePath = join(directory, fileName);
   await mkdir(join(filePath, ".."), { recursive: true });
   await writeFile(
     filePath,
-    `---\ntitle: "${title}"\ndescription: "Descripción de prueba"\ndate: ${date}\ntags: [Testing]\ncategory: Testing\n---\n\nContenido.\n`,
+    `---\ntitle: "${title}"\ndescription: "Descripción de prueba"\ndate: ${date}\n${issue === null ? "" : `issue: ${issue}\\n`}tags: [Testing]\ncategory: Testing\n---\n\nContenido.\n`,
   );
 }
 
@@ -95,6 +95,32 @@ test("--dry-run detecta posts vencidos sin moverlos", async () => {
   );
   await assert.rejects(
     readFile(join(fixture.destinationDirectory, "01-publicable.md")),
+  );
+});
+
+test("impide publicar o hacer dry-run de un borrador sin issue", async () => {
+  const fixture = await createFixture();
+  await writePost(fixture.sourceDirectory, "01-sin-issue.md", {
+    date: "2026-08-10",
+    issue: null,
+  });
+  await assert.rejects(
+    publishScheduledPosts({
+      ...fixture,
+      publicationDate: "2026-08-11",
+      dryRun: true,
+    }),
+    /falta issue de origen/,
+  );
+  await assert.rejects(
+    publishScheduledPosts({
+      ...fixture,
+      publicationDate: "2026-08-11",
+    }),
+    /falta issue de origen/,
+  );
+  await assert.rejects(
+    readFile(join(fixture.destinationDirectory, "01-sin-issue.md")),
   );
 });
 
