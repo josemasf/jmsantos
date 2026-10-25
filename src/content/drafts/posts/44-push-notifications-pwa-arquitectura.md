@@ -2,6 +2,7 @@
 title: "Push notifications en una PWA: arquitectura antes que claves"
 description: "Cómo diseñar notificaciones push en una PWA con responsabilidades claras: permisos, suscripciones, envío, estados, seguridad y diagnóstico."
 date: 2026-11-10
+issue: 24
 tags: [PWA, push notifications, frontend, arquitectura, seguridad]
 category: Frontend
 image:
