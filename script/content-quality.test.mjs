@@ -63,6 +63,24 @@ test("el manifiesto conserva la issue original en dry-run sin mover el borrador"
   assert.equal(result.posts[0].id, "prueba");
 });
 
+test("los borradores necesitan issue, pero los publicados históricos no", async (t) => {
+  const rootDirectory = await fixture(t);
+  await post(rootDirectory, "posts/01-historico.md");
+  await post(rootDirectory, "drafts/posts/02-nuevo.md");
+  const before = await checkContent({ rootDirectory });
+  assert.ok(
+    before.errors.some((error) =>
+      error.includes("drafts/posts/02-nuevo.md: falta issue de origen"),
+    ),
+  );
+  assert.ok(
+    !before.errors.some((error) => error.includes("posts/01-historico.md")),
+  );
+  await post(rootDirectory, "drafts/posts/02-nuevo.md", "issue: 65\n");
+  const after = await checkContent({ rootDirectory });
+  assert.deepEqual(after.errors, []);
+});
+
 test("detecta slugs duplicados aunque cambien prefijo y carpeta", async (t) => {
   const rootDirectory = await fixture(t);
   await post(rootDirectory, "posts/01-prueba.md");
