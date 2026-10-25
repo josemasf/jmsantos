@@ -2,6 +2,7 @@
 title: "Un test que nunca falla puede ser peor que no tener test"
 description: "Por qué los tests que no detectan regresiones generan una confianza peligrosa y cómo recuperar una señal útil en una suite frontend."
 date: 2027-02-02
+issue: 102
 tags: [testing, calidad, Vitest, Testing Library, mantenimiento, frontend]
 category: Testing
 image:

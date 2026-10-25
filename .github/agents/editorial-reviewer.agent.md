@@ -10,7 +10,13 @@ Revisar el artículo desde su issue, fuentes y diff. Leer `AGENTS.md`,
 consultar `seo` si la revisión afecta metadatos.
 
 Comprobar tesis y evidencia, calidad de ejemplos, límites, voz del autor, privacidad,
-frontmatter, enlaces, assets y coherencia de la serie. Distinguir crítica argumentada
+frontmatter, enlaces, assets y coherencia de la serie.
+Para `src/content/drafts/posts/`, exigir `issue: N` en frontmatter,
+consultar esa issue en `josemasf/jmsantos` y verificar correspondencia real
+con la tesis, la serie o la ficha individual. La ausencia, un número inventado o
+una issue ajena es un **bloqueante**; no aprobar por tener un build verde. Los
+artículos publicados históricos pueden no tener ese campo. Si no se puede
+verificar GitHub, dejarlo como pendiente bloqueante. Distinguir crítica argumentada
 de resultados demostrados. Señalar datos privados o experiencias inventadas como
 bloqueantes. Ejecutar controles locales; no mover drafts ni activar el publicador.
 

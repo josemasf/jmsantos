@@ -2,6 +2,7 @@
 title: "Scrum en equipos con agentes: de las reuniones de estado a las decisiones"
 description: "Cómo evolucionan los roles de Product Owner, Tech Lead y developer, y qué propósito conservan las ceremonias de Scrum cuando parte de la ejecución se delega a agentes."
 date: 2026-12-29
+issue: 66
 tags:
   [Scrum, IA, agentes, equipos, producto, arquitectura, desarrollo de software]
 category: Cultura de equipo
