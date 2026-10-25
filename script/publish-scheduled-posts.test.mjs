@@ -19,11 +19,12 @@ async function writePost(
   fileName,
   { date, title = "Post de prueba", issue = 65 },
 ) {
+  const issueLine = issue === null ? "" : `issue: ${issue}\n`;
   const filePath = join(directory, fileName);
   await mkdir(join(filePath, ".."), { recursive: true });
   await writeFile(
     filePath,
-    `---\ntitle: "${title}"\ndescription: "Descripción de prueba"\ndate: ${date}\n${issue === null ? "" : `issue: ${issue}\\n`}tags: [Testing]\ncategory: Testing\n---\n\nContenido.\n`,
+    `---\ntitle: "${title}"\ndescription: "Descripción de prueba"\ndate: ${date}\n${issueLine}tags: [Testing]\ncategory: Testing\n---\n\nContenido.\n`,
   );
 }
 
