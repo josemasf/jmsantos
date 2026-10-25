@@ -19,7 +19,9 @@ export function upsertPublicationBlock(body, post, siteUrl) {
     "El archivo está publicado en master; este registro no verifica la finalización del despliegue de Netlify.",
     end,
   ].join("\n");
-  const previous = body ?? "";
+  const draftEntry = `- **Borrador programado** — \`src/content/drafts/posts/${post.relativePath}\`, fecha prevista: ${post.date}.`;
+  const publishedEntry = `- **Publicado en master** — \`src/content/posts/${post.relativePath}\`, fecha: ${post.date}.`;
+  const previous = (body ?? "").replace(draftEntry, publishedEntry);
   const from = previous.indexOf(start);
   const to = previous.indexOf(end, from);
   if (from !== -1 && to !== -1)
