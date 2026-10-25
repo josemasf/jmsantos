@@ -2,6 +2,7 @@
 title: "¿Qué debería ocurrir cuando una API tarda diez segundos?"
 description: "Cómo diseñar una interfaz para operaciones lentas: feedback inmediato, progreso honesto, cancelación y actualizaciones optimistas con límites claros."
 date: 2027-01-26
+issue: 52
 tags: [frontend, UX, rendimiento, API, arquitectura]
 category: Frontend
 image:

@@ -2,6 +2,7 @@
 title: "Cómo evolucionar una arquitectura sin reescribir el sistema"
 description: "Un método para mejorar un sistema en producción mediante fronteras claras, cambios reversibles y migraciones guiadas por el coste real de cambiarlo."
 date: 2026-10-27
+issue: 25
 tags: [arquitectura, refactorización, mantenibilidad, deuda técnica, frontend]
 category: Arquitectura
 image:

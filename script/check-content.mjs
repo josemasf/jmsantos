@@ -48,6 +48,13 @@ export async function checkContent({
         }
         if (data.updatedDate && data.updatedDate < data.date)
           errors.push(`${name}: updatedDate es anterior a date.`);
+        // Los artículos históricos publicados pueden no tener ficha editorial.
+        // Cada borrador nuevo sí necesita issue para sincronizar su publicación.
+        if (folder === "drafts/posts" && data.issue === undefined) {
+          errors.push(
+            `${name}: falta issue de origen en el frontmatter del borrador.`,
+          );
+        }
         posts.push({
           ...data,
           body,

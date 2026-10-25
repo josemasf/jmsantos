@@ -60,11 +60,19 @@ series:
   order: 7
 ```
 
-`issue` es opcional para compatibilidad con artículos existentes. Añadirlo al
-crear un artículo desde una issue tras verificar número y repositorio. Nunca
-deducirlo del prefijo numérico del archivo. Puede apuntar a la issue de una serie;
-el publicador registra cada artículo por separado y conserva el estado global
-y el contenido de la issue. No cierra automáticamente las issues originales.
+`issue: N` es **obligatorio para todos los borradores** en
+`src/content/drafts/posts/` y debe apuntar a una ficha editorial verificable de
+`josemasf/jmsantos`. El agente redactor debe buscar y abrir la issue antes de
+escribir el frontmatter: una issue individual cuando sea el origen de ese artículo
+o la issue de la serie cuando agrupe sus capítulos. Si la idea fue fusionada,
+usar la ficha que conserva el contenido. Si no existe, crear una ficha de
+seguimiento antes de programar; nunca adivinar el número por el prefijo ni usar
+una issue parecida sin confirmar la relación. El revisor valida esta trazabilidad.
+
+Para **artículos publicados históricos**, `issue` continúa siendo opcional por
+compatibilidad. La CI y el dry-run de publicación bloquean borradores sin issue;
+el publicador registra cada artículo por separado, conserva el estado global y
+no cierra automáticamente las issues originales.
 
 Registrar título y descripción de la serie en `src/data/blog-series.ts`.
 `series` solo admite `slug`, `order` e `image` opcional. Usar órdenes positivos,
@@ -114,8 +122,9 @@ pnpm content:check -- --built
 pnpm publish:scheduled -- --dry-run
 ```
 
-`content:check` valida ambos conjuntos, fechas, slugs, registros y órdenes de
-serie, coherencia de imágenes sociales, assets y dimensiones. `--built` añade
+`content:check` valida ambos conjuntos, exige issue de origen en drafts,
+fechas, slugs, registros y órdenes de serie, coherencia de imágenes sociales,
+assets y dimensiones. `--built` añade
 enlaces a rutas del blog en el HTML final, incluidos los generados por referencias
 Markdown. No verifica fuentes externas, privacidad, calidad de la tesis ni
 ejecución de ejemplos: esas comprobaciones requieren revisión editorial.

@@ -123,6 +123,14 @@ export async function publishScheduledPosts({
       };
     }),
   );
+  // Bloquear también el dry-run: ningún borrador debe publicarse sin trazabilidad.
+  for (const post of posts) {
+    if (post.issue === undefined) {
+      throw new Error(
+        `${post.relativePath}: falta issue de origen en el frontmatter. Verifica la issue en GitHub antes de publicar.`,
+      );
+    }
+  }
   const duePosts = posts.filter((post) => post.date <= publicationDate);
 
   for (const post of duePosts) {
