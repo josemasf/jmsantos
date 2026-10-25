@@ -1,10 +1,8 @@
 ---
 import MainLayout from "@layouts/MainLayout.astro";
+import { resolveKitScript } from "../utils/kit-embed";
 
-const scriptSrc = import.meta.env.PUBLIC_KIT_FORM_SCRIPT_SRC?.trim() ?? "";
-// El enlace debe copiarse del código JavaScript oficial del formulario Inline de Kit.
-// No se admite HTML libre ni scripts de otros dominios en esta integración.
-const hasKitForm = /^https:\/\/(?:f\.(?:convert)?kit\.com\/[a-zA-Z0-9_./?=&%-]+\.js(?:\?[a-zA-Z0-9_=&%-]+)?|[a-zA-Z0-9-]+\.kit\.com\/[a-zA-Z0-9_-]+\/index\.js)$/.test(scriptSrc);
+const { src: scriptSrc, isValid: hasKitForm, uid: kitFormUid, directUrl: directFormUrl } = resolveKitScript(import.meta.env.PUBLIC_KIT_FORM_SCRIPT_SRC);
 ---
 
 <MainLayout title="Newsletter quincenal | José María Santos" description="Una vez cada dos semanas: artículos de frontend, arquitectura, testing e IA, con un avance de las próximas publicaciones.">
@@ -17,10 +15,13 @@ const hasKitForm = /^https:\/\/(?:f\.(?:convert)?kit\.com\/[a-zA-Z0-9_./?=&%-]+\
       <p class="mt-2 text-sm leading-relaxed text-slate-600 dark:text-slate-300">Dos correos al mes aproximadamente. Es gratis, y podrás darte de baja en cualquier momento.</p>
       {hasKitForm ? (
         <div class="mt-6" id="kit-newsletter-form" aria-label="Formulario de suscripción de Kit">
-          <script is:inline data-astro-rerun async src={scriptSrc}></script>
+          <script is:inline data-astro-rerun async data-uid={kitFormUid} src={scriptSrc}></script>
         </div>
       ) : (
         <p class="mt-6 rounded-lg bg-amber-50 p-4 text-sm text-amber-950 dark:bg-amber-950/30 dark:text-amber-100" role="status">La suscripción por correo estará disponible próximamente. Mientras tanto, puedes seguir las publicaciones mediante <a class="font-bold underline" href="/rss.xml">RSS</a>.</p>
+      )}
+      {directFormUrl && (
+        <p class="mt-4 text-sm text-slate-600 dark:text-slate-300">¿No se carga el formulario? <a href={directFormUrl} target="_blank" rel="noopener noreferrer" class="font-semibold underline">Abrirlo directamente en Kit</a>.</p>
       )}
       <p class="mt-5 text-xs leading-relaxed text-slate-500 dark:text-slate-400">Al suscribirte, Kit gestionará tu dirección de correo y el proceso de confirmación. Consulta la <a href="/privacidad/" class="underline hover:text-cyan-700 dark:hover:text-cyan-200">política de privacidad</a> antes de continuar.</p>
     </div>

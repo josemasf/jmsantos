@@ -10,7 +10,7 @@ El calendario de preparación comienza el **lunes 2 de noviembre de 2026** y con
 
 1. Crear una cuenta en Kit y un formulario **Inline Form** con **doble confirmación** activada. Desactivar recomendaciones de la red de Kit y cualquier programa promocional no aprobado.
 2. En Kit, ir a **Grow → Landing Pages & Forms → formulario → Embed → JavaScript**. Copiar el atributo `src` del script generado. Puede ser una URL `https://f.convertkit.com/...js` o la URL del formulario alojado en Kit, como `https://jose-maria-santos.kit.com/5c2c8714b9/index.js`. No pegar claves privadas, API tokens ni el código entero en el repositorio.
-3. Definir `PUBLIC_KIT_FORM_SCRIPT_SRC` con esa URL pública completa (sin las etiquetas `<script>`) en el entorno de build de Netlify. El formulario aparece en `/newsletter/`; sin esa configuración, la página muestra un aviso transparente y el enlace RSS.
+3. Definir `PUBLIC_KIT_FORM_SCRIPT_SRC` con esa URL pública completa (sin las etiquetas `<script>`) en el entorno de build de Netlify. Para los enlaces alojados en `*.kit.com/ID/index.js`, la página extrae el identificador público y genera también el atributo `data-uid` exigido por el embed oficial. Se muestra además un enlace directo a Kit por si el JavaScript falla. El formulario aparece en `/newsletter/`; sin esa configuración, la página muestra un aviso transparente y el enlace RSS.
 4. Comprobar el formulario en móvil, navegación cliente de Astro, CSP en la consola, doble confirmación, correo de bienvenida, enlace a privacidad y enlace de baja.
 5. Revisar las condiciones vigentes de Kit para transferencias internacionales, acuerdo de tratamiento y branding. No guardar suscriptores en el repositorio ni ceder sus datos a anunciantes.
 
@@ -21,7 +21,7 @@ Además del formulario Inline de `/newsletter/`, se puede utilizar una **Sticky 
 1. Crear Grove como formulario **Sticky Bar**, traducir sus textos (sin promociones por defecto) y conservar la confirmación doble.
 2. Kit **Settings → General**: configurar **Display form in: Bottom**, **Scroll percentage: 50 %** y una aparición como máximo cada 15 días. Ocultar a suscriptores existentes, cuando corresponda.
 3. Publicar el formulario. Copiar la URL `src` del código **Embed → JavaScript**, que debe empezar por `https://f.convertkit.com/` y terminar en `.js`.
-4. Añadir `PUBLIC_KIT_STICKY_FORM_SCRIPT_SRC` en las variables de entorno de **build** de Netlify, sin usar secretos. El script se incluye solo cuando su origen es válido; sin esta variable la barra no aparece.
+4. Añadir `PUBLIC_KIT_STICKY_FORM_SCRIPT_SRC` en las variables de entorno de **build** de Netlify, sin usar secretos. El script se incluye **solo en las rutas del blog** cuando su origen es válido; sin esta variable la barra no aparece. El embed incorpora `data-uid` y `data-astro-rerun` para la navegación mediante `ClientRouter`.
 5. Probar escritorio y móvil, ancho de la barra, botones de cierre, scroll, frecuencia, accesibilidad, CSP y navegación con Astro ClientRouter. La aparición depende de las preferencias y cookies gestionadas por Kit; probar en ventana de incógnito para descartar que se haya ocultado por frecuencia.
 
 Este segundo formulario complementa al Inline de `/newsletter/`; **no reemplaza** `PUBLIC_KIT_FORM_SCRIPT_SRC`. Cada uno tiene su propia URL de embed. No se realizan envíos en esta integración.
