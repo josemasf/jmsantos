@@ -2,6 +2,7 @@
 title: "Paralelismo con agentes: sesiones aisladas y trabajo integrable"
 description: "Cómo repartir tickets entre sesiones y worktrees separados, mantener un contexto limpio y revisar cambios con independencia."
 date: 2026-10-27
+issue: 65
 tags: [IA, agentes, Git, worktrees, paralelismo, code review]
 category: Desarrollo profesional
 series:
