@@ -9,3 +9,10 @@ const { src: scriptSrc, isValid: hasValidKitScript, uid: kitFormUid } = resolveK
 {isBlogPage && hasValidKitScript && (
   <script is:inline data-astro-rerun async data-uid={kitFormUid} src={scriptSrc} data-kit-sticky-bar></script>
 )}
+
+<!-- Kit recomienda elevar la barra cuando su z-index queda por detrás del layout. -->
+<style is:global>
+  .formkit-sticky-bar {
+    z-index: 999999 !important;
+  }
+</style>
