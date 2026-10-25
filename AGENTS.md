@@ -67,6 +67,15 @@ tags: [Astro, Frontend]
 category: Frontend
 ```
 
+**Trazabilidad obligatoria de borradores:** además de estos campos,
+`src/content/drafts/posts/` requiere `issue: N`, donde `N` es el número
+**verificado en GitHub** de la ficha editorial del artículo o de su serie.
+No adivinarlo del prefijo del archivo ni enlazar por parecido de título. Si no
+existe ficha, registrarla antes de programar (o bloquear el borrador si no
+puede verificarse). Los artículos antiguos ya publicados mantienen la excepción
+de compatibilidad. El redactor y el revisor lo comprueban y la CI bloquea drafts
+que no lo tengan.
+
 Para un post con imagen destacada:
 
 ```yaml
@@ -173,8 +182,10 @@ Entrega: prompt principal, prompt negativo, 3 variantes y alt text.
 
 - Este registro documenta la existencia del agente para herramientas que no descubren automáticamente archivos `.agent.md`.
 - Si se actualiza el agente, actualizar también este archivo para mantener compatibilidad entre asistentes.
-- Las GitHub Issues son la fuente de verdad del estado editorial. Cuando se cree un post a partir de una issue, verificarla y añadir su número en
-  `issue` del frontmatter. Registrar **Borrador** o **Programado** según preparación
-  y fecha, con ruta y siguiente acción. El workflow actualiza un bloque por artículo
-  en la issue original al publicar; conserva su contenido/estado global y no la
-  cierra automáticamente porque puede representar una serie.
+- Las GitHub Issues son la fuente de verdad del estado editorial. Cada nuevo
+  borrador debe referenciar en `issue` una ficha real del artículo o de la
+  serie, comprobada por el redactor y el revisor. Registrar **Borrador** o
+  **Programado** con ruta y siguiente acción. `pnpm content:check` y el dry-run
+  deben rechazar cualquier borrador sin issue. El workflow actualiza un bloque
+  por artículo en su issue original al publicar y no la cierra automáticamente.
+  Los posts históricos publicados pueden seguir sin issue.
