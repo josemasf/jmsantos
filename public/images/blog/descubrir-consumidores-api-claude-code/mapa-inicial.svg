@@ -1,0 +1,40 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 520" role="img" aria-labelledby="title desc">
+  <title id="title">Mapa inicial de consumidores de una API</title>
+  <desc id="desc">El contrato declara una operación de orders-api. El README menciona storefront, y los demás consumidores están pendientes de identificar.</desc>
+  <defs>
+    <marker id="arrow" markerWidth="10" markerHeight="10" refX="8" refY="5" orient="auto"><path d="M0 0 10 5 0 10Z" fill="#53657a"/></marker>
+    <marker id="dash-arrow" markerWidth="10" markerHeight="10" refX="8" refY="5" orient="auto"><path d="M0 0 10 5 0 10Z" fill="#a66d18"/></marker>
+    <style>
+      text { font-family: Inter, ui-sans-serif, system-ui, sans-serif; fill: #172b4d; }
+      .node { fill: #fff; stroke: #8093aa; stroke-width: 2; rx: 14; }
+      .api { fill: #eaf2ff; stroke: #3869aa; stroke-width: 3; rx: 14; }
+      .pending { fill: #fff8e8; stroke: #c18a2b; stroke-width: 2; stroke-dasharray: 7 6; rx: 14; }
+      .label { font-size: 17px; font-weight: 600; }
+      .sub { font-size: 14px; fill: #51637a; }
+      .edge { stroke: #53657a; stroke-width: 2.5; fill: none; marker-end: url(#arrow); }
+      .uncertain { stroke: #a66d18; stroke-width: 2.5; stroke-dasharray: 8 7; fill: none; marker-end: url(#dash-arrow); }
+      .edge-label { font-size: 14px; fill: #40546b; }
+    </style>
+  </defs>
+  <rect width="1200" height="520" fill="#f6f8fb" rx="20"/>
+  <text x="48" y="55" font-size="25" font-weight="700">Primer pase · evidencia declarada</text>
+  <rect class="node" x="65" y="170" width="245" height="112"/>
+  <text class="label" x="187" y="214" text-anchor="middle">openapi.json</text>
+  <text class="sub" x="187" y="242" text-anchor="middle">declara GET /api/orders/{id}</text>
+  <rect class="api" x="470" y="170" width="250" height="112"/>
+  <text class="label" x="595" y="214" text-anchor="middle">orders-api</text>
+  <text class="sub" x="595" y="242" text-anchor="middle">servicio que expone la ruta</text>
+  <path class="edge" d="M310 226H464"/>
+  <text class="edge-label" x="387" y="207" text-anchor="middle">contrato</text>
+  <rect class="pending" x="840" y="87" width="285" height="112"/>
+  <text class="label" x="982" y="131" text-anchor="middle">storefront</text>
+  <text class="sub" x="982" y="159" text-anchor="middle">mencionado en README</text>
+  <path class="uncertain" d="M840 170 720 205"/>
+  <text class="edge-label" x="790" y="164" text-anchor="middle">documentado</text>
+  <rect class="pending" x="840" y="300" width="285" height="112"/>
+  <text class="label" x="982" y="344" text-anchor="middle">Otros consumidores</text>
+  <text class="sub" x="982" y="372" text-anchor="middle">sin inventario todavía</text>
+  <path class="uncertain" d="M840 325 720 260"/>
+  <text class="edge-label" x="790" y="308" text-anchor="middle">pendiente</text>
+  <text class="sub" x="65" y="468">El contrato describe una operación; la documentación aporta una pista, no una llamada observada.</text>
+</svg>

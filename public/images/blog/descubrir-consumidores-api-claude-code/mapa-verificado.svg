@@ -1,0 +1,55 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 620" role="img" aria-labelledby="title desc">
+  <title id="title">Mapa de dependencias verificadas en los fragmentos de código</title>
+  <desc id="desc">Storefront y partner-portal llaman a orders-api. La API consulta legacy-service, que accede a SQL Server, y tiene un cliente hacia el proveedor de pagos. Otros consumidores externos quedan pendientes.</desc>
+  <defs>
+    <marker id="arrow" markerWidth="10" markerHeight="10" refX="8" refY="5" orient="auto"><path d="M0 0 10 5 0 10Z" fill="#3869aa"/></marker>
+    <marker id="dash-arrow" markerWidth="10" markerHeight="10" refX="8" refY="5" orient="auto"><path d="M0 0 10 5 0 10Z" fill="#a66d18"/></marker>
+    <style>
+      text { font-family: Inter, ui-sans-serif, system-ui, sans-serif; fill: #172b4d; }
+      .node { fill: #fff; stroke: #8093aa; stroke-width: 2; rx: 14; }
+      .api { fill: #eaf2ff; stroke: #3869aa; stroke-width: 3; rx: 14; }
+      .external { fill: #f0f8f3; stroke: #4a8a65; stroke-width: 2; rx: 14; }
+      .pending { fill: #fff8e8; stroke: #c18a2b; stroke-width: 2; stroke-dasharray: 7 6; rx: 14; }
+      .label { font-size: 17px; font-weight: 600; }
+      .sub { font-size: 14px; fill: #51637a; }
+      .edge { stroke: #3869aa; stroke-width: 2.5; fill: none; marker-end: url(#arrow); }
+      .uncertain { stroke: #a66d18; stroke-width: 2.5; stroke-dasharray: 8 7; fill: none; marker-end: url(#dash-arrow); }
+      .edge-label { font-size: 13px; fill: #40546b; }
+    </style>
+  </defs>
+  <rect width="1200" height="620" fill="#f6f8fb" rx="20"/>
+  <text x="48" y="55" font-size="25" font-weight="700">Segundo pase · referencias encontradas en código</text>
+  <rect class="node" x="55" y="135" width="235" height="96"/>
+  <text class="label" x="172" y="174" text-anchor="middle">storefront</text>
+  <text class="sub" x="172" y="200" text-anchor="middle">getOrder · lee status</text>
+  <rect class="node" x="55" y="305" width="235" height="96"/>
+  <text class="label" x="172" y="344" text-anchor="middle">partner-portal</text>
+  <text class="sub" x="172" y="370" text-anchor="middle">getOrder · lee status</text>
+  <rect class="api" x="430" y="215" width="245" height="112"/>
+  <text class="label" x="552" y="260" text-anchor="middle">orders-api</text>
+  <text class="sub" x="552" y="288" text-anchor="middle">GET /api/orders/{id}</text>
+  <path class="edge" d="M290 182 424 242"/>
+  <text class="edge-label" x="356" y="198" text-anchor="middle">GET · código</text>
+  <path class="edge" d="M290 353 424 300"/>
+  <text class="edge-label" x="356" y="346" text-anchor="middle">GET · código</text>
+  <rect class="node" x="790" y="115" width="230" height="96"/>
+  <text class="label" x="905" y="154" text-anchor="middle">legacy-service</text>
+  <text class="sub" x="905" y="180" text-anchor="middle">GET /orders/{id}</text>
+  <path class="edge" d="M675 235 784 187"/>
+  <text class="edge-label" x="727" y="194" text-anchor="middle">cliente · código</text>
+  <rect class="external" x="790" y="270" width="230" height="96"/>
+  <text class="label" x="905" y="309" text-anchor="middle">SQL Server</text>
+  <text class="sub" x="905" y="335" text-anchor="middle">db.Orders · código</text>
+  <path class="edge" d="M905 211V264"/>
+  <rect class="external" x="790" y="425" width="230" height="96"/>
+  <text class="label" x="905" y="464" text-anchor="middle">Proveedor de pagos</text>
+  <text class="sub" x="905" y="490" text-anchor="middle">POST /v1/authorizations</text>
+  <path class="edge" d="M675 306 784 452"/>
+  <text class="edge-label" x="731" y="389" text-anchor="middle">cliente · código</text>
+  <rect class="pending" x="55" y="465" width="470" height="82"/>
+  <text class="label" x="290" y="499" text-anchor="middle">Otros consumidores externos</text>
+  <text class="sub" x="290" y="524" text-anchor="middle">pendientes · no se consultó repositorio ni telemetría</text>
+  <path class="uncertain" d="M525 485 552 327"/>
+  <text class="edge-label" x="574" y="451">sin evidencia disponible</text>
+  <text class="sub" x="55" y="588">Las flechas azules representan referencias del código ficticio; no acreditan actividad en producción.</text>
+</svg>
