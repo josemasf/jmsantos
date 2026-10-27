@@ -19,10 +19,10 @@ const isDraft = import.meta.env.DEV && /(^|\/)drafts\/posts\//.test(post.filePat
 
 <article
   class:list={[
-    "group relative flex h-full flex-col rounded-2xl border p-6 shadow-sm transition duration-300 hover:-translate-y-1 hover:shadow-xl",
+    "theme-card group relative flex h-full flex-col rounded-2xl border p-6 transition duration-300 hover:-translate-y-1 focus-within:-translate-y-1",
     isDraft
-      ? "border-orange-300 bg-orange-100 hover:bg-orange-200 hover:shadow-orange-950/10 dark:border-orange-700 dark:bg-orange-950/50 dark:hover:bg-orange-950/70"
-      : "border-slate-200 bg-white hover:shadow-indigo-950/10 dark:border-slate-700 dark:bg-slate-900",
+      ? "is-draft hover:bg-orange-100 dark:hover:bg-orange-950/50"
+      : "",
   ]}
 >
   <div class="flex flex-wrap items-center gap-x-3 gap-y-2 text-xs font-bold uppercase tracking-[0.14em]">

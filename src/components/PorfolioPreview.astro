@@ -9,7 +9,7 @@ const imgSrc = canUseCloudinary ? cloudinaryAssetUrl(frontmatter.img, { width: 9
 const imgSrcSet = canUseCloudinary ? cloudinarySrcSet(frontmatter.img, cloudinaryWidths.grid, { height: 600, crop: "fill" }) : undefined;
 ---
 
-<article class="group h-full overflow-hidden rounded-2xl border border-slate-200 bg-white shadow-sm transition duration-300 hover:-translate-y-1 hover:shadow-xl hover:shadow-indigo-950/10 dark:border-slate-700 dark:bg-slate-900">
+<article class="theme-card group h-full overflow-hidden rounded-2xl border transition duration-300 hover:-translate-y-1 focus-within:-translate-y-1">
   <a href={url} class="block h-full">
     <img
       alt={`Captura del proyecto ${frontmatter.title}`}

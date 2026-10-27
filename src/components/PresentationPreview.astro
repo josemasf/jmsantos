@@ -9,7 +9,7 @@ const imageSrc = useCloudinary ? cloudinaryAssetUrl(image, { width: 960, height:
 const imageSrcSet = useCloudinary ? cloudinarySrcSet(image, cloudinaryWidths.grid, { height: 600, crop: "fill" }) : undefined;
 ---
 
-<article class="group h-full overflow-hidden rounded-2xl border border-slate-200 bg-white shadow-sm transition duration-300 hover:-translate-y-1 hover:shadow-xl hover:shadow-indigo-950/10 dark:border-slate-700 dark:bg-slate-900">
+<article class="theme-card group h-full overflow-hidden rounded-2xl border transition duration-300 hover:-translate-y-1 focus-within:-translate-y-1">
   <a href={url} class="block h-full">
     {image && <img alt={`Portada de la ponencia ${frontmatter.title}`} src={imageSrc} srcset={imageSrcSet} sizes="(min-width: 1280px) 29vw, (min-width: 768px) 44vw, 100vw" width="960" height="600" class="aspect-[16/10] w-full object-cover transition duration-500 group-hover:scale-[1.03]" loading="lazy" decoding="async" onerror={useCloudinary ? `this.removeAttribute('srcset'); this.src='${image}'` : undefined} />}
     <div class="flex flex-col p-6">
