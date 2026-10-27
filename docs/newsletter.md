@@ -2,7 +2,7 @@
 
 ## Objetivo y frecuencia
 
-La newsletter de josemariasantos.com se prepara cada 14 días, independientemente de la publicación semanal del blog. Incluye artículos publicados en los **14 días anteriores** (inicio incluido y fecha de edición excluida), hasta dos **candidatos** de próximos artículos, una reflexión útil revisada por el autor y publicidad **solo propia o aprobada expresamente**. Nada de recomendaciones publicitarias automáticas de Kit.
+La newsletter de josemariasantos.com, **«Lo que aprendo construyendo software»**, se prepara cada 14 días, independientemente de la publicación semanal del blog. Comparte experiencias y aprendizajes sobre ingeniería de software, arquitectura, calidad, inteligencia artificial, producto y cultura de equipos. Incluye artículos publicados en los **14 días anteriores** (inicio incluido y fecha de edición excluida), hasta dos **candidatos** de próximos artículos, una reflexión útil revisada por el autor y publicidad **solo propia o aprobada expresamente**. Nada de recomendaciones publicitarias automáticas de Kit.
 
 El calendario de preparación comienza el **lunes 2 de noviembre de 2026** y continúa cada 14 días. Es solo la **preparación de un borrador**, no una cadencia de envíos automática. Modificar el ancla junto con el workflow si se cambia el día.
 

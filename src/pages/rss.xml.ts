@@ -35,7 +35,7 @@ export const GET: APIRoute = async ({ site }) => {
   <channel>
     <title>Blog de José María Santos</title>
     <link>${escapeXml(new URL("/blog/", base).toString())}</link>
-    <description>Frontend, arquitectura, testing, IA y desarrollo de producto.</description>
+    <description>Experiencias y aprendizajes construyendo software: ingeniería, arquitectura, calidad, inteligencia artificial, producto y cultura de equipos.</description>
     <language>es-ES</language>
     ${items.join("\n")}
   </channel>

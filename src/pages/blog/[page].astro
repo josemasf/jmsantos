@@ -28,6 +28,6 @@ interface Props {
 const { posts, currentPage, totalPages } = Astro.props;
 ---
 
-<MainLayout title={`Blog · Página ${currentPage} | José María Santos`} description="Artículos de José María Santos sobre frontend, arquitectura, calidad y producto." ogImage="/images/social/blog.png">
+<MainLayout title={`Blog · Página ${currentPage} | José María Santos`} description="Experiencias y aprendizajes de José María Santos construyendo software: ingeniería, arquitectura, calidad, producto y equipos." ogImage="/images/social/blog.png">
   <BlogListing posts={posts} currentPage={currentPage} totalPages={totalPages} />
 </MainLayout>
