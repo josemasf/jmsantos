@@ -6,6 +6,47 @@ La newsletter de josemariasantos.com, **«Lo que aprendo construyendo software»
 
 El calendario de preparación comienza el **lunes 2 de noviembre de 2026** y continúa cada 14 días. Es solo la **preparación de un borrador**, no una cadencia de envíos automática. Modificar el ancla junto con el workflow si se cambia el día.
 
+## Contrato editorial y visual de cada edición
+
+**No es un índice cronológico de entradas.** Cada correo tiene que defender una idea útil, destacar una lectura y dar valor por sí mismo, incluso si nadie hace clic. El lector debe poder escanearlo en segundos y leerlo en **3–5 minutos** (objetivo orientativo de **350–600 palabras** en el cuerpo final, sin convertirlo en un límite rígido).
+
+### Jerarquía obligatoria del correo
+
+1. **Asunto y preheader**: asunto breve, específico y con promesa verificable; el preheader amplía la idea y no la repite. Prohibido usar «Newsletter quincenal · FECHA» como asunto principal.
+2. **Cabecera de marca**: «Lo que aprendo construyendo software», fecha discreta y una única identidad reconocible.
+3. **Titular editorial + apertura**: una idea o problema concreto del periodo, no un resumen administrativo de lo publicado; 60–100 palabras orientativas. Evitar «En las últimas dos semanas he publicado…».
+4. **Lectura destacada**: **un artículo** elegido por relevancia para esa tesis, no automáticamente por fecha; explicar qué problema resuelve y qué se lleva el lector. Un enlace/CTA principal descriptivo.
+5. **Para profundizar**: hasta **dos** artículos complementarios, con títulos legibles y resúmenes breves que expliquen por qué leerlos. Si hay más artículos, ofrecerlos en **Lecturas rápidas** con una línea cada uno; no repetir títulos ni descripciones.
+6. **Una idea para aplicar**: un consejo, comprobación, pequeña prueba o reflexión **sustentada** que pueda aplicarse sin salir del correo. No inventar aprendizajes personales del autor ni afirmar que se ha probado algo sin evidencia. Omitir si no hay valor comprobable.
+7. **Cierre con conversación**: una pregunta específica relacionada con la edición y una invitación natural a responder. No crear llamadas artificiales al engagement.
+8. **Firma y elementos legales**: identidad del autor, enlaces de privacidad y baja gestionados correctamente en Kit.
+
+Los próximos artículos de `src/content/drafts/posts/` **no forman parte del correo por defecto**: se conservan como propuestas internas y solo se anticipan tras aprobación expresa. La publicidad aprobada, si la hay, se indica inequívocamente como publicidad y no desplaza la lectura principal.
+
+**Cuando no haya publicaciones recientes**, no fabricar una lectura destacada: indicar la carencia en el borrador y proponer una edición autónoma basada en una idea contrastada, o recomendar posponer el envío. No incluir placeholders, instrucciones al agente, checklist ni notas internas en el correo final.
+
+### Reglas de legibilidad y diseño para Kit
+
+- **Una columna** y un ancho de contenido de referencia de **600–640 px**; márgenes interiores cómodos en móvil.
+- Texto principal de **16–18 px** con interlineado aprox. **1,5–1,7**; titular de **28–32 px**, subtítulos **20–24 px** y separación visible entre bloques.
+- Alineación izquierda, párrafos cortos pero completos y jerarquía clara: titular, descripción, CTA. No presentar todos los artículos como viñetas con idéntico peso visual.
+- Usar una paleta reducida y coherente con el blog; contraste WCAG AA (**4,5:1** para texto normal, **3:1** para texto grande). El significado nunca depende exclusivamente del color.
+- Un enlace destacado para el artículo principal y enlaces secundarios descriptivos; evitar cadenas de CTA repetidos. Añadir imágenes solo si aportan información (diagrama, ejemplo real), con texto alternativo; el correo debe entenderse con imágenes desactivadas.
+- El **Markdown es el contenido editorial**, **no** la plantilla HTML del email. Aplicar estas reglas en una plantilla compatible con Kit y los clientes de correo, sin reutilizar directamente los componentes Astro/Tailwind del blog. Favorecer HTML de email simple y estilos inline compatibles; incluir versión de texto plano.
+- Antes de enviar, revisar en móvil y escritorio, Gmail, Outlook y Apple Mail (incluido modo oscuro), enlaces, navegación por teclado, contraste y ausencia de desplazamiento horizontal.
+- No insertar píxeles o scripts de seguimiento ajenos, imágenes remotas innecesarias ni formularios activos dentro del cuerpo.
+
+### Checklist editorial bloqueante
+
+- [ ] El asunto y preheader comunican valor sin clickbait.
+- [ ] Existe una tesis y **una** lectura principal diferenciada de las secundarias.
+- [ ] La apertura y los resúmenes explican utilidad para el lector; no son un índice de títulos.
+- [ ] El correo aporta al menos una idea aprovechable sin clic o justifica expresamente su ausencia.
+- [ ] La jerarquía se entiende en móvil y los enlaces describen su destino.
+- [ ] Todos los artículos y afirmaciones están verificados; no hay experiencias personales inventadas.
+- [ ] Ninguna nota interna, candidato no aprobado ni placeholder llega a Kit.
+- [ ] Se mantiene la revisión `Newsletter Curator → Astro Content Writer → Editorial Reviewer → autor`.
+
 ## Captación con Kit
 
 1. Crear una cuenta en Kit y un formulario **Inline Form** con **doble confirmación** activada. Desactivar recomendaciones de la red de Kit y cualquier programa promocional no aprobado.
