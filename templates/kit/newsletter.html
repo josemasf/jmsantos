@@ -1,0 +1,90 @@
+<!--
+  KIT HTML TEMPLATE — josemariasantos.com
+  Pegar en Kit → Send → Email Templates → New Email Template → Create HTML Template.
+  No reemplazar las variables Liquid de Kit. La fecha, el asunto, el preheader
+  y el cuerpo editorial cambian en cada Broadcast, NO en esta plantilla.
+-->
+<style type="text/css">
+  /* Tipografía segura para clientes de correo. */
+  .jms-shell, .jms-shell td, .jms-shell p, .jms-shell li,
+  .jms-shell h1, .jms-shell h2, .jms-shell h3, .jms-shell a {
+    font-family: Arial, Helvetica, sans-serif;
+  }
+  .jms-shell { background-color: #f8fafc; }
+  .jms-panel { background-color: #ffffff; }
+  .jms-content-padding { padding: 38px 44px 34px; }
+  .jms-logo { margin: 0; font-size: 20px; line-height: 1.3; font-weight: 800; color: #17213a; }
+  .jms-eyebrow { margin: 8px 0 0; font-size: 12px; line-height: 1.4; font-weight: 700; letter-spacing: 1px; color: #0f766e; }
+  .jms-content { font-size: 17px; line-height: 1.65; color: #17213a; }
+  .jms-content h1 { margin: 12px 0 24px; font-size: 32px; line-height: 1.22; font-weight: 800; letter-spacing: -0.4px; color: #17213a; }
+  .jms-content h2 { margin: 36px 0 14px; font-size: 22px; line-height: 1.32; font-weight: 700; color: #17213a; }
+  .jms-content h3 { margin: 24px 0 10px; font-size: 18px; line-height: 1.35; font-weight: 700; color: #17213a; }
+  .jms-content p { margin: 0 0 18px; font-size: 17px; line-height: 1.65; color: #17213a; }
+  .jms-content ul, .jms-content ol { padding-left: 24px; margin: 10px 0 24px; }
+  .jms-content li { padding: 0 0 8px; font-size: 17px; line-height: 1.6; color: #17213a; }
+  .jms-content a { color: #4338ca; text-decoration: underline; text-underline-offset: 2px; }
+  .jms-content strong { color: #17213a; }
+  .jms-content img { max-width: 100%; height: auto; border: 0; }
+  .jms-content blockquote { margin: 26px 0; padding: 18px 24px; border-left: 4px solid #0f766e; background-color: #eef5f7; color: #17213a; }
+  .jms-content blockquote p { margin: 0; }
+  .jms-content hr { border: 0; border-top: 1px solid #dbe4ec; margin: 30px 0; }
+  /* Compatible con el uso de botones HTML del editor de Kit. */
+  .jms-content .button, .jms-content a.button { display: inline-block; padding: 12px 20px; border: 1px solid #0f766e; border-radius: 4px; background-color: #0f766e; color: #ffffff !important; text-decoration: none; font-weight: 700; font-size: 15px; line-height: 1.4; }
+  .jms-footer, .jms-footer a { color: #475569; font-size: 12px; line-height: 1.7; }
+  .jms-footer a { text-decoration: underline; }
+  @media only screen and (max-width: 620px) {
+    .jms-container { width: 100% !important; }
+    .jms-content-padding { padding: 28px 22px 26px !important; }
+    .jms-content h1 { font-size: 28px !important; }
+    .jms-content h2 { font-size: 21px !important; }
+    .jms-content p, .jms-content li { font-size: 17px !important; }
+  }
+</style>
+<table role="presentation" class="jms-shell" border="0" cellpadding="0" cellspacing="0" width="100%" bgcolor="#f8fafc" style="width:100%;border-collapse:collapse;background-color:#f8fafc;">
+  <tr>
+    <td align="center" style="padding:24px 12px;">
+      <!--[if mso]><table role="presentation" width="600" cellpadding="0" cellspacing="0"><tr><td><![endif]-->
+      <table role="presentation" class="jms-panel jms-container" width="600" border="0" cellpadding="0" cellspacing="0" bgcolor="#ffffff" style="width:100%;max-width:600px;border-collapse:collapse;background-color:#ffffff;">
+        <tr>
+          <td style="height:5px;line-height:5px;font-size:0;background-color:#0f766e;" height="5" bgcolor="#0f766e">&nbsp;</td>
+        </tr>
+        <tr>
+          <td class="jms-content-padding" style="padding:38px 44px 34px;">
+            <!-- Cabecera fija, sobria y enlazada al blog. -->
+            <table role="presentation" width="100%" cellpadding="0" cellspacing="0" border="0" style="border-collapse:collapse;">
+              <tr><td style="padding:0 0 28px;border-bottom:1px solid #dbe4ec;">
+                <p class="jms-logo" style="margin:0;font-family:Arial,Helvetica,sans-serif;font-size:20px;line-height:1.3;font-weight:800;color:#17213a;">
+                  <a href="https://josemariasantos.com/" style="text-decoration:none;color:#17213a;">Lo que aprendo construyendo software</a>
+                </p>
+                <p class="jms-eyebrow" style="margin:8px 0 0;font-family:Arial,Helvetica,sans-serif;font-size:12px;line-height:1.4;font-weight:700;letter-spacing:1px;color:#0f766e;">NOTAS QUINCENALES SOBRE INGENIERÍA</p>
+              </td></tr>
+            </table>
+
+            <!-- Kit inserta aquí el contenido editable de cada Broadcast. -->
+            <div class="jms-content message-content" style="padding-top:28px;font-family:Arial,Helvetica,sans-serif;font-size:17px;line-height:1.65;color:#17213a;">
+              {{ message_content }}
+            </div>
+
+            <!-- Pie fijo: mantiene los requisitos de Kit. -->
+            <table role="presentation" width="100%" cellpadding="0" cellspacing="0" border="0" style="border-collapse:collapse;margin-top:30px;">
+              <tr><td class="jms-footer" style="padding:23px 0 0;border-top:1px solid #dbe4ec;font-family:Arial,Helvetica,sans-serif;font-size:12px;line-height:1.7;color:#475569;">
+                <strong style="color:#17213a;">José María Santos</strong><br>
+                <a href="https://josemariasantos.com/" style="color:#4338ca;text-decoration:underline;">josemariasantos.com</a>
+                <p style="margin:14px 0 0;font-family:Arial,Helvetica,sans-serif;font-size:12px;line-height:1.7;color:#475569;">
+                  Recibes este correo porque te suscribiste a la newsletter.<br>
+                  <a href="{{ unsubscribe_url }}" style="color:#475569;text-decoration:underline;">Darme de baja</a>
+                  &nbsp;·&nbsp;
+                  <a href="{{ subscriber_preferences_url }}" style="color:#475569;text-decoration:underline;">Preferencias</a>
+                  &nbsp;·&nbsp;
+                  <a href="https://josemariasantos.com/privacidad/" style="color:#475569;text-decoration:underline;">Privacidad</a>
+                </p>
+                <p style="margin:6px 0 0;font-family:Arial,Helvetica,sans-serif;font-size:12px;line-height:1.7;color:#475569;">{{ address }}</p>
+              </td></tr>
+            </table>
+          </td>
+        </tr>
+      </table>
+      <!--[if mso]></td></tr></table><![endif]-->
+    </td>
+  </tr>
+</table>
