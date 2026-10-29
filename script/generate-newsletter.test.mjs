@@ -54,3 +54,39 @@ test("lee carpetas recursivas y elimina el prefijo numérico del slug", async ()
     await rm(dir, { recursive: true, force: true });
   }
 });
+
+test("el andamiaje distingue jerarquía editorial y material interno de fuentes", () => {
+  const draft = generateNewsletterDraft({ published, scheduled, editionDate: "2026-11-02" });
+  assert.match(draft, /## Asunto y preheader/);
+  assert.match(draft, /## Lectura destacada/);
+  assert.match(draft, /## Para profundizar/);
+  assert.match(draft, /## Una idea para aplicar/);
+  assert.match(draft, /## Una pregunta para cerrar/);
+  assert.match(draft, /## Inventario de fuentes \(solo uso interno\)/);
+  assert.match(draft, /NUNCA COPIAR A KIT/);
+
+  const body = draft.split("<!-- INICIO DEL CUERPO EDITORIAL: revisar y copiar solo tras aprobación -->")[1]
+    ?.split("<!-- FIN DEL CUERPO EDITORIAL -->")[0];
+  assert.ok(body, "el cuerpo editable debe estar delimitado");
+  assert.match(body, /Un artículo/);
+  assert.doesNotMatch(body, /Próximo post/);
+  assert.doesNotMatch(body, /Pendiente de aprobar por el redactor/);
+  assert.doesNotMatch(body, /## Inventario de fuentes/);
+});
+
+test("la fuente más reciente es solo candidata, no una decisión editorial validada", () => {
+  const draft = generateNewsletterDraft({
+    published: [
+      { id: "antiguo", title: "Texto antiguo", description: "Comparar", date: "2026-10-25" },
+      { id: "nuevo", title: "Texto nuevo", description: "Analizar", date: "2026-10-30" },
+      { id: "extra", title: "Texto extra", description: "Verificar", date: "2026-10-28" },
+      { id: "cuarto", title: "Texto cuarto", description: "Comprobar", date: "2026-10-26" },
+    ],
+    scheduled: [],
+    editionDate: "2026-11-02",
+  });
+  assert.match(draft, /selección de la lectura destacada es preliminar/);
+  assert.ok(draft.indexOf("Texto nuevo") < draft.indexOf("Texto extra"));
+  assert.match(draft, /## Lecturas rápidas/);
+  assert.match(draft, /Texto antiguo/);
+});
