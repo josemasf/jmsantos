@@ -46,7 +46,7 @@ herramientas y compatibilidad varían según el harness. Si no puede delegarse,
 el orquestador debe identificar fases pendientes y no fingir que se ejecutaron.
 Ver [el contrato de fases](docs/editorial-workflow.md#orquestación-de-artículos).
 
-La newsletter sigue el circuito **Newsletter Curator → Astro Content Writer (validador redactor) → Editorial Reviewer → aprobación del autor**, documentado en `docs/newsletter.md`. Los agents de VS Code no se ejecutan automáticamente desde GitHub Actions; ningún workflow puede aprobar o enviar campañas.
+La newsletter sigue el circuito **Newsletter Curator → Astro Content Writer (validador redactor) → Editorial Reviewer → aprobación del autor**, documentado en `docs/newsletter.md`. El agente debe aplicar el **contrato editorial y visual**: asunto/preheader con valor, una lectura protagonista, secciones secundarias, idea aplicable y cierre conversacional; el generador automático solo produce un andamiaje pendiente de redacción. Los agents de VS Code no se ejecutan automáticamente desde GitHub Actions; ningún workflow puede aprobar o enviar campañas.
 
 ### Restricciones compartidas
 
