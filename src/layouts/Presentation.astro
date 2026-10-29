@@ -4,106 +4,196 @@ import { canUseCloudinary, cloudinaryAssetUrl, cloudinarySrcSet, cloudinaryWidth
 
 const { content } = Astro.props;
 const useCloudinary = content.img && canUseCloudinary(content.img);
-const heroImageSrc = useCloudinary ? cloudinaryAssetUrl(content.img, { width: 960, height: 600, crop: "fill" }) : content.img;
-const heroImageSrcSet = useCloudinary ? cloudinarySrcSet(content.img, cloudinaryWidths.hero, { height: 600, crop: "fill" }) : undefined;
+const heroImageSrc = useCloudinary ? cloudinaryAssetUrl(content.img, { width: 1200, height: 750, crop: "fill" }) : content.img;
+const heroImageSrcSet = useCloudinary ? cloudinarySrcSet(content.img, cloudinaryWidths.hero, { height: 750, crop: "fill" }) : undefined;
+const speakerImage = "/assets/jose-maria-santos-03.png";
+const speakerImageSrc = cloudinaryAssetUrl(speakerImage, { width: 160, height: 160, crop: "fill" });
 ---
 
 <MainLayout title={content.title} description={content.description}>
   <main id="main-content">
-  <div class="bg-slate-200 dark:bg-slate-900">
-    <section class="bg-slate-200 dark:bg-slate-900 flex lg:container">
-      <picture class="hidden md:block">
-        <img class="h-full" src={heroImageSrc} srcset={heroImageSrcSet} sizes="(min-width: 1024px) 50vw, 100vw" alt={`Portada de la ponencia ${content.title}`} width="960" height="600" loading="eager" fetchpriority="high" decoding="async" onerror={useCloudinary ? `this.removeAttribute('srcset'); this.src='${content.img}'` : undefined} />
-      </picture>
-      <div
-        class="relative px-4 py-32 mx-auto max-w-screen-md lg:items-center md:flex"
-      >
-        <div class="max-w-xl text-center sm:text-left">
-          <h1 class="text-3xl font-extrabold sm:text-5xl">
-            {content.title}
-          </h1>
-
-          <p class="max-w-lg mt-4 sm:leading-relaxed sm:text-xl">
-            {content.description}
-          </p>
-
-          <div class="flex flex-wrap mt-8 text-center gap-4">
-            <a
-              class="block w-full px-12 py-3 text-sm font-medium text-white rounded-sm shadow-sm bg-indigo-600 sm:w-auto active:bg-indigo-500 hover:bg-indigo-700 focus:outline-hidden focus:ring-3"
-              href={content.urlPresentation}
-              target="_blank"
-              rel="noopener noreferrer"
-            >
-              Ver presentación
+    <section class="presentation-hero" aria-labelledby="presentation-title">
+      <div class="presentation-hero__inner">
+        <div class="presentation-hero__copy">
+          <p class="section-kicker">Ponencia</p>
+          <h1 id="presentation-title">{content.title}</h1>
+          <p class="presentation-hero__description">{content.description}</p>
+          <div class="presentation-hero__actions">
+            <a class="presentation-button presentation-button--primary" href={content.urlPresentation} target="_blank" rel="noopener noreferrer">
+              Ver presentación <span aria-hidden="true">↗</span>
             </a>
-
-            <a
-              class="flex flex-wrap gap-4 flex-initial w-full px-12 py-3 text-sm font-medium bg-white rounded-sm shadow-sm text-indigo-600 sm:w-auto hover:text-indigo-700 active:text-indigo-500 focus:outline-hidden focus:ring-3"
-              href={content.github}
-              target="_blank"
-              rel="noopener noreferrer"
-            >
-              <div>
-                <svg
-                  class="fill-black dark:fill-slate-300 w-6 h-6"
-                  xmlns="http://www.w3.org/2000/svg"
-                  viewBox="0 0 16 16"
-                >
-                  <path
-                    d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.012 8.012 0 0 0 16 8c0-4.42-3.58-8-8-8z"
-                  ></path>
+            {content.github && (
+              <a class="presentation-button presentation-button--secondary" href={content.github} target="_blank" rel="noopener noreferrer">
+                <svg aria-hidden="true" class="h-5 w-5" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16" fill="currentColor">
+                  <path d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.012 8.012 0 0 0 16 8c0-4.42-3.58-8-8-8z" />
                 </svg>
-              </div>
-              <div>Repositorio</div>
-            </a>
+                Repositorio
+              </a>
+            )}
           </div>
         </div>
+        {content.img && (
+          <figure class="presentation-hero__media">
+            <img src={heroImageSrc} srcset={heroImageSrcSet} sizes="(min-width: 900px) 48vw, 100vw" alt={`Portada de la ponencia ${content.title}`} width="1200" height="750" loading="eager" fetchpriority="high" decoding="async" onerror={useCloudinary ? `this.removeAttribute('srcset'); this.src='${content.img}'` : undefined} />
+          </figure>
+        )}
       </div>
     </section>
-  </div>
-  <div
-    class="container md:max-w-screen-md max-w-fit p-5 prose md:prose-lg lg:prose-xl"
-  >
-    <div
-      class="overflow-hidden relative max-w-md mx-auto bg-white shadow-lg ring-1 ring-black/5 rounded-xl flex items-center gap-6 dark:bg-slate-800 dark:highlight-white/5"
-    >
-      <img
-        class="absolute -left-6 w-28 rounded-r-lg shadow-lg"
-        src="https://res.cloudinary.com/dzrgc7fqy/image/upload/f_auto,q_auto/v1676109246/jmsantos/yo_d9atyf.webp"
-        alt="José María Santos"
-        loading="lazy"
-      />
-      <div class="min-w-0 py-5 pl-28 pr-5">
-        <div
-          class="text-slate-900 font-medium text-sm sm:text-base truncate dark:text-slate-200"
-        >
-          José María Santos
-        </div>
-        <div
-          class="text-slate-700 font-medium text-sm sm:text-base leading-tight truncate dark:text-slate-300"
-        >
-          {content.title}
-        </div>
-        <div
-          class="text-slate-700 font-medium text-sm sm:text-base leading-tight truncate dark:text-slate-300"
-        >
-          Duración aproximada: {content.duration}
-        </div>
-      </div>
-    </div>
-    <article
-      class="space-y-4 text-gray-600 dark:text-slate-400 prose lg:prose-xl prose-h2:dark:text-slate-200 prose-h3:dark:text-slate-200 prose-h1:dark:text-slate-200"
-    >
-      <slot />
-    </article>
-  </div>
 
-  <footer class="flex justify-center">
-    <a
-      href="/presentations/"
-      class="bg-gray-300 hover:bg-gray-400 text-gray-800 font-bold py-2 px-4 rounded-sm inline-flex items-center"
-      >Ver ponencias</a
-    >
-  </footer>
+    <div class="presentation-content">
+      <aside class="presentation-speaker" aria-label="Información de la ponencia">
+        <img src={speakerImageSrc} alt="Retrato ilustrado de José María Santos" width="80" height="80" loading="lazy" decoding="async" onerror={`this.onerror=null; this.src='${speakerImage}'`} />
+        <div class="presentation-speaker__details">
+          <p class="presentation-speaker__name">José María Santos</p>
+          <p class="presentation-speaker__title">{content.title}</p>
+          <p class="presentation-speaker__duration">Duración aproximada: {content.duration}</p>
+        </div>
+      </aside>
+
+      <article class="presentation-article prose prose-slate dark:prose-invert">
+        <slot />
+      </article>
+
+      <nav class="presentation-back" aria-label="Más ponencias">
+        <a href="/presentations/">← Ver todas las ponencias</a>
+      </nav>
+    </div>
   </main>
 </MainLayout>
+
+<style>
+  .presentation-hero {
+    overflow: hidden;
+    border-bottom: 1px solid var(--border-subtle);
+    background:
+      radial-gradient(ellipse at 76% 42%, color-mix(in srgb, var(--text-accent) 18%, transparent), transparent 34rem),
+      linear-gradient(120deg, var(--surface-subtle), var(--surface));
+  }
+
+  .presentation-hero__inner {
+    display: grid;
+    width: min(100% - 2.5rem, 76rem);
+    margin-inline: auto;
+    padding-block: clamp(3.5rem, 7vw, 6rem);
+    gap: clamp(2rem, 5vw, 4.5rem);
+    align-items: center;
+  }
+
+  .presentation-hero__copy { max-width: 42rem; }
+
+  .presentation-hero h1 {
+    margin-top: 1rem;
+    color: var(--text-primary);
+    font-family: var(--font-display);
+    font-size: clamp(2.5rem, 6vw, 5rem);
+    font-weight: 800;
+    letter-spacing: -0.055em;
+    line-height: 1;
+    text-wrap: balance;
+  }
+
+  .presentation-hero__description {
+    max-width: 38rem;
+    margin-top: 1.25rem;
+    color: var(--text-secondary);
+    font-size: clamp(1.05rem, 2vw, 1.25rem);
+    line-height: 1.65;
+  }
+
+  .presentation-hero__actions {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.75rem;
+    margin-top: 2rem;
+  }
+
+  .presentation-button {
+    display: inline-flex;
+    min-height: 2.9rem;
+    align-items: center;
+    justify-content: center;
+    gap: 0.65rem;
+    border: 1px solid transparent;
+    border-radius: 0.65rem;
+    padding: 0.75rem 1.1rem;
+    font-size: 0.9rem;
+    font-weight: 800;
+    text-decoration: none;
+    transition: transform 160ms ease, background-color 160ms ease, border-color 160ms ease;
+  }
+
+  .presentation-button:hover { transform: translateY(-2px); }
+  .presentation-button--primary { background: var(--surface-action); color: var(--text-on-action); }
+  .presentation-button--primary:hover { background: #115e59; }
+  .presentation-button--secondary { border-color: var(--border-strong); background: var(--surface-raised); color: var(--text-primary); }
+  .presentation-button--secondary:hover { border-color: var(--text-accent); background: var(--surface-hover); }
+
+  .presentation-hero__media {
+    position: relative;
+    width: 100%;
+    margin: 0;
+    overflow: hidden;
+    border: 1px solid color-mix(in srgb, var(--border-strong) 75%, transparent);
+    border-radius: 1.25rem;
+    background: var(--surface-raised);
+    box-shadow: 0 24px 70px rgb(15 23 42 / 0.18);
+  }
+
+  .presentation-hero__media img { display: block; width: 100%; height: auto; aspect-ratio: 8 / 5; object-fit: cover; }
+
+  .presentation-content {
+    width: min(100% - 2.5rem, 52rem);
+    margin-inline: auto;
+    padding-block: clamp(1.5rem, 3vw, 2rem) clamp(2.5rem, 6vw, 4.5rem);
+  }
+
+  .presentation-speaker {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    overflow: hidden;
+    border: 1px solid var(--border-subtle);
+    border-radius: 1rem;
+    background: var(--surface-raised);
+    padding: 0.85rem;
+    box-shadow: 0 8px 24px rgb(15 23 42 / 0.06);
+  }
+
+  .presentation-speaker img { width: 4.25rem; height: 4.25rem; flex: none; border-radius: 0.75rem; object-fit: cover; }
+  .presentation-speaker__details { min-width: 0; }
+  .presentation-speaker__name { color: var(--text-primary); font-weight: 800; }
+  .presentation-speaker__title,
+  .presentation-speaker__duration { overflow: hidden; color: var(--text-secondary); font-size: 0.875rem; text-overflow: ellipsis; white-space: nowrap; }
+
+  .presentation-article { margin-top: clamp(2rem, 5vw, 3rem); color: var(--text-secondary); }
+  .presentation-article :global(h2),
+  .presentation-article :global(h3) { color: var(--text-primary); }
+  .presentation-article :global(a) { color: var(--text-link); }
+  .presentation-article :global(a:hover) { color: var(--text-link-hover); }
+
+  .presentation-back { margin-top: 2.5rem; border-top: 1px solid var(--border-subtle); padding-top: 1.5rem; }
+  .presentation-back a { color: var(--text-link); font-weight: 800; text-decoration: none; }
+  .presentation-back a:hover { color: var(--text-link-hover); text-decoration: underline; }
+
+  .dark .presentation-hero {
+    background:
+      radial-gradient(ellipse at 76% 42%, rgb(8 145 178 / 0.2), transparent 34rem),
+      linear-gradient(120deg, #071c2a, #020617 72%);
+  }
+
+  .dark .presentation-hero__media { box-shadow: 0 24px 70px rgb(0 0 0 / 0.38); }
+  .dark .presentation-speaker { box-shadow: 0 8px 24px rgb(0 0 0 / 0.18); }
+
+  @media (min-width: 56.25rem) {
+    .presentation-hero__inner { grid-template-columns: minmax(0, 1.05fr) minmax(20rem, 0.95fr); }
+  }
+
+  @media (max-width: 30rem) {
+    .presentation-hero__inner,
+    .presentation-content { width: min(100% - 2rem, 52rem); }
+    .presentation-hero__actions { align-items: stretch; }
+    .presentation-button { flex: 1 1 100%; }
+    .presentation-speaker { align-items: flex-start; }
+    .presentation-speaker img { width: 3.5rem; height: 3.5rem; }
+  }
+</style>
