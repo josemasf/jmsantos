@@ -50,42 +50,85 @@ export function generateNewsletterDraft({ published, scheduled, editionDate, sit
     .sort((a, b) => a.date.localeCompare(b.date) || a.id.localeCompare(b.id))
     .slice(0, maxUpcoming);
 
-  const articles = recent.length
-    ? recent.map((post) => `- **[${safeInline(post.title)}](${new URL(`/blog/${post.id}/`, siteUrl)})** (${post.date}) — ${safeInline(post.description)}`).join("\n")
-    : "_No hay artículos publicados en este periodo. Replantear esta edición antes del envío._";
+  const articleLink = (post) => "[" + safeInline(post.title) + "](" + new URL("/blog/" + post.id + "/", siteUrl) + ")";
+  const articleSummary = (post) => "**" + articleLink(post) + "** — " + safeInline(post.description);
+  const first = recent[0];
+  const secondary = recent.slice(1, 3);
+  const quickReads = recent.slice(3);
+
+  // Selección preliminar por fecha, NO por relevancia. El agente elige la lectura
+  // destacada y reescribe la jerarquía antes de cualquier envío.
+  const featured = first
+    ? articleSummary(first) + "\n\n[REDACTAR: explicar por qué esta lectura es la protagonista y qué aprenderá el lector; cerrar con un CTA descriptivo.]"
+    : "_No hay artículos publicados en el periodo. Preparar una edición autónoma contrastada o proponer posponer el envío._";
+  const related = secondary.length
+    ? secondary.map((post) => "- " + articleSummary(post)).join("\n")
+    : "_Sin más artículos del periodo; omitir esta sección si no aporta contenido._";
+  const more = quickReads.length
+    ? "\n\n## Lecturas rápidas\n" + quickReads.map((post) => "- " + articleLink(post)).join("\n")
+    : "";
+  const inventory = recent.length
+    ? recent.map((post) => "- " + articleSummary(post) + " (" + post.date + ")").join("\n")
+    : "_Sin artículos publicados en el periodo._";
   const previews = upcoming.length
-    ? upcoming.map((post) => `- [ ] **${post.date}** — ${safeInline(post.title)}. **Pendiente de aprobar por el redactor; no enlazar ni prometer fecha.**`).join("\n")
+    ? upcoming.map((post) => "- [ ] **" + post.date + "** — " + safeInline(post.title) + ". Candidato privado; no enlazar ni prometer fecha. Pendiente de aprobar por el redactor.").join("\n")
     : "_No hay títulos programados en las próximas cuatro semanas. No inventar avances._";
 
-  return `<!-- BORRADOR INTERNO · NO ENVIAR NI PUBLICAR SIN REVISIÓN EDITORIAL -->
-# Newsletter quincenal · ${editionDate}
-
-**Estado:** pendiente de validación de Astro Content Writer y Editorial Reviewer.
-**Periodo de artículos:** ${start} (incluido) — ${editionDate} (excluido).
-**Destinatarios:** lectores suscritos voluntariamente a la newsletter del blog.
-
-## Introducción personal
-[REDACTAR: contextualizar las publicaciones. No inventar experiencias, resultados ni opiniones del autor.]
-
-## Lo publicado en las últimas dos semanas
-${articles}
-
-## Próximamente · Propuestas pendientes de aprobación
-${previews}
-
-## Una idea útil
-[REDACTAR: seleccionar una reflexión real del autor o una referencia contrastada; omitir la sección si no aporta valor.]
-
-## Publicidad propia (opcional)
-[SOLO CON APROBACIÓN EXPRESA: contenido propio o patrocinador contratado y validado por el autor. Identificar como publicidad. Sin redes de anuncios, recomendaciones automáticas ni cesión de correos a anunciantes.]
-
-## Antes de programar en Kit
-- [ ] Astro Content Writer valida el texto, las URL y decide qué anticipos se pueden anunciar.
-- [ ] Editorial Reviewer valida rigor, privacidad, fechas y uso de publicidad.
-- [ ] El autor aprueba la versión final y los posibles anuncios.
-- [ ] Comprobar que cada enlace publicado responde y que el correo incluye baja y datos legales de Kit.
-- [ ] Programar manualmente el Broadcast en Kit. El workflow NUNCA envía correos.
-`;
+  return [
+    "<!-- BORRADOR INTERNO · NO ENVIAR NI PUBLICAR SIN REVISIÓN EDITORIAL -->",
+    "<!-- La selección de la lectura destacada es preliminar. El agente debe elegirla por relevancia. -->",
+    "**Estado:** pendiente de validación de Astro Content Writer y Editorial Reviewer.",
+    "**Periodo de artículos:** " + start + " (incluido) — " + editionDate + " (excluido).",
+    "**Destinatarios:** lectores suscritos voluntariamente.",
+    "",
+    "## Asunto y preheader · metadatos para Kit",
+    "**Asunto:** [REDACTAR: tema concreto y valor para el lector; no usar 'Newsletter quincenal · fecha'.]",
+    "**Preheader:** [REDACTAR: complementar el asunto sin repetirlo.]",
+    "",
+    "<!-- INICIO DEL CUERPO EDITORIAL: revisar y copiar solo tras aprobación -->",
+    "*Lo que aprendo construyendo software · " + editionDate + "*",
+    "",
+    "# [REDACTAR: titular editorial con una idea, no un índice de artículos]",
+    "",
+    "[REDACTAR: apertura de 60–100 palabras sobre un problema concreto y su utilidad para el lector. Evitar 'En las últimas dos semanas he publicado...'.]",
+    "",
+    "## Lectura destacada",
+    featured,
+    "",
+    "## Para profundizar",
+    related,
+    more,
+    "",
+    "## Una idea para aplicar",
+    "[REDACTAR: comprobación, consejo o ejemplo verificable que aporte valor sin pulsar enlaces. No atribuir experiencias inventadas al autor; omitir si no hay base.]",
+    "",
+    "## Una pregunta para cerrar",
+    "[REDACTAR: pregunta específica de la edición que anime a responder de forma natural.]",
+    "",
+    "José María Santos · josemariasantos.com",
+    "<!-- FIN DEL CUERPO EDITORIAL -->",
+    "",
+    "---",
+    "",
+    "<!-- ANEXO INTERNO: NUNCA COPIAR A KIT NI PUBLICAR -->",
+    "## Inventario de fuentes (solo uso interno)",
+    inventory,
+    "",
+    "## Próximamente · Propuestas pendientes de aprobación (solo uso interno)",
+    previews,
+    "",
+    "## Antes de programar en Kit (solo uso interno)",
+    "- [ ] Newsletter Curator selecciona una tesis y una lectura principal por relevancia; reescribe las descripciones automáticas.",
+    "- [ ] Asunto, preheader, apertura, lectura protagonista, idea aplicable y cierre no contienen placeholders.",
+    "- [ ] Astro Content Writer valida el valor autónomo, la voz, la estructura y las URL.",
+    "- [ ] Editorial Reviewer valida rigor, privacidad, fechas, accesibilidad y publicidad.",
+    "- [ ] El autor aprueba la versión final y cualquier anticipo o publicidad.",
+    "- [ ] Se aplica la plantilla de email compatible con Kit; se comprueba el render en móvil, escritorio y clientes principales.",
+    "- [ ] Comprobar que cada enlace publicado responde y que Kit incluye baja y datos legales.",
+    "- [ ] Programar manualmente el Broadcast en Kit. El workflow NUNCA envía correos.",
+    "<!-- FIN DEL ANEXO INTERNO -->",
+    "",
+  ].join("\n");
 }
 
 function argumentValue(args, name) {
