@@ -71,10 +71,22 @@ Este segundo formulario complementa al Inline de `/newsletter/`; **no reemplaza*
 
 El componente Inline usa el **embed oficial** de Kit. No hay plugin específico de Astro ni API key en el frontend. Los CTA de los artículos conducen a la página única de suscripción.
 
+### Crear un Broadcast como borrador mediante Kit API v4
+
+La automatización local opcional usa la API oficial, no credenciales del navegador ni Actions:
+
+1. Comprueba que el plan de la cuenta es elegible para API y Broadcasts.
+2. Crea una API key V4 en Kit y guárdala como `KIT_API_KEY` en `.env` local ignorado por Git. No usar `API_SECRET`, `PUBLIC_*` ni copiar credenciales de Cloudinary.
+3. Configura `KIT_NEWSLETTER_SUBJECT`, `KIT_NEWSLETTER_PREVIEW_TEXT` y, opcionalmente, `KIT_EMAIL_TEMPLATE_ID` en `.env`. La API no permite aplicar las plantillas **Starting point**; si la plantilla habitual es de ese tipo, la creación por API no reproduce fielmente su editor y hay que usar una plantilla compatible/documentada.
+4. Completa primero la revisión de `Astro Content Writer` y `Editorial Reviewer`. Después, si el autor ha pedido un Broadcast de revisión, ejecuta `pnpm newsletter:kit -- --draft newsletter-draft.md --subject "Asunto" --preview "Texto de preview" --template-id ID`. El comando lista drafts existentes para evitar un asunto duplicado y crea el Broadcast con `send_at: null` y `public: false`. No programa ni envía. La aprobación del autor sigue siendo necesaria antes de cualquier programación o envío.
+
+El endpoint de listado cubre drafts, programados e históricos y es paginado. El cliente de este repositorio consulta drafts antes de crear, pero ese control por asunto no elimina la posibilidad de una carrera si se ejecutan dos procesos simultáneamente. La llamada de creación es externa y no reversible automáticamente; usarla solo después de la aprobación editorial y del autor. La automatización no se ejecuta desde GitHub Actions.
+
 ## Preparación automática, aprobación manual
 
 - `pnpm newsletter:draft -- --date 2026-11-02`: muestra el borrador por consola.
 - `pnpm newsletter:draft -- --date 2026-11-02 --output newsletter-draft.md`: guarda Markdown editable.
+- `pnpm newsletter:kit -- --draft newsletter-draft.md --subject "Asunto" --preview "Preview" --template-id ID`: crea un Broadcast privado en estado draft desde el Markdown ya revisado; requiere `KIT_API_KEY` local, además de aprobación expresa para realizar esta escritura en Kit.
 - El workflow `newsletter-draft.yml` corre los lunes y **solo genera un artifact en las semanas pares respecto al ancla**, o por petición manual con `workflow_dispatch`. No usa credenciales de Kit ni envía correos. Los artifacts de un repositorio público no son un lugar adecuado para notas privadas o patrocinios confidenciales.
 - La generación usa las colecciones Markdown del repositorio, no la fecha de ficheros ni issues; comprueba fechas de los drafts y omite los borradores vencidos del avance.
 - Los artículos programados **no** implican compromiso de publicación. Hay que validar qué títulos se anticipan y nunca enlazar a un draft privado.
