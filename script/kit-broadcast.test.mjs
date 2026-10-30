@@ -3,11 +3,12 @@ import assert from "node:assert/strict";
 import { buildBroadcastPayload, kitRequest, newsletterToHtml } from "./kit-broadcast.mjs";
 
 test("converts newsletter Markdown to escaped email HTML with links", () => {
-  const html = newsletterToHtml("# Hola\n\nTexto **fuerte** y [enlace](https://example.com/?a=1&b=2).\n\n- Uno\n- Dos");
+  const html = newsletterToHtml("<!-- INICIO DEL CUERPO EDITORIAL: -->\n# Hola\n\nTexto **fuerte** y [enlace](https://example.com/?a=1&b=2).\n\n- Uno\n- Dos\n<!-- FIN DEL CUERPO EDITORIAL -->\n## ANEXO INTERNO: no enviar");
   assert.match(html, /<h2>Hola<\/h2>/);
   assert.match(html, /<strong>fuerte<\/strong>/);
   assert.match(html, /<a href="https:\/\/example\.com\/\?a=1&amp;b=2">enlace<\/a>/);
   assert.match(html, /<ul>[\s\S]*<li>Uno<\/li>[\s\S]*<li>Dos<\/li>[\s\S]*<\/ul>/);
+  assert.doesNotMatch(html, /ANEXO INTERNO/);
 });
 
 test("builds payload explicitly as a private, unscheduled draft", () => {

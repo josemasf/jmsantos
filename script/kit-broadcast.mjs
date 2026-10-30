@@ -6,10 +6,15 @@ import { config as loadEnv } from "dotenv";
 const API_URL = "https://api.kit.com/v4";
 
 export function newsletterToHtml(markdown) {
-  const body = markdown
-    .split("\n")
-    .filter((line) => !line.startsWith("<!--") && !line.startsWith("**Estado:**") && !line.startsWith("**Periodo de artículos:**") && !line.startsWith("**Destinatarios:**") && !line.startsWith("**Control editorial:**"))
-    .join("\n");
+  const startMarker = "<!-- INICIO DEL CUERPO EDITORIAL:";
+  const endMarker = "<!-- FIN DEL CUERPO EDITORIAL -->";
+  const start = markdown.indexOf(startMarker);
+  const end = markdown.indexOf(endMarker);
+  if (start === -1 || end === -1 || end <= start) {
+    throw new Error("El Markdown debe delimitar el correo entre INICIO y FIN DEL CUERPO EDITORIAL; no se convierte para evitar incluir el anexo interno.");
+  }
+  const bodyStart = markdown.indexOf("\n", start);
+  const body = markdown.slice(bodyStart === -1 ? start + startMarker.length : bodyStart + 1, end).trim();
 
   const escapeHtml = (text) => text.replaceAll("&", "&amp;").replaceAll("<", "&lt;").replaceAll(">", "&gt;").replaceAll('"', "&quot;");
   const inline = (text) => escapeHtml(text)
