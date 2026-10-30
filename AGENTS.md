@@ -57,6 +57,8 @@ La newsletter sigue el circuito **Newsletter Curator → Astro Content Writer (v
 - No enviar difusión social como parte de preparar textos.
 - Registrar solo comprobaciones realmente ejecutadas y sus límites.
 
+**Separación obligatoria de lo interno y lo público:** las issues editoriales del repositorio sirven para coordinar agentes y alimentar `issue: N` en el frontmatter, pero no pueden aparecer como enlace o fuente en el texto visible del blog, newsletters ni redes sociales. Prohibido enlazar a `github.com/josemasf/jmsantos/issues/N` o atribuir la tesis a «la issue #N». Sustituirlo por explicación autónoma y, solo cuando aporte valor, enlaces a contenido realmente publicado y comprobado. La revisión editorial debe bloquear esas filtraciones.
+
 ### Layouts de posts disponibles
 
 La ruta `src/pages/blog/[slug].astro` selecciona automáticamente el layout de cada artículo según el frontmatter del post. Los agentes no deben importar layouts desde el Markdown ni duplicar HTML de portada dentro del cuerpo del artículo.
