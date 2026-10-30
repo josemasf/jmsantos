@@ -1,6 +1,7 @@
 <!-- BORRADOR INTERNO · NO ENVIAR NI PUBLICAR SIN REVISIÓN EDITORIAL -->
 **Estado:** validado por Astro Content Writer y Editorial Reviewer; sincronizado como borrador privado en Kit. Pendiente de aprobación del autor y revisión visual antes de cualquier envío.
-**Periodo de artículos:** 2026-10-15 (incluido) — 2026-10-29 (excluido).
+**Fecha prevista de envío:** 2026-11-02.
+**Periodo de artículos:** 2026-10-19 (incluido) — 2026-11-02 (excluido).
 **Destinatarios:** lectores suscritos voluntariamente.
 
 ## Asunto y preheader · metadatos para Kit
@@ -8,7 +9,7 @@
 **Preheader:** Qué necesita el equipo para recuperar el comportamiento antes de rehacer una interfaz.
 
 <!-- INICIO DEL CUERPO EDITORIAL: revisar y copiar solo tras aprobación -->
-*Lo que aprendo construyendo software · 29 de octubre de 2026*
+*Lo que aprendo construyendo software · 2 de noviembre de 2026*
 
 # Antes de migrar pantallas, recupera el comportamiento
 
