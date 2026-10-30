@@ -104,6 +104,12 @@ problemas, decisiones, costes y aprendizajes útiles. No inventar vivencias,
 resultados, citas ni estadísticas. Anonimizar casos privados y excluir informes
 internos, nombres de equipos/empresas/personas y combinaciones identificativas.
 
+## Límite entre coordinación interna y publicación
+
+La issue de origen es una **ficha editorial interna**, no una referencia bibliográfica. Puede proporcionar tesis, ejemplos y decisiones a los agentes, y debe conservarse como `issue: N` en el frontmatter; nunca se cita ni enlaza en el texto público del post, newsletters o redes. En particular, no escribir «la issue #N propone» ni enlazar a `github.com/josemasf/jmsantos/issues/N`. La exposición al lector debe ser autónoma.
+
+Los enlaces editoriales deben apuntar a páginas realmente publicadas y verificadas: artículos del blog, documentación oficial y recursos públicos relevantes. El estado de una issue, aunque esté cerrada, no prueba que una publicación exista. Una ausencia de fuente pública no se resuelve inventando un enlace. El redactor comprueba esta frontera y el revisor la trata como bloqueante; `pnpm content:check` incorpora una comprobación automatizada de referencias internas.
+
 ## Frontmatter, series e issues
 
 El contrato de datos está en `src/data/post-schema.ts`, importado por
