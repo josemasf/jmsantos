@@ -19,6 +19,11 @@ las afirmaciones que necesitan evidencia de las opiniones del autor.
 5. Entregar tabla: afirmación, URL primaria, fecha/versión, evidencia, conclusión
    y límite. Señalar qué queda sin contrastar y cómo afecta a la tesis.
 
+Las fichas editoriales de GitHub (`josemasf/jmsantos/issues/*`) son contexto de
+trabajo, no fuentes citables. No convertir una issue interna en referencia del blog.
+Si una idea nace en el backlog, redactar una explicación autónoma y buscar una
+fuente pública real cuando la afirmación requiera contraste.
+
 No reconstruir briefings ausentes ni convertir cifras de un informe privado en
 resultados públicos. Si falta navegación, marcar hechos temporales como pendientes;
 continuar con la evidencia local, sin fingir una verificación actual.
