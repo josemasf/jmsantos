@@ -18,12 +18,12 @@ async function fixture(t) {
   return rootDirectory;
 }
 
-async function post(root, path, extra = "", date = "2026-10-10") {
+async function post(root, path, extra = "", date = "2026-10-10", body = "Contenido.") {
   const file = join(root, "src/content", path);
   await mkdir(join(file, ".."), { recursive: true });
   await writeFile(
     file,
-    `---\ntitle: "Decisiones #1"\ndescription: "Una tesis"\ndate: ${date}\ntags: [Testing]\ncategory: Testing\n${extra}---\n\nContenido.\n`,
+    `---\ntitle: "Decisiones #1"\ndescription: "Una tesis"\ndate: ${date}\ntags: [Testing]\ncategory: Testing\n${extra}---\n\n${body}\n`,
   );
 }
 
@@ -79,6 +79,34 @@ test("los borradores necesitan issue, pero los publicados históricos no", async
   await post(rootDirectory, "drafts/posts/02-nuevo.md", "issue: 65\n");
   const after = await checkContent({ rootDirectory });
   assert.deepEqual(after.errors, []);
+});
+
+test("bloquea fugas de issues editoriales en posts y borradores", async (t) => {
+  const root = await fixture(t);
+  await post(root, "posts/01-enlace.md", "", "2026-10-10",
+    "La [issue #64](https://github.com/josemasf/jmsantos/issues/64) plantea el artículo.");
+  await post(root, "posts/02-mencion.md", "", "2026-10-10",
+    "La issue #65 propone un proceso de trabajo.");
+  await post(root, "drafts/posts/03-atribucion.md", "issue: 65\\n", "2026-10-10",
+    "El patrón propuesto en la issue es revisar los contratos.");
+  const { errors } = await checkContent({ rootDirectory: root });
+  assert.equal(errors.filter((error) => error.includes("referencia pública a una issue editorial interna")).length, 3);
+});
+
+test("permite trazabilidad en frontmatter, ejemplos técnicos y fuentes externas", async (t) => {
+  const root = await fixture(t);
+  const body = [
+    "Las issues ordenan el trabajo. Consulta [la documentación](https://docs.github.com/es/issues).",
+    "",
+    "```text",
+    "Seguimiento: issue #123",
+    "https://github.com/josemasf/jmsantos/issues/123",
+    "```",
+    "",
+    "Un enlace a un [bug público externo](https://github.com/vuejs/core/issues/123) puede ser una fuente.",
+  ].join("\\n");
+  await post(root, "drafts/posts/01-correcto.md", "issue: 65\\n", "2026-10-10", body);
+  assert.deepEqual((await checkContent({ rootDirectory: root })).errors, []);
 });
 
 test("detecta slugs duplicados aunque cambien prefijo y carpeta", async (t) => {
