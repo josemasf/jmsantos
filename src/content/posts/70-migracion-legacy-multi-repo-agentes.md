@@ -17,7 +17,7 @@ image:
 
 Migrar una aplicación de escritorio a web no consiste en reemplazar cada formulario por una pantalla equivalente. En un sistema legacy, las reglas de negocio pueden vivir en la interfaz, los accesos a datos pueden llamar directamente a procedimientos almacenados y el comportamiento puede depender de varios repositorios. Generar una nueva UI rápidamente no resuelve qué hace realmente el sistema ni dónde deberían vivir sus responsabilidades.
 
-La [issue #64 del repositorio](https://github.com/josemasf/jmsantos/issues/64) plantea una transición concreta: una aplicación de escritorio .NET, una base de datos con stored procedures, un backend .NET y un frontend Vue, organizados en repositorios independientes. El eje del artículo es migrar casos de uso completos, no mapear formularios uno a uno.
+Pensemos en una aplicación de escritorio .NET con acceso directo a procedimientos almacenados que debe convivir, durante la transición, con una API .NET y un frontend Vue en repositorios independientes. El trabajo gana coherencia cuando se organiza por casos de uso completos, no como una equivalencia entre formularios antiguos y pantallas nuevas.
 
 ## Empieza por descubrir el caso de uso
 
@@ -45,7 +45,7 @@ Cuando sea viable, characterization o parity tests ejecutan el mismo input sobre
 
 ## Coordina repositorios sin mezclar todo el contexto
 
-GitHub puede conservar issues, dependencias y contratos de trabajo; un workspace multi-root en VS Code facilita la investigación local sin convertir los repositorios en uno solo. Un repositorio de coordinación opcional puede guardar specs, glosario y ADR compartidos si el equipo necesita una fuente de verdad común.
+GitHub puede conservar issues, dependencias y contratos de trabajo; [organizar las issues como un grafo de trabajo](/blog/github-issues-grafo-trabajo-agentes/) permite representar qué debe resolverse antes de cada migración. Un workspace multi-root en VS Code facilita la investigación local sin convertir los repositorios en uno solo. Un repositorio de coordinación opcional puede guardar specs, glosario y ADR compartidos si el equipo necesita una fuente de verdad común.
 
 Los agentes no tienen por qué leer todas las bases de código. El analista de legacy y el de datos pueden producir hallazgos citados y decisiones; después los implementadores trabajan con el contrato y el ticket que necesitan. Un revisor de migración puede comprobar paridad y compatibilidad entre los repositorios. Cada rol reduce el contexto requerido, pero las decisiones y los contratos siguen siendo visibles para el equipo.
 

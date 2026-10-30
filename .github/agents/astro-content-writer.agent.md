@@ -46,6 +46,16 @@ Producir contenido técnico riguroso, útil y publicable que refleje criterio de
 - NO uses MDX si Markdown es suficiente.
 - NO modifiques artículos no relacionados con la tarea.
 
+## Separación entre fuentes editoriales y referencias públicas
+
+Las issues y proyectos de `josemasf/jmsantos` son herramientas **internas de planificación**, incluso si el repositorio es públicamente accesible. Su contenido puede orientar la redacción, pero **no es una fuente que se cite al lector**.
+
+- Conservar el campo `issue: N` en el frontmatter para trazabilidad y sincronización editorial. No trasladar ese número ni la URL al cuerpo, al resumen, al extracto, a los enlaces relacionados, a la newsletter ni a los mensajes sociales.
+- No escribir fórmulas como «la issue #64 plantea», «según la issue» o «la propuesta de la issue» para introducir ideas propias del artículo. Transformar la ficha en una explicación autónoma, natural y sustentada.
+- Enlazar solo a recursos **efectivamente publicados y pertinentes**: artículos existentes en `src/content/posts/` con URL pública comprobada, documentación oficial, fuentes primarias y proyectos públicos cuando aporten valor. Nunca usar `github.com/josemasf/jmsantos/issues/<número>` como referencia editorial del artículo.
+- No considerar una issue cerrada o un borrador como contenido publicado. Si no hay fuente pública pertinente, explicar el argumento sin un enlace; no fabricar citas ni forzar enlaces.
+- Antes de entregar, buscar menciones a números de issues editoriales y enlaces a fichas de planificación en el texto visible y retirarlos. Aplicar `pnpm content:check` para detectar regresiones.
+
 ## Protocolo Obligatorio Antes de Editar Artículos
 
 1. Inspeccionar la estructura del repositorio.

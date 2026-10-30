@@ -37,6 +37,13 @@ issue solo por similitud de título. Los posts históricos ya publicados son la
 7. Tratar la falta de `issue` o una relación incorrecta como **bloqueante**:
    `pnpm content:check` y el dry-run deben detectarla antes del workflow.
 
+## Referencias visibles para lectores
+
+- La issue editorial es **solo contexto interno** y metadato `issue: N`. No enlazarla ni mencionarla en el cuerpo del artículo o en piezas de difusión.
+- Bloquear enlaces a `github.com/josemasf/jmsantos/issues/<número>` y referencias narrativas a `issue #N` como origen o fundamento del texto. Revisar también expresiones como «la propuesta de la issue» aunque no lleven número.
+- Verificar que los enlaces de lectura apunten a contenido realmente publicado (blog, documentación, fuentes primarias), no a drafts ni a fichas del backlog. Si no hay una referencia útil y pública, no añadir enlace.
+- Ejecutar `pnpm content:check` y revisar el diff de Markdown para localizar filtraciones que no capture un patrón automático.
+
 Para integrar una imagen real, leer primero el agente Visual Asset Prompt Designer,
 usar un generador disponible y optimizar con `pnpm images:optimize -- entrada.png
 public/images/blog/<slug>/portada.webp`. Comprobar alt, dimensiones reales y recorte.
