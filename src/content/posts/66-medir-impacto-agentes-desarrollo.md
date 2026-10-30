@@ -16,7 +16,7 @@ image:
 
 La cantidad de código generado por IA es fácil de contar y difícil de interpretar. Más líneas pueden significar más funcionalidad, más boilerplate o más trabajo que habrá que revisar y retirar. Si un equipo usa esa cifra para decidir si los agentes mejoran la productividad, corre el riesgo de optimizar el volumen producido en lugar del resultado entregado.
 
-La propuesta de la issue #65 es medir el flujo y la calidad: cuánto tarda el trabajo desde que está listo hasta la pull request, cuántas rondas de revisión requiere, cuánta aclaración necesita antes de implementar y qué bugs o retrabajo aparecen después. El principio es evaluar el sistema completo, no atribuir cada resultado a la herramienta por sí sola.
+Una forma más útil de evaluar a los agentes es medir el flujo y la calidad: cuánto tarda el trabajo desde que está listo hasta la pull request, cuántas rondas de revisión requiere, cuánta aclaración necesita antes de implementar y qué bugs o retrabajo aparecen después. El principio es evaluar el sistema completo, no atribuir cada resultado a la herramienta por sí sola.
 
 ## Empieza por una pregunta de mejora
 
