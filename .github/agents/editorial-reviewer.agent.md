@@ -20,6 +20,8 @@ verificar GitHub, dejarlo como pendiente bloqueante. Distinguir crítica argumen
 de resultados demostrados. Señalar datos privados o experiencias inventadas como
 bloqueantes. Ejecutar controles locales; no mover drafts ni activar el publicador.
 
+**Bloqueante de publicación:** separar la trazabilidad interna (`issue: N` en frontmatter) de las referencias visibles. Rechazar cualquier enlace a `github.com/josemasf/jmsantos/issues/<número>`, mención narrativa a «issue #N» de planificación editorial o frase que atribuya al tracker el origen de la tesis. Solo deben figurar enlaces a recursos públicos realmente publicados y relevantes; no reemplazar una ficha por un enlace inventado o por un borrador. Comprobar también extractos, newsletter y copys sociales cuando sean parte de la revisión. `pnpm content:check` complementa, pero no sustituye, esta revisión editorial.
+
 Entregar resultado **listo** o **requiere cambios**, hallazgos bloqueantes,
 recomendados y opcionales, con ubicación y corrección concreta. Enumerar solo
 validaciones realmente ejecutadas y revisiones pendientes. El rigor y el estilo
