@@ -87,7 +87,7 @@ test("bloquea fugas de issues editoriales en posts y borradores", async (t) => {
     "La [issue #64](https://github.com/josemasf/jmsantos/issues/64) plantea el artículo.");
   await post(root, "posts/02-mencion.md", "", "2026-10-10",
     "La issue #65 propone un proceso de trabajo.");
-  await post(root, "drafts/posts/03-atribucion.md", "issue: 65\\n", "2026-10-10",
+  await post(root, "drafts/posts/03-atribucion.md", "issue: 65\n", "2026-10-10",
     "El patrón propuesto en la issue es revisar los contratos.");
   const { errors } = await checkContent({ rootDirectory: root });
   assert.equal(errors.filter((error) => error.includes("referencia pública a una issue editorial interna")).length, 3);
@@ -104,8 +104,8 @@ test("permite trazabilidad en frontmatter, ejemplos técnicos y fuentes externas
     "```",
     "",
     "Un enlace a un [bug público externo](https://github.com/vuejs/core/issues/123) puede ser una fuente.",
-  ].join("\\n");
-  await post(root, "drafts/posts/01-correcto.md", "issue: 65\\n", "2026-10-10", body);
+  ].join("\n");
+  await post(root, "drafts/posts/01-correcto.md", "issue: 65\n", "2026-10-10", body);
   assert.deepEqual((await checkContent({ rootDirectory: root })).errors, []);
 });
 
