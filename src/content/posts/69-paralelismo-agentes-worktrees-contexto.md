@@ -17,7 +17,7 @@ image:
 
 Lanzar varias sesiones de agentes en paralelo puede aumentar el trabajo completado, pero también multiplica los conflictos si todas modifican el mismo checkout o dependen de decisiones aún no cerradas. Un working tree compartido mezcla archivos, estado de Git y contexto de tareas; una sesión puede encontrar cambios que no hizo y atribuirlos al ticket equivocado.
 
-La issue #65 propone aislar cada ticket en una sesión y worktree propios, y distinguir `implement` —una unidad— de `implement-spec`, que trabaja una spec completa como grafo. La documentación de [Git worktree](https://git-scm.com/docs/git-worktree) confirma que un repositorio puede mantener varios working trees asociados, con `HEAD` e índice propios aunque compartan parte de los metadatos.
+Para evitar esa contaminación, conviene aislar cada ticket en una sesión y worktree propios, y distinguir `implement` —una unidad— de `implement-spec`, que trabaja una spec completa como grafo. La documentación de [Git worktree](https://git-scm.com/docs/git-worktree) confirma que un repositorio puede mantener varios working trees asociados, con `HEAD` e índice propios aunque compartan parte de los metadatos.
 
 ## Paraleliza solo después de cerrar las dependencias
 
@@ -35,7 +35,7 @@ La integración debe hacer visibles los conflictos de código y de decisiones. C
 
 Quien implementó una tarea conoce las razones de su solución y puede pasar por alto un supuesto que la revisión debería cuestionar. Revisar desde un contexto separado y desde una base conocida ayuda a que la persona o el agente revisor observe el diff como una propuesta nueva: qué cambió, qué evidencia lo acompaña y si cumple el ticket.
 
-El patrón propuesto en la issue es cerrar implementación y tests, integrar el cambio y lanzar una revisión independiente desde la base común. La revisión debe recibir el ticket y el diff real, no depender solo del resumen del implementador. Los resultados que requieran cambios vuelven a una tarea concreta; no se mezclan con otros tickets sin actualizar su alcance.
+Un patrón práctico es cerrar implementación y tests, integrar el cambio y lanzar una revisión independiente desde la base común. La revisión debe recibir el ticket y el diff real, no depender solo del resumen del implementador. Los resultados que requieran cambios vuelven a una tarea concreta; no se mezclan con otros tickets sin actualizar su alcance.
 
 ## La concurrencia necesita un límite de integración
 

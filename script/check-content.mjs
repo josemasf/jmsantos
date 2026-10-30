@@ -13,6 +13,35 @@ import { isValidDate } from "./publish-scheduled-posts.mjs";
 
 const root = resolve(dirname(fileURLToPath(import.meta.url)), "..");
 
+/**
+ * Las fichas editoriales de este repositorio son contexto interno: no son
+ * referencias para el lector. Los ejemplos de código pueden mostrar tickets
+ * sintéticos, por eso se ignoran bloques cercados y fragmentos inline.
+ */
+function findEditorialReferenceLeaks(body) {
+  let fence = null;
+  const prose = body
+    .split("\n")
+    .map((line) => {
+      const delimiter = line.match(/^\s*(`{3,}|~{3,})/);
+      if (delimiter) {
+        if (!fence) fence = delimiter[1][0];
+        else if (fence === delimiter[1][0]) fence = null;
+        return "";
+      }
+      if (fence) return "";
+      return line.replace(/`[^`\n]*`/g, "");
+    })
+    .join("\n");
+
+  const forbidden = [
+    /https?:\/\/(?:www\.)?github\.com\/josemasf\/jmsantos\/issues(?:\/|[?#]|\b)/i,
+    /\bissues?\s*#\d+\b/i,
+    /\b(?:propuesta\s+de\s+la|patr[oó]n\s+propuesto\s+en\s+la)\s+issue\b/i,
+  ];
+  return forbidden.some((pattern) => pattern.test(prose));
+}
+
 export async function checkContent({
   rootDirectory = root,
   series = blogSeries,
@@ -53,6 +82,11 @@ export async function checkContent({
         if (folder === "drafts/posts" && data.issue === undefined) {
           errors.push(
             `${name}: falta issue de origen en el frontmatter del borrador.`,
+          );
+        }
+        if (findEditorialReferenceLeaks(body)) {
+          errors.push(
+            `${name}: referencia pública a una issue editorial interna; usar contenido publicado o explicar la idea sin citar el tracker.`,
           );
         }
         posts.push({
