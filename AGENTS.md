@@ -201,3 +201,17 @@ Entrega: prompt principal, prompt negativo, 3 variantes y alt text.
   deben rechazar cualquier borrador sin issue. El workflow actualiza un bloque
   por artículo en su issue original al publicar y no la cierra automáticamente.
   Los posts históricos publicados pueden seguir sin issue.
+
+## Agent skills
+
+### Issue tracker
+
+Issues and specs live in GitHub Issues for `josemasf/jmsantos`. See `docs/agents/issue-tracker.md`.
+
+### Triage labels
+
+Use the five canonical labels: `needs-triage`, `needs-info`, `ready-for-agent`, `ready-for-human`, and `wontfix`. See `docs/agents/triage-labels.md`.
+
+### Domain docs
+
+Use the single-context layout with root `GLOSSARY.md` and `docs/adr/`. See `docs/agents/domain.md`.
