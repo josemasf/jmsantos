@@ -26,11 +26,11 @@ Ese descubrimiento es útil, pero no convierte automáticamente cada duda en par
 
 Para cada funcionalidad conviene decidir qué resultado se busca. Las tres opciones siguientes no agotan todas las estrategias posibles, pero ayudan a que una conversación ambigua se convierta en una decisión explícita.
 
-| Decisión | Cuándo encaja | Qué debe quedar acordado |
-| --- | --- | --- |
-| **Migrar** | La funcionalidad sigue siendo necesaria y su comportamiento actual es aceptable en el destino. | Qué comportamiento observable se conserva y cómo se comprobará. |
-| **Retirar** | Producto confirma que la funcionalidad ya no aporta valor o tiene que desaparecer. | Quién confirma la retirada, qué dependencias hay que revisar y cómo se comunica. |
-| **Rediseñar** | Existe una mejora de producto que merece cambiar el comportamiento. | El nuevo resultado esperado, su responsable y si forma parte de esta entrega o de otra iniciativa. |
+| Decisión      | Cuándo encaja                                                                                  | Qué debe quedar acordado                                                                           |
+| ------------- | ---------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------- |
+| **Migrar**    | La funcionalidad sigue siendo necesaria y su comportamiento actual es aceptable en el destino. | Qué comportamiento observable se conserva y cómo se comprobará.                                    |
+| **Retirar**   | Producto confirma que la funcionalidad ya no aporta valor o tiene que desaparecer.             | Quién confirma la retirada, qué dependencias hay que revisar y cómo se comunica.                   |
+| **Rediseñar** | Existe una mejora de producto que merece cambiar el comportamiento.                            | El nuevo resultado esperado, su responsable y si forma parte de esta entrega o de otra iniciativa. |
 
 La distinción importa porque cada opción tiene un criterio de éxito diferente. Para migrar, se comprueba que el comportamiento acordado se mantiene. Para retirar, se valida que no quedan consumidores o dependencias que necesiten esa capacidad. Para rediseñar, se revisa si el nuevo flujo satisface la necesidad que motivó el cambio. Una sola lista de tareas puede incluir las tres, pero conviene que no se confundan bajo la etiqueta de «migración».
 
@@ -48,13 +48,13 @@ El equipo técnico puede describir lo que hace el sistema, señalar riesgos y pr
 
 Una tabla breve puede mantener el trabajo en movimiento:
 
-| Situación | Decisión provisional | Responsable y siguiente paso |
-| --- | --- | --- |
-| Funcionalidad vigente y utilizada | Migrar conservando el comportamiento acordado. | Desarrollo define cómo verificar la paridad. |
-| Funcionalidad posiblemente obsoleta | No retirarla por intuición. | Producto confirma uso, valor y retirada. |
-| Mejora deseable pero no imprescindible | Registrar una iniciativa separada. | Producto prioriza cuándo abordarla. |
-| Dependencia de otro equipo o sistema | Limitar el trabajo bloqueado y explicitar el impacto. | Asignar responsable y fecha de respuesta. |
-| Riesgo de seguridad o incompatibilidad real | Evaluar y adaptar antes de continuar con ese flujo. | Desarrollo documenta evidencia y propone opciones; los responsables afectados deciden. |
+| Situación                                   | Decisión provisional                                  | Responsable y siguiente paso                                                           |
+| ------------------------------------------- | ----------------------------------------------------- | -------------------------------------------------------------------------------------- |
+| Funcionalidad vigente y utilizada           | Migrar conservando el comportamiento acordado.        | Desarrollo define cómo verificar la paridad.                                           |
+| Funcionalidad posiblemente obsoleta         | No retirarla por intuición.                           | Producto confirma uso, valor y retirada.                                               |
+| Mejora deseable pero no imprescindible      | Registrar una iniciativa separada.                    | Producto prioriza cuándo abordarla.                                                    |
+| Dependencia de otro equipo o sistema        | Limitar el trabajo bloqueado y explicitar el impacto. | Asignar responsable y fecha de respuesta.                                              |
+| Riesgo de seguridad o incompatibilidad real | Evaluar y adaptar antes de continuar con ese flujo.   | Desarrollo documenta evidencia y propone opciones; los responsables afectados deciden. |
 
 El plazo no es una formalidad de seguimiento. Si una decisión no llega, el equipo necesita saber qué puede continuar sin ella, qué parte queda bloqueada y cuándo escalarla. Así se evita que una duda local detenga toda la transición o que el equipo tome una decisión de producto porque el calendario aprieta.
 
