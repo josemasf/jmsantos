@@ -84,6 +84,11 @@ export async function checkContent({
             `${name}: falta issue de origen en el frontmatter del borrador.`,
           );
         }
+        if (folder === "drafts/posts" && data.image === undefined) {
+          errors.push(
+            `${name}: falta imagen destacada generada e integrada para el borrador.`,
+          );
+        }
         if (findEditorialReferenceLeaks(body)) {
           errors.push(
             `${name}: referencia pública a una issue editorial interna; usar contenido publicado o explicar la idea sin citar el tracker.`,
