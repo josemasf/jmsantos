@@ -10,7 +10,7 @@ fechas, series, imágenes y validaciones. Cargar solo el rol y las skills aplica
 
 | Agente                       | Objetivo                                                       | Archivo                                                |
 | ---------------------------- | -------------------------------------------------------------- | ------------------------------------------------------ |
-| Editorial Orchestrator        | Coordinar el flujo completo, evaluar la necesidad de imagen en cada artículo, delegar fases y exigir revisión independiente sin publicar. | `.github/agents/editorial-orchestrator.agent.md` |
+| Editorial Orchestrator        | Coordinar el flujo completo, generar e integrar una imagen en cada post nuevo, delegar fases y exigir revisión independiente sin publicar. | `.github/agents/editorial-orchestrator.agent.md` |
 | Newsletter Curator           | Preparar la newsletter quincenal a partir de publicaciones y calendario. | `.github/agents/newsletter-curator.agent.md` |
 | Editorial Planner            | Elegir temas, ordenar backlog y detectar duplicados.           | `.github/agents/editorial-planner.agent.md`            |
 | Technical Researcher         | Contrastar fuentes, versiones y ejemplos.                      | `.github/agents/technical-researcher.agent.md`         |
@@ -35,8 +35,8 @@ encargo del usuario. Las skills se invocan por tarea; no son procesos recurrente
 Para desarrollar **un post de extremo a extremo**, seleccionar **Editorial Orchestrator**
 como punto de entrada. Coordina las entregas de Editorial Planner → Technical
 Researcher → Astro Content Writer → Visual Asset Prompt Designer → Editorial
-Reviewer, en las fases que correspondan. Registra siempre si una imagen aporta valor;
-cuando esté indicada, genera e integra el asset real. Conserva el gate de revisión
+Reviewer, en las fases que correspondan. Genera e integra siempre una imagen real
+para cada post nuevo antes de darlo por preparado. Conserva el gate de revisión
 independiente, respeta el calendario y **no publica**. Los demás agentes siguen
 disponibles por separado para encargos puntuales. El agente visual solo diseña prompts;
 la generación requiere una herramienta de imágenes real.
@@ -165,7 +165,7 @@ Repositorio: respeta esquema de Content Collections y estilo editorial existente
 
 ### Cuándo usarlo
 
-Usar este agente cuando la tarea sea:
+Usar este agente en todo post nuevo y también cuando la tarea sea:
 
 - Generar prompts para portadas de posts.
 - Crear variantes por canal (blog, LinkedIn, X) y formato (16:9, 1:1, 4:5).
@@ -176,6 +176,7 @@ Usar este agente cuando la tarea sea:
 Regla obligatoria para portadas:
 
 - Antes de generar, editar o sustituir la portada de un post, cargar el contenido completo de `.github/agents/visual-asset-prompt-designer.agent.md` y usar su dirección de arte para definir el prompt, el prompt negativo y el texto alternativo. Esta regla también se aplica cuando la petición del usuario solo diga «genera una portada» o «crea una imagen para el post».
+- Todo post nuevo debe tener una imagen destacada generada e integrada en `public/images/blog/<slug>/` y el objeto `image` en su frontmatter. Una decisión de que la imagen es opcional o no aporta valor no permite omitirla. Si no hay generador disponible, registrar `asset pendiente` y bloquear el borrador como listo para programar.
 
 ### Cómo consumirlo desde Codex u otros LLM
 

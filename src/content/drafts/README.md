@@ -13,6 +13,12 @@ Esta carpeta contiene artículos ya redactados y pendientes de publicación. Su 
   crearla antes de programar; no deducir el número del nombre de archivo.
 - `pnpm content:check` y `pnpm publish:scheduled -- --dry-run` bloquean
   borradores sin `issue` para impedir publicaciones sin seguimiento.
+- Todo post nuevo debe llevar una portada generada e integrada como asset real
+  en `public/images/blog/<slug>/`, y el objeto `image` en el frontmatter. Si la
+  generación o integración queda pendiente, el borrador no está listo para
+  programar. `pnpm content:check` exige imagen en todos los borradores y valida
+  su archivo, alt y dimensiones. Los posts históricos publicados no necesitan
+  migrarse por esta regla.
 
 ## Revisión obligatoria antes de crear un borrador
 
