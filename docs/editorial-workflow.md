@@ -105,6 +105,30 @@ problemas, decisiones, costes y aprendizajes útiles. No inventar vivencias,
 resultados, citas ni estadísticas. Anonimizar casos privados y excluir informes
 internos, nombres de equipos/empresas/personas y combinaciones identificativas.
 
+## Tipos de artículo y referencias
+
+Declarar opcionalmente `contentType` en el frontmatter. Los artículos anteriores
+sin ese campo siguen siendo válidos; no se infiere el tipo contando enlaces.
+
+| `contentType` | Uso | Revisión de evidencia |
+| --- | --- | --- |
+| `research` | Investigación, novedades o análisis técnicos contrastables | Verificar afirmaciones factuales con fuentes primarias, versiones y fechas cuando corresponda |
+| `original` | Opinión, aprendizajes propios, retrospectivas o reflexiones | La experiencia y el razonamiento del autor son la fuente primaria; no exigir enlaces externos por defecto |
+| `announcement` | Novedades del blog, cambios editoriales y comunicaciones propias | El propio blog o el hecho comunicado es la fuente primaria; enlazar únicamente cuando sea útil |
+
+**Regla transversal:** el tipo de artículo no es una exención general de rigor.
+Cualquier afirmación externa, cifra, comportamiento de una herramienta o
+referencia temporal debe contrastarse o matizarse, también en artículos
+`original` y `announcement`. No inventar vivencias, fuentes ni resultados.
+Un artículo `research` tampoco necesita referencias ornamentales; sí debe
+poder justificar sus afirmaciones verificables.
+
+La CI valida el valor de `contentType`, los campos y los enlaces internos,
+pero no evalúa automáticamente si una afirmación requiere una cita: esa decisión
+es del Technical Researcher cuando proceda y del Editorial Reviewer.
+**La ausencia de enlaces externos nunca debe producir un fallo por sí sola.**
+Las issues de planificación siguen sin ser fuentes publicables.
+
 ## Límite entre coordinación interna y publicación
 
 La issue de origen es una **ficha editorial interna**, no una referencia bibliográfica. Puede proporcionar tesis, ejemplos y decisiones a los agentes, y debe conservarse como `issue: N` en el frontmatter; nunca se cita ni enlaza en el texto público del post, newsletters o redes. En particular, no escribir «la issue #N propone» ni enlazar a `github.com/josemasf/jmsantos/issues/N`. La exposición al lector debe ser autónoma.
@@ -123,6 +147,7 @@ description: "Resumen preciso del problema y aprendizaje."
 date: 2026-11-03
 tags: [Vue, Testing]
 category: Testing
+contentType: research # Opcional: research, original o announcement
 issue: 123 # Ejemplo sintético: reemplazar por una issue real de josemasf/jmsantos.
 series:
   slug: testing-moderno-vue-confianza-sin-fragilidad
@@ -198,7 +223,7 @@ pnpm publish:scheduled -- --dry-run
 fechas, slugs, registros y órdenes de serie, coherencia de imágenes sociales,
 assets y dimensiones. `--built` añade
 enlaces a rutas del blog en el HTML final, incluidos los generados por referencias
-Markdown. No verifica fuentes externas, privacidad, calidad de la tesis ni
+Markdown. No impone un número mínimo de fuentes externas ni verifica su pertinencia, privacidad, calidad de la tesis ni
 ejecución de ejemplos: esas comprobaciones requieren revisión editorial.
 
 La CI `Calidad de contenido` ejecuta estas validaciones en PR y master. El

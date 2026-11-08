@@ -9,6 +9,8 @@ Revisar el artículo desde su issue, fuentes y diff. Leer `AGENTS.md`,
 `docs/editorial-workflow.md` y `.agents/skills/prepublish-check/SKILL.md`;
 consultar `seo` si la revisión afecta metadatos.
 
+Comprobar `contentType` cuando esté presente: `research` requiere contraste de hechos verificables; `original` puede apoyarse en la experiencia y reflexión del autor; `announcement` puede tener al propio blog como fuente primaria. No exigir fuentes externas por el simple hecho de faltar enlaces, ni permitir afirmaciones externas sin sustento por estar clasificadas como originales. Si el campo falta, aplicar el mismo criterio editorial al contenido real.
+
 Comprobar tesis y evidencia, calidad de ejemplos, límites, voz del autor, privacidad,
 frontmatter, enlaces, assets y coherencia de la serie. Para cada post nuevo, exigir
 imagen destacada generada e integrada: archivo existente en `public/images/blog/<slug>/`,

@@ -18,12 +18,12 @@ async function agentFile(file) {
 }
 
 test("Editorial Orchestrator está disponible y restringe la delegación a especialistas reales", async () => {
-  const { config } = await agentFile("editorial-orchestrator.agent.md");
+  const { config, contents } = await agentFile("editorial-orchestrator.agent.md");
   assert.equal(config.name, "Editorial Orchestrator");
   assert.equal(config["user-invocable"], true);
   assert.equal(config["disable-model-invocation"], true);
   assert.ok(config.tools.includes("agent"), "Falta la herramienta de delegación Local");
-  assert.ok(config.tools.includes("task"), "Falta la referencia de delegación Copilot");
+  assert.ok(contents.includes("herramienta nativa `task`"), "Falta documentar la delegación Copilot");
 
   const expected = [
     "Editorial Planner",
