@@ -10,7 +10,7 @@ fechas, series, imágenes y validaciones. Cargar solo el rol y las skills aplica
 
 | Agente                       | Objetivo                                                       | Archivo                                                |
 | ---------------------------- | -------------------------------------------------------------- | ------------------------------------------------------ |
-| Editorial Orchestrator        | Coordinar el flujo completo, delegar fases y exigir revisión independiente sin publicar. | `.github/agents/editorial-orchestrator.agent.md` |
+| Editorial Orchestrator        | Coordinar el flujo completo, evaluar la necesidad de imagen en cada artículo, delegar fases y exigir revisión independiente sin publicar. | `.github/agents/editorial-orchestrator.agent.md` |
 | Newsletter Curator           | Preparar la newsletter quincenal a partir de publicaciones y calendario. | `.github/agents/newsletter-curator.agent.md` |
 | Editorial Planner            | Elegir temas, ordenar backlog y detectar duplicados.           | `.github/agents/editorial-planner.agent.md`            |
 | Technical Researcher         | Contrastar fuentes, versiones y ejemplos.                      | `.github/agents/technical-researcher.agent.md`         |
@@ -35,10 +35,11 @@ encargo del usuario. Las skills se invocan por tarea; no son procesos recurrente
 Para desarrollar **un post de extremo a extremo**, seleccionar **Editorial Orchestrator**
 como punto de entrada. Coordina las entregas de Editorial Planner → Technical
 Researcher → Astro Content Writer → Visual Asset Prompt Designer → Editorial
-Reviewer, en las fases que correspondan. Conserva el gate de revisión independiente,
-respeta el calendario y **no publica**. Los demás agentes siguen disponibles por
-separado para encargos puntuales. El agente visual solo diseña prompts: la
-integración del asset corresponde a un asistente con generación de imágenes real.
+Reviewer, en las fases que correspondan. Registra siempre si una imagen aporta valor;
+cuando esté indicada, genera e integra el asset real. Conserva el gate de revisión
+independiente, respeta el calendario y **no publica**. Los demás agentes siguen
+disponibles por separado para encargos puntuales. El agente visual solo diseña prompts;
+la generación requiere una herramienta de imágenes real.
 
 En VS Code Local, habilitar la herramienta de subagentes `agent`. En el harness
 Copilot, comprobar la disponibilidad de delegación nativa `task`; nombres de
