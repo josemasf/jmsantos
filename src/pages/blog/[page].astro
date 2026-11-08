@@ -6,6 +6,8 @@ import MainLayout from "@layouts/MainLayout.astro";
 export async function getStaticPaths() {
   const pageSize = 9;
   const posts = (await getCollection("posts")).sort((a, b) => b.data.date.valueOf() - a.data.date.valueOf());
+  const categories = [...new Set(posts.map((post) => post.data.category))].sort((a, b) => a.localeCompare(b, "es"));
+  const searchIndex = posts.map(({ id, data }) => ({ id, title: data.title, description: data.description, category: data.category, tags: data.tags }));
   const totalPages = Math.ceil(posts.length / pageSize);
 
   return Array.from({ length: Math.max(totalPages - 1, 0) }, (_, index) => {
@@ -14,7 +16,7 @@ export async function getStaticPaths() {
 
     return {
       params: { page: String(currentPage) },
-      props: { posts: posts.slice(start, start + pageSize), currentPage, totalPages },
+      props: { posts: posts.slice(start, start + pageSize), currentPage, totalPages, categories, searchIndex },
     };
   });
 }
@@ -23,11 +25,13 @@ interface Props {
   posts: CollectionEntry<"posts">[];
   currentPage: number;
   totalPages: number;
+  categories: string[];
+  searchIndex: Array<{ id: string; title: string; description: string; category: string; tags: string[] }>;
 }
 
-const { posts, currentPage, totalPages } = Astro.props;
+const { posts, currentPage, totalPages, categories, searchIndex } = Astro.props;
 ---
 
 <MainLayout title={`Blog · Página ${currentPage} | José María Santos`} description="Experiencias y aprendizajes de José María Santos construyendo software: ingeniería, arquitectura, calidad, producto y equipos." ogImage="/images/social/blog.png">
-  <BlogListing posts={posts} currentPage={currentPage} totalPages={totalPages} />
+  <BlogListing posts={posts} currentPage={currentPage} totalPages={totalPages} categories={categories} searchIndex={searchIndex} />
 </MainLayout>

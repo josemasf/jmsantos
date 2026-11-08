@@ -7,8 +7,10 @@ const pageSize = 9;
 const allPosts = (await getCollection("posts")).sort((a, b) => b.data.date.valueOf() - a.data.date.valueOf());
 const posts = allPosts.slice(0, pageSize);
 const totalPages = Math.ceil(allPosts.length / pageSize);
+const categories = [...new Set(allPosts.map((post) => post.data.category))].sort((a, b) => a.localeCompare(b, "es"));
+const searchIndex = allPosts.map(({ id, data }) => ({ id, title: data.title, description: data.description, category: data.category, tags: data.tags }));
 ---
 
 <MainLayout title="Blog | José María Santos" description="Experiencias y aprendizajes de José María Santos construyendo software: ingeniería, arquitectura, calidad, producto y equipos." ogImage="/images/social/blog.png">
-  <BlogListing posts={posts} currentPage={1} totalPages={totalPages} />
+  <BlogListing posts={posts} currentPage={1} totalPages={totalPages} categories={categories} searchIndex={searchIndex} />
 </MainLayout>
