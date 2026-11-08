@@ -27,6 +27,24 @@ async function post(root, path, extra = "", date = "2026-10-10", body = "Conteni
   );
 }
 
+async function fixtureCover(root) {
+  const directory = join(root, "public/images/blog/fixture");
+  await mkdir(directory, { recursive: true });
+  await sharp({
+    create: { width: 40, height: 20, channels: 3, background: "white" },
+  })
+    .png()
+    .toFile(join(directory, "portada.png"));
+  return [
+    "image:",
+    "  src: /images/blog/fixture/portada.png",
+    "  alt: Portada de prueba",
+    "  width: 40",
+    "  height: 20",
+    "",
+  ].join("\n");
+}
+
 test("el parser respeta YAML, comentarios dentro de títulos y números de issue", () => {
   const result = parsePostFrontmatter(
     '---\r\ntitle: "Decisiones #1"\r\ndate: "2026-10-10" # fecha\r\nissue: 66\r\n---\r\nTexto',
@@ -76,7 +94,8 @@ test("los borradores necesitan issue, pero los publicados históricos no", async
   assert.ok(
     !before.errors.some((error) => error.includes("posts/01-historico.md")),
   );
-  await post(rootDirectory, "drafts/posts/02-nuevo.md", "issue: 65\n");
+  const cover = await fixtureCover(rootDirectory);
+  await post(rootDirectory, "drafts/posts/02-nuevo.md", `issue: 65\n${cover}`);
   const after = await checkContent({ rootDirectory });
   assert.deepEqual(after.errors, []);
 });
@@ -105,8 +124,24 @@ test("permite trazabilidad en frontmatter, ejemplos técnicos y fuentes externas
     "",
     "Un enlace a un [bug público externo](https://github.com/vuejs/core/issues/123) puede ser una fuente.",
   ].join("\n");
-  await post(root, "drafts/posts/01-correcto.md", "issue: 65\n", "2026-10-10", body);
+  const cover = await fixtureCover(root);
+  await post(root, "drafts/posts/01-correcto.md", `issue: 65\n${cover}`, "2026-10-10", body);
   assert.deepEqual((await checkContent({ rootDirectory: root })).errors, []);
+});
+
+test("distingue tipos editoriales sin exigir enlaces de relleno", async (t) => {
+  const root = await fixture(t);
+  await post(root, "posts/01-original.md", "contentType: original\n", "2026-10-10",
+    "Una reflexión personal sin referencias externas.");
+  await post(root, "posts/02-anuncio.md", "contentType: announcement\n", "2026-10-11",
+    "Una novedad sobre el propio blog.");
+  await post(root, "posts/03-investigacion.md", "contentType: research\n", "2026-10-12",
+    "La revisión de evidencias externas se realiza editorialmente.");
+  assert.deepEqual((await checkContent({ rootDirectory: root })).errors, []);
+
+  await post(root, "posts/04-invalido.md", "contentType: inventado\n");
+  const { errors } = await checkContent({ rootDirectory: root });
+  assert.ok(errors.some((error) => error.includes("contentType")));
 });
 
 test("detecta slugs duplicados aunque cambien prefijo y carpeta", async (t) => {

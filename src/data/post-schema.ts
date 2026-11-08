@@ -16,6 +16,8 @@ export const postSchema = z
     updatedDate: z.coerce.date().optional(),
     tags: z.array(z.string().min(1)).min(1),
     category: z.string().min(1),
+    // El tipo editorial orienta la revisión de evidencias, no exige enlaces ficticios.
+    contentType: z.enum(["research", "original", "announcement"]).optional(),
     issue: z.number().int().positive().optional(),
     image: postImage.extend({ caption: z.string().optional() }).optional(),
     series: z

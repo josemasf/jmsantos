@@ -57,7 +57,7 @@ Delegar deduplicación y ficha (si el tema aún no está cerrado).
 
 ### 2. Technical Researcher · evidencia
 
-Delegar el contraste técnico cuando haya afirmaciones factuales, novedades o decisiones verificables.
+Delegar el contraste técnico cuando haya afirmaciones factuales, novedades o decisiones verificables. Clasificar antes el artículo como `research`, `original` o `announcement`; para reflexión personal o anuncio sin hechos externos, la investigación puede marcarse «no necesaria» sin fabricar fuentes.
 **Entrega:** afirmación → fuente primaria → versión/fecha → conclusión → incertidumbre, más límites de pruebas realmente ejecutadas.
 **Gate:** afirmaciones relevantes sin sustento deben matizarse, retirarse o quedar pendientes; no pasar hipótesis por hechos.
 

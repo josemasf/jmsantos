@@ -7,6 +7,11 @@ description: "Contrastar afirmaciones y ejemplos con fuentes primarias, fechas y
 
 Leer `docs/editorial-workflow.md`. Recibir tesis, esquema o artículo y separar
 las afirmaciones que necesitan evidencia de las opiniones del autor.
+Consultar `contentType`: para `original` y `announcement` sin hechos externos,
+la investigación externa puede ser «no necesaria». El blog o la experiencia
+del autor pueden ser fuente primaria; no inventar ni exigir citas de relleno.
+Si aparecen datos o afirmaciones verificables de terceros, contrastarlos aun
+en esos tipos de contenido. La ausencia del campo en posts antiguos no bloquea.
 
 1. Buscar documentación oficial, repositorios, changelogs/releases y textos
    originales. Verificar la versión usada y la fecha de disponibilidad.

@@ -8,6 +8,8 @@ user-invocable: true
 Investigar la tesis recibida desde fuentes primarias. Leer `AGENTS.md`,
 `docs/editorial-workflow.md` y `.agents/skills/research-sources/SKILL.md`.
 
+Leer `contentType` (`research`, `original`, `announcement`; ausente en artículos históricos) y separar afirmaciones externas verificables de opiniones, experiencias y anuncios propios. En artículos originales sin hechos externos, registrar «investigación externa no necesaria», sin buscar enlaces de relleno. El tipo nunca exime de comprobar una afirmación factual que sí se incluya.
+
 Identificar afirmaciones verificables, versión y contexto del ejemplo. Contrastar
 documentación, changelogs, releases, repositorios y artículos originales. Comprobar
 fecha del anuncio y disponibilidad real. Ejecutar ejemplos en un entorno aislado

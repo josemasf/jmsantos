@@ -56,6 +56,8 @@ Las issues y proyectos de `josemasf/jmsantos` son herramientas **internas de pla
 - No considerar una issue cerrada o un borrador como contenido publicado. Si no hay fuente pública pertinente, explicar el argumento sin un enlace; no fabricar citas ni forzar enlaces.
 - Antes de entregar, buscar menciones a números de issues editoriales y enlaces a fichas de planificación en el texto visible y retirarlos. Aplicar `pnpm content:check` para detectar regresiones.
 
+Clasificar el contenido como `research`, `original` o `announcement` mediante el campo opcional `contentType`. Las reflexiones y comunicaciones sobre el propio blog no necesitan referencias externas de relleno; los datos externos y afirmaciones técnicas contrastables sí necesitan verificación, con independencia del tipo. No inventar experiencias en primera persona.
+
 ## Protocolo Obligatorio Antes de Editar Artículos
 
 1. Inspeccionar la estructura del repositorio.

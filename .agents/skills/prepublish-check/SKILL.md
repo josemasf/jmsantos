@@ -15,7 +15,10 @@ issue solo por similitud de título. Los posts históricos ya publicados son la
 única excepción de compatibilidad.
 
 1. Revisar tesis, pruebas de ejemplos, referencias primarias, límites y separación
-   de hechos/opinión/experiencia. Marcar evidencia pendiente.
+   de hechos/opinión/experiencia. Marcar evidencia pendiente. Respetar el campo
+   opcional `contentType` (`research`, `original`, `announcement`): la reflexión
+   o comunicación propia no requiere fuentes externas por defecto, pero los
+   hechos externos necesitan sustento en todos los tipos.
 2. Revisar voz en español de España: prosa conectada, decisiones concretas y
    razones. Eliminar vivencias inventadas, marketing vacío y ritmo de red social.
 3. Revisar privacidad y anonimización; excluir informes y detalles identificativos.

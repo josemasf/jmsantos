@@ -5,6 +5,7 @@ date: 2026-12-29
 issue: 113
 tags: [escritura, comunidad, aprendizaje, desarrollo de software]
 category: Desarrollo profesional
+contentType: original
 image:
   src: /images/blog/volver-a-escribir-con-regularidad/portada.webp
   alt: Una persona ordena notas en un recorrido que conecta ideas de ingeniería con una pequeña comunidad de lectores.
