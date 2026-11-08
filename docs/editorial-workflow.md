@@ -4,7 +4,7 @@
 
 | Tarea                          | Responsable                                 | Skill                     | Entrega                                                             |
 | ------------------------------ | ------------------------------------------- | ------------------------- | ------------------------------------------------------------------- |
-| Coordinar artículo de inicio a fin | Editorial Orchestrator | editorial-dedup y prepublish-check según fase | Issue, dossier, borrador, imagen real cuando se requiera, revisión independiente y estado verificado |
+| Coordinar artículo de inicio a fin | Editorial Orchestrator | editorial-dedup y prepublish-check según fase | Issue, dossier, borrador, imagen real integrada en cada post nuevo, revisión independiente y estado verificado |
 | Preparar newsletter quincenal    | Newsletter Curator → Astro Content Writer → Editorial Reviewer → autor | — | Borrador fundamentado, revisiones y aprobación manual. Ver `docs/newsletter.md` |
 | Elegir tema y ordenar backlog  | Editorial Planner                           | editorial-dedup           | Ficha con tesis, evidencia pendiente, duplicados y siguiente acción |
 | Contrastar afirmaciones        | Technical Researcher                        | research-sources          | Tabla de afirmación, fuente primaria, fecha, versión y límites      |
@@ -41,7 +41,7 @@ Astro Content Writer → borrador con issue: N
             ↓               ↓
 Visual Asset Prompt Designer (dirección visual; no archivo de imagen)
             ↓
-Asset real generado e integrado, si el post lo exige
+Asset real generado e integrado en cada post nuevo
             ↓
 Editorial Reviewer (revisión independiente, solo lectura)
             ├─ requiere cambios → redactor → revisor (máximo 2 ciclos)
@@ -64,10 +64,11 @@ y no se pisan los archivos.
   Revisar la selección de herramientas y el harness activo. Si la delegación no
   existe o está deshabilitada, el coordinador debe indicar qué roles **no han
   sido realmente invocados** y ofrecer ejecución manual; no simular resultados.
-- Un prompt de portada no equivale a un archivo gráfico. Si el diseño aprobado
-  requiere imagen, integrarla con una herramienta de imágenes disponible,
-  comprobar la ruta, el alt y las dimensiones; si no se puede, bloquear esa
-  entrega concreta.
+- Un prompt de portada no equivale a un archivo gráfico. Cada post nuevo requiere
+  imagen generada e integrada con una herramienta de imágenes disponible. Una
+  imagen opcional en la ficha no autoriza a omitirla. Comprobar ruta, alt,
+  dimensiones reales y renderizado; si no se puede generar o integrar, marcar
+  `asset pendiente` y bloquear el estado «listo para programar».
 - **Revisión independiente obligatoria** antes de declarar `listo para
   programar`. Errores bloqueantes vuelven al redactor y después al revisor.
   Sin revisión no hay aprobación, aunque los tests pasen.
@@ -165,9 +166,12 @@ el aviso de lote existente. Netlify despliega desde master.
 
 ## Imágenes y validación
 
-Diseñar primero la dirección de arte con Visual Asset Prompt Designer. Para
-generar, usar un generador disponible; si no lo hay, informar del asset pendiente.
-Un prompt no es una imagen entregada. Usar SVG/código para diagramas exactos.
+Cada post nuevo debe incluir una imagen destacada generada e integrada. Diseñar
+primero la dirección de arte con Visual Asset Prompt Designer y generar el asset
+con una herramienta de imágenes disponible. Un prompt no es una imagen entregada;
+si no se puede generar o integrar, dejar `asset pendiente` y no marcar el artículo
+como listo para programar. Usar SVG/código para diagramas exactos dentro del post;
+estos no sustituyen la imagen destacada generada.
 
 Guardar la imagen final en `public/images/blog/<slug>/`. Optimizar sin borrar
 el original ni sobrescribir una portada existente:

@@ -52,8 +52,8 @@ Si el entorno **no admite delegar**, no finjas ejecuciones: continúa tú solo c
 
 Delegar deduplicación y ficha (si el tema aún no está cerrado).
 **Entrega:** URL/número de issue, tesis, público, diferencia con artículos existentes, esquema, ejemplos, dependencias/serie y estado editorial.
-**Decisión visual obligatoria:** para cada artículo, decidir explícitamente si una imagen destacada aporta valor y registrar el motivo en la ficha. Considerar el tema, la claridad conceptual, la accesibilidad y la coherencia con las portadas existentes; no asumir ni que todo post la necesita ni que puede omitirse sin evaluarlo.
-**Gate:** no avanzar si la tesis duplica contenido publicado o contradice el alcance aprobado. No modificar el calendario sin autorización. La ficha debe registrar una decisión de imagen —necesaria, opcional o no aporta valor— con una justificación breve.
+**Imagen obligatoria:** todo post nuevo debe tener una imagen destacada generada e integrada. Define una dirección visual coherente con el tema y registra el concepto en la ficha; una valoración estética de que la imagen sería opcional no permite omitirla. Los posts históricos quedan fuera salvo que se actualicen.
+**Gate:** no avanzar si la tesis duplica contenido publicado o contradice el alcance aprobado. No modificar el calendario sin autorización. La ficha registra concepto visual y alt propuesto; el cierre exige un archivo de imagen real.
 
 ### 2. Technical Researcher · evidencia
 
@@ -69,11 +69,11 @@ Delegar redacción sobre la ficha y el dossier completos. Autorizarle **solo la 
 
 ### 4. Decisión e integración visual
 
-Revisar la decisión de imagen antes de cerrar el borrador. Si la portada aporta valor o es necesaria, invocar Visual Asset Prompt Designer una vez fijados la tesis y el brief; solicitar metáfora, composición, prompt negativo, variantes por canal y alt text. Este agente diseña prompts, no genera archivos.
+Invocar siempre a Visual Asset Prompt Designer una vez fijados la tesis y el brief; solicitar metáfora, composición, prompt negativo y alt text. Este agente diseña prompts, no genera archivos.
 
-**Cuando la imagen está indicada:** usar un generador de imágenes disponible, inspeccionar el resultado, conservar el original y optimizar una copia en `public/images/blog/<slug>/`. Integrar `image` en el frontmatter con ruta pública absoluta, `alt` descriptivo y dimensiones reales. La fase no termina con la entrega de un prompt.
+Usar un generador de imágenes disponible para crear la portada de cada post nuevo. Inspeccionar el resultado, conservar el original y optimizar una copia en `public/images/blog/<slug>/`. Integrar `image` en el frontmatter con ruta pública absoluta, `alt` descriptivo y dimensiones reales. La fase no termina con la entrega de un prompt.
 
-**Cuando la imagen es opcional o no aporta valor:** registrar la decisión y el motivo; el artículo puede seguir sin `image`. Si no hay generador disponible para una imagen indicada, marcar `asset pendiente` y bloquear el estado «listo para programar».
+Si no hay generador disponible o no se puede integrar el archivo, marcar `asset pendiente` y bloquear el estado «listo para programar». Nunca cerrar un post nuevo sin imagen generada e integrada.
 
 ### 5. Editorial Reviewer · revisión independiente
 
@@ -97,7 +97,7 @@ Mantén en la conversación este registro compacto (no crees un archivo permanen
 | Ficha         | pendiente / verificada / bloqueada               | issue y enlaces        |
 | Investigación | no necesaria / lista / bloqueada                 | fuentes y límites      |
 | Borrador      | no solicitado / creado / pendiente               | ruta y fecha           |
-| Imagen        | decisión pendiente / no aporta valor / propuesta / integrada / pendiente | motivo, archivo real o bloqueo |
+| Imagen        | pendiente / diseñada / integrada / bloqueada | concepto, archivo real, dimensiones o bloqueo |
 | Revisión      | no realizada / listo / requiere cambios          | hallazgos              |
 | Validación    | no ejecutada / correcta / fallida                | comandos y resultados  |
 

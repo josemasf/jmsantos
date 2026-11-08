@@ -184,6 +184,11 @@ Antes de considerar terminado un artículo, comprobar:
 
 Los posts usan `series` con `slug`, `order` e `image` opcional. Registrar título y descripción en `src/data/blog-series.ts`; comprobar el contrato en `src/data/post-schema.ts`.
 
+Para todo post nuevo, incluir el objeto `image` de portada en el frontmatter y
+coordinar con Editorial Orchestrator la generación e integración de un archivo
+real en `public/images/blog/<slug>/`. No entregar como listo un post nuevo cuyo
+asset siga pendiente; los posts históricos pueden conservar el esquema anterior.
+
 ```yaml
 series:
   slug: nombre-de-la-serie
