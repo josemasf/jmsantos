@@ -1,6 +1,10 @@
 packages:
   - .
 
+# pnpm 11 reads hoisting settings from the workspace file, not .npmrc.
+# Astro's check command must be able to resolve its language tooling.
+shamefullyHoist: true
+
 allowBuilds:
   esbuild: true
   sharp: true
