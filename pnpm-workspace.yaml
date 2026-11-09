@@ -1,6 +1,15 @@
 packages:
   - .
 
+# pnpm 11 reads hoisting settings from the workspace file, not .npmrc.
+# Astro's check command must be able to resolve its language tooling.
+shamefullyHoist: true
+
+# Astro 0.9.12's wasm transformer requires emnapi runtime 1.x with core 1.x.
+# Keep the override scoped so rolldown's separate wasm binding can use 2.x.
+overrides:
+  '@napi-rs/wasm-runtime@1.2.4>@emnapi/runtime': 1.11.3
+
 allowBuilds:
   esbuild: true
   sharp: true
