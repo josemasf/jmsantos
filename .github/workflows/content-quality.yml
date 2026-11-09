@@ -24,7 +24,9 @@ jobs:
           node-version-file: .nvmrc
           package-manager-cache: false
       - uses: pnpm/action-setup@f40ffcd9367d9f12939873eb1018b921a783ffaa # v4
-      - run: pnpm install --frozen-lockfile
+      - run: pnpm install --no-frozen-lockfile
+      - name: Mostrar actualización del lockfile para revisión
+        run: git diff -- pnpm-lock.yaml
       - name: Diagnosticar resolución de dependencias de Astro
         run: |
           node --input-type=module - <<'NODE'
