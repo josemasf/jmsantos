@@ -25,6 +25,22 @@ jobs:
           package-manager-cache: false
       - uses: pnpm/action-setup@f40ffcd9367d9f12939873eb1018b921a783ffaa # v4
       - run: pnpm install --frozen-lockfile
+      - name: Diagnosticar resolución de dependencias de Astro
+        run: |
+          node --input-type=module - <<'NODE'
+          import { createRequire } from "node:module";
+          const require = createRequire(import.meta.url);
+          for (const name of ["@astrojs/check", "typescript"]) {
+            try {
+              console.log(`Resuelto ${name}: ${require.resolve(name)}`);
+              await import(name);
+              console.log(`Importado ${name} correctamente`);
+            } catch (error) {
+              console.error(`No se puede cargar ${name}:`, error);
+              process.exitCode = 1;
+            }
+          }
+          NODE
       - run: pnpm lint
       - run: pnpm test:newsletter
       - run: pnpm test:content
