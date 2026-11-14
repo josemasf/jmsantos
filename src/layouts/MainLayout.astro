@@ -4,6 +4,7 @@ import MainHead from "../components/MainHead.astro";
 import Nav from "../components/Nav.astro";
 import Footer from "../components/Footer.astro";
 import KitStickyBar from "../components/KitStickyBar.astro";
+import AnalyticsConsent from "../components/AnalyticsConsent.astro";
 import CloudflareAnalytics from "../components/CloudflareAnalytics.astro";
 import { ClientRouter } from 'astro:transitions';
 
@@ -34,9 +35,6 @@ const {
 
 <html lang="es">
   <head>
-    <script>
-      import "../faro";
-    </script>
     <ClientRouter />
     <MainHead title={title} description={description} ogImage={ogImage} ogImageAlt={ogImageAlt} ogImageWidth={ogImageWidth} ogImageHeight={ogImageHeight} ogType={ogType} noindex={noindex} schemas={schemas} />
     <CloudflareAnalytics />
@@ -47,5 +45,6 @@ const {
     <slot />
     <Footer />
     <KitStickyBar />
+    <AnalyticsConsent />
   </body>
 </html>

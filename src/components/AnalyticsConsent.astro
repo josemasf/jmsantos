@@ -1,0 +1,64 @@
+<aside id="analytics-consent-banner" class="analytics-consent" aria-labelledby="analytics-consent-title" hidden>
+  <p id="analytics-consent-title" class="analytics-consent__title">Privacidad y analítica</p>
+  <p class="analytics-consent__description">
+    ¿Me permites medir las visitas y los errores del blog con Grafana Faro?
+    Solo se activará si aceptas. Puedes cambiar tu decisión cuando quieras desde el pie de página.
+    <a href="/cookies/">Más información</a>.
+  </p>
+  <div class="analytics-consent__actions">
+    <button type="button" class="analytics-consent__reject" data-consent-reject>Rechazar</button>
+    <button type="button" class="analytics-consent__accept" data-consent-accept>Aceptar analítica</button>
+  </div>
+</aside>
+
+<script>
+  import "../scripts/analytics-consent";
+</script>
+
+<style is:global>
+  .analytics-consent[hidden] { display: none !important; }
+  .analytics-consent {
+    position: fixed;
+    z-index: 1000000;
+    right: 1rem;
+    bottom: 1rem;
+    width: min(28rem, calc(100vw - 2rem));
+    padding: 1.25rem;
+    border: 1px solid var(--border-subtle);
+    border-radius: 1rem;
+    background: var(--surface-raised);
+    color: var(--text-primary);
+    box-shadow: 0 12px 38px rgb(0 0 0 / .2);
+  }
+  .analytics-consent__title {
+    font-family: var(--font-display);
+    font-size: 1.1rem;
+    font-weight: 800;
+    margin-bottom: .5rem;
+  }
+  .analytics-consent__description {
+    color: var(--text-secondary);
+    font-size: .9rem;
+    line-height: 1.55;
+    margin-bottom: 1rem;
+  }
+  .analytics-consent__description a { color: var(--text-accent); text-decoration: underline; }
+  .analytics-consent__actions { display: flex; gap: .65rem; flex-wrap: wrap; }
+  .analytics-consent__actions button {
+    flex: 1 1 10rem;
+    padding: .75rem 1rem;
+    border: 1px solid var(--border-subtle);
+    border-radius: .6rem;
+    cursor: pointer;
+    font: inherit;
+    font-size: .9rem;
+    font-weight: 700;
+  }
+  .analytics-consent__reject { background: var(--surface-subtle); color: var(--text-primary); }
+  .analytics-consent__accept { background: var(--text-accent); color: var(--surface-raised); }
+  .analytics-consent__actions button:focus-visible { outline: 3px solid var(--text-accent); outline-offset: 3px; }
+  .analytics-consent-open .formkit-sticky-bar { visibility: hidden !important; pointer-events: none !important; }
+  @media (max-width: 35rem) {
+    .analytics-consent { left: .75rem; right: .75rem; bottom: .75rem; width: auto; padding: 1rem; }
+  }
+</style>

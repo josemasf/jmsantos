@@ -44,6 +44,7 @@ const exploreLinks = [
       <a href="/aviso-legal/">Aviso legal</a>
       <a href="/privacidad/">Privacidad</a>
       <a href="/cookies/">Cookies</a>
+      <button type="button" data-consent-preferences>Preferencias de analítica</button>
     </nav>
     <a href="https://astro.build" target="_blank" rel="noopener noreferrer">
       Hecho con Astro <span aria-hidden="true">✦</span>
@@ -151,7 +152,9 @@ const exploreLinks = [
     color: var(--text-muted);
     font-size: .8rem;
   }
-  .site-footer__legal a { color: inherit; text-decoration: none; }
+  .site-footer__legal a, .site-footer__legal button { color: inherit; text-decoration: none; }
+  .site-footer__legal button { background: none; border: 0; padding: 0; font: inherit; cursor: pointer; }
+  .site-footer__legal button:hover, .site-footer__legal button:focus-visible { color: var(--text-accent); text-decoration: underline; }
   .site-footer__legal a:hover { color: var(--text-accent); }
   .site-footer__legal a span { color: var(--text-accent); }
   .site-footer__legal-links { display: flex; flex-wrap: wrap; gap: .9rem 1.25rem; }

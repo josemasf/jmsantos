@@ -1,5 +1,6 @@
 ---
-// Cargar la barra solo en el blog, no en newsletter ni portfolio.
+// The optional Kit sticky bar is only configured on blog routes. Its external
+// script is inserted by analytics-consent.ts once a privacy choice is made.
 import { isBlogRoute, resolveKitScript } from "../utils/kit-embed";
 
 const isBlogPage = isBlogRoute(Astro.url.pathname);
@@ -7,10 +8,9 @@ const { src: scriptSrc, isValid: hasValidKitScript, uid: kitFormUid } = resolveK
 ---
 
 {isBlogPage && hasValidKitScript && (
-  <script is:inline data-astro-rerun async data-uid={kitFormUid} src={scriptSrc} data-kit-sticky-bar></script>
+  <div hidden data-kit-sticky-config data-script-src={scriptSrc} data-uid={kitFormUid}></div>
 )}
 
-<!-- Kit recomienda elevar la barra cuando su z-index queda por detrás del layout. -->
 <style is:global>
   .formkit-sticky-bar {
     z-index: 999999 !important;

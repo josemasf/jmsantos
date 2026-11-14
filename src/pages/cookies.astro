@@ -3,14 +3,15 @@ import LegalPage from "../components/LegalPage.astro";
 ---
 
 <LegalPage title="Política de cookies y almacenamiento local" description="Información sobre cookies y almacenamiento local en el portfolio de José María Santos.">
-  <p>Este sitio no utiliza cookies de analítica, publicidad ni seguimiento. Cloudflare Web Analytics, cuando se activa, está configurado para obtener métricas agregadas sin usar cookies.</p>
+  <p>Este sitio utiliza almacenamiento local para recordar tus preferencias y, solo si aceptas, activa Grafana Faro para analizar visitas y errores del blog. Cloudflare Web Analytics, cuando se activa, obtiene métricas agregadas sin cookies.</p>
 
   <h2>Preferencia de tema</h2>
-  <p>El sitio guarda únicamente la preferencia de modo claro u oscuro en el almacenamiento local de tu navegador con la clave <code>theme</code>. Este dato permite recordar tu elección en próximas visitas y no se transmite a terceros.</p>
+  <p>La clave <code>theme</code> de tu navegador guarda la preferencia de modo claro u oscuro. No se transmite a terceros.</p>
 
-  <h2>Cómo eliminarlo</h2>
-  <p>Puedes borrar esta preferencia desde las opciones de datos del sitio en tu navegador. Al hacerlo, el sitio volverá a usar la preferencia de color configurada en tu dispositivo.</p>
+  <h2>Analítica opcional: Grafana Faro</h2>
+  <p>Grafana Faro está desactivado por defecto. Si aceptas, se envían a Grafana Labs datos de navegación (ruta de la página, eventos de visita), errores y rendimiento técnico, así como identificadores técnicos de sesión que puede guardar el SDK en el navegador. No utilizamos Session Replay.</p>
+  <p>Guardamos tu decisión en <code>localStorage</code>, bajo la clave <code>jmsantos.analytics-consent.v1</code>, con los valores aceptación o rechazo. No enviamos este valor a Grafana. Puedes cambiarla cuando quieras con «Preferencias de analítica» en el pie de página. Si retiras tu consentimiento, recargamos la página para detener el SDK.</p>
 
-  <h2>Más información</h2>
-  <p>Si el funcionamiento del sitio cambia y se incorporan tecnologías que requieran consentimiento, esta política se actualizará antes de activarlas.</p>
+  <h2>Cómo eliminar estas preferencias</h2>
+  <p>Puedes usar las preferencias del pie de página o borrar los datos del sitio desde tu navegador. Al borrar el almacenamiento local se olvidan tanto el tema elegido como la decisión sobre analítica, y volveremos a preguntarte antes de activar Faro.</p>
 </LegalPage>
