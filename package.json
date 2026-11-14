@@ -30,6 +30,9 @@
   "dependencies": {
     "@astrojs/partytown": "2.1.9",
     "@cloudinary/url-gen": "1.22.0",
+    "@grafana/faro-instrumentation-replay": "^2.14.0",
+    "@grafana/faro-web-sdk": "^2.14.0",
+    "@grafana/faro-web-tracing": "^2.14.0",
     "astro": "7.4.7",
     "tailwindcss": "4.3.5"
   },
